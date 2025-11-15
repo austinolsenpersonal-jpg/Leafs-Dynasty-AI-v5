@@ -1,0 +1,66 @@
+{
+  "$schema": "https://example.com/leafs-dynasty-ai/schemas/NeutralZoneSchema_v1.0.json",
+  "version": "1.0",
+  "game": "NHL 25",
+  "description": "Neutral zone strategy definitions using ONLY NHL 25 options.",
+  "options": [
+    {
+      "id": "nz_1_2_2_red",
+      "label": "1-2-2 Red",
+      "role": "default_trap",
+      "risk_level": 2,
+      "trap_level": 4,
+      "rush_defense": 4,
+      "notes": [
+        "Balanced trap that still allows counter-attacks.",
+        "Best vs fast rush teams who like controlled entries.",
+        "Good starting point for most games."
+      ]
+    },
+    {
+      "id": "nz_1_2_2_blue",
+      "label": "1-2-2 Blue",
+      "role": "aggressive_line_gap",
+      "risk_level": 3,
+      "trap_level": 3,
+      "rush_defense": 3,
+      "notes": [
+        "More aggressive at the blue line, invites a bit more risk.",
+        "Use when you trust your D gap and want more turnovers at the line.",
+        "Good vs slower teams or when you are trailing."
+      ]
+    },
+    {
+      "id": "nz_1_3_1",
+      "label": "1-3-1",
+      "role": "hard_trap",
+      "risk_level": 1,
+      "trap_level": 5,
+      "rush_defense": 5,
+      "notes": [
+        "Strongest pure trap in the game.",
+        "Best for protecting a lead in the 3rd or killing momentum.",
+        "Can reduce your own offense if overused."
+      ]
+    },
+    {
+      "id": "nz_1_4",
+      "label": "1-4",
+      "role": "extreme_trap",
+      "risk_level": 1,
+      "trap_level": 6,
+      "rush_defense": 5,
+      "notes": [
+        "Ultra-conservative, clogs the neutral zone hard.",
+        "Use rarely: late-game lead, PK-like situations, or when being badly outplayed.",
+        "Not recommended as a default — will choke your offense."
+      ]
+    }
+  ],
+  "default_recommendations": {
+    "game_start": "nz_1_2_2_red",
+    "protect_lead": "nz_1_3_1",
+    "protect_big_lead": "nz_1_4",
+    "need_goal": "nz_1_2_2_blue"
+  }
+}
