@@ -1,0 +1,260 @@
+{
+  "version": "1.0",
+  "module": "StrategyTrees.SpecialTeams",
+  "description": "Special teams strategy trees for NHL 25 – powerplay and penalty kill. Uses only NHL 25 in-game options and links back to Canon strategy modules.",
+  "meta": {
+    "game": "NHL 25",
+    "team": "Toronto Maple Leafs",
+    "compatibility": [
+      "Product/Canon/OffensiveStrategy.json",
+      "Product/Canon/DefensivePressure.json",
+      "Product/Canon/DefensiveStrategy.json",
+      "Product/Canon/Forecheck.json",
+      "Product/Canon/NeutralZone.json",
+      "Product/Canon/ControlBreakout.json",
+      "Product/Canon/QuickBreakout.json"
+    ]
+  },
+  "powerplay": {
+    "pp1_default": {
+      "situation": "PP 1: base setup vs standard box or diamond",
+      "formation": "1-3-1",
+      "offensive_strategy": "aggressive",
+      "pressure_level": "standard",
+      "primary_focus": "bumper and weak-side seam",
+      "recommended_options": {
+        "offensive_strategy": "aggressive",
+        "defensive_pressure": "normal",
+        "defensive_strategy": "tight_point"
+      },
+      "trigger_conditions": {
+        "use_when": [
+          "Start of powerplay",
+          "Game tied or leading by 1",
+          "Opponent PK using Box or passive Diamond"
+        ],
+        "swap_out_if": [
+          "0 shots in 2 entries",
+          "PK is overplaying bumper",
+          "PK is blocking point heavily"
+        ]
+      },
+      "pivot_to": [
+        "pp1_overload_low",
+        "pp1_umbrella_point"
+      ]
+    },
+    "pp1_overload_low": {
+      "situation": "PP 1: working the puck low vs aggressive PK",
+      "formation": "Overload",
+      "offensive_strategy": "full_attack",
+      "pressure_level": "high",
+      "primary_focus": "low cycle, net-front screens, back-door",
+      "recommended_options": {
+        "offensive_strategy": "full_attack",
+        "defensive_pressure": "puck_side_attack",
+        "defensive_strategy": "collapsing"
+      },
+      "trigger_conditions": {
+        "use_when": [
+          "PK is chasing high in zone",
+          "Goalie is fighting screens and tips",
+          "You want heavy net-front pressure"
+        ],
+        "swap_out_if": [
+          "Repeated blocked passes low to high",
+          "No clean looks from below goal line"
+        ]
+      },
+      "pivot_to": [
+        "pp1_umbrella_point"
+      ]
+    },
+    "pp1_umbrella_point": {
+      "situation": "PP 1: funneling shots to point shooter",
+      "formation": "Umbrella",
+      "offensive_strategy": "aggressive",
+      "pressure_level": "standard",
+      "primary_focus": "one-timers and high screen shots",
+      "recommended_options": {
+        "offensive_strategy": "aggressive",
+        "defensive_pressure": "normal",
+        "defensive_strategy": "tight_point"
+      },
+      "trigger_conditions": {
+        "use_when": [
+          "Top PP D-man has strong shot",
+          "PK is collapsing deep to net-front",
+          "You want volume from blue line with traffic"
+        ],
+        "swap_out_if": [
+          "PK steps out hard on point shooter",
+          "Point shots are consistently blocked"
+        ]
+      },
+      "pivot_to": [
+        "pp1_default"
+      ]
+    },
+    "pp2_default": {
+      "situation": "PP 2: simple, low-risk setup",
+      "formation": "Overload",
+      "offensive_strategy": "standard",
+      "pressure_level": "standard",
+      "primary_focus": "low-to-high plays and simple one-timers",
+      "recommended_options": {
+        "offensive_strategy": "standard",
+        "defensive_pressure": "normal",
+        "defensive_strategy": "tight_point"
+      },
+      "trigger_conditions": {
+        "use_when": [
+          "Second unit is on the ice",
+          "Need safe puck movement and zone time",
+          "Star players are tired or off"
+        ],
+        "swap_out_if": [
+          "You’re chasing the game by 2+",
+          "PP2 is generating no zone time"
+        ]
+      },
+      "pivot_to": [
+        "pp2_shoot_from_flanks"
+      ]
+    },
+    "pp2_shoot_from_flanks": {
+      "situation": "PP 2: hunt shots from the half-walls",
+      "formation": "1-3-1",
+      "offensive_strategy": "aggressive",
+      "pressure_level": "high",
+      "primary_focus": "half-wall wristers and simple one-timers",
+      "recommended_options": {
+        "offensive_strategy": "aggressive",
+        "defensive_pressure": "puck_side_attack",
+        "defensive_strategy": "tight_point"
+      },
+      "trigger_conditions": {
+        "use_when": [
+          "You need a momentum push",
+          "PK is sitting back in the box",
+          "You want quick pucks to the net"
+        ],
+        "swap_out_if": [
+          "You lose structure and give up rushes against",
+          "Multiple blocked shots leading to clears"
+        ]
+      },
+      "pivot_to": [
+        "pp2_default"
+      ]
+    }
+  },
+  "penalty_kill": {
+    "pk1_diamond_default": {
+      "situation": "PK 1: standard diamond vs 1-3-1 or Umbrella",
+      "shape": "Diamond",
+      "pressure_level": "normal",
+      "primary_focus": "protect middle seam and bumper",
+      "recommended_options": {
+        "defensive_pressure": "contain_puck",
+        "defensive_strategy": "collapsing",
+        "forecheck": "1-2-2_passive"
+      },
+      "trigger_conditions": {
+        "use_when": [
+          "Opponent PP is using 1-3-1 or Umbrella",
+          "Score is close (within 1–2 goals)",
+          "You want controlled sticks-in-lanes PK"
+        ],
+        "swap_out_if": [
+          "Opposition is hammering point shots only",
+          "You are down 2+ and need shorthanded pressure"
+        ]
+      },
+      "pivot_to": [
+        "pk1_box_press"
+      ]
+    },
+    "pk1_box_press": {
+      "situation": "PK 1: more aggressive box pressure vs passive PP",
+      "shape": "Box",
+      "pressure_level": "high",
+      "primary_focus": "force puck up the walls and jump bad passes",
+      "recommended_options": {
+        "defensive_pressure": "high_pressure",
+        "defensive_strategy": "collapsing",
+        "forecheck": "1-2-2_aggressive"
+      },
+      "trigger_conditions": {
+        "use_when": [
+          "PP is static and slow on the puck",
+          "You need a momentum swing or shorthanded chances",
+          "You trust your goalie to handle cross-ice looks"
+        ],
+        "swap_out_if": [
+          "PK gets stretched side-to-side",
+          "Slot coverage is breaking down"
+        ]
+      },
+      "pivot_to": [
+        "pk1_diamond_default"
+      ]
+    },
+    "pk2_safe_clear": {
+      "situation": "PK 2: conservative, shot-block and clear unit",
+      "shape": "Box",
+      "pressure_level": "low",
+      "primary_focus": "block shots, win battles, get puck out",
+      "recommended_options": {
+        "defensive_pressure": "protect_net",
+        "defensive_strategy": "collapsing",
+        "forecheck": "1-2-2_passive"
+      },
+      "trigger_conditions": {
+        "use_when": [
+          "Last 30–40 seconds of PK and protecting a lead",
+          "Your top PKers are gassed",
+          "You’re just off an icing or long shift"
+        ],
+        "swap_out_if": [
+          "Repeated clean looks from the point",
+          "You’re already trailing by 2+ and need pressure"
+        ]
+      },
+      "pivot_to": [
+        "pk1_diamond_default"
+      ]
+    }
+  },
+  "transitions": {
+    "score_based": [
+      {
+        "state": "leading_by_2_plus",
+        "powerplay_action": "prefer_pp1_default_and_pp2_default",
+        "penalty_kill_action": "prefer_pk2_safe_clear_in_last_minute"
+      },
+      {
+        "state": "trailing_by_2_plus",
+        "powerplay_action": "prefer_pp1_overload_low_and_pp2_shoot_from_flanks",
+        "penalty_kill_action": "use_pk1_box_press_on_faceoff_wins"
+      }
+    ],
+    "momentum_based": [
+      {
+        "state": "pp_cold_no_shots_in_2_entries",
+        "switch_from": "pp1_default",
+        "switch_to": "pp1_overload_low"
+      },
+      {
+        "state": "pp_point_shots_blocked_repeatedly",
+        "switch_from": "pp1_umbrella_point",
+        "switch_to": "pp1_default"
+      },
+      {
+        "state": "pk_scrambling_low",
+        "switch_from": "pk1_box_press",
+        "switch_to": "pk1_diamond_default"
+      }
+    ]
+  }
+}
