@@ -1,0 +1,77 @@
+{
+  "forecheck": {
+    "1-2-2_passive": {
+      "label": "1-2-2 Passive",
+      "usage": "Safe, structure-first. Great vs rush-heavy teams.",
+      "trap_slider": [0, 2]
+    },
+    "1-2-2_aggressive": {
+      "label": "1-2-2 Aggressive",
+      "usage": "Higher pressure. Good when trailing or vs weak breakout teams.",
+      "trap_slider": [3, 5]
+    },
+    "2-3": {
+      "label": "2-3",
+      "usage": "Neutral balance vs teams that attack through middle lane.",
+      "trap_slider": [2, 4]
+    },
+    "weak_side_lock": {
+      "label": "Weak Side Lock",
+      "usage": "Top choice vs teams that use boards & reverse breakout.",
+      "trap_slider": [4, 6]
+    }
+  },
+
+  "neutral_zone": {
+    "1-2-2_red": {
+      "label": "1-2-2 Red",
+      "usage": "Best vs cycle-heavy teams and forecheck pressure teams."
+    },
+    "1-2-2_blue": {
+      "label": "1-2-2 Blue",
+      "usage": "More conservative. Good when protecting lead."
+    },
+    "1-3-1": {
+      "label": "1-3-1",
+      "usage": "Kills mid-lane rushes. Best vs elite speed (e.g., Larkin, McDavid)."
+    },
+    "1-4": {
+      "label": "1-4",
+      "usage": "Full trap. Only activate when protecting a lead late."
+    }
+  },
+
+  "defensive_pressure": {
+    "protect_net": "Low aggression, collapses inside. Good vs inside drives.",
+    "contain_puck": "Balanced. Best general defensive setting.",
+    "normal": "Default NHL behaviour.",
+    "puck_side_attack": "Pressures puck carrier. Use vs slow decision makers.",
+    "high_pressure": "Dangerous if misused. Only when trailing or opponent is rattled."
+  },
+
+  "defensive_strategy": {
+    "collapsing": "Best vs net-crash teams, inside attackers.",
+    "staggered": "Counters low–high cycles (e.g., Detroit, Rangers).",
+    "tight_point": "Best vs teams that fire a ton of point shots (Seider, Josi)."
+  },
+
+  "offensive_strategy": {
+    "defend_lead": "Safe, keep puck deep.",
+    "conservative": "Low-risk puck movement.",
+    "standard": "Balanced NHL offence.",
+    "aggressive": "More F1/F2 pressure, inside attacks.",
+    "full_attack": "Maximum pressure, heavy forecheck."
+  },
+
+  "control_breakout": {
+    "strong_side_slant": "Best vs aggressive forechecks.",
+    "blue_to_blue": "Great for stretch plays and fast wingers.",
+    "three_high": "Overload release, strong puck protection."
+  },
+
+  "quick_breakout": {
+    "stay_wide": "Opens lanes; good vs collapsing forechecks.",
+    "leave_zone_early": "High risk/reward. Only for top speed lines.",
+    "close_support": "Best vs trapping teams."
+  }
+}
