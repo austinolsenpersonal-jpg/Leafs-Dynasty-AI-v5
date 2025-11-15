@@ -1,0 +1,64 @@
+{
+  "name": "NHL25 Leafs Architect – Project Bootstrap",
+  "version": "1.0.0",
+  "owner": "Austin Olsen",
+  "description": "Single source-of-truth bootstrap for the NHL 25 Leafs Architect + Dynasty GPT setup.",
+  "repo": {
+    "provider": "github",
+    "slug": "austinolsenpersonal-jpg/NHL25-Leafs-Architect"
+  },
+
+  "paths": {
+    "docs_dir": "Docs",
+    "watchdog_config": "Architect/Config/ModuleWatchdog_v1.0.json",
+    "architect_config_dir": "Architect/Config",
+    "architect_root": "Architect",
+    "product_root": "Product",
+    "dailyops_root": "Product/DailyOps",
+    "exports_root": "Product/Exports",
+    "dynasty_knowledge_root": "Product/DynastyKnowledge"
+  },
+
+  "gpt_roles": {
+    "architect_gpt": {
+      "role": "systems_and_files",
+      "description": "Handles repo structure, JSON schemas, configs, exports, and file instructions for GitHub.",
+      "preferred_model": "gpt-5.1-thinking"
+    },
+    "dynasty_gpt": {
+      "role": "gm_and_gameplay",
+      "description": "Handles GM decisions, gameplans, tactics, and in-game coaching, while reading configs/exports from this repo.",
+      "preferred_model": "gpt-5.1"
+    }
+  },
+
+  "commit_prefs": {
+    "required_prefix": "create",
+    "iphone_friendly_blocks": true,
+    "one_task_at_a_time": true,
+    "notes": [
+      "Always give Austin: (1) file path, (2) full file contents, (3) commit headline, (4) commit description.",
+      "If updating an existing file, always provide the full replacement contents, not a diff."
+    ]
+  },
+
+  "watchdog": {
+    "config_path": "Architect/Config/ModuleWatchdog_v1.0.json",
+    "default_command": "/watchdog scan --config 'Architect/Config/ModuleWatchdog_v1.0.json' --output 'latest'",
+    "behaviour": "Architect GPT should simulate a scan using this config and report missing files/dirs based on this repo."
+  },
+
+  "bootstrap_usage": {
+    "architect_gpt_hint": "On first message, read Project_Bootstrap_v1.0.json to learn repo layout, commit rules, and key paths before creating or editing any files.",
+    "dynasty_gpt_hint": "Treat this file as the entry point for where to look for future exports (Product/Exports) and knowledge packs (Product/DynastyKnowledge). Do NOT try to edit files directly; let Architect GPT handle JSON/file creation."
+  },
+
+  "status": {
+    "canon_installed": false,
+    "dynasty_export_installed": false,
+    "notes": [
+      "This is a fresh repo. Canon, slider rules, and full Dynasty exports will be added later via Architect GPT-guided files.",
+      "Watchdog, Docs, and bootstrap are the initial foundation."
+    ]
+  }
+}
