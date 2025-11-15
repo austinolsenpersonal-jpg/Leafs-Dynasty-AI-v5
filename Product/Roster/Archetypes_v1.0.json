@@ -1,0 +1,149 @@
+{
+  "version": "1.0",
+  "type": "archetype_profile",
+  "team": "Toronto Maple Leafs",
+  "description": "Primary roster archetypes used by Gameplan Builder v1.0 for tactical mapping, slider generation, PP/PK roles, and matchup logic.",
+
+  "forwards": {
+    "Auston Matthews": {
+      "archetype": "elite_power_sniper",
+      "role": "1C",
+      "offensive_bias": "aggressive",
+      "defensive_bias": "responsible",
+      "notes": "Primary shooter. Heavy on puck protection. Best used vs weaker D pairs."
+    },
+    "Mitch Marner": {
+      "archetype": "elite_playmaker",
+      "role": "1RW",
+      "offensive_bias": "creative",
+      "defensive_bias": "support",
+      "notes": "Drives passing plays. Generates weak-side seams."
+    },
+    "Matthew Knies": {
+      "archetype": "power_forward",
+      "role": "1LW",
+      "offensive_bias": "crash",
+      "defensive_bias": "support_low",
+      "notes": "Net-front disruptor. Effective vs slow defenders."
+    },
+
+    "John Tavares": {
+      "archetype": "two_way_forward",
+      "role": "2C",
+      "offensive_bias": "slot_control",
+      "defensive_bias": "high_slot_responsible"
+    },
+    "William Nylander": {
+      "archetype": "sniper_playmaker_hybrid",
+      "role": "2RW",
+      "offensive_bias": "aggressive",
+      "defensive_bias": "transition_speed"
+    },
+    "Tyler Bertuzzi": {
+      "archetype": "grinder_power",
+      "role": "2LW",
+      "offensive_bias": "crash",
+      "defensive_bias": "physical"
+    },
+
+    "Max Domi": {
+      "archetype": "playmaker_agitator",
+      "role": "3C",
+      "offensive_bias": "creative",
+      "defensive_bias": "pressure"
+    },
+    "Calle Järnkrok": {
+      "archetype": "two_way_winger",
+      "role": "3RW",
+      "offensive_bias": "balanced",
+      "defensive_bias": "support"
+    },
+    "Nick Robertson": {
+      "archetype": "sniper",
+      "role": "3LW",
+      "offensive_bias": "shoot",
+      "defensive_bias": "light_support"
+    },
+
+    "David Kämpf": {
+      "archetype": "defensive_center",
+      "role": "4C",
+      "offensive_bias": "low",
+      "defensive_bias": "high"
+    },
+    "Ryan Reaves": {
+      "archetype": "enforcer_grinder",
+      "role": "4RW",
+      "offensive_bias": "crash",
+      "defensive_bias": "physical"
+    },
+    "Noah Gregor": {
+      "archetype": "speed_grinder",
+      "role": "4LW",
+      "offensive_bias": "counter_attack",
+      "defensive_bias": "pressure"
+    }
+  },
+
+  "defense": {
+    "Morgan Rielly": {
+      "archetype": "offensive_defenseman",
+      "role": "D1",
+      "offensive_bias": "carry_drive",
+      "defensive_bias": "gap_control"
+    },
+    "TJ Brodie": {
+      "archetype": "defensive_defenseman",
+      "role": "D1",
+      "offensive_bias": "safe",
+      "defensive_bias": "contain"
+    },
+
+    "Jake McCabe": {
+      "archetype": "defensive_defenseman",
+      "role": "D2",
+      "offensive_bias": "safe",
+      "defensive_bias": "physical"
+    },
+    "John Klingberg": {
+      "archetype": "offensive_defenseman",
+      "role": "D2",
+      "offensive_bias": "aggressive",
+      "defensive_bias": "risk"
+    },
+
+    "Mark Giordano": {
+      "archetype": "two_way_defenseman",
+      "role": "D3",
+      "offensive_bias": "balanced",
+      "defensive_bias": "shot_block"
+    },
+    "Timothy Liljegren": {
+      "archetype": "puck_moving_defenseman",
+      "offensive_bias": "transition",
+      "defensive_bias": "stick_active"
+    }
+  },
+
+  "goaltending": {
+    "Joseph Woll": {
+      "archetype": "hybrid_goalie",
+      "athleticism": "high",
+      "rebound_control": "moderate",
+      "notes": "Best vs east–west teams."
+    },
+    "Ilya Samsonov": {
+      "archetype": "athletic_reactive",
+      "athleticism": "high",
+      "rebound_control": "low",
+      "notes": "Better vs north–south teams."
+    }
+  },
+
+  "usage_rules": {
+    "shutdown_assignment": "Use Brodie–Rielly unless opponent has elite cycle team.",
+    "offensive_pairing": "Use Rielly–Klingberg when more offense is required.",
+    "match_line_vs_elite": "Use Kämpf line when protecting a lead.",
+    "attack_weak_pair": "Target slow or low-gap defenders using Knies / Matthews cycle."
+  }
+}
