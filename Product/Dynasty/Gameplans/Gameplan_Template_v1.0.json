@@ -1,0 +1,166 @@
+{
+  "version": "1.0",
+  "type": "full_gameplan_template",
+  "owner": "Leafs Dynasty GPT",
+  "description": "Official blueprint that all Leafs Dynasty GPT full-gameplans must follow. Ensures consistent structure, NHL 25–legal settings, correct slider maps, and validated matchup scouting.",
+
+  "structure": [
+    {
+      "section": "Team Identity Snapshot",
+      "required": true,
+      "fields": [
+        "Team Strengths",
+        "Team Weaknesses",
+        "Offensive Style",
+        "Defensive Style",
+        "Goaltending Notes"
+      ]
+    },
+    {
+      "section": "Opponent Scouting Report",
+      "required": true,
+      "fields": [
+        "Top Threats",
+        "Weaknesses",
+        "Preferred Rush Patterns",
+        "Forecheck Behavior",
+        "Neutral Zone Behavior",
+        "Defensive Zone Behavior",
+        "Special Teams Tendencies"
+      ]
+    },
+    {
+      "section": "NHL25_Tactics",
+      "required": true,
+      "fields": {
+        "Forecheck": [
+          "1-2-2 Passive",
+          "1-2-2 Aggressive",
+          "2-3",
+          "Weak Side Lock"
+        ],
+        "Neutral_Zone": [
+          "1-2-2 Red",
+          "1-2-2 Blue",
+          "1-3-1",
+          "1-4"
+        ],
+        "Defensive_Pressure": [
+          "Protect Net",
+          "Contain Puck",
+          "Normal",
+          "Puck Side Attack",
+          "High Pressure"
+        ],
+        "Defensive_Strategy": [
+          "Collapsing",
+          "Staggered",
+          "Tight Point"
+        ],
+        "Offensive_Strategy": [
+          "Defend Lead",
+          "Conservative",
+          "Standard",
+          "Aggressive",
+          "Full Attack"
+        ],
+        "Breakout_Control": [
+          "Strong Side Slant",
+          "Blue To Blue",
+          "3 High"
+        ],
+        "Breakout_Quick": [
+          "Stay Wide",
+          "Leave Zone Early",
+          "Close Support"
+        ],
+        "Trap_Slider": {
+          "range": "0–6",
+          "description": "0 = full trap, 6 = max forecheck pressure"
+        }
+      }
+    },
+    {
+      "section": "Offensive_Sliders",
+      "required": true,
+      "fields": {
+        "Carry_vs_Dump": "0–10 (0 = Dump, 10 = Carry)",
+        "Cycle_vs_Shoot": "0–10 (0 = Shoot, 10 = Cycle)",
+        "Efficiency_vs_Energy": "0–10 (0 = Energy, 10 = Efficiency)",
+        "DontBlock_vs_Block": "0–10 (0 = Don’t Block, 10 = Block Shots)",
+        "Crash_vs_Skate": "0–10 (0 = Crash, 10 = Skate)"
+      }
+    },
+    {
+      "section": "Defensive_Sliders",
+      "required": true,
+      "fields": {
+        "HoldLine_vs_Pinch": "0–10 (0 = Hold Line, 10 = Pinch)",
+        "ProtectSlot_vs_AttackPuck": "0–10 (0 = Protect Slot, 10 = Attack Puck)",
+        "Box_vs_Diamond": "0–10 (0 = Box, 10 = Diamond)",
+        "Stick_vs_Body": "0–10 (0 = Stick Priority, 10 = Body Priority)",
+        "Pressure_Balance": "0–10 (0 = Conservative, 10 = Aggressive)"
+      }
+    },
+    {
+      "section": "Matchup Deployment",
+      "required": true,
+      "fields": [
+        "Preferred Line Matchups",
+        "Avoid Matchups",
+        "Shutdown Assignments",
+        "D-Pair Usage",
+        "Goaltending Choice"
+      ]
+    },
+    {
+      "section": "Special Teams Gameplan",
+      "required": true,
+      "fields": [
+        "Powerplay Strategy",
+        "Penalty Kill Strategy",
+        "Key PP Entries",
+        "Key PK Clears",
+        "PP Shot Map",
+        "PK Disruption Map"
+      ]
+    },
+    {
+      "section": "In-Game Adjustments",
+      "required": true,
+      "fields": [
+        "If Losing",
+        "If Winning",
+        "If Being Outshot",
+        "If Taking Too Many Penalties",
+        "If Opponent Dominating Cycle",
+        "If Opponent Dominating Rushes",
+        "If Goalie Struggling",
+        "If Goalie Hot"
+      ]
+    },
+    {
+      "section": "Win Conditions",
+      "required": true,
+      "fields": [
+        "Primary Win Conditions",
+        "Secondary Win Conditions",
+        "Game-Breaker Opportunities"
+      ]
+    }
+  ],
+
+  "validation": {
+    "strict_nhl25_rules": true,
+    "verify_against_systems_map": true,
+    "systems_map_path": "Product/Canon/SystemsMap_v1.0.json",
+    "fail_on_unknown_tactic": true
+  },
+
+  "notes": [
+    "This Template forces modern NHL 25 strategy options only.",
+    "No legacy terms (1-2-2 Red forecheck, 1-2-2 Blue forecheck) allowed.",
+    "Dynasty GPT must follow this template EXACTLY for all matchups.",
+    "Architect GPT is forbidden from writing into Gameplans folder."
+  ]
+}
