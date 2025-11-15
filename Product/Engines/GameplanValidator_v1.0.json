@@ -1,0 +1,77 @@
+{
+  "engine": "gameplan_validator",
+  "version": "1.0",
+  "description": "Validates all gameplan inputs before generation. Ensures NHL 25 tactic set, slider schema, roster archetypes, and strategy map are present and match Canon v1.0.",
+
+  "validation_stages": {
+    "1_roster_check": {
+      "required_file": "Product/Roster/Archetypes_v1.0.json",
+      "checks": [
+        "all_forwards_have_archetype",
+        "all_defense_have_archetype",
+        "goalies_have_archetype",
+        "roles_defined"
+      ],
+      "on_fail": "stop_and_report_missing_archetype"
+    },
+
+    "2_strategy_map_check": {
+      "required_file": "Product/Strategy/CanonStrategyMap_v1.0.json",
+      "checks": [
+        "valid_forecheck_values",
+        "valid_neutral_zone_values",
+        "valid_defensive_pressure_values",
+        "valid_defensive_strategy_values",
+        "valid_offensive_strategy_values",
+        "valid_control_breakout_values",
+        "valid_quick_breakout_values"
+      ],
+      "on_fail": "stop_and_report_invalid_strategy_option"
+    },
+
+    "3_slider_schema_check": {
+      "required_file": "Product/Templates/SliderTemplate_v1.0.json",
+      "checks": [
+        "line_slider_keys_present",
+        "defense_slider_keys_present",
+        "values_within_0_to_10_range"
+      ],
+      "on_fail": "stop_and_report_slider_mismatch"
+    },
+
+    "4_coaching_tree_check": {
+      "required_file": "Product/Coaching/CoachingTree_v1.0.json",
+      "checks": [
+        "roles_mapped",
+        "in_game_adjustments_defined",
+        "rush_defense_rules_present",
+        "pk_rules_defined",
+        "pp_rules_defined"
+      ],
+      "on_fail": "stop_and_report_missing_coaching_rule"
+    },
+
+    "5_builder_check": {
+      "required_file": "Product/Builders/GameplanBuilder_v1.0.json",
+      "checks": [
+        "builder_has_matchup_logic",
+        "builder_has_system_logic",
+        "builder_has_slider_logic",
+        "builder_has_in_game_logic"
+      ],
+      "on_fail": "stop_and_report_builder_error"
+    }
+  },
+
+  "final_output_rules": {
+    "allow_generation_only_if": [
+      "roster_check_passed",
+      "strategy_map_check_passed",
+      "slider_schema_check_passed",
+      "coaching_tree_check_passed",
+      "builder_check_passed"
+    ],
+    "on_success": "proceed_to_gameplan_builder",
+    "on_failure": "return_detailed_error_report"
+  }
+}
