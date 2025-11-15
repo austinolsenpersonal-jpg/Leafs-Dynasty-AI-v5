@@ -1,0 +1,211 @@
+{
+  "name": "NHL 25 Neutral Zone System Tree",
+  "id": "Tactics_SystemTree_NeutralZone_v1.0",
+  "game": "NHL 25",
+  "version": "1.0.0",
+  "created_by": "Architect GPT",
+  "last_updated": "2025-11-15",
+  "description": "Canonical neutral zone system tree for NHL 25. Only uses in-game options: 1-2-2 Red, 1-2-2 Blue, 1-3-1, and 1-4. This file defines what each system does, when to use it, and how it interacts with the Trap Forecheck slider (0–6).",
+
+  "metadata": {
+    "ea_neutral_zone_options": [
+      "1-2-2 Red",
+      "1-2-2 Blue",
+      "1-3-1",
+      "1-4"
+    ],
+    "trap_slider_source": "Product/Config/Tactics_SliderModel_v1.0.json",
+    "notes": [
+      "No custom names are allowed here. All system names MUST match the NHL 25 UI exactly.",
+      "Matchup/gameplan outputs must only use these four neutral zone options.",
+      "Aggression level is controlled by both the system choice AND the Trap Forecheck slider (0–6)."
+    ]
+  },
+
+  "systems": {
+    "1-2-2 Red": {
+      "label": "1-2-2 Red",
+      "type": "neutral_zone",
+      "description": "Balanced, pressure-capable neutral zone setup that pressures the puck carrier more aggressively than 1-2-2 Blue while still having decent structure.",
+      "strengths": [
+        "Good against teams that prefer controlled entries.",
+        "Can force dump-ins without completely turtling.",
+        "Solid for mid-skill or rush-balanced opponents."
+      ],
+      "weaknesses": [
+        "Can open small seams if the trap slider is set too high.",
+        "If F1 overcommits, can be vulnerable to quick middle support."
+      ],
+      "recommended_trap_values": {
+        "protecting_lead": [2, 3],
+        "tied_game": [3, 4],
+        "trailing": [4, 5]
+      },
+      "matchup_tags": [
+        "default_option",
+        "balanced_opponents",
+        "rush_cycle_mix",
+        "mid_skill_opponents"
+      ]
+    },
+
+    "1-2-2 Blue": {
+      "label": "1-2-2 Blue",
+      "type": "neutral_zone",
+      "description": "More conservative, trap-focused version of the 1-2-2. Designed to clog lanes and slow teams down in the neutral zone.",
+      "strengths": [
+        "Excellent for locking down leads late in games.",
+        "Very strong vs high-speed rush teams that rely on controlled entries.",
+        "Limits clean middle-lane attacks."
+      ],
+      "weaknesses": [
+        "Can concede more controlled dumps and zone time if used while trailing.",
+        "If overused, may reduce your own transition offence."
+      ],
+      "recommended_trap_values": {
+        "protecting_lead": [0, 2],
+        "tied_game": [2, 3],
+        "trailing": [3, 4]
+      },
+      "matchup_tags": [
+        "protect_lead",
+        "vs_speed_teams",
+        "low_risk",
+        "third_period_lockdown"
+      ]
+    },
+
+    "1-3-1": {
+      "label": "1-3-1",
+      "type": "neutral_zone",
+      "description": "High-control neutral zone look that packs three players across the middle. Excellent at forcing dump-ins and killing rush lanes.",
+      "strengths": [
+        "Best choice against elite rush players that attack the middle of the ice.",
+        "Excellent for limiting cross-lane passes in the neutral zone.",
+        "Strong structure when protecting the slot line."
+      ],
+      "weaknesses": [
+        "If trap slider is too low, can sit back too far and invite zone time.",
+        "Can be overrun by heavy dump-and-chase, grindy teams."
+      ],
+      "recommended_trap_values": {
+        "protecting_lead": [1, 3],
+        "tied_game": [2, 4],
+        "trailing": [3, 5]
+      },
+      "matchup_tags": [
+        "vs_elite_rush",
+        "deny_middle",
+        "structure_first",
+        "mid_to_high_safety"
+      ]
+    },
+
+    "1-4": {
+      "label": "1-4",
+      "type": "neutral_zone",
+      "description": "Ultra-defensive neutral zone scheme (full trap look). One forechecker high with four players stacked deep to block all rush lanes.",
+      "strengths": [
+        "Maximum shutdown option when protecting a lead late.",
+        "Extremely effective at denying controlled entries.",
+        "Excellent for closing out games when you want no odd-man rushes against."
+      ],
+      "weaknesses": [
+        "Very little offense generated off the rush.",
+        "Can concede heavy zone time if used too early or while trailing.",
+        "Not ideal if you need quick goals."
+      ],
+      "recommended_trap_values": {
+        "protecting_lead": [0, 1],
+        "tied_game": [1, 2],
+        "trailing": [2, 3]
+      },
+      "matchup_tags": [
+        "full_trap",
+        "late_game_lockdown",
+        "protecting_one_goal_lead",
+        "vs_high_octane_offense"
+      ]
+    }
+  },
+
+  "usage_rules": {
+    "score_based": [
+      {
+        "situation": "up_by_two_or_more",
+        "preferred_systems": ["1-2-2 Blue", "1-3-1", "1-4"],
+        "notes": [
+          "Start in 1-2-2 Blue or 1-3-1.",
+          "Shift to 1-4 with low trap value in last 5–10 minutes if opponent is pushing hard."
+        ]
+      },
+      {
+        "situation": "up_by_one",
+        "preferred_systems": ["1-2-2 Blue", "1-3-1"],
+        "notes": [
+          "Use 1-2-2 Blue as default, 1-3-1 vs elite rushers.",
+          "Consider 1-4 only very late if protecting a lead."
+        ]
+      },
+      {
+        "situation": "tied",
+        "preferred_systems": ["1-2-2 Red", "1-3-1"],
+        "notes": [
+          "1-2-2 Red for a balanced game.",
+          "1-3-1 vs teams that live off the rush."
+        ]
+      },
+      {
+        "situation": "down_by_one_or_more",
+        "preferred_systems": ["1-2-2 Red"],
+        "notes": [
+          "Avoid sitting in 1-4 when chasing.",
+          "Use higher trap slider values to push more forecheck pressure while still in 1-2-2 Red."
+        ]
+      }
+    ],
+    "opponent_style_based": [
+      {
+        "opponent_style": "elite_rush_speed",
+        "recommended_systems": ["1-3-1", "1-2-2 Blue"],
+        "notes": [
+          "Focus on denying middle ice and forcing low-percentage dump-ins.",
+          "Drop trap value toward 1–3 to slow them without giving up too much pressure."
+        ]
+      },
+      {
+        "opponent_style": "cycle_heavy",
+        "recommended_systems": ["1-2-2 Red"],
+        "notes": [
+          "Balanced approach, let your DZ coverage handle their cycle.",
+          "Trap value can stay around 3–4 for balanced resistance."
+        ]
+      },
+      {
+        "opponent_style": "low_skill_depth",
+        "recommended_systems": ["1-2-2 Red"],
+        "notes": [
+          "You don’t need to turtle; play balanced and let talent win.",
+          "Push trap value up slightly if they start gaining too many clean entries."
+        ]
+      }
+    ]
+  },
+
+  "integration": {
+    "forecheck_link": {
+      "file": "Product/Config/Tactics_SystemTree_Forecheck_v1.0.json",
+      "note": "Neutral zone choice works together with forecheck type (1-2-2 Passive, 1-2-2 Aggressive, 2-3, Weak Side Lock) and Trap Forecheck slider."
+    },
+    "slider_model_link": {
+      "file": "Product/Config/Tactics_SliderModel_v1.0.json",
+      "note": "Trap Forecheck slider (0–6) uses the trap_forecheck_slider definition from the global slider model."
+    },
+    "used_by": [
+      "MatchupEngine_v1.0",
+      "FullGameplanTemplates_v1.0",
+      "BenchCard_v1.0",
+      "InGame_AdjustmentRules_v1.0"
+    ]
+  }
+}
