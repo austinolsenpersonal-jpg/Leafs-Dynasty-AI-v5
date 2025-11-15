@@ -1,0 +1,19 @@
+{
+  "version": "5.0",
+  "description": "Master manifest for Leafs Dynasty AI Canon v5.0. Maps all modules, strategy systems, gameplay logic, and cross-GPT sync structure.",
+  "modules": {
+    "strategy_maps": "StrategyMaps_v5.0.json",
+    "slider_engine": "SliderEngine_v5.0.json",
+    "gameplan_engine": "GameplanEngine_v5.0.json",
+    "matchup_engine": "MatchupEngine_v5.0.json",
+    "ahl_readiness": "AHLReadiness_v5.0.json",
+    "contracts_engine": "ContractsEngine_v5.0.json",
+    "trade_engine": "TradeEngine_v5.0.json",
+    "scouting_engine": "ScoutingEngine_v5.0.json"
+  },
+  "sync": {
+    "architect_gpt": "Enabled",
+    "dynasty_gpt": "Enabled",
+    "strict_schema": true
+  }
+}
