@@ -1,0 +1,154 @@
+{
+  "name": "NHL 25 Tactics Slider Model",
+  "id": "Tactics_SliderModel_v1.0",
+  "game": "NHL 25",
+  "version": "1.0.0",
+  "created_by": "Architect GPT",
+  "last_updated": "2025-11-15",
+  "description": "Central source of truth for all NHL 25 offensive and defensive line slider directions (0–10) plus Trap Forecheck scale (0–6). This model exists to prevent inverted logic and keep all matchup/gameplan outputs aligned with the actual in-game UI.",
+
+  "global_rules": {
+    "scale_main": "0-10",
+    "balanced_value_main": 5,
+    "trap_scale": "0-6",
+    "balanced_trap_value": 3,
+    "notes": [
+      "All main sliders use EA's 0–10 scale with 5 as the balanced midpoint.",
+      "Trap Forecheck uses a 0–6 scale where 0 is full neutral-zone trap and 6 is full aggressive forecheck.",
+      "No line or D-pair suggestion is allowed to violate the direction rules defined below."
+    ]
+  },
+
+  "offense_sliders": {
+    "carry_vs_dump": {
+      "label": "Carry/Dump",
+      "ea_menu_label": "Carry/Dump",
+      "min_value": 0,
+      "max_value": 10,
+      "balanced_value": 5,
+      "min_is": "max_dump",
+      "max_is": "max_carry",
+      "description": "Controls how often the line carries the puck in vs dumping it deep.",
+      "examples": [
+        { "value": 2, "behaviour": "Dump-heavy, play it safe, get pucks deep." },
+        { "value": 5, "behaviour": "Balanced mix of carry and dump entries." },
+        { "value": 8, "behaviour": "Carry-heavy, skate it in with control whenever possible." }
+      ]
+    },
+    "cycle_vs_shoot": {
+      "label": "Cycle/Shoot",
+      "ea_menu_label": "Cycle/Shoot",
+      "min_value": 0,
+      "max_value": 10,
+      "balanced_value": 5,
+      "min_is": "max_cycle",
+      "max_is": "max_shoot",
+      "description": "Controls whether the line prefers to cycle the puck or fire quickly.",
+      "examples": [
+        { "value": 2, "behaviour": "Heavy cycle, protect puck, look for perfect chance." },
+        { "value": 5, "behaviour": "Balanced between cycling and shooting." },
+        { "value": 8, "behaviour": "Shoot-first mentality, pucks on net quickly." }
+      ]
+    },
+    "efficiency_vs_energy": {
+      "label": "Efficiency/Energy",
+      "ea_menu_label": "Efficiency/Energy",
+      "min_value": 0,
+      "max_value": 10,
+      "balanced_value": 5,
+      "min_is": "energy_focus",
+      "max_is": "efficiency_focus",
+      "description": "Controls shift length style: play longer with energy or tighter, efficient shifts.",
+      "examples": [
+        { "value": 2, "behaviour": "Energy focus, longer shifts, grind and wear opponents down." },
+        { "value": 5, "behaviour": "Balanced between energy spent and shift length." },
+        { "value": 8, "behaviour": "Efficiency focus, shorter, sharper shifts, change early." }
+      ]
+    }
+  },
+
+  "defense_sliders": {
+    "holdline_vs_pinch": {
+      "label": "Hold Line/Pinch",
+      "ea_menu_label": "Hold Line/Pinch",
+      "min_value": 0,
+      "max_value": 10,
+      "balanced_value": 5,
+      "min_is": "hold_line",
+      "max_is": "full_pinch",
+      "description": "Controls how aggressive D are at the offensive blue line.",
+      "examples": [
+        { "value": 2, "behaviour": "Stay back, protect against odd-man rushes, rarely pinch." },
+        { "value": 5, "behaviour": "Balanced activation; pinch with reasonable support." },
+        { "value": 8, "behaviour": "Very aggressive pinching to keep pucks in and extend zone time." }
+      ]
+    },
+    "cycle_vs_shoot": {
+      "label": "Cycle/Shoot",
+      "ea_menu_label": "Cycle/Shoot",
+      "min_value": 0,
+      "max_value": 10,
+      "balanced_value": 5,
+      "min_is": "max_cycle",
+      "max_is": "max_shoot",
+      "description": "Controls whether D move the puck around and look for lanes or hammer pucks on net.",
+      "examples": [
+        { "value": 2, "behaviour": "Move it D-to-D and down the wall; low shot volume from the point." },
+        { "value": 5, "behaviour": "Balanced between passing and getting pucks through." },
+        { "value": 8, "behaviour": "Shoot-heavy from the point, looking for tips and rebounds." }
+      ]
+    }
+  },
+
+  "trap_forecheck_slider": {
+    "label": "Trap Forecheck",
+    "ea_menu_label": "Trap Forecheck",
+    "scale": "0-6",
+    "min_value": 0,
+    "max_value": 6,
+    "balanced_value": 3,
+    "min_is": "full_trap",
+    "max_is": "full_forecheck",
+    "description": "Controls how aggressively the team forechecks vs sitting back in a neutral-zone trap.",
+    "examples": [
+      { "value": 0, "behaviour": "Full neutral-zone trap, turtle shell, minimize risk and rush chances against." },
+      { "value": 3, "behaviour": "Balanced between trapping and forechecking." },
+      { "value": 6, "behaviour": "Max aggressive forecheck, pressure deep and attack their breakout hard." }
+    ]
+  },
+
+  "validation": {
+    "enforce_direction_rules": true,
+    "rules": [
+      "Carry/Dump: 0 = dump-heavy, 10 = carry-heavy.",
+      "Cycle/Shoot (Offense): 0 = cycle-heavy, 10 = shoot-heavy.",
+      "Efficiency/Energy: 0 = energy focus (longer shifts), 10 = efficiency focus (tighter shifts).",
+      "Hold Line/Pinch: 0 = hold line, 10 = full pinch.",
+      "Cycle/Shoot (Defense): 0 = cycle/puck movement, 10 = shoot from the point.",
+      "Trap Forecheck: 0 = full trap, 6 = max forecheck."
+    ],
+    "reject_if_inverted": true,
+    "notes": [
+      "Any future matchup or gameplan file must reference these labels instead of inventing its own.",
+      "If a downstream file attempts to treat 0 as 'carry' or 10 as 'dump', it should be flagged as invalid.",
+      "This file is the single source of truth for slider directions across the entire repo."
+    ]
+  },
+
+  "integration": {
+    "used_by": [
+      "MatchupEngine_v1.0",
+      "FullGameplanTemplates_v1.0",
+      "BenchCard_v1.0",
+      "Lines_NHL_v1.x",
+      "Lines_AHL_v1.x",
+      "DailyOps_SliderAudit_v1.0"
+    ],
+    "primary_use_cases": [
+      "pre-game full gameplan generation",
+      "bench card outputs",
+      "between-periods slider adjustment suggestions",
+      "nightly slider audits for Canon consistency"
+    ]
+  }
+}
