@@ -1,0 +1,163 @@
+{
+  "name": "NHL 25 Defensive Zone Strategy Tree",
+  "id": "Tactics_DefensiveStrategy_v1.0",
+  "game": "NHL 25",
+  "version": "1.0.0",
+  "created_by": "Architect GPT",
+  "last_updated": "2025-11-15",
+  "description": "Canonical defensive zone strategy tree using ONLY NHL 25 in-game options: Collapsing, Staggered, and Tight Point. Each option includes strengths, weaknesses, when to use it, and matchup tags.",
+
+  "metadata": {
+    "ea_defensive_strategy_options": [
+      "Collapsing",
+      "Staggered",
+      "Tight Point"
+    ],
+    "notes": [
+      "All defensive strategy names must match NHL 25 UI EXACTLY.",
+      "Matchup outputs must only use these three strategy options.",
+      "Defensive Strategy combines with Defensive Pressure and Trap/Forecheck settings to build full gameplans."
+    ]
+  },
+
+  "systems": {
+    "Collapsing": {
+      "label": "Collapsing",
+      "type": "dz_strategy",
+      "description": "Defensive zone setup that collapses coverage toward the slot and crease, forcing opponents to the outside and protecting high-danger areas.",
+      "strengths": [
+        "Excellent at protecting the middle and net-front.",
+        "Limits high-danger slot shots.",
+        "Best for holding leads or facing teams that attack inside lanes."
+      ],
+      "weaknesses": [
+        "Allows open point shots and perimeter puck movement.",
+        "Can lead to long offensive zone time for the opponent.",
+        "Less effective vs teams with strong point shots and screens."
+      ],
+      "recommended_usage": {
+        "protecting_lead": "Primary option, especially late in games.",
+        "tied_game": "Good vs slot-focused or heavy net-front opponents.",
+        "trailing": "Use sparingly; may stall transition offense."
+      },
+      "matchup_tags": [
+        "vs_slot_attack",
+        "vs_net_crash",
+        "lead_protection",
+        "low_risk"
+      ]
+    },
+
+    "Staggered": {
+      "label": "Staggered",
+      "type": "dz_strategy",
+      "description": "Balanced defensive zone setup that staggers defenders between the slot and the points, aiming to disrupt both low cycle and high point shots.",
+      "strengths": [
+        "Balanced coverage between slot and point.",
+        "Good vs teams that cycle low then go high to the point.",
+        "Helps cut off seam passes and high-to-low attacks."
+      ],
+      "weaknesses": [
+        "Not as strong as Collapsing at pure net-front protection.",
+        "Not as aggressive as Tight Point at pressuring shooters.",
+        "Can feel 'middle of the road' if opponent has a clear strength."
+      ],
+      "recommended_usage": {
+        "protecting_lead": "Solid in early/mid-game, especially vs cycle teams.",
+        "tied_game": "Strong default choice for most opponents.",
+        "trailing": "Still viable; does not over-expose defensively."
+      },
+      "matchup_tags": [
+        "balanced",
+        "vs_cycle",
+        "vs_low_high",
+        "general_use"
+      ]
+    },
+
+    "Tight Point": {
+      "label": "Tight Point",
+      "type": "dz_strategy",
+      "description": "Aggressive defensive zone setup that focuses on pressuring the point and shooters up high, reducing time and space for long-range shots.",
+      "strengths": [
+        "Best vs teams with dangerous point shots or bomb shooters.",
+        "Reduces time for one-timers and slapshots from the blue line.",
+        "Can generate turnovers at the blue line for transition chances."
+      ],
+      "weaknesses": [
+        "Opens up more space down low and around the crease.",
+        "Can be vulnerable to quick plays into the slot.",
+        "Riskier when defending a lead, especially late."
+      ],
+      "recommended_usage": {
+        "protecting_lead": "Use carefully; mostly avoid late in games.",
+        "tied_game": "Situational vs point-shot heavy teams.",
+        "trailing": "Good option if you need turnovers and fast breaks."
+      },
+      "matchup_tags": [
+        "vs_point_shots",
+        "vs_umbrella_pp_style_teams",
+        "turnover_generation",
+        "higher_risk"
+      ]
+    }
+  },
+
+  "usage_rules": {
+    "score_based": [
+      {
+        "situation": "protecting_lead",
+        "options": ["Collapsing", "Staggered"],
+        "notes": [
+          "Use Collapsing in the final 5 minutes to protect the net.",
+          "Use Staggered earlier in the game if the opponent runs a heavy low-high cycle."
+        ]
+      },
+      {
+        "situation": "tied",
+        "options": ["Staggered", "Collapsing"],
+        "notes": [
+          "Staggered is the default balanced choice.",
+          "Collapsing is preferred vs teams that relentlessly attack the crease."
+        ]
+      },
+      {
+        "situation": "trailing",
+        "options": ["Staggered", "Tight Point"],
+        "notes": [
+          "Staggered keeps you safe but flexible.",
+          "Tight Point can create turnovers and fast breaks but risks slot chances."
+        ]
+      }
+    ],
+    "opponent_style_based": [
+      {
+        "opponent_style": "net_crash_slot",
+        "recommended": ["Collapsing"],
+        "why": "Best at protecting the crease and slot from constant pressure."
+      },
+      {
+        "opponent_style": "cycle_low_high",
+        "recommended": ["Staggered"],
+        "why": "Matches up well against low cycle into point shots."
+      },
+      {
+        "opponent_style": "point_shot_heavy",
+        "recommended": ["Tight Point"],
+        "why": "Takes away time and space from shooters up high."
+      }
+    ]
+  },
+
+  "integration": {
+    "defensive_pressure": {
+      "note": "Defensive Strategy works together with Defensive Pressure. For example, 'Collapsing + Protect Net' is a full turtle, while 'Staggered + Contain Puck' is a balanced setup."
+    },
+    "used_by": [
+      "MatchupEngine_v1.0",
+      "FullGameplanTemplates_v1.0",
+      "InGame_AdjustmentRules_v1.0",
+      "BenchCard_v1.0"
+    ]
+  }
+}
