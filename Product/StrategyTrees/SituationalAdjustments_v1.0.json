@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "module": "StrategyTrees.SituationalAdjustments",
+  "description": "Situational adjustment rules for NHL 25 — tells Architect/Dynasty when to change forecheck, pressure, breakouts, NZ trap, and offensive strategy during a game based on score, momentum, fatigue, and opponent tendencies.",
+  "meta": {
+    "game": "NHL 25",
+    "team": "Toronto Maple Leafs",
+    "legal_options_only": true,
+    "depends_on": [
+      "Product/Canon/Forecheck.json",
+      "Product/Canon/NeutralZone.json",
+      "Product/Canon/DefensivePressure.json",
+      "Product/Canon/DefensiveStrategy.json",
+      "Product/Canon/OffensiveStrategy.json",
+      "Product/Canon/ControlBreakout.json",
+      "Product/Canon/QuickBreakout.json"
+    ]
+  },
+
+  "score_effects": {
+    "down_by_2_plus": {
+      "forecheck": "1-2-2 aggressive",
+      "neutral_zone": "1-2-2 red",
+      "offensive_strategy": "full_attack",
+      "defensive_pressure": "puck_side_attack",
+      "rationale": "Increase forecheck pressure, activate D, open middle of ice."
+    },
+    "down_by_1": {
+      "forecheck": "1-2-2 aggressive",
+      "neutral_zone": "1-2-2 red",
+      "offensive_strategy": "aggressive",
+      "defensive_pressure": "normal",
+      "rationale": "Controlled push without exposing rush chances."
+    },
+    "tied": {
+      "forecheck": "1-2-2 passive",
+      "neutral_zone": "1-2-2 blue",
+      "offensive_strategy": "standard",
+      "defensive_pressure": "contain_puck",
+      "rationale": "Neutral setup until momentum or matchup advantage appears."
+    },
+    "up_by_1": {
+      "forecheck": "1-2-2 passive",
+      "neutral_zone": "1-3-1",
+      "offensive_strategy": "conservative",
+      "defensive_pressure": "protect_net",
+      "rationale": "Trap middle ice and restrict high-danger rushes."
+    },
+    "up_by_2_plus": {
+      "forecheck": "2-3",
+      "neutral_zone": "1-3-1",
+      "offensive_strategy": "defend_lead",
+      "defensive_pressure": "protect_net",
+      "rationale": "Force dumps, clog neutral zone, protect slot."
+    }
+  },
+
+  "momentum_effects": {
+    "opponent_momentum_spike": {
+      "defensive_pressure": "contain_puck",
+      "defensive_strategy": "collapsing",
+      "forecheck": "1-2-2 passive",
+      "rationale": "Slow game down and break cycle momentum."
+    },
+    "your_team_hot": {
+      "forecheck": "1-2-2 aggressive",
+      "offensive_strategy": "aggressive",
+      "pressure_on_dzone": "normal",
+      "rationale": "Capitalize on momentum with high press and speed."
+    }
+  },
+
+  "fatigue_rules": {
+    "defense_tired": {
+      "neutral_zone": "1-4",
+      "forecheck": "1-2-2 passive",
+      "quick_breakout": "close_support",
+      "rationale": "Reduce gap strain and support low-energy defenders."
+    },
+    "forwards_tired": {
+      "offensive_strategy": "conservative",
+      "control_breakout": "blue-to-blue",
+      "rationale": "Shorten shifts and avoid long cycle battles."
+    }
+  },
+
+  "opponent_behavior": {
+    "heavy_cycle_team": {
+      "defensive_strategy": "staggered",
+      "defensive_pressure": "contain_puck",
+      "rationale": "Break their low-high rhythm and kill cycle pressure."
+    },
+    "rush_attack_team": {
+      "neutral_zone": "1-3-1",
+      "defensive_pressure": "normal",
+      "rationale": "Eliminate middle ice lanes and force dump-ins."
+    },
+    "point_shot_team": {
+      "defensive_strategy": "tight_point",
+      "defensive_pressure": "high_pressure",
+      "rationale": "Pressure their shooters and cut off blue-line options."
+    }
+  }
+}
