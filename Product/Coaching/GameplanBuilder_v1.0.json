@@ -1,0 +1,154 @@
+{
+  "name": "Gameplan Builder",
+  "engine": "gameplan_builder",
+  "version": "1.0",
+  "description": "Constructs full matchup gameplans using NHL 25-only systems, opponent tendencies, CoachingTree rules, and StrategyMap logic.",
+
+  "inputs": {
+    "opponent_profile": true,
+    "strategy_map": true,
+    "coaching_tree": true,
+    "team_strengths": true,
+    "line_matchups": true
+  },
+
+  "structure": {
+    "sections": [
+      "identity",
+      "systems",
+      "line_matchups",
+      "targets",
+      "offense",
+      "defense",
+      "special_teams",
+      "adjustments",
+      "win_conditions"
+    ]
+  },
+
+  "rules": {
+    "identity": {
+      "determine_styles_from": "opponent_profile.tendencies",
+      "output_fields": [
+        "opponent_style",
+        "strengths",
+        "weaknesses",
+        "overall_threat"
+      ]
+    },
+
+    "systems": {
+      "forecheck": {
+        "from": "coaching_tree.systems.forecheck.defaults",
+        "adjust_vs_opponent": "strategy_map.system_rules.forecheck"
+      },
+      "neutral_zone": {
+        "from": "coaching_tree.systems.neutral_zone.defaults",
+        "adjust_vs_opponent": "strategy_map.system_rules.neutral_zone"
+      },
+      "defensive_pressure": {
+        "from": "coaching_tree.systems.defensive_pressure.defaults",
+        "adjust_vs_opponent": "strategy_map.system_rules.defensive_pressure"
+      },
+      "defensive_strategy": {
+        "from": "coaching_tree.systems.defensive_strategy.defaults",
+        "adjust_vs_opponent": "strategy_map.system_rules.defensive_strategy"
+      },
+      "offensive_strategy": {
+        "from": "coaching_tree.systems.offensive_strategy.defaults",
+        "adjust_vs_opponent": "strategy_map.system_rules.offensive_strategy"
+      },
+      "control_breakout": {
+        "from": "coaching_tree.systems.control_breakout.defaults",
+        "adjust_vs_opponent": "strategy_map.system_rules.control_breakout"
+      },
+      "quick_breakout": {
+        "from": "coaching_tree.systems.quick_breakout.defaults",
+        "adjust_vs_opponent": "strategy_map.system_rules.quick_breakout"
+      },
+      "trap_slider": {
+        "from": "coaching_tree.systems.trap_forecheck_slider.defaults",
+        "adjust_vs_opponent": "strategy_map.system_rules.trap_slider"
+      }
+    },
+
+    "line_matchups": {
+      "use_from_strategy_map": true,
+      "include_usage_rules": [
+        "preferred_matchups",
+        "avoid_matchups",
+        "d_pair_usage",
+        "shift_length_rules"
+      ]
+    },
+
+    "targets": {
+      "generate_from_opponent": true,
+      "target_types": [
+        "weak_defense_pair",
+        "turnover_prone_defenseman",
+        "rush_threat_forward",
+        "slot_shooter",
+        "supporting_wing",
+        "goaltending_weakness"
+      ]
+    },
+
+    "offense": {
+      "entry_rules": "coaching_tree.offense.entry_rules",
+      "cycle_rules": "coaching_tree.offense.cycle_rules",
+      "shooting_rules": "coaching_tree.offense.shooting_rules",
+      "use_patterns_from": "strategy_map.offense_patterns"
+    },
+
+    "defense": {
+      "rush_defense": "coaching_tree.defense.rush_defense",
+      "in_zone": "coaching_tree.defense.in_zone",
+      "use_patterns_from": "strategy_map.defense_patterns"
+    },
+
+    "special_teams": {
+      "pp": {
+        "pp1": "coaching_tree.special_teams.powerplay.pp1",
+        "pp2": "coaching_tree.special_teams.powerplay.pp2"
+      },
+      "pk": {
+        "pk1": "coaching_tree.special_teams.penalty_kill.pk1",
+        "pk2": "coaching_tree.special_teams.penalty_kill.pk2"
+      }
+    },
+
+    "adjustments": {
+      "score_based": {
+        "leading": "coaching_tree.adjustments.when_leading",
+        "trailing": "coaching_tree.adjustments.when_trailing"
+      },
+      "time_based": "coaching_tree.adjustments.time_based"
+    }
+  },
+
+  "output": {
+    "format": "structured",
+    "sections_order": [
+      "identity",
+      "systems",
+      "line_matchups",
+      "targets",
+      "offense",
+      "defense",
+      "special_teams",
+      "adjustments",
+      "win_conditions"
+    ],
+    "win_conditions_rules": {
+      "from": [
+        "systems",
+        "offense",
+        "defense",
+        "targets",
+        "special_teams"
+      ],
+      "logic": "summarize_most_critical_factors"
+    }
+  }
+}
