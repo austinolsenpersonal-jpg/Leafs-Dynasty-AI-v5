@@ -1,0 +1,74 @@
+{
+  "version": "5.0",
+  "game": "NHL 25",
+  "description": "Full NHL 25 strategy map with *only* valid in-game options. Includes forecheck, neutral zone, trap slider, defensive pressure, defensive strategy, offensive pressure, control breakout, and quick breakout. Canon-complete.",
+  "Forecheck": {
+    "options": [
+      "1-2-2 Passive",
+      "1-2-2 Aggressive",
+      "2-3",
+      "Weak Side Lock"
+    ],
+    "trap_slider_range": "0–6"
+  },
+  "NeutralZone": {
+    "options": [
+      "1-2-2 Red",
+      "1-2-2 Blue",
+      "1-3-1",
+      "1-4"
+    ]
+  },
+  "DefensivePressure": {
+    "options": [
+      "Protect Net",
+      "Contain Puck",
+      "Normal",
+      "Puck Side Attack",
+      "High Pressure"
+    ]
+  },
+  "DefensiveStrategy": {
+    "options": [
+      "Collapsing",
+      "Staggered",
+      "Tight Point"
+    ]
+  },
+  "OffensivePressure": {
+    "options": [
+      "Defend Lead",
+      "Conservative",
+      "Standard",
+      "Aggressive",
+      "Full Attack"
+    ]
+  },
+  "ControlBreakout": {
+    "options": [
+      "Strong Side Slant",
+      "Blue to Blue",
+      "3 High"
+    ]
+  },
+  "QuickBreakout": {
+    "options": [
+      "Stay Wide",
+      "Leave Zone Early",
+      "Close Support"
+    ]
+  },
+  "LineSettingsTemplate": {
+    "Offense": {
+      "OffensiveStrategy": "Overload | Crash the Net | Behind the Net | Balanced",
+      "CarryDump": "0-10",
+      "CycleShoot": "0-10",
+      "EfficiencyEnergy": "0-10",
+      "DontBlockBlock": "0-10"
+    },
+    "Defense": {
+      "HoldLinePinch": "0-10",
+      "CycleShoot": "0-10"
+    }
+  }
+}
