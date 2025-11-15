@@ -1,0 +1,59 @@
+{
+  "version": "5.0",
+  "project": "Leafs-Dynasty-AI-v5",
+  "description": "Core configuration for Architect + Leafs Dynasty GPTs. Tells both GPTs where the Product folder is, which export to load, and which support files to treat as canon.",
+  "paths": {
+    "project_bootstrap": "Project_Bootstrap_v1.0.json",
+    "docs_plan": "Docs/Repo_Structure_Plan_v1.0.md",
+    "watchdog_config": "Architect/Config/ModuleWatchdog_v1.0.json",
+    "product_root": "Product",
+    "canon_root": "Product/Canon",
+    "config_root": "Product/Config",
+    "dailyops_root": "Product/DailyOps",
+    "exports_root": "Product/Exports",
+    "strategy_trees_root": "Product/StrategyTrees",
+    "templates_root": "Product/Templates",
+    "strategy_map": "Product/StrategyTrees/StrategyMap_v5.0.json"
+  },
+  "autoload": {
+    "enabled": true,
+    "default_export": "Product/Exports/LeafsDynasty_FullExport_v1.0.json",
+    "mode": "full",
+    "allow_override": true
+  },
+  "roles": {
+    "architect": {
+      "description": "Builder / systems engineer GPT that manages repo, schemas, and canon.",
+      "default_mode": "full_stack"
+    },
+    "dynasty": {
+      "description": "Leafs Dynasty gameplay + GM assistant that consumes Product files.",
+      "default_mode": "gm_and_gameplay"
+    }
+  },
+  "guards": {
+    "enable_watchdog": true,
+    "watchdog_profile": "standard",
+    "require_known_paths": true,
+    "forbid_unknown_folders": true
+  },
+  "models": {
+    "preferred": "gpt-5.1",
+    "allowed": [
+      "gpt-5.1",
+      "gpt-5.1-thinking",
+      "gpt-5.1-mini"
+    ]
+  },
+  "output_prefs": {
+    "iphone_friendly_blocks": true,
+    "git_style_instructions": true,
+    "commit_headline_prefix": "Create",
+    "one_task_at_a_time": true
+  },
+  "notes": [
+    "This config is the single source of truth for repo layout.",
+    "Architect GPT should always read this file first when syncing.",
+    "Dynasty GPT should trust any paths defined here and avoid inventing new ones."
+  ]
+}
