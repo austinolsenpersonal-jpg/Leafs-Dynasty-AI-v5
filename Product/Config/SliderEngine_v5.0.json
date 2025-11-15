@@ -1,0 +1,135 @@
+{
+  "version": "5.0",
+  "game": "NHL 25",
+  "description": "Central slider engine for Leafs Dynasty AI. Stores default 0–10 values for offensive and defensive line sliders, using only NHL 25 options from Austin's screenshots.",
+  "schema": {
+    "forward_line": {
+      "offensive_strategy": "string (Overload | Behind The Net | Crash The Net | Balanced)",
+      "carry_dump": "integer 0-10",
+      "cycle_shoot": "integer 0-10",
+      "efficiency_energy": "integer 0-10",
+      "dont_block_block": "integer 0-10"
+    },
+    "defense_pair": {
+      "hold_line_pinch": "integer 0-10",
+      "cycle_shoot": "integer 0-10"
+    }
+  },
+  "defaults": {
+    "notes": "These are Canon v5 baseline values. Match the in-game 0–10 sliders. Dynasty GPT can shift them per matchup, but Architect GPT must always start from here.",
+    "forwards": {
+      "L1": {
+        "role": "Top Scoring",
+        "offensive_strategy": "Overload",
+        "carry_dump": 7,
+        "cycle_shoot": 6,
+        "efficiency_energy": 6,
+        "dont_block_block": 3
+      },
+      "L2": {
+        "role": "Secondary Scoring / Support",
+        "offensive_strategy": "Behind The Net",
+        "carry_dump": 6,
+        "cycle_shoot": 5,
+        "efficiency_energy": 5,
+        "dont_block_block": 4
+      },
+      "L3": {
+        "role": "Checking / Matchup",
+        "offensive_strategy": "Crash The Net",
+        "carry_dump": 5,
+        "cycle_shoot": 4,
+        "efficiency_energy": 7,
+        "dont_block_block": 6
+      },
+      "L4": {
+        "role": "Energy / Physical",
+        "offensive_strategy": "Balanced",
+        "carry_dump": 4,
+        "cycle_shoot": 4,
+        "efficiency_energy": 8,
+        "dont_block_block": 7
+      }
+    },
+    "defense": {
+      "D1": {
+        "role": "Top Pair – Puck Moving",
+        "hold_line_pinch": 6,
+        "cycle_shoot": 6
+      },
+      "D2": {
+        "role": "Second Pair – Balanced",
+        "hold_line_pinch": 5,
+        "cycle_shoot": 5
+      },
+      "D3": {
+        "role": "Third Pair – Stay at Home",
+        "hold_line_pinch": 3,
+        "cycle_shoot": 4
+      }
+    }
+  },
+  "templates": {
+    "forward_archetypes": {
+      "elite_scorer": {
+        "offensive_strategy": "Overload",
+        "carry_dump": 7,
+        "cycle_shoot": 7,
+        "efficiency_energy": 5,
+        "dont_block_block": 3,
+        "notes": "Use for Matthews/Nylander-type lines. Puck possession + shot volume."
+      },
+      "playmaker_cycle": {
+        "offensive_strategy": "Behind The Net",
+        "carry_dump": 6,
+        "cycle_shoot": 6,
+        "efficiency_energy": 6,
+        "dont_block_block": 4,
+        "notes": "Use when you want longer cycles and low plays from behind the net."
+      },
+      "checking_shutdown": {
+        "offensive_strategy": "Crash The Net",
+        "carry_dump": 5,
+        "cycle_shoot": 4,
+        "efficiency_energy": 8,
+        "dont_block_block": 7,
+        "notes": "Matchup line vs top opponents. Prioritizes energy and shot blocking."
+      },
+      "energy_heavy": {
+        "offensive_strategy": "Balanced",
+        "carry_dump": 4,
+        "cycle_shoot": 4,
+        "efficiency_energy": 8,
+        "dont_block_block": 6,
+        "notes": "Fourth-line template for physical, momentum-type units."
+      }
+    },
+    "defense_archetypes": {
+      "offensive_pair": {
+        "hold_line_pinch": 6,
+        "cycle_shoot": 6,
+        "notes": "Use when your D pair can safely pinch and join the cycle."
+      },
+      "balanced_pair": {
+        "hold_line_pinch": 5,
+        "cycle_shoot": 5,
+        "notes": "Standard default for most second pairs."
+      },
+      "shutdown_pair": {
+        "hold_line_pinch": 3,
+        "cycle_shoot": 4,
+        "notes": "Safer blue-line behavior for late leads or weaker skating pairs."
+      }
+    }
+  },
+  "sync": {
+    "architect_gpt": {
+      "allowed_to_edit": true,
+      "notes": "Architect can adjust these defaults between versions (v5.1, v5.2) but must always keep values within 0–10 and only use the sliders defined here."
+    },
+    "dynasty_gpt": {
+      "allowed_to_edit": true,
+      "notes": "Leafs Dynasty GPT can temporarily move these sliders for specific matchups (e.g., vs DET) but should report any changes in its gameplan exports."
+    }
+  }
+}
