@@ -1,0 +1,105 @@
+{
+  "version": "1.0",
+  "name": "Leafs Dynasty Canon Repo Sync",
+  "owner": "Austin Olsen",
+  "repo": "Leafs-Dynasty-Canon",
+  "description": "Shared repo map so Architect GPT and Leafs Dynasty AI both know where canon, configs, and instructions live.",
+  "roles": {
+    "architect_gpt": {
+      "id": "Architect GPT",
+      "scope": [
+        "Product/Architect/**",
+        "Product/Canon/**",
+        "Product/Config/**"
+      ],
+      "primary_responsibilities": [
+        "Define and maintain Canon (systems, sliders, templates).",
+        "Update Architect and Dynasty instruction files when Canon changes.",
+        "Maintain slider engine, strategy maps, and shared config files."
+      ]
+    },
+    "dynasty_gpt": {
+      "id": "Leafs Dynasty AI",
+      "scope": [
+        "Product/Dynasty/**",
+        "Product/Canon/**",
+        "Product/Config/SliderEngine_v5.0.json"
+      ],
+      "primary_responsibilities": [
+        "Use Canon + Slider Engine to build gameplans and matchup cards.",
+        "Apply ONLY the systems and sliders defined in this repo.",
+        "Report any changes in sliders or tactics through gameplan exports."
+      ]
+    }
+  },
+  "paths": {
+    "architect_instructions": "Product/Architect/Architect_Instructions_v1.0.md",
+    "dynasty_instructions": "Product/Dynasty/Dynasty_Instructions_v1.0.md",
+    "canon_systems": "Product/Canon/SystemsMap_v1.0.json",
+    "slider_engine": "Product/Config/SliderEngine_v5.0.json"
+  },
+  "sync_rules": {
+    "canon_source_of_truth": "Product/Canon/SystemsMap_v1.0.json",
+    "slider_source_of_truth": "Product/Config/SliderEngine_v5.0.json",
+    "instructions_source_of_truth": [
+      "Product/Architect/Architect_Instructions_v1.0.md",
+      "Product/Dynasty/Dynasty_Instructions_v1.0.md"
+    ],
+    "allowed_systems": {
+      "forecheck": [
+        "1-2-2 Passive",
+        "1-2-2 Aggressive",
+        "2-3",
+        "Weak Side Lock"
+      ],
+      "neutral_zone": [
+        "1-2-2 Red",
+        "1-2-2 Blue",
+        "1-3-1",
+        "1-4"
+      ],
+      "trap_scale": {
+        "min": 0,
+        "max": 6,
+        "description": "0 = full trap, 6 = full forecheck pressure"
+      },
+      "defensive_pressure": [
+        "Protect Net",
+        "Contain Puck",
+        "Normal",
+        "Puck Side Attack",
+        "High Pressure"
+      ],
+      "defensive_strategy": [
+        "Collapsing",
+        "Staggered",
+        "Tight Point"
+      ],
+      "offensive_strategy": [
+        "Defend Lead",
+        "Conservative",
+        "Standard",
+        "Aggressive",
+        "Full Attack"
+      ],
+      "control_breakout": [
+        "Strong Side Slant",
+        "Blue To Blue",
+        "Three High"
+      ],
+      "quick_breakout": [
+        "Stay Wide",
+        "Leave Zone Early",
+        "Close Support"
+      ]
+    }
+  },
+  "handshake": {
+    "architect_bootstrap_hint": "Architect GPT should load this file and treat canon_systems + slider_engine as the only legal NHL 25 systems and slider definitions.",
+    "dynasty_bootstrap_hint": "Leafs Dynasty AI should load this file first, then use dynast_instructions + slider_engine + canon_systems when generating gameplans or matchup cards.",
+    "example_commands": [
+      "/repo_sync load \"Product/Config/RepoSync_v1.0.json\"",
+      "/dynasty_repo_sync \"Product/Config/RepoSync_v1.0.json\""
+    ]
+  }
+}
