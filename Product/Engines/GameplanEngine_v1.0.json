@@ -1,0 +1,123 @@
+{
+  "engine": "gameplan_engine",
+  "version": "1.0",
+  "description": "Constructs full NHL 25 matchup gameplans using repo data: strategy map, sliders, archetypes, coaching tree, and builder logic.",
+
+  "inputs": {
+    "strategy_map": "Product/Strategy/CanonStrategyMap_v1.0.json",
+    "sliders": "Product/Templates/SliderTemplate_v1.0.json",
+    "archetypes": "Product/Roster/Archetypes_v1.0.json",
+    "coaching_tree": "Product/Coaching/CoachingTree_v1.0.json",
+    "builder_logic": "Product/Builders/GameplanBuilder_v1.0.json"
+  },
+
+  "sections_generated": [
+    "team_identity",
+    "opponent_tendencies",
+    "tactical_settings",
+    "line_matchups",
+    "offensive_plan",
+    "defensive_plan",
+    "special_teams",
+    "in_game_adjustments",
+    "win_conditions"
+  ],
+
+  "logic": {
+    "team_identity": {
+      "source": "analysis_of_opponent",
+      "rules": [
+        "identify_strengths",
+        "identify_weaknesses",
+        "define_attack_focus",
+        "define_risk_management"
+      ]
+    },
+
+    "tactical_settings": {
+      "sources": [
+        "strategy_map.forecheck",
+        "strategy_map.neutral_zone",
+        "strategy_map.defensive_pressure",
+        "strategy_map.defensive_strategy",
+        "strategy_map.offensive_strategy",
+        "strategy_map.control_breakout",
+        "strategy_map.quick_breakout"
+      ],
+      "output_format": "NHL25_systems_only"
+    },
+
+    "slider_logic": {
+      "source": "sliders",
+      "rules": [
+        "apply_line_biases",
+        "apply_defense_activation",
+        "maintain_value_range_0_to_10"
+      ]
+    },
+
+    "matchups": {
+      "source": "archetypes",
+      "rules": [
+        "match_line_strength_to_opponent",
+        "avoid_bad_speed_matchups",
+        "target_slow_defenders",
+        "protect_vs_elite_centres"
+      ]
+    },
+
+    "offensive_plan": {
+      "sources": [
+        "strategy_map",
+        "coaching_tree"
+      ],
+      "rules": [
+        "entry_patterns",
+        "cycle_structure",
+        "shooting_targets",
+        "traffic_rules"
+      ]
+    },
+
+    "defensive_plan": {
+      "sources": [
+        "coaching_tree",
+        "strategy_map"
+      ],
+      "rules": [
+        "gap_control",
+        "wall_contain",
+        "slot_protection",
+        "rush_defense"
+      ]
+    },
+
+    "special_teams": {
+      "sources": [
+        "coaching_tree"
+      ],
+      "rules": [
+        "pp_structure",
+        "pp_target_area",
+        "pk_shape",
+        "pk_disruption_rules"
+      ]
+    },
+
+    "in_game_adjustments": {
+      "source": "coaching_tree.adjustments",
+      "rules": [
+        "when_trailing",
+        "when_leading",
+        "momentum_shift",
+        "shutdown_mode"
+      ]
+    }
+  },
+
+  "output": {
+    "format": "full_gameplan_package",
+    "style": "NHL25_canon",
+    "validator_required": true
+  }
+}
