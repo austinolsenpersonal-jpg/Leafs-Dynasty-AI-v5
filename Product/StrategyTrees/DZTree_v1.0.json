@@ -1,0 +1,220 @@
+{
+  "name": "Defensive Zone Strategy Tree",
+  "id": "DZTree_v1.0",
+  "game": "NHL 25",
+  "zone": "defensive",
+  "version": "1.0.0",
+  "created_by": "Architect GPT",
+  "last_updated": "2025-11-15",
+  "canon_version": "1.0",
+  "description": "Canonical defensive-zone strategy options for NHL 25 (Collapsing, Staggered, Tight Point) using ONLY real in-game choices. This tree is neutral to team and roster; Leafs-specific logic lives in higher-level matchup/gameplan files.",
+
+  "ea_menu_group": "Defensive Strategy",
+  "ea_menu_options": [
+    "Collapsing",
+    "Staggered",
+    "Tight Point"
+  ],
+
+  "options": [
+    {
+      "key": "collapsing",
+      "label": "Collapsing",
+      "ea_menu_label": "Collapsing",
+      "risk_level_0_to_10": 3,
+      "slot_protection_0_to_10": 9,
+      "point_pressure_0_to_10": 3,
+      "description": "Low-risk, slot-first coverage. D and low forward collapse into the house to protect the front of the net and inner slot. You concede more point shots in exchange for protecting high-danger chances.",
+      "best_used_when": [
+        "protecting_lead_in_3rd",
+        "goalie_is_average_or_better",
+        "opponent_attacks_through_slot",
+        "PK_like_5v5_stretch"
+      ],
+      "avoid_when": [
+        "opponent_d_has_heavy_point_shots",
+        "you_are_trailing_and_need_transition",
+        "your_team_lacks_shot_blockers"
+      ],
+      "recommended_pressures": [
+        "Protect Net",
+        "Contain Puck"
+      ],
+      "compatible_pressures": [
+        "Normal"
+      ],
+      "discouraged_pressures": [
+        "Puck Side Attack",
+        "High Pressure"
+      ],
+      "notes": [
+        "Base choice when defending a lead or versus a slot-focused opponent.",
+        "Pairs perfectly with Protect Net when you are up by 2+.",
+        "Accept more low-danger point shots; protect middle ice at all costs."
+      ]
+    },
+    {
+      "key": "staggered",
+      "label": "Staggered",
+      "ea_menu_label": "Staggered",
+      "risk_level_0_to_10": 5,
+      "slot_protection_0_to_10": 7,
+      "point_pressure_0_to_10": 7,
+      "description": "Balanced DZ coverage. One player pressures the puck, the other three or four stay layered between the puck and the net. Designed to disrupt cycle plays while not over-committing to points or slot alone.",
+      "best_used_when": [
+        "score_is_close_or_tied",
+        "opponent_uses_low_cycle_to_high_point",
+        "you_need_turnovers_but_cant_trade_chances",
+        "standard_5v5_even_strength"
+      ],
+      "avoid_when": [
+        "you_are_turtling_last_3_min_with_1_goal_lead",
+        "opponent_has_elite_point_bombs_and_screeners",
+        "team_is_exhausted_and_losing_coverage_shape"
+      ],
+      "recommended_pressures": [
+        "Contain Puck",
+        "Normal"
+      ],
+      "compatible_pressures": [
+        "Puck Side Attack"
+      ],
+      "discouraged_pressures": [
+        "Protect Net",
+        "High Pressure"
+      ],
+      "notes": [
+        "Default DZ choice for most neutral/tight games.",
+        "Good vs teams that run behind-the-net cycle into point shots.",
+        "Allows some point pressure without giving up the middle too easily."
+      ]
+    },
+    {
+      "key": "tight_point",
+      "label": "Tight Point",
+      "ea_menu_label": "Tight Point",
+      "risk_level_0_to_10": 7,
+      "slot_protection_0_to_10": 5,
+      "point_pressure_0_to_10": 9,
+      "description": "Aggressive coverage against point shots. F1/F2 push higher to challenge D at the blue line; back-side coverage must be sharp or seams open up behind pressure.",
+      "best_used_when": [
+        "opponent_relies_on_point_shots_for_offense",
+        "you_trust_goalie_on_cross_ice_reads",
+        "you_need_more_turnovers_at_the_blue_line",
+        "late_game_when_trailing_or_chasing_momentum"
+      ],
+      "avoid_when": [
+        "protecting_a_late_lead",
+        "opponent_has_elite_playmaker_on_half_wall",
+        "your_dont_have_fast_forwards_to_recover",
+        "your_team_is_tired_and_losing_positioning"
+      ],
+      "recommended_pressures": [
+        "Puck Side Attack",
+        "High Pressure"
+      ],
+      "compatible_pressures": [
+        "Normal"
+      ],
+      "discouraged_pressures": [
+        "Protect Net",
+        "Contain Puck"
+      ],
+      "notes": [
+        "Use as a weapon vs point-heavy teams, not as default DZ strategy.",
+        "Best when you are chasing the game or need a momentum swing.",
+        "Requires disciplined low coverage so seams do not open in the slot."
+      ]
+    }
+  ],
+
+  "decision_rules": {
+    "score_state_axis": [
+      "leading_by_2_plus",
+      "leading_by_1",
+      "tied",
+      "trailing_by_1",
+      "trailing_by_2_plus"
+    ],
+    "time_axis": [
+      "early_game_1st",
+      "mid_game_2nd",
+      "early_3rd",
+      "late_3rd",
+      "overtime"
+    ],
+    "energy_axis": [
+      "fresh",
+      "normal",
+      "tired"
+    ],
+    "recommendations": [
+      {
+        "when": {
+          "score_state": "leading_by_2_plus",
+          "time_bucket": "late_3rd"
+        },
+        "recommended_strategy": "collapsing",
+        "recommended_pressure": "Protect Net",
+        "notes": "Classic protect-the-lead shell: low risk, heavy slot protection. Accept point shots; trust goalie and shot blocks."
+      },
+      {
+        "when": {
+          "score_state": "leading_by_1",
+          "time_bucket": "early_3rd"
+        },
+        "recommended_strategy": "staggered",
+        "recommended_pressure": "Contain Puck",
+        "notes": "Still need some offense and transition; do not turtle too early. Balanced choice to avoid getting pinned."
+      },
+      {
+        "when": {
+          "score_state": "tied",
+          "time_bucket": "mid_game_2nd"
+        },
+        "recommended_strategy": "staggered",
+        "recommended_pressure": "Normal",
+        "notes": "Primary default for even games at 5v5. Keeps you active defensively while preserving structure."
+      },
+      {
+        "when": {
+          "score_state": "trailing_by_1",
+          "time_bucket": "late_3rd"
+        },
+        "recommended_strategy": "tight_point",
+        "recommended_pressure": "Puck Side Attack",
+        "notes": "You need turnovers and quick transition. Pressure the blue line and force mistakes at the point."
+      },
+      {
+        "when": {
+          "score_state": "trailing_by_2_plus",
+          "time_bucket": "late_3rd"
+        },
+        "recommended_strategy": "tight_point",
+        "recommended_pressure": "High Pressure",
+        "notes": "Maximum risk mode. Use only when you are chasing the game and are willing to trade chances against for chances for."
+      }
+    ]
+  },
+
+  "integration": {
+    "compatible_with": [
+      "ForecheckTree_v1.0",
+      "NeutralZoneTree_v1.0",
+      "PressureTree_v1.0",
+      "BreakoutTree_v1.0"
+    ],
+    "used_by": [
+      "MatchupEngine_v1.0",
+      "FullGameplanTemplates_v1.0",
+      "BenchCard_v1.0",
+      "InGameAdjustments_v1.0"
+    ],
+    "primary_use_cases": [
+      "pre_game_matchup_planning",
+      "between_periods_adjustments",
+      "score_state_based_tuning",
+      "auto_rules_for_full_gameplan_outputs"
+    ]
+  }
+}
