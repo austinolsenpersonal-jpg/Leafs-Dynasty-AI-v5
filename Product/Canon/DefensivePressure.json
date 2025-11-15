@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-11-15",
+  "game": "NHL 25",
+
+  "pressure_options": {
+    "protect_net": {
+      "id": "protect_net",
+      "label": "Protect Net",
+      "description": "Collapse pressure that prioritizes defending the crease. Allows more perimeter space but denies high-danger areas.",
+      "best_use": [
+        "Protecting a lead late",
+        "When opponent has elite shooters in the slot",
+        "When your team is fatigued"
+      ],
+      "risks": [
+        "Allows high cycle time",
+        "Opponents can walk the perimeter uncontested"
+      ]
+    },
+    "contain_puck": {
+      "id": "contain_puck",
+      "label": "Contain Puck",
+      "description": "Balanced defensive pressure. Applies moderate puck pressure while maintaining defensive structure.",
+      "best_use": [
+        "Default defensive setting",
+        "Versus cycle-heavy teams",
+        "When you want low-risk, stable defence"
+      ],
+      "risks": [
+        "Can be too passive vs fast teams",
+        "Doesn't force turnovers quickly"
+      ]
+    },
+    "normal": {
+      "id": "normal",
+      "label": "Normal",
+      "description": "Even-pressure coverage. Slightly more active than Contain Puck, but not aggressively hunting the puck.",
+      "best_use": [
+        "Game tied or ±1 goal",
+        "When you want to generate counter-attacks",
+        "Against slower or predictable offences"
+      ],
+      "risks": [
+        "Can be caught in-between if opponent cycles well"
+      ]
+    },
+    "puck_side_attack": {
+      "id": "puck_side_attack",
+      "label": "Puck Side Attack",
+      "description": "Aggressively attacks the puck carrier on the puck side. Creates turnovers but can open seams.",
+      "best_use": [
+        "When trailing by 1–2 goals",
+        "When opponent D makes risky passes",
+        "When you need momentum"
+      ],
+      "risks": [
+        "Opens cross-ice seams",
+        "Allows weak-side scoring chances"
+      ]
+    },
+    "high_pressure": {
+      "id": "high_pressure",
+      "label": "High Pressure",
+      "description": "Full-aggression mode. Forces quick decisions and is best used in short bursts.",
+      "best_use": [
+        "Final 5 minutes when trailing",
+        "Opponent struggling with turnovers",
+        "Momentum push shifts"
+      ],
+      "risks": [
+        "Creates odd-man rushes against",
+        "Very dangerous if opponent has elite passers"
+      ]
+    }
+  },
+
+  "transition_rules": {
+    "leading_late": {
+      "preferred": "protect_net",
+      "situations": [
+        "Up by 1–2 goals with under 8 minutes left",
+        "If your team is tired",
+        "If opponent is controlling the slot"
+      ]
+    },
+    "balanced_game": {
+      "preferred": "contain_puck",
+      "alternate": "normal",
+      "situations": [
+        "Game tied or score ±1",
+        "Opposition cycle-heavy but not dangerous off the rush",
+        "Your team is generating counter-attacks"
+      ]
+    },
+    "need_momentum": {
+      "preferred": "puck_side_attack",
+      "alternate": "high_pressure",
+      "situations": [
+        "Trailing in 3rd period",
+        "Opponent making predictable passes",
+        "You need to force turnovers high"
+      ]
+    },
+    "final_minutes_trailing": {
+      "preferred": "high_pressure",
+      "situations": [
+        "Last 5 minutes while trailing",
+        "Power play followed by offensive zone pressure",
+        "When you're okay risking an odd-man rush"
+      ]
+    }
+  }
+}
