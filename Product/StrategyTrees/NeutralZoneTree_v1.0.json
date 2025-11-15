@@ -1,0 +1,60 @@
+{
+  "tree_version": "1.0",
+  "system": "Neutral Zone",
+  "description": "NHL 25 legal neutral zone systems. Used for matchup prep, coaching cards, and in-game adjustment logic.",
+  "last_updated": "2025-11-15",
+
+  "allowed_systems": [
+    "1-2-2 Red",
+    "1-2-2 Blue",
+    "1-3-1",
+    "1-4"
+  ],
+
+  "defaults": {
+    "balanced": "1-2-2 Red",
+    "protect_lead": "1-4",
+    "neutral": "1-2-2 Red",
+    "pressure": "1-2-2 Blue",
+    "vs_elite_speed": "1-3-1",
+    "vs_heavy_cycle": "1-2-2 Red"
+  },
+
+  "usage_rules": {
+    "score_effect": {
+      "leading_by_2_plus": "1-4",
+      "leading_by_1": "1-2-2 Red",
+      "tied": "1-2-2 Red",
+      "trailing_by_1": "1-2-2 Blue",
+      "trailing_by_2_plus": "1-3-1"
+    },
+    "opponent_type": {
+      "fast_transition_team": "1-3-1",
+      "heavy_cycle_team": "1-2-2 Red",
+      "slot_attack_team": "1-2-2 Blue",
+      "weak_defense_team": "1-2-2 Blue"
+    }
+  },
+
+  "trap_slider_rules": {
+    "range": "0-6",
+    "description": "NHL 25 Trap–Forecheck slider (0 = full trap, 6 = full forecheck). Neutral zone must harmonize with forecheck tree.",
+    "recommended_by_system": {
+      "1-2-2 Red": 2,
+      "1-2-2 Blue": 3,
+      "1-3-1": 3,
+      "1-4": 0
+    }
+  },
+
+  "validation": {
+    "canon_binding": "Canon_v1.0.json",
+    "enforce_allowed_systems": true,
+    "ensure_slider_consistency": true,
+    "notes": [
+      "Only these four NZ systems may be used by Architect/Dynasty GPT.",
+      "Each matchup must validate NZ system through this tree.",
+      "Trap slider must remain consistent with forecheck system and NZ structure."
+    ]
+  }
+}
