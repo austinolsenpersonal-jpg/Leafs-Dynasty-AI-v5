@@ -1,0 +1,52 @@
+{
+  "name": "Module Watchdog Config",
+  "version": "1.0.0",
+  "owner": "Austin Olsen",
+  "description": "Lightweight module and file integrity watchdog for Leafs Dynasty / Architect GPT setup.",
+
+  "scan_modes": {
+    "default": {
+      "scope": [
+        "Architect/Config",
+        "Architect/Exports",
+        "Product",
+        "Docs"
+      ],
+      "include_patterns": [
+        "*.json",
+        "*.md"
+      ],
+      "exclude_patterns": [
+        "Product/Temp/**",
+        "**/*.tmp"
+      ]
+    }
+  },
+
+  "checks": {
+    "required_files": [
+      "README.md",
+      "Docs/Repo_Structure_Plan_v1.0.md",
+      "Architect/Config/ModuleWatchdog_v1.0.json"
+    ],
+    "required_dirs": [
+      "Docs",
+      "Architect",
+      "Architect/Config",
+      "Product"
+    ]
+  },
+
+  "alerts": {
+    "on_missing_file": "warn",
+    "on_missing_dir": "warn",
+    "on_untracked_change": "info",
+    "output_format": "summary"
+  },
+
+  "dailyops": {
+    "monitor_dailyops_summary": true,
+    "dailyops_path_hint": "Product/DailyOps",
+    "note": "This just defines where the GPT should EXPECT DailyOps-style outputs to live later."
+  }
+}
