@@ -1,0 +1,63 @@
+{
+  "tree_version": "1.0",
+  "system": "Forecheck",
+  "description": "NHL 25 legal forecheck systems. Used by Architect GPT and Leafs Dynasty GPT for matchup prep, coaching cards, and in-game adjustments.",
+  "last_updated": "2025-11-15",
+
+  "allowed_systems": [
+    "1-2-2 Passive",
+    "1-2-2 Aggressive",
+    "2-3 Press",
+    "Weak Side Lock"
+  ],
+
+  "defaults": {
+    "balanced": "1-2-2 Passive",
+    "protect_lead": "1-2-2 Passive",
+    "neutral": "1-2-2 Aggressive",
+    "pressure": "2-3 Press",
+    "vs_heavy_cycle": "Weak Side Lock"
+  },
+
+  "usage_rules": {
+    "score_effect": {
+      "leading_by_2_plus": "1-2-2 Passive",
+      "leading_by_1": "1-2-2 Passive",
+      "tied": "1-2-2 Aggressive",
+      "trailing_by_1": "2-3 Press",
+      "trailing_by_2_plus": "2-3 Press"
+    },
+    "opponent_type": {
+      "fast_transition_team": "1-2-2 Passive",
+      "heavy_cycle_team": "Weak Side Lock",
+      "forecheck_pressure_team": "1-2-2 Passive",
+      "weak_defense_team": "2-3 Press"
+    }
+  },
+
+  "trap_slider_rules": {
+    "range": "0-6",
+    "description": "Trap-Forecheck slider from NHL 25. 0 is max trap, 6 is max forecheck.",
+    "default": 3,
+    "mapping": {
+      "0": "Full Trap",
+      "1": "Trap-Heavy",
+      "2": "Conservative Forecheck",
+      "3": "Balanced",
+      "4": "Moderate Pressure",
+      "5": "Heavy Pressure",
+      "6": "Full Forecheck"
+    }
+  },
+
+  "validation": {
+    "canon_binding": "Canon_v1.0.json",
+    "enforce_allowed_systems": true,
+    "ensure_slider_matches_system": true,
+    "notes": [
+      "Architect and Dynasty GPT must NEVER suggest any forecheck system not listed in allowed_systems.",
+      "Every matchup must validate forecheck through this tree before output.",
+      "Slider deltas must track to these system definitions only."
+    ]
+  }
+}
