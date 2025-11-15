@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-11-15",
+  "game": "NHL 25",
+  "scale_notes": {
+    "trap_slider_range": "0–6",
+    "trap_slider_direction": "0 = full neutral zone trap, 6 = full forecheck pressure"
+  },
+  "forecheck_options": {
+    "1-2-2_passive": {
+      "id": "1-2-2_passive",
+      "label": "1-2-2 Passive",
+      "description": "Safest forecheck. Focuses on structure, limiting odd-man rushes. Best for protecting a lead or when your team is slower than the opponent.",
+      "recommended_use": [
+        "Protecting a 1–2 goal lead",
+        "When opponent has dangerous rush offence",
+        "When your D-core is weaker or slower"
+      ],
+      "trap_slider_recommended": {
+        "default": 2,
+        "range": [1, 3],
+        "notes": [
+          "Keep at 1–2 when defending a lead late.",
+          "3 is the upper limit before it stops feeling like a real trap."
+        ]
+      },
+      "matchup_tags": [
+        "vs_rush_teams",
+        "hold_lead",
+        "defence_first"
+      ]
+    },
+    "1-2-2_aggressive": {
+      "id": "1-2-2_aggressive",
+      "label": "1-2-2 Aggressive",
+      "description": "More pressure on the puck carrier while keeping a 1-2-2 shape. Good when you need more zone time but don’t want full chaos.",
+      "recommended_use": [
+        "Game is tied and you want more O-zone time",
+        "Early in games to test opponent breakout",
+        "When opponent D struggles under pressure"
+      ],
+      "trap_slider_recommended": {
+        "default": 4,
+        "range": [3, 5],
+        "notes": [
+          "3 = balanced pressure, still safe.",
+          "4–5 = lean aggressive, good when chasing momentum."
+        ]
+      },
+      "matchup_tags": [
+        "press_breakout",
+        "tilt_ice",
+        "balanced_aggression"
+      ]
+    },
+    "2-3": {
+      "id": "2-3",
+      "label": "2-3",
+      "description": "Two forwards in deep with three players across to deny the middle. Good vs teams that attack through the middle lane or love controlled entries.",
+      "recommended_use": [
+        "When opponent attacks through the middle a lot",
+        "When you want to slow entries but still pressure low",
+        "Good default vs balanced teams"
+      ],
+      "trap_slider_recommended": {
+        "default": 3,
+        "range": [2, 4],
+        "notes": [
+          "2–3 keeps you structured and still dangerous.",
+          "Go 4 only if you trust your D gap control."
+        ]
+      },
+      "matchup_tags": [
+        "vs_middle_lane",
+        "balanced_default",
+        "structure_plus_pressure"
+      ]
+    },
+    "weak_side_lock": {
+      "id": "weak_side_lock",
+      "label": "Weak Side Lock",
+      "description": "Locks down the weak side and punishes predictable breakouts. Highest aggression profile; best when you read the breakout well or need a major push.",
+      "recommended_use": [
+        "When trailing and need momentum swing",
+        "When opponent always exits on the boards or strong side",
+        "Short bursts when you feel them rattling"
+      ],
+      "trap_slider_recommended": {
+        "default": 5,
+        "range": [4, 6],
+        "notes": [
+          "Use 4–5 for controlled high pressure.",
+          "6 is full send — only in short windows when chasing the game."
+        ]
+      },
+      "matchup_tags": [
+        "high_pressure",
+        "comeback_mode",
+        "punish_predictable_breakout"
+      ]
+    }
+  },
+  "transition_rules": {
+    "leading_by_2_or_more": {
+      "preferred": "1-2-2_passive",
+      "trap_slider_target": 2,
+      "notes": [
+        "If under heavy pressure in your zone, you can even go to trap_slider = 1.",
+        "Use this especially in 3rd period when protecting the lead."
+      ]
+    },
+    "tied_or_plus_minus_1": {
+      "preferred": "2-3",
+      "alternate": "1-2-2_aggressive",
+      "trap_slider_target": 3,
+      "notes": [
+        "Start at 2-3 / trap = 3 as a balanced default.",
+        "Move to 1-2-2 Aggressive if you’re not generating enough O-zone time."
+      ]
+    },
+    "trailing_by_1_or_2": {
+      "preferred": "1-2-2_aggressive",
+      "alternate": "weak_side_lock",
+      "trap_slider_target": 4,
+      "notes": [
+        "Go 1-2-2 Aggressive first; only shift to Weak Side Lock in short bursts.",
+        "Trap = 5–6 should be time-limited (e.g., last 5–7 minutes)."
+      ]
+    },
+    "last_3_minutes_all_in": {
+      "preferred": "weak_side_lock",
+      "trap_slider_target": 6,
+      "notes": [
+        "Use only when you are okay trading chances against to generate offence.",
+        "Best combined with Full Attack on Offensive Strategy."
+      ]
+    }
+  }
+}
