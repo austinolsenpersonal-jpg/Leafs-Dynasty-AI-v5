@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "module": "Canon.DefensiveStrategy",
+  "description": "NHL 25 legal defensive strategies for Leafs Dynasty Architect. Mirrors in-game settings: Collapsing, Staggered, Tight Point.",
+  "options": {
+    "collapsing": {
+      "strengths": [
+        "Protects the slot",
+        "Reduces high-danger chances",
+        "Strong vs teams relying on net-front crash"
+      ],
+      "weaknesses": [
+        "Gives up point shots",
+        "Allows extended zone time"
+      ],
+      "best_used_vs": [
+        "Heavy cycle teams",
+        "Teams with strong net-front forwards"
+      ]
+    },
+    "staggered": {
+      "strengths": [
+        "Breaks low-to-high cycle rhythm",
+        "Disrupts seam passes",
+        "Balanced slot protection"
+      ],
+      "weaknesses": [
+        "Vulnerable if puck gets behind net",
+        "Can create short windows in slot"
+      ],
+      "best_used_vs": [
+        "Teams with cross-ice passing threats",
+        "Skill teams like Detroit or Tampa"
+      ]
+    },
+    "tight_point": {
+      "strengths": [
+        "Shuts down point shots",
+        "Disrupts PP-style formations at 5v5"
+      ],
+      "weaknesses": [
+        "Opens net-front area",
+        "Weak against screens and tips"
+      ],
+      "best_used_vs": [
+        "Teams that rely on D shooting",
+        "Teams with heavy point activation"
+      ]
+    }
+  }
+}
