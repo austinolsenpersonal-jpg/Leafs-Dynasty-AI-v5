@@ -1,0 +1,30 @@
+{
+  "index_version": "1.0",
+  "description": "Index of all strategy trees used by Architect and Dynasty GPT. Each tree must map to a Canon-approved NHL 25 system.",
+  "last_updated": "2025-11-15",
+
+  "trees": {
+    "forecheck": "Product/StrategyTrees/ForecheckTree_v1.0.json",
+    "neutral_zone": "Product/StrategyTrees/NZTree_v1.0.json",
+    "defensive_zone": "Product/StrategyTrees/DZTree_v1.0.json",
+    "defensive_pressure": "Product/StrategyTrees/PressureTree_v1.0.json",
+    "defensive_strategy": "Product/StrategyTrees/DefStratTree_v1.0.json",
+    "offensive_strategy": "Product/StrategyTrees/OffStratTree_v1.0.json",
+    "control_breakout": "Product/StrategyTrees/ControlBreakoutTree_v1.0.json",
+    "quick_breakout": "Product/StrategyTrees/QuickBreakoutTree_v1.0.json",
+    "pp": "Product/StrategyTrees/PPTree_v1.0.json",
+    "pk": "Product/StrategyTrees/PKTree_v1.0.json",
+    "sliders_off": "Product/StrategyTrees/SliderTree_Off_v1.0.json",
+    "sliders_def": "Product/StrategyTrees/SliderTree_Def_v1.0.json"
+  },
+
+  "rules": {
+    "must_exist": true,
+    "must_pass_canon_validation": true,
+    "enforce_allowed_systems": true,
+    "notes": [
+      "This index prevents Architect/Dynasty from referencing any tree that isn't explicitly listed here.",
+      "Every gameplan will cross-check trees against both Canon and this index."
+    ]
+  }
+}
