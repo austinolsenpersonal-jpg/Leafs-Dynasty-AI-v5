@@ -1,11 +1,11 @@
 {
-  "name": "NHL 25 Defensive Pressure System Tree",
+  "name": "NHL 25 Defensive Pressure Tree",
   "id": "Tactics_DefensivePressure_v1.0",
   "game": "NHL 25",
   "version": "1.0.0",
   "created_by": "Architect GPT",
   "last_updated": "2025-11-15",
-  "description": "Canonical defensive pressure tree using ONLY NHL 25 in-game options: Protect Net, Contain Puck, Normal, Puck Side Attack, and High Pressure. Each option includes strengths, weaknesses, when to use it, and matchup tags.",
+  "description": "Canonical defensive pressure system for NHL 25 using ONLY validated in-game options: Protect Net, Contain Puck, Normal, Puck Side Attack, and High Pressure. Includes strengths, weaknesses, usage rules, and matchup applications.",
 
   "metadata": {
     "ea_defensive_pressure_options": [
@@ -16,207 +16,121 @@
       "High Pressure"
     ],
     "notes": [
-      "All pressure options must match NHL 25 UI EXACTLY.",
-      "Matchup outputs must only recommend these settings.",
-      "In-game adjustments and full gameplans derive from this file."
+      "Names must match the NHL 25 UI exactly.",
+      "Defensive Pressure affects gap control, collapse timing, and how aggressively defenders challenge attackers.",
+      "Pairs tightly with Defensive Strategy (Collapsing, Staggered, Tight Point)."
     ]
   },
 
   "systems": {
     "Protect Net": {
       "label": "Protect Net",
-      "type": "defensive_pressure",
-      "description": "Ultra-conservative pressure style that collapses to the slot and net-front to prevent high-danger chances.",
+      "description": "Ultra-conservative defensive pressure prioritizing the slot and inner house. Minimal challenge, fast collapse.",
       "strengths": [
-        "Best for defending leads late in games.",
-        "Shuts down slot passes, net drives, and crease chaos.",
-        "Excellent vs teams that funnel everything to the middle."
+        "Eliminates slot shots",
+        "Strong for defending leads",
+        "Ideal vs heavy net-front teams"
       ],
       "weaknesses": [
-        "Gives opponents more space on the perimeter.",
-        "Can allow long cycling shifts.",
-        "Not good when you need turnovers to generate offense."
+        "Allows cycles",
+        "Too passive vs skilled puck movers",
+        "Fatiguing due to long ozone time"
       ],
-      "recommended_usage": {
-        "protecting_lead": "Primary option",
-        "tied_game": "Use situationally vs heavy slot teams",
-        "trailing": "Avoid"
-      },
-      "matchup_tags": [
-        "lead_protection",
-        "vs_slot_attack",
-        "low_risk",
-        "third_period_defense"
+      "recommended_usage": [
+        "Late-game defense",
+        "Opponents with heavy net drivers",
+        "Any line with strong slot presence"
       ]
     },
 
     "Contain Puck": {
       "label": "Contain Puck",
-      "type": "defensive_pressure",
-      "description": "Structured, conservative pressure style that contains puck carriers toward the boards without overcommitting.",
+      "description": "The balanced pressure setting. Forces opponents to the outside and blocks dangerous seams.",
       "strengths": [
-        "Controls the pace of the game.",
-        "Excellent vs east-west passers like Kane, Marner, Zegras.",
-        "Prevents seam passes through the middle."
+        "Excellent vs playmakers",
+        "Strong vs east/west attacks",
+        "Reduces slot entries"
       ],
       "weaknesses": [
-        "Does not create many turnovers on its own.",
-        "May allow teams to cycle longer."
+        "Low turnover generation",
+        "Long cycle shifts possible"
       ],
-      "recommended_usage": {
-        "protecting_lead": "Strong option",
-        "tied_game": "Default safe choice",
-        "trailing": "Acceptable but not ideal"
-      },
-      "matchup_tags": [
-        "vs_playmakers",
-        "vs_pass_heavy",
-        "safe",
-        "default_recommendation"
+      "recommended_usage": [
+        "Lines with elite passers",
+        "Teams running cutback/wall cycles",
+        "Most matchups unless trailing"
       ]
     },
 
     "Normal": {
       "label": "Normal",
-      "type": "defensive_pressure",
-      "description": "Balanced pressure option with equal parts containment and challenge. A good middle-ground setting.",
+      "description": "Neutral engagement pressure. Moderate challenge, moderate collapse.",
       "strengths": [
-        "Adaptable to any opponent style.",
-        "Useful when you don't want to bias too heavily toward caution or aggression.",
-        "Good for general 5v5 where you want flow both ways."
+        "Stable baseline",
+        "Balanced for unknown matchups"
       ],
       "weaknesses": [
-        "Not specialized enough for elite opponents.",
-        "Can be outmatched by heavy cycle or high-skill rush teams."
+        "Not specialized",
+        "Not ideal vs slow opponents"
       ],
-      "recommended_usage": {
-        "protecting_lead": "Acceptable in early-game, not late",
-        "tied_game": "Strong neutral option",
-        "trailing": "Good on slower opponents"
-      },
-      "matchup_tags": [
-        "balanced",
-        "neutral",
-        "general_use",
-        "flow_game"
+      "recommended_usage": [
+        "Start of game",
+        "Scouting first period",
+        "Balanced teams"
       ]
     },
 
     "Puck Side Attack": {
       "label": "Puck Side Attack",
-      "type": "defensive_pressure",
-      "description": "Aggressive pressure setting that attacks the puck carrier directly on the strong side.",
+      "description": "Aggressive puck-side defensive challenge aiming to force quick turnovers.",
       "strengths": [
-        "Creates turnovers high in the zone.",
-        "Excellent vs uncertain defenders and bad passers (e.g. Petry, Holl).",
-        "Disrupts slow cycle teams."
+        "Breaks cycles",
+        "Strong vs weak puck handlers",
+        "Creates rush chances"
       ],
       "weaknesses": [
-        "Risky if opponent has elite passers (Kane, McDavid, Hughes).",
-        "Can open weak-side cross-ice plays.",
-        "Requires good support positioning."
+        "Weak-side exposure",
+        "Risky vs elite playmakers"
       ],
-      "recommended_usage": {
-        "protecting_lead": "Avoid",
-        "tied_game": "Situational",
-        "trailing": "Good option to generate chances"
-      },
-      "matchup_tags": [
-        "aggressive",
-        "vs_slow_defense",
-        "turnover_generation",
-        "risk_reward"
+      "recommended_usage": [
+        "Slow or predictable opponents",
+        "Heavy cycle teams",
+        "Momentum-chasing deployments"
       ]
     },
 
     "High Pressure": {
       "label": "High Pressure",
-      "type": "defensive_pressure",
-      "description": "Maximum pressure setting. Defender pinches quickly, forwards pressure hard, and the team attempts to force turnovers immediately.",
+      "description": "Maximum defensive pressure, fast closes, heavy puck pursuit. High-risk, high-reward.",
       "strengths": [
-        "Most turnovers generated.",
-        "Excellent vs bad breakout teams.",
-        "Great for late-game comebacks or momentum swings."
+        "Overwhelms slow teams",
+        "Forces turnovers",
+        "Excellent for chasing the game"
       ],
       "weaknesses": [
-        "High risk of getting beat on cross-ice plays.",
-        "Can break structure vs elite rush teams.",
-        "Terrible when protecting a lead."
+        "Very risky",
+        "Crumbles vs elite skill",
+        "Fatiguing"
       ],
-      "recommended_usage": {
-        "protecting_lead": "Never",
-        "tied_game": "Use carefully when momentum is needed",
-        "trailing": "Primary aggressive option"
-      },
-      "matchup_tags": [
-        "maximum_pressure",
-        "vs_bad_breakouts",
-        "comeback_mode",
-        "high_risk"
+      "recommended_usage": [
+        "Versus slow/weak teams",
+        "When down late",
+        "Momentum plays"
       ]
     }
   },
 
   "usage_rules": {
-    "score_based": [
-      {
-        "situation": "protecting_lead",
-        "options": ["Protect Net", "Contain Puck"],
-        "notes": [
-          "Default to Protect Net in final 5 minutes.",
-          "Contain Puck is safer in earlier stages of protecting a lead."
-        ]
-      },
-      {
-        "situation": "tied",
-        "options": ["Contain Puck", "Normal"],
-        "notes": [
-          "Use Contain Puck vs pass-heavy opponents.",
-          "Use Normal vs balanced or depth-based competition."
-        ]
-      },
-      {
-        "situation": "trailing",
-        "options": ["Puck Side Attack", "High Pressure"],
-        "notes": [
-          "Use Puck Side Attack if opponent has weak defenders.",
-          "Use High Pressure late in the game when you need immediate impact."
-        ]
-      }
+    "general": [
+      "Contain Puck is the safest all-around option in NHL 25.",
+      "Protect Net is used for lead protection and slot-heavy opponents.",
+      "Puck Side Attack is best for breaking cycles.",
+      "High Pressure is ONLY for low-skill teams or comeback mode."
     ],
-    "opponent_style_based": [
-      {
-        "opponent_style": "pass_heavy",
-        "recommended": ["Contain Puck"],
-        "why": "Prevents slot seams and wall-to-middle attacks."
-      },
-      {
-        "opponent_style": "cycle_heavy",
-        "recommended": ["Puck Side Attack"],
-        "why": "Attacks cycle structure and forces early turnovers."
-      },
-      {
-        "opponent_style": "rush_speed",
-        "recommended": ["Contain Puck", "Normal"],
-        "why": "Keeps structure intact and limits foot races."
-      },
-      {
-        "opponent_style": "weak_defense",
-        "recommended": ["Puck Side Attack", "High Pressure"],
-        "why": "Forces mistakes and breaks the breakout early."
-      }
-    ]
-  },
-
-  "integration": {
-    "dz_strategy": {
-      "note": "Defensive Pressure works in tandem with DZ Strategy (Collapsing, Staggered, Tight Point). A separate Canon file will define DZ Strategy behaviors."
-    },
-    "used_by": [
-      "MatchupEngine_v1.0",
-      "FullGameplanTemplates_v1.0",
-      "InGame_AdjustmentRules_v1.0",
-      "BenchCard_v1.0"
+    "integration_notes": [
+      "Protect Net pairs best with Collapsing.",
+      "Contain Puck pairs best with Staggered.",
+      "High Pressure pairs best with Tight Point."
     ]
   }
 }
