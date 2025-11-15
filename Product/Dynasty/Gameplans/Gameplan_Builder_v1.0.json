@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "type": "gameplan_builder",
+  "owner": "Leafs Dynasty GPT",
+  "description": "Instruction engine that tells Leafs Dynasty GPT HOW to assemble a full NHL 25–accurate gameplan using the template, opponent memory, systems map, and roster archetypes.",
+
+  "inputs": {
+    "template": "Product/Dynasty/Gameplans/Gameplan_Template_v1.0.json",
+    "systems_map": "Product/Canon/SystemsMap_v1.0.json",
+    "strategy_map": "Product/Canon/NHL25_StrategyMap_v1.0.json",
+    "opponent_memory": "autoload",
+    "leafs_roster_profile": "Product/Roster/Archetypes_v1.0.json"
+  },
+
+  "assembly_rules": {
+    "respect_template_order": true,
+    "reject_unknown_fields": true,
+    "auto_fill_missing_sections": true,
+    "strict_nhl25_tactics": true,
+
+    "slider_logic": {
+      "offensive_sliders": "Use archetype of current line + template rules + matchup adjustments",
+      "defensive_sliders": "Use defensive pair archetype + opponent forecheck pressure",
+      "pp_pk_sliders": "Use PP/PK templates from SystemsMap"
+    },
+
+    "tactic_logic": {
+      "forecheck": {
+        "rules": [
+          "Use Weak Side Lock vs fast rush teams",
+          "Use 1-2-2 Passive when defending a lead",
+          "Use 1-2-2 Aggressive when chasing",
+          "Use 2-3 vs heavy cycle attackers"
+        ]
+      },
+      "neutral_zone": {
+        "rules": [
+          "Use 1-3-1 against strong rush teams",
+          "Use 1-2-2 Red vs puck-carry heavy teams",
+          "Use 1-2-2 Blue vs dump-and-chase teams",
+          "Use 1-4 when protecting a lead late"
+        ]
+      },
+      "defense": {
+        "rules": [
+          "Use Collapsing vs high slot shooters",
+          "Use Tight Point vs opponent D that shoots frequently",
+          "Use Staggered vs perimeter cycle teams"
+        ]
+      },
+      "offense": {
+        "rules": [
+          "Use Conservative for first period baseline",
+          "Use Standard for neutral situations",
+          "Use Aggressive vs weaker defensive clubs",
+          "Use Full Attack when trailing by 1 late"
+        ]
+      }
+    },
+
+    "matchup_logic": {
+      "shutdown_pair": "Use D1 pair unless SystemsMap defines override",
+      "avoid_lines": "Opposing top cycle or elite shooters",
+      "target_lines": "Opposing weak puck-movers or slow defenders",
+      "goalie_choice": "Use GoaliePlan unless overridden by opponent shooting patterns"
+    },
+
+    "special_teams_logic": {
+      "pp_behavior": "Use PP structure based on weak side exposure",
+      "pk_behavior": "Use PK structure based on opponent point shot tendency"
+    },
+
+    "in_game_adjustments": {
+      "losing_conditions": [
+        "Increase forecheck",
+        "Increase offensive strategy",
+        "Activate pinch slider",
+        "Switch neutral zone to 1-3-1"
+      ],
+      "winning_conditions": [
+        "Reduce pinch",
+        "Use 1-2-2 Passive",
+        "Use conservative breakout",
+        "Switch offense to Conservative or Defend Lead"
+      ]
+    }
+  },
+
+  "output": {
+    "format": "structured_gameplan_json",
+    "error_on_incomplete": true,
+    "validate_against_template": true
+  },
+
+  "notes": [
+    "This file does NOT contain an actual gameplan — it only defines how to build them.",
+    "All gameplans generated will follow exactly the sections defined in the template.",
+    "Unknown tactics or sliders outside NHL 25 legal range must trigger hard failure.",
+    "Opponent Memory always has priority over static rules."
+  ]
+}
