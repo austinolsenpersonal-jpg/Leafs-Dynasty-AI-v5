@@ -1,0 +1,152 @@
+{
+  "$schema": "https://example.com/leafs-dynasty-ai/schemas/OffensiveStrategySchema_v1.0.json",
+  "version": "1.0",
+  "game": "NHL 25",
+  "description": "Team-level offensive strategy, control breakout, and quick breakout options using ONLY NHL 25 choices.",
+  "offensive_strategy_modes": [
+    {
+      "id": "off_defend_lead",
+      "label": "Defend Lead",
+      "risk_level": 1,
+      "forecheck_support": 2,
+      "rush_priority": 2,
+      "cycle_priority": 4,
+      "notes": [
+        "Use late in the 3rd when protecting a one-goal lead.",
+        "D stays home, less pinching, more dump-and-change.",
+        "Expect fewer chances for both teams; focus on safe clears."
+      ]
+    },
+    {
+      "id": "off_conservative",
+      "label": "Conservative",
+      "risk_level": 2,
+      "forecheck_support": 3,
+      "rush_priority": 3,
+      "cycle_priority": 3,
+      "notes": [
+        "Good default when your team is outmatched or on a back-to-back.",
+        "Reduces odd-man rushes against.",
+        "Use if your D is struggling with gap control."
+      ]
+    },
+    {
+      "id": "off_standard",
+      "label": "Standard",
+      "risk_level": 3,
+      "forecheck_support": 3,
+      "rush_priority": 3,
+      "cycle_priority": 3,
+      "notes": [
+        "Balanced default for most situations at 5v5.",
+        "Use at puck drop and any time the game feels even.",
+        "Pairs well with 1-2-2 Red in the neutral zone."
+      ]
+    },
+    {
+      "id": "off_aggressive",
+      "label": "Aggressive",
+      "risk_level": 4,
+      "forecheck_support": 4,
+      "rush_priority": 4,
+      "cycle_priority": 3,
+      "notes": [
+        "Use when you’re chasing a goal or have clear momentum.",
+        "D activates more, forecheck pressure increases.",
+        "Expect more rushes both for and against."
+      ]
+    },
+    {
+      "id": "off_full_attack",
+      "label": "Full Attack",
+      "risk_level": 5,
+      "forecheck_support": 5,
+      "rush_priority": 5,
+      "cycle_priority": 2,
+      "notes": [
+        "Emergency setting for late-game comebacks or short bursts.",
+        "Everyone joins the rush; huge offensive pressure, big risk.",
+        "Use in final minutes when down 1–2 goals, not as a default."
+      ]
+    }
+  ],
+  "control_breakout_options": [
+    {
+      "id": "cb_strong_side_slant",
+      "label": "Strong Side Slant",
+      "role": "safe_default",
+      "risk_level": 2,
+      "notes": [
+        "Safe, simple breakout using the strong-side wall.",
+        "Best when protecting a lead or when your D is under heavy forecheck.",
+        "Use as your default unless you specifically need more creativity."
+      ]
+    },
+    {
+      "id": "cb_blue_to_blue",
+      "label": "Blue-to-Blue",
+      "role": "east_west_attack",
+      "risk_level": 3,
+      "notes": [
+        "Spreads the ice and uses D-to-D passes at the blue line.",
+        "Good vs static forechecks or slow wingers.",
+        "Use when you want to open lanes for stretch plays and trailers."
+      ]
+    },
+    {
+      "id": "cb_three_high",
+      "label": "3-High",
+      "role": "possession_breakout",
+      "risk_level": 3,
+      "notes": [
+        "Three high options to maintain puck control through the middle.",
+        "Best with skilled forwards who can handle in traffic.",
+        "Use when you want clean, controlled entries over dump-and-chase."
+      ]
+    }
+  ],
+  "quick_breakout_options": [
+    {
+      "id": "qb_stay_wide",
+      "label": "Stay Wide",
+      "role": "stretch_wings",
+      "risk_level": 3,
+      "notes": [
+        "Wingers hold the boards; opens up cross-ice passes.",
+        "Use vs teams that collapse to the middle in the NZ.",
+        "Good for creating width and lateral movement vs slow D."
+      ]
+    },
+    {
+      "id": "qb_leave_zone_early",
+      "label": "Leave Zone Early",
+      "role": "stretch_pass",
+      "risk_level": 4,
+      "notes": [
+        "Forwards fly the zone early to create stretch chances.",
+        "High-risk, high-reward — can leave your D exposed.",
+        "Use when chasing the game or vs very slow defensemen."
+      ]
+    },
+    {
+      "id": "qb_close_support",
+      "label": "Close Support",
+      "role": "support_breakout",
+      "risk_level": 2,
+      "notes": [
+        "Forwards stay closer to the puck for short passes.",
+        "Best when your breakout is struggling or vs heavy forecheck.",
+        "Good default when protecting a lead or calming the game down."
+      ]
+    }
+  ],
+  "default_recommendations": {
+    "game_start_offense": "off_standard",
+    "protect_lead_offense": "off_conservative",
+    "protect_one_goal_late": "off_defend_lead",
+    "push_for_goal_mid_game": "off_aggressive",
+    "last_minutes_down_goal": "off_full_attack",
+    "breakout_default_control": "cb_strong_side_slant",
+    "breakout_default_quick": "qb_close_support"
+  }
+}
