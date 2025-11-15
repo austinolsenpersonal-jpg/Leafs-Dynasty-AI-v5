@@ -1,0 +1,224 @@
+{
+  "name": "NHL 25 Offensive Strategy Tree",
+  "id": "Tactics_OffensiveStrategy_v1.0",
+  "game": "NHL 25",
+  "version": "1.0.0",
+  "created_by": "Architect GPT",
+  "last_updated": "2025-11-15",
+  "description": "Canonical offensive strategy tree using ONLY NHL 25 in-game options: Defend Lead, Conservative, Standard, Aggressive, and Full Attack. Each option includes strengths, weaknesses, and score/matchup usage rules.",
+
+  "metadata": {
+    "ea_offensive_strategy_options": [
+      "Defend Lead",
+      "Conservative",
+      "Standard",
+      "Aggressive",
+      "Full Attack"
+    ],
+    "notes": [
+      "All offensive strategy names must match NHL 25 UI EXACTLY.",
+      "Matchup outputs must only use these five options.",
+      "Offensive Strategy is the global mindset that combines with Forecheck, Neutral Zone, and sliders."
+    ]
+  },
+
+  "systems": {
+    "Defend Lead": {
+      "label": "Defend Lead",
+      "type": "offensive_strategy",
+      "description": "Lock-down mentality focused on protecting the scoreboard more than generating offense. Prioritizes safe plays, low-risk exits, and strong puck management.",
+      "strengths": [
+        "Reduces risk of bad turnovers in dangerous areas.",
+        "Supports defensive structure and lead protection.",
+        "Ideal for closing out games in the 3rd period."
+      ],
+      "weaknesses": [
+        "Reduces offensive pressure and shot volume.",
+        "Can invite sustained pressure if used too early.",
+        "Makes it harder to answer quickly if opponent scores."
+      ],
+      "recommended_usage": {
+        "score_state": [
+          "Leading by 1 or 2 in the 3rd period.",
+          "Final 5–8 minutes of a game when protecting a lead.",
+          "After an icing or long shift when you need to reset safely."
+        ],
+        "avoid_when": [
+          "Trailing in any period.",
+          "Tied in the 1st or 2nd unless under heavy pressure.",
+          "When your team is outshooting the opponent badly and you want to keep momentum."
+        ]
+      },
+      "matchup_tags": [
+        "lead_protection",
+        "low_risk",
+        "clock_management"
+      ]
+    },
+
+    "Conservative": {
+      "label": "Conservative",
+      "type": "offensive_strategy",
+      "description": "Low-to-moderate offensive risk level with focus on safe entries, smart dumps, and puck support. Less aggressive than Standard but not full turtle.",
+      "strengths": [
+        "Good puck security with some offensive presence.",
+        "Helps stabilize games when momentum is against you.",
+        "Pairs well with strong goaltending and structure-first teams."
+      ],
+      "weaknesses": [
+        "Can limit scoring chances vs weaker opponents.",
+        "May miss chances to fully exploit mismatched lines or tired defenders.",
+        "Not ideal when chasing the game."
+      ],
+      "recommended_usage": {
+        "score_state": [
+          "Tied game vs higher-rated opponent.",
+          "Nursing a 1-goal lead in early or mid-game.",
+          "When your team struggles with turnovers and you want to settle things down."
+        ],
+        "avoid_when": [
+          "Trailing late in the 2nd or 3rd.",
+          "Facing a poor defensive team you should be pushing harder against."
+        ]
+      },
+      "matchup_tags": [
+        "safe_default",
+        "vs_stronger_team",
+        "momentum_control"
+      ]
+    },
+
+    "Standard": {
+      "label": "Standard",
+      "type": "offensive_strategy",
+      "description": "Balanced offensive mindset that mixes controlled entries, cycles, and opportunistic attacks. This is the baseline setting for most situations.",
+      "strengths": [
+        "Versatile and stable in most matchups.",
+        "Allows natural offense without over-committing.",
+        "Easy to adjust up or down to Aggressive or Conservative as game flow changes."
+      ],
+      "weaknesses": [
+        "Not specialized for full shut-down or all-out attack.",
+        "May feel too passive vs very weak opponents.",
+        "Does not maximize comeback potential when trailing."
+      ],
+      "recommended_usage": {
+        "score_state": [
+          "Tied game vs equal opponent.",
+          "Early game in most matchups.",
+          "Default starting point before adjusting to how the game feels."
+        ],
+        "avoid_when": [
+          "Severely outshooting a weak opponent (might want Aggressive).",
+          "Desperately needing goals late (Full Attack or Aggressive better)."
+        ]
+      },
+      "matchup_tags": [
+        "balanced",
+        "default",
+        "general_use"
+      ]
+    },
+
+    "Aggressive": {
+      "label": "Aggressive",
+      "type": "offensive_strategy",
+      "description": "Higher-risk mindset focused on pressure, quick attacks, and sustained offensive zone time. Encourages more pinches, layered forecheck, and higher shot volume.",
+      "strengths": [
+        "Increases shot volume and offensive zone time.",
+        "Good for tilting the ice vs weak defenses.",
+        "Can break down tired or slow opponent D cores."
+      ],
+      "weaknesses": [
+        "Higher risk of odd-man rushes against.",
+        "Can tax your defense and goalie if execution is sloppy.",
+        "Dangerous if your team is already losing the transition battle."
+      ],
+      "recommended_usage": {
+        "score_state": [
+          "Tied late in games when you want the win.",
+          "Trailing by 1 in the 2nd or early 3rd.",
+          "Vs slower or weaker defensive teams you can pressure."
+        ],
+        "avoid_when": [
+          "Already heavily out-chanced on the rush.",
+          "Protecting a lead late in the 3rd.",
+          "When your defense or goalie is struggling badly."
+        ]
+      },
+      "matchup_tags": [
+        "pressure",
+        "vs_slow_defense",
+        "push_for_goal"
+      ]
+    },
+
+    "Full Attack": {
+      "label": "Full Attack",
+      "type": "offensive_strategy",
+      "description": "Maximum offensive risk. Everyone is joining the rush, pinches are frequent, and the priority is generating goals immediately, even at the cost of defense.",
+      "strengths": [
+        "Maximizes scoring chances quickly.",
+        "Ideal when you need multiple goals late.",
+        "Works well when opponent is already sitting back in a shell."
+      ],
+      "weaknesses": [
+        "Very high risk of odd-man rushes and breakaways against.",
+        "Can blow a close game wide open in the wrong direction.",
+        "Taxing on fatigue and goalie workload."
+      ],
+      "recommended_usage": {
+        "score_state": [
+          "Trailing by 2+ late in the 3rd period.",
+          "Desperation mode with goalie pulled or about to be pulled.",
+          "Playoff elimination games when you must score."
+        ],
+        "avoid_when": [
+          "Tied or leading.",
+          "Early in games.",
+          "When your goalie is already under siege."
+        ]
+      },
+      "matchup_tags": [
+        "comeback_mode",
+        "desperation",
+        "late_game_gamble"
+      ]
+    }
+  },
+
+  "usage_rules": {
+    "by_score_state": [
+      {
+        "situation": "leading",
+        "recommended": ["Conservative", "Defend Lead"],
+        "notes": [
+          "Use Standard while building the lead, then shift to Conservative or Defend Lead.",
+          "In final 5–8 minutes, Defend Lead is preferred, especially with strong goaltending."
+        ]
+      },
+      {
+        "situation": "tied",
+        "recommended": ["Standard", "Conservative", "Aggressive"],
+        "notes": [
+          "Standard is the default balanced choice.",
+          "Conservative vs stronger teams or on the road.",
+          "Aggressive if you sense the opponent is weak or gassed."
+        ]
+      },
+      {
+        "situation": "trailing",
+        "recommended": ["Aggressive", "Full Attack"],
+        "notes": [
+          "Aggressive when down 1 or when there is still time.",
+          "Full Attack only when time is short or you are down by 2+."
+        ]
+      }
+    ],
+    "integration_notes": [
+      "Offensive Strategy works together with forecheck choice and trap slider.",
+      "For example: Aggressive + 1-2-2 Aggressive + higher trap level creates a full pressure identity.",
+      "Defend Lead + 1-2-2 Passive + lower trap level creates a clock-kill, safe structure."
+    ]
+  }
+}
