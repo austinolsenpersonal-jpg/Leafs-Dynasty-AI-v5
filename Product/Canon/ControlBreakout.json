@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "module": "Canon.ControlBreakout",
+  "description": "NHL 25 legal Control Breakout options: Strong Side Slant, Blue-to-Blue, and 3-High.",
+  "options": {
+    "strong_side_slant": {
+      "strengths": [
+        "Fastest breakout option",
+        "Creates natural triangles for support passes",
+        "Beats mid-level forechecks (1-2-2 Passive, 2-3)"
+      ],
+      "weaknesses": [
+        "Predictable if spammed",
+        "Boards pressure can kill the play quickly"
+      ],
+      "best_used_vs": [
+        "Passive forechecks",
+        "Teams that do not aggressively pinch"
+      ]
+    },
+    "blue_to_blue": {
+      "strengths": [
+        "Safest puck movement pattern",
+        "Resets defensive pairing cleanly",
+        "Controls pace and slows game down"
+      ],
+      "weaknesses": [
+        "No rapid transition speed",
+        "Allows forecheckers time to set up"
+      ],
+      "best_used_vs": [
+        "High-pressure forechecks",
+        "Teams with aggressive F1/F2"
+      ]
+    },
+    "three_high": {
+      "strengths": [
+        "Creates stretch passing lanes",
+        "Excellent for bypassing collapsing forechecks",
+        "Activates wingers into transition early"
+      ],
+      "weaknesses": [
+        "High-risk if D-zone coverage collapses",
+        "Turnovers lead to odd-man rushes"
+      ],
+      "best_used_vs": [
+        "Neutral-zone traps",
+        "Teams with slow back-end mobility"
+      ]
+    }
+  }
+}
