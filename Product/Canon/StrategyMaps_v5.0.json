@@ -1,0 +1,127 @@
+{
+  "version": "5.0",
+  "game": "NHL 25",
+  "description": "NHL 25-accurate strategy map for Leafs Dynasty AI. Only uses in-game options: forecheck, NZ, DZ pressure, DZ strategy, offensive strategy, trap slider, control breakout, quick breakout, plus per-line slider templates.",
+  "systems": {
+    "forecheck": {
+      "options": [
+        "1-2-2 Passive",
+        "1-2-2 Aggressive",
+        "2-3",
+        "Weak Side Lock"
+      ],
+      "default": "1-2-2 Passive",
+      "notes": "Forecheck options exactly as listed in NHL 25 team strategy menu."
+    },
+    "neutral_zone": {
+      "options": [
+        "1-2-2 Red",
+        "1-2-2 Blue",
+        "1-3-1",
+        "1-4"
+      ],
+      "default": "1-2-2 Red",
+      "notes": "These are the only NZ trap options available in NHL 25."
+    },
+    "trap_slider": {
+      "range": {
+        "min": 0,
+        "max": 6
+      },
+      "default": 3,
+      "notes": "0 = no trap, 6 = maximum trap. Leafs Canon sits in the middle by default and adjusts per matchup."
+    },
+    "dz_pressure": {
+      "options": [
+        "Protect Net",
+        "Contain Puck",
+        "Normal",
+        "Puck Side Attack",
+        "High Pressure"
+      ],
+      "default": "Contain Puck",
+      "notes": "Exact defensive pressure options from NHL 25. No legacy labels (e.g. 'contain along the wall')."
+    },
+    "dz_strategy": {
+      "options": [
+        "Collapsing",
+        "Staggered",
+        "Tight Point"
+      ],
+      "default": "Staggered",
+      "notes": "These are the only defensive strategies in NHL 25 team strategies."
+    },
+    "offensive_strategy": {
+      "options": [
+        "Defend Lead",
+        "Conservative",
+        "Standard",
+        "Aggressive",
+        "Full Attack"
+      ],
+      "default": "Standard",
+      "notes": "Global offensive pressure setting used in the team strategy screen."
+    },
+    "control_breakout": {
+      "options": [
+        "Strong Side Slant",
+        "Blue To Blue",
+        "3 High"
+      ],
+      "default": "Strong Side Slant",
+      "notes": "Control breakout options from NHL 25. Canon can switch between them based on opponent forecheck."
+    },
+    "quick_breakout": {
+      "options": [
+        "Stay Wide",
+        "Leave Zone Early",
+        "Close Support"
+      ],
+      "default": "Close Support",
+      "notes": "Quick breakout choices used when the puck is recovered quickly in the DZ."
+    }
+  },
+  "line_slider_template": {
+    "description": "Template for line/pair sliders that must always match the in-game 0–10 format Austin uses.",
+    "forward_line": {
+      "offensive_strategy": [
+        "Overload",
+        "Behind The Net",
+        "Crash The Net",
+        "Balanced"
+      ],
+      "sliders": [
+        "Carry/Dump",
+        "Cycle/Shoot",
+        "Efficiency/Energy",
+        "Don't Block/Block"
+      ],
+      "range": {
+        "min": 0,
+        "max": 10
+      },
+      "notes": "Each forward line has these four sliders with a 0–10 range. Canon will store recommended values in the SliderEngine file, not here."
+    },
+    "defense_pair": {
+      "sliders": [
+        "Hold Line/Pinch",
+        "Cycle/Shoot"
+      ],
+      "range": {
+        "min": 0,
+        "max": 10
+      },
+      "notes": "Each D pair has Hold Line/Pinch and Cycle/Shoot sliders with 0–10 range. Default values will live in SliderEngine_v5.0.json."
+    }
+  },
+  "sync": {
+    "architect_gpt": {
+      "allowed_to_edit": true,
+      "notes": "Architect GPT can reference these exact option names when building Canon or matchup logic. No legacy systems allowed."
+    },
+    "dynasty_gpt": {
+      "allowed_to_edit": true,
+      "notes": "Leafs Dynasty GPT uses this map to keep all gameplay recommendations 100% NHL 25 accurate."
+    }
+  }
+}
