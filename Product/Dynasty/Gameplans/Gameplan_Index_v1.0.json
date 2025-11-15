@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "purpose": "Defines structure, rules, and output paths for Dynasty GPT gameplan files.",
+  "owner": "Leafs Dynasty GPT",
+  "root_dir": "Product/Dynasty/Gameplans/",
+
+  "folder_structure": {
+    "root": "Product/Dynasty/Gameplans/",
+    "opponent_subfolders": true,
+    "opponent_format_note": "Opponent folders will be auto-created as /<TEAM_ABBREVIATION>/ (e.g., /DET/, /BOS/, /BUF/)",
+    "example": "Product/Dynasty/Gameplans/DET/"
+  },
+
+  "file_naming_rules": {
+    "required_format": "<TEAM>_FullGameplan_<YYYY-MM-DD>.json",
+    "examples": [
+      "DET_FullGameplan_2025-01-03.json",
+      "BOS_FullGameplan_2025-01-14.json"
+    ],
+    "enforce_iPhone_blocks": true
+  },
+
+  "contents_required_in_gameplan": [
+    "Team Identity Snapshot",
+    "Opponent Strengths & Weaknesses",
+    "NHL 25 Legal Strategy Options Only",
+    "Forecheck, Neutral Zone, Defensive Pressure, Defensive Strategy",
+    "Offensive Strategy",
+    "Breakout (Control & Quick) Options",
+    "Trap/Forecheck Slider (0–6)",
+    "Offensive & Defensive Sliders (5-category model)",
+    "Special Teams Gameplan",
+    "Matchup Deployment",
+    "In-Game Adjustments",
+    "Win Conditions"
+  ],
+
+  "strategy_validation": {
+    "use_canon": true,
+    "canon_file": "Product/Canon/SystemsMap_v1.0.json",
+    "validate_only_nhl25_legal_options": true
+  },
+
+  "dynamic_behavior": {
+    "auto_create_opponent_folder": true,
+    "auto_versioning": true,
+    "attach_opponent_memory": true,
+    "attach_slider_sync": true
+  },
+
+  "notes": [
+    "Architect GPT should never edit Gameplans folder.",
+    "Leafs Dynasty GPT is the only system allowed to write gameplans.",
+    "This index file ensures correct paths for all future /full_gameplan commands."
+  ]
+}
