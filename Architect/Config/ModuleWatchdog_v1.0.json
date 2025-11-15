@@ -1,52 +1,40 @@
 {
-  "name": "Module Watchdog Config",
+  "name": "Module Watchdog v1.0",
   "version": "1.0.0",
+  "description": "Lightweight integrity config for the NHL25-Leafs-Architect repo. Used by Architect GPT to simulate watchdog scans and report drift or missing pieces to Austin.",
   "owner": "Austin Olsen",
-  "description": "Lightweight module and file integrity watchdog for Leafs Dynasty / Architect GPT setup.",
 
-  "scan_modes": {
-    "default": {
-      "scope": [
-        "Architect/Config",
-        "Architect/Exports",
-        "Product",
-        "Docs"
-      ],
-      "include_patterns": [
-        "*.json",
-        "*.md"
-      ],
-      "exclude_patterns": [
-        "Product/Temp/**",
-        "**/*.tmp"
-      ]
-    }
+  "required_paths": [
+    "README.md",
+    "Docs/Repo_Structure_Plan_v1.0.md",
+    "Project_Bootstrap_v1.0.json",
+    "Architect/Config",
+    "Architect/Config/ModuleWatchdog_v1.0.json",
+    "Product",
+    "Product/DailyOps",
+    "Product/Exports",
+    "Product/DynastyKnowledge"
+  ],
+
+  "rules": {
+    "allow_extra_files": true,
+    "strict_missing_core": true,
+    "missing_core_severity": "HIGH",
+    "missing_optional_severity": "LOW"
   },
 
-  "checks": {
-    "required_files": [
-      "README.md",
-      "Docs/Repo_Structure_Plan_v1.0.md",
-      "Architect/Config/ModuleWatchdog_v1.0.json"
-    ],
-    "required_dirs": [
-      "Docs",
-      "Architect",
-      "Architect/Config",
-      "Product"
+  "messages": {
+    "on_clean_scan": "Watchdog scan passed. Core scaffold is present and no critical drift is detected.",
+    "on_missing_core": "One or more core paths/files from ModuleWatchdog_v1.0.json are missing. Repo scaffold is incomplete – fix before adding advanced configs.",
+    "on_missing_optional": "Optional or future paths are missing. This is safe for now, but Architect GPT may recommend creating them later."
+  },
+
+  "usage": {
+    "default_command": "/watchdog scan --config 'Architect/Config/ModuleWatchdog_v1.0.json' --output 'latest'",
+    "intended_reader": "Architect GPT (files/systems brain). Dynasty GPT should treat this as read-only background info.",
+    "notes": [
+      "This file does NOT run real automation. It is a config map that the GPT reads to decide what should exist.",
+      "If Austin runs the watchdog command in chat, the GPT should check this list and report what exists vs what is still missing."
     ]
-  },
-
-  "alerts": {
-    "on_missing_file": "warn",
-    "on_missing_dir": "warn",
-    "on_untracked_change": "info",
-    "output_format": "summary"
-  },
-
-  "dailyops": {
-    "monitor_dailyops_summary": true,
-    "dailyops_path_hint": "Product/DailyOps",
-    "note": "This just defines where the GPT should EXPECT DailyOps-style outputs to live later."
   }
 }
