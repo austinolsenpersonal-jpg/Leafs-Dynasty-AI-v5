@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "module": "Canon.QuickBreakout",
+  "description": "NHL 25 legal Quick Breakout options: Stay Wide, Leave Zone Early, Close Support.",
+  "options": {
+    "stay_wide": {
+      "strengths": [
+        "Spreads forecheckers",
+        "Opens up the boards-side exit",
+        "Ideal when wingers have speed advantage"
+      ],
+      "weaknesses": [
+        "If D hesitates, lanes close quickly",
+        "Can stretch support too far away"
+      ],
+      "best_used_vs": [
+        "Aggressive forechecks (1-2-2 Aggressive)",
+        "Teams that pinch hard"
+      ]
+    },
+    "leave_zone_early": {
+      "strengths": [
+        "Creates fast-break opportunities",
+        "Forces opposing D to back off",
+        "Reduces defensive-zone time"
+      ],
+      "weaknesses": [
+        "Risky if pass misses",
+        "Can leave D unsupported"
+      ],
+      "best_used_vs": [
+        "Slow D cores",
+        "Teams with weak gap control"
+      ]
+    },
+    "close_support": {
+      "strengths": [
+        "Safe exit option",
+        "Reduces turnover risk",
+        "Ideal for protecting a lead"
+      ],
+      "weaknesses": [
+        "Can slow transition",
+        "Limits odd-man rush potential"
+      ],
+      "best_used_vs": [
+        "Neutral forechecks",
+        "Teams that trap center ice"
+      ]
+    }
+  }
+}
