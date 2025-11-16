@@ -1,97 +1,257 @@
 {
-  "version": "1.0",
-  "module": "StrategyTrees.FiveOnFive",
-  "description": "High-level 5v5 strategy trees for Leafs Dynasty AI in NHL 25. Uses only in-game legal options for forecheck, neutral zone, defensive pressure/strategy, offensive strategy, and breakouts.",
-  "notes": {
-    "trap_slider_range": "0-6",
-    "game_context_key": "state",
-    "all_values_match_nhl25_menus": true
+  "schemaVersion": "1.0",
+  "treeId": "FiveOnFive_v1.0",
+  "description": "Five-on-five team strategy state machine for Toronto Maple Leafs – maps game context to in-game strategy settings aligned with Canon v4.1.",
+  "metadata": {
+    "team": "Toronto Maple Leafs",
+    "game": "NHL 25",
+    "createdBy": "Architect GPT",
+    "lastUpdatedBy": "Architect GPT",
+    "canonVersion": "4.1",
+    "strategyMapVersion": "5.0"
   },
-  "states": {
-    "default_even_game": {
-      "situation": "5v5 · score tied or within 1 goal, early/mid game",
-      "forecheck": "1-2-2_passive",
-      "neutral_zone": "1-2-2_red",
-      "trap_slider": 3,
-      "defensive_pressure": "contain_puck",
-      "defensive_strategy": "staggered",
-      "offensive_strategy": "standard",
-      "control_breakout": "strong_side_slant",
-      "quick_breakout": "close_support"
-    },
-    "protecting_lead": {
-      "situation": "5v5 · protecting a 1–2 goal lead in 3rd period",
-      "forecheck": "1-2-2_passive",
-      "neutral_zone": "1-3-1",
-      "trap_slider": 5,
-      "defensive_pressure": "protect_net",
-      "defensive_strategy": "collapsing",
-      "offensive_strategy": "defend_lead",
-      "control_breakout": "strong_side_slant",
-      "quick_breakout": "stay_wide"
-    },
-    "trailing_need_offense": {
-      "situation": "5v5 · trailing by 1–2 goals, 3rd period or late 2nd",
-      "forecheck": "1-2-2_aggressive",
-      "neutral_zone": "1-2-2_blue",
-      "trap_slider": 1,
-      "defensive_pressure": "high_pressure",
-      "defensive_strategy": "tight_point",
-      "offensive_strategy": "full_attack",
-      "control_breakout": "blue_to_blue",
-      "quick_breakout": "leave_zone_early"
-    },
-    "lockdown_final_minutes": {
-      "situation": "5v5 · up by 1 in final 3–5 minutes, DZ starts matter most",
-      "forecheck": "1-2-2_passive",
-      "neutral_zone": "1-4",
-      "trap_slider": 6,
-      "defensive_pressure": "protect_net",
-      "defensive_strategy": "collapsing",
-      "offensive_strategy": "defend_lead",
-      "control_breakout": "strong_side_slant",
-      "quick_breakout": "close_support"
-    },
-    "momentum_push_after_goal": {
-      "situation": "5v5 · first shift after you score and want to press",
-      "forecheck": "1-2-2_aggressive",
-      "neutral_zone": "1-2-2_red",
-      "trap_slider": 2,
-      "defensive_pressure": "normal",
-      "defensive_strategy": "staggered",
-      "offensive_strategy": "aggressive",
-      "control_breakout": "blue_to_blue",
-      "quick_breakout": "leave_zone_early"
-    }
-  },
-  "mapping_rules": {
-    "default_rule": "default_even_game",
-    "score_based": [
-      {
-        "condition": { "goal_diff": { "max": 1 }, "period": { "max": 2 } },
-        "state": "default_even_game"
-      },
-      {
-        "condition": { "goal_diff": { "min": 1 }, "period": { "min": 3 } },
-        "state": "protecting_lead"
-      },
-      {
-        "condition": { "goal_diff": { "max": -1 }, "period": { "min": 2 } },
-        "state": "trailing_need_offense"
-      }
+  "enums": {
+    "forecheck": [
+      "1-2-2 Passive",
+      "2-3",
+      "Weak Side Lock",
+      "1-2-2 Aggressive"
     ],
-    "time_based_overrides": [
-      {
-        "condition": { "goal_diff": { "min": 1 }, "time_remaining": { "max_minutes": 5 } },
-        "state": "lockdown_final_minutes"
-      }
+    "neutralZone": [
+      "1-2-2 Red",
+      "1-3-1",
+      "1-4",
+      "1-2-2 Blue"
     ],
-    "momentum_events": [
-      {
-        "trigger": "just_scored",
-        "state": "momentum_push_after_goal",
-        "duration_shifts": 1
-      }
+    "defensivePressure": [
+      "Protect Net",
+      "Contain Puck",
+      "Normal",
+      "Puck Side Attack",
+      "High Pressure"
+    ],
+    "defensiveStrategy": [
+      "Collapsing",
+      "Staggered",
+      "Tight Point"
+    ],
+    "offensivePressure": [
+      "Defend Lead",
+      "Conservative",
+      "Standard",
+      "Aggressive",
+      "Full Attack"
+    ],
+    "controlBreakout": [
+      "Strong Side Slant",
+      "Blue to Blue",
+      "Three High"
+    ],
+    "quickBreakout": [
+      "Close Support",
+      "Stay Wide",
+      "Leave Zone Early"
     ]
-  }
+  },
+  "baseState": {
+    "strength": "EVEN",
+    "forecheck": "2-3",
+    "neutralZone": "1-2-2 Red",
+    "defensivePressure": "Contain Puck",
+    "defensiveStrategy": "Staggered",
+    "offensivePressure": "Standard",
+    "controlBreakout": "Strong Side Slant",
+    "quickBreakout": "Stay Wide"
+  },
+  "states": [
+    {
+      "id": "base_even_tied_or_plus1_early",
+      "label": "Default 5v5 – tied or +1, early game",
+      "priority": 10,
+      "conditions": [
+        {
+          "field": "strength",
+          "op": "eq",
+          "value": "EVEN"
+        },
+        {
+          "field": "scoreDiff",
+          "op": "between",
+          "value": [
+            -1,
+            1
+          ]
+        },
+        {
+          "field": "period",
+          "op": "in",
+          "value": [
+            1,
+            2
+          ]
+        },
+        {
+          "field": "timeRemainingMinutes",
+          "op": ">",
+          "value": 10
+        }
+      ],
+      "strategies": {
+        "forecheck": "2-3",
+        "neutralZone": "1-2-2 Red",
+        "defensivePressure": "Contain Puck",
+        "defensiveStrategy": "Staggered",
+        "offensivePressure": "Standard",
+        "controlBreakout": "Strong Side Slant",
+        "quickBreakout": "Stay Wide"
+      }
+    },
+    {
+      "id": "protect_lead_third_period",
+      "label": "Protect 1+ goal lead – 3rd period, under 10 minutes",
+      "priority": 50,
+      "conditions": [
+        {
+          "field": "strength",
+          "op": "eq",
+          "value": "EVEN"
+        },
+        {
+          "field": "scoreDiff",
+          "op": ">=",
+          "value": 1
+        },
+        {
+          "field": "period",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "field": "timeRemainingMinutes",
+          "op": "<=",
+          "value": 10
+        }
+      ],
+      "strategies": {
+        "forecheck": "2-3",
+        "neutralZone": "1-2-2 Red",
+        "defensivePressure": "Protect Net",
+        "defensiveStrategy": "Collapsing",
+        "offensivePressure": "Conservative",
+        "controlBreakout": "Three High",
+        "quickBreakout": "Close Support"
+      }
+    },
+    {
+      "id": "lockdown_last_two_minutes",
+      "label": "Lockdown – last 2 minutes protecting a lead",
+      "priority": 80,
+      "conditions": [
+        {
+          "field": "strength",
+          "op": "eq",
+          "value": "EVEN"
+        },
+        {
+          "field": "scoreDiff",
+          "op": ">=",
+          "value": 1
+        },
+        {
+          "field": "period",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "field": "timeRemainingMinutes",
+          "op": "<=",
+          "value": 2
+        }
+      ],
+      "strategies": {
+        "forecheck": "2-3",
+        "neutralZone": "1-2-2 Red",
+        "defensivePressure": "Protect Net",
+        "defensiveStrategy": "Collapsing",
+        "offensivePressure": "Defend Lead",
+        "controlBreakout": "Three High",
+        "quickBreakout": "Close Support"
+      }
+    },
+    {
+      "id": "push_for_goal_mid_game",
+      "label": "Push for a goal – down by 1–2, mid-game",
+      "priority": 40,
+      "conditions": [
+        {
+          "field": "strength",
+          "op": "eq",
+          "value": "EVEN"
+        },
+        {
+          "field": "scoreDiff",
+          "op": "<=",
+          "value": -1
+        },
+        {
+          "field": "period",
+          "op": "in",
+          "value": [
+            2,
+            3
+          ]
+        },
+        {
+          "field": "timeRemainingMinutes",
+          "op": ">",
+          "value": 10
+        }
+      ],
+      "strategies": {
+        "forecheck": "2-3",
+        "neutralZone": "1-3-1",
+        "defensivePressure": "Puck Side Attack",
+        "defensiveStrategy": "Staggered",
+        "offensivePressure": "Aggressive",
+        "controlBreakout": "Strong Side Slant",
+        "quickBreakout": "Leave Zone Early"
+      }
+    },
+    {
+      "id": "full_attack_last_five",
+      "label": "Full attack – down late, last 5 minutes",
+      "priority": 70,
+      "conditions": [
+        {
+          "field": "strength",
+          "op": "eq",
+          "value": "EVEN"
+        },
+        {
+          "field": "scoreDiff",
+          "op": "<=",
+          "value": -1
+        },
+        {
+          "field": "period",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "field": "timeRemainingMinutes",
+          "op": "<=",
+          "value": 5
+        }
+      ],
+      "strategies": {
+        "forecheck": "1-2-2 Aggressive",
+        "neutralZone": "1-3-1",
+        "defensivePressure": "High Pressure",
+        "defensiveStrategy": "Tight Point",
+        "offensivePressure": "Full Attack",
+        "controlBreakout": "Blue to Blue",
+        "quickBreakout": "Leave Zone Early"
+      }
+    }
+  ]
 }
