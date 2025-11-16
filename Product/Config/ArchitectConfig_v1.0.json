@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "module": "Config.ArchitectSettings",
+  "description": "Global configuration file for NHL GPT Architect working against Leafs-Dynasty-AI-v5. Controls repo layout, canon enforcement, QA behaviour, and what Architect is allowed to touch.",
+
+  "repo": {
+    "name": "Leafs-Dynasty-AI-v5",
+    "root_product_folder": "Product",
+    "primary_team": "Toronto Maple Leafs",
+    "game": "NHL 25",
+    "platform": "Xbox Cloud (Series X|S build)"
+  },
+
+  "canon": {
+    "enabled": true,
+    "version": "1.0",
+    "forecheck_file": "Product/Canon/Forecheck.json",
+    "neutral_zone_file": "Product/Canon/NeutralZone.json",
+    "defensive_pressure_file": "Product/Canon/DefensivePressure.json",
+    "defensive_strategy_file": "Product/Canon/DefensiveStrategy.json",
+    "offensive_strategy_file": "Product/Canon/OffensiveStrategy.json",
+    "control_breakout_file": "Product/Canon/ControlBreakout.json",
+    "quick_breakout_file": "Product/Canon/QuickBreakout.json",
+    "strategy_trees": [
+      "Product/StrategyTrees/FiveOnFive_v1.0.json",
+      "Product/StrategyTrees/SpecialTeams_v1.0.json"
+    ]
+  },
+
+  "dynasty_integration": {
+    "bootstrap_file": "Product/Dynasty/LeafsDynasty_MasterBootstrap_v2.0.json",
+    "dynasty_config_file": "Product/Config/DynastyConfig_v1.0.json",
+    "allow_live_updates": true,
+    "respect_commit_prefix": true,
+    "commit_prefix": "create",
+    "iphone_friendly_output": true
+  },
+
+  "architect_roles": {
+    "can_create_files": true,
+    "can_update_product_files": true,
+    "can_generate_exports": true,
+    "can_run_qa_profiles": true,
+    "avoid_game_result_prediction": true,
+    "avoid_fake_rosters": true
+  },
+
+  "folders": {
+    "canon_folder": "Product/Canon",
+    "strategy_trees_folder": "Product/StrategyTrees",
+    "templates_folder": "Product/Templates",
+    "engines_folder": "Product/Engines",
+    "dailyops_folder": "Product/DailyOps",
+    "exports_folder": "Product/Exports",
+    "dynasty_folder": "Product/Dynasty"
+  },
+
+  "qa": {
+    "enable_watchdog": true,
+    "watchdog_config": "Architect/Config/ModuleWatchdog_v1.0.json",
+    "verify_on_start": true,
+    "verify_canon_before_matchup": true,
+    "verify_strategy_trees_before_export": true
+  },
+
+  "output_rules": {
+    "one_file_at_a_time": true,
+    "include_file_path_block": true,
+    "include_full_contents_block": true,
+    "include_commit_headline_block": true,
+    "include_commit_description_block": true
+  }
+}
