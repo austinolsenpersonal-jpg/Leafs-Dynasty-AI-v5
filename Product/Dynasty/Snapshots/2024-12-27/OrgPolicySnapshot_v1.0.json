@@ -1,0 +1,134 @@
+{
+  "snapshot_meta": {
+    "franchise": "Toronto Maple Leafs – Austin Franchise",
+    "snapshot_date": "2024-12-27",
+    "snapshot_type": "OrgPolicy",
+    "version": "1.0"
+  },
+
+  "tavares_policy": {
+    "mode": "Soft Walk – Playoff Push",
+    "rules": [
+      "Do not trade Tavares during the current season.",
+      "Deploy him in a protected 2C/PP role for maximum playoff value.",
+      "Do not extend during the season.",
+      "At offseason: only recommend re-signing if AAV falls into 'cheap-tier' range (~2.5M–4M).",
+      "If the offer is not significantly discounted, default recommendation is to walk and reallocate cap."
+    ]
+  },
+
+  "extension_policy": {
+    "general_rules": [
+      "Prioritize RFAs and 24–28 age-range core pieces.",
+      "Avoid term traps on 30+ depth players unless extremely low AAV.",
+      "Maintain minimum cap buffer of 0.5M for in-season flexibility."
+    ],
+    "priority_rfas": [
+      "Dawson Mercer",
+      "Nick Robertson",
+      "Tyson Foerster",
+      "Alex Steeves",
+      "Mikko Kokkonen",
+      "Topi Niemelä",
+      "Will Villeneuve"
+    ],
+    "low_priority_rfas": [
+      "Valis",
+      "Johnson",
+      "Miettinen",
+      "Rifai",
+      "Akhtyamov",
+      "Peksa"
+    ]
+  },
+
+  "trade_policy": {
+    "deadline_mode": "Hybrid (Buy for core needs, hold futures unless value is strong)",
+    "pick_protection": {
+      "protect_first_round": true,
+      "protect_second_round": true
+    },
+    "rules": [
+      "Avoid trading core prospects in the same window as losing Tavares.",
+      "Retained salary slots: max 2 (emergency use only).",
+      "No trades that reduce defensive stability below 6 NHL-caliber D."
+    ]
+  },
+
+  "development_policy": {
+    "tier_1_priority": [
+      "Topi Niemelä",
+      "Mikko Kokkonen",
+      "William Villeneuve",
+      "Roni Hirvonen",
+      "Trevor Quillan",
+      "Ryan Tverberg"
+    ],
+    "tier_2_priority": [
+      "Clifford (mentor role)",
+      "Shaw",
+      "Barbolini",
+      "Solow",
+      "Holinka",
+      "Chadwick"
+    ],
+    "rules": [
+      "Give Tier 1 prospects PP/PK time where chemistry allows.",
+      "Maintain NHL/AHL strategy alignment for smoother call-up transitions.",
+      "Increase TOI ~1–2 minutes per game for prospects who hit hot streaks."
+    ]
+  },
+
+  "strategy_policy": {
+    "nhl_system": {
+      "forecheck": "2-3",
+      "neutral_zone": "1-2-2 Red",
+      "defensive_pressure": "Normal",
+      "defensive_strategy": "Staggered",
+      "offensive_pressure": "Standard",
+      "control_breakout": "Strong Side Slant",
+      "quick_breakout": "Stay Wide"
+    },
+    "ahl_system": {
+      "forecheck": "2-3",
+      "neutral_zone": "1-2-2 Red",
+      "defensive_pressure": "Normal",
+      "defensive_strategy": "Staggered",
+      "offensive_pressure": "Standard",
+      "control_breakout": "Strong Side Slant",
+      "quick_breakout": "Stay Wide"
+    },
+    "rules": [
+      "Maintain system-matching between NHL and AHL unless major chemistry conflicts emerge.",
+      "Adjust forecheck and defensive pressure only when opponent-specific strategy demands it."
+    ]
+  },
+
+  "promotion_and_callup_policy": {
+    "rules": [
+      "Call up players only if they fit the NHL system without breaking chemistry.",
+      "Do not call up waiver-requiring players unless absolutely necessary.",
+      "Prospects entering NHL trial must receive minimum 10–14 minutes TOI to evaluate properly."
+    ]
+  },
+
+  "risk_controls": {
+    "max_retained_salary_slots": 2,
+    "min_cap_buffer_millions": 0.5,
+    "waiver_protection_priority": [
+      "Niemelä",
+      "Kokkonen",
+      "Villeneuve",
+      "Hildeby"
+    ],
+    "rules": [
+      "Never reduce defensive depth below 6 proven NHL defensemen.",
+      "Avoid multi-year deals with 30+ depth players unless AAV under 1.0M."
+    ]
+  },
+
+  "notes": [
+    "This OrgPolicy file defines the strategic DNA of the franchise for the 2024-12-27 baseline.",
+    "Dynasty GPT will reference this when evaluating trades, extensions, prospect usage, and system fit."
+  ]
+}
