@@ -1,0 +1,238 @@
+{
+  "version": "1.0",
+  "module": "Templates.MatchupCard",
+  "description": "Standard matchup/gameplan template for Leafs Dynasty Architect. This defines the sections and fields used when generating a full gameplan like /full gameplan @DET, using only NHL 25–legal tactics and your Canon + StrategyTrees.",
+  "meta": {
+    "game": "NHL 25",
+    "team": "Toronto Maple Leafs",
+    "uses": [
+      "Product/Canon/Forecheck.json",
+      "Product/Canon/NeutralZone.json",
+      "Product/Canon/OffensiveStrategy.json",
+      "Product/Canon/DefensivePressure.json",
+      "Product/Canon/DefensiveStrategy.json",
+      "Product/Canon/ControlBreakout.json",
+      "Product/Canon/QuickBreakout.json",
+      "Product/StrategyTrees/FiveOnFive_v1.0.json",
+      "Product/StrategyTrees/SpecialTeams_v1.0.json",
+      "Product/StrategyTrees/SituationalAdjustments_v1.0.json"
+    ],
+    "output_modes": [
+      "full_gameplan",
+      "coaching_card",
+      "bench_notes"
+    ]
+  },
+
+  "layout": {
+    "order": [
+      "header",
+      "opponent_identity",
+      "systems_map",
+      "five_on_five_plan",
+      "special_teams_plan",
+      "goalie_plan",
+      "situational_adjustments",
+      "win_conditions"
+    ]
+  },
+
+  "sections": {
+    "header": {
+      "fields": [
+        "opponent_name",
+        "game_date",
+        "location",
+        "prepared_for",
+        "canon_version",
+        "architect_version",
+        "confidence_scores"
+      ],
+      "example": {
+        "opponent_name": "Detroit Red Wings",
+        "game_date": "2025-12-27",
+        "location": "Away",
+        "prepared_for": "Toronto Maple Leafs",
+        "canon_version": "v1.0 (NHL 25 legal options)",
+        "architect_version": "v6.2",
+        "confidence_scores": {
+          "roster": 1.0,
+          "systems": 1.0,
+          "sliders": 1.0,
+          "opponent_memory": 0.95
+        }
+      }
+    },
+
+    "opponent_identity": {
+      "fields": [
+        "style",
+        "strengths",
+        "weaknesses",
+        "key_forwards",
+        "key_defense",
+        "goalie_notes"
+      ],
+      "note": "High-level description of opponent behaviour and danger players, using Opponent Memory if available."
+    },
+
+    "systems_map": {
+      "fields": [
+        "opponent_forecheck",
+        "opponent_neutral_zone",
+        "opponent_dzone_pressure",
+        "opponent_offensive_style",
+        "opponent_pp_structure",
+        "opponent_pk_structure",
+        "recommended_forecheck",
+        "recommended_neutral_zone",
+        "recommended_defensive_pressure",
+        "recommended_defensive_strategy",
+        "recommended_offensive_strategy",
+        "recommended_control_breakout",
+        "recommended_quick_breakout",
+        "trap_forecheck_slider_0_to_6"
+      ],
+      "legal_values": {
+        "forecheck": [
+          "1-2-2 passive",
+          "1-2-2 aggressive",
+          "2-3",
+          "weak_side_lock"
+        ],
+        "neutral_zone": [
+          "1-2-2 red",
+          "1-2-2 blue",
+          "1-3-1",
+          "1-4"
+        ],
+        "defensive_pressure": [
+          "protect_net",
+          "contain_puck",
+          "normal",
+          "puck_side_attack",
+          "high_pressure"
+        ],
+        "defensive_strategy": [
+          "collapsing",
+          "staggered",
+          "tight_point"
+        ],
+        "offensive_strategy": [
+          "defend_lead",
+          "conservative",
+          "standard",
+          "aggressive",
+          "full_attack"
+        ],
+        "control_breakout": [
+          "strong_side_slant",
+          "blue_to_blue",
+          "3_high"
+        ],
+        "quick_breakout": [
+          "stay_wide",
+          "leave_zone_early",
+          "close_support"
+        ],
+        "trap_forecheck_slider_range": "0–6 (0 = full trap, 6 = max forecheck pressure)"
+      }
+    },
+
+    "five_on_five_plan": {
+      "fields": [
+        "line_matchups",
+        "d_pair_matchups",
+        "offensive_zone_focus",
+        "defensive_zone_rules",
+        "rush_defense_rules",
+        "cycle_defense_rules",
+        "recommended_offensive_sliders",
+        "recommended_defensive_sliders"
+      ],
+      "sliders_reference": {
+        "offense": [
+          "cycle_vs_shoot",
+          "carry_vs_dump",
+          "efficiency_vs_energy",
+          "dont_block_vs_block"
+        ],
+        "defense": [
+          "hold_line_vs_pinch",
+          "cycle_vs_shoot"
+        ],
+        "scale": "0–10",
+        "balanced": 5
+      }
+    },
+
+    "special_teams_plan": {
+      "fields": [
+        "pp1_roles",
+        "pp2_roles",
+        "pp_entry_rules",
+        "pp_in_zone_structure",
+        "pk1_structure",
+        "pk2_structure",
+        "pk_pressure_rules",
+        "pp_adjustments_if_struggling",
+        "pk_adjustments_if_struggling"
+      ],
+      "note": "Must map to NHL 25 legal PP/PK formations from SpecialTeams_v1.0."
+    },
+
+    "goalie_plan": {
+      "fields": [
+        "starter",
+        "backup",
+        "reason_for_starter",
+        "pull_threshold",
+        "rebound_focus",
+        "freeze_puck_rules",
+        "b2b_considerations"
+      ],
+      "example": {
+        "starter": "Stolarz",
+        "backup": "Woll",
+        "reason_for_starter": "Form + matchup vs rush team",
+        "pull_threshold": "After 4 goals against or SV% < .850 by mid-game.",
+        "rebound_focus": "Steer to corners; freeze under heavy traffic.",
+        "freeze_puck_rules": "Freeze on slot shots, safe plays when leading."
+      }
+    },
+
+    "situational_adjustments": {
+      "fields": [
+        "down_by_2_plus_adjustments",
+        "down_by_1_adjustments",
+        "tied_adjustments",
+        "up_by_1_adjustments",
+        "up_by_2_plus_adjustments",
+        "momentum_spike_response",
+        "fatigue_response_defense",
+        "fatigue_response_forwards"
+      ],
+      "source": "Product/StrategyTrees/SituationalAdjustments_v1.0.json"
+    },
+
+    "win_conditions": {
+      "fields": [
+        "primary_win_conditions",
+        "things_to_avoid",
+        "special_focus_players",
+        "summary_for_bench"
+      ],
+      "example": {
+        "primary_win_conditions": [
+          "Limit Larkin rush chances.",
+          "Exploit slow D pair with controlled entries.",
+          "Screen goalie on most point shots."
+        ],
+        "things_to_avoid": [
+          "High-risk pinches when up by 1.",
+          "Long shifts with tired defense."
+        ]
+      }
+    }
+  }
+}
