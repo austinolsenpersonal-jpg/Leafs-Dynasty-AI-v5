@@ -1,0 +1,154 @@
+{
+  "name": "Leafs Dynasty Suite – Master Bootstrap",
+  "version": "2.0.0",
+  "owner": "Austin Olsen",
+  "environment": {
+    "game": "NHL 25",
+    "platform": "Xbox Cloud Gaming (Series X|S build)",
+    "team": "Toronto Maple Leafs",
+    "difficulty": "All-Star",
+    "rules_preset": "Authentic",
+    "period_length_min": [6, 7],
+    "morale": true,
+    "salary_cap": true
+  },
+
+  "canon": {
+    "version": "v5.0",
+    "manifest": "Product/Canon/Canon_Manifest_v5.0.json",
+    "modules": {
+      "forecheck": "Product/Canon/Forecheck.json",
+      "neutral_zone": "Product/Canon/NeutralZone.json",
+      "offensive_strategy": "Product/Canon/OffensiveStrategy.json",
+      "defensive_pressure": "Product/Canon/DefensivePressure.json",
+      "defensive_strategy": "Product/Canon/DefensiveStrategy.json",
+      "control_breakout": "Product/Canon/ControlBreakout.json",
+      "quick_breakout": "Product/Canon/QuickBreakout.json",
+      "strategy_map": "Product/Canon/StrategyMap.json"
+    }
+  },
+
+  "strategy_trees": {
+    "five_on_five": "Product/StrategyTrees/FiveOnFive_v1.0.json",
+    "special_teams": "Product/StrategyTrees/SpecialTeams_v1.0.json"
+  },
+
+  "templates": {
+    "matchup_card": "Product/Coaching/MatchupCard_v1.0.json"
+  },
+
+  "gameplay_defaults": {
+    "forecheck": "1-2-2 passive",
+    "neutral_zone": "1-3-1",
+    "defensive_strategy": "collapsing",
+    "defensive_pressure": "contain puck",
+    "offensive_strategy": "standard",
+    "control_breakout": "strong side slant",
+    "quick_breakout": "close support",
+    "trap_slider_default": 3,
+    "trap_slider_range": {
+      "min": 0,
+      "max": 6,
+      "description": "0 = full trap, 6 = full forecheck"
+    }
+  },
+
+  "slider_rules": {
+    "scale": "0-10",
+    "balanced_value": 5,
+    "offense": {
+      "carry_vs_dump": {
+        "label": "Carry/Dump",
+        "min_is": "max_dump",
+        "max_is": "max_carry",
+        "balanced": 5
+      },
+      "cycle_vs_shoot": {
+        "label": "Cycle/Shoot",
+        "min_is": "max_cycle",
+        "max_is": "max_shoot",
+        "balanced": 5
+      },
+      "efficiency_vs_energy": {
+        "label": "Efficiency/Energy",
+        "min_is": "energy_focus",
+        "max_is": "efficiency_focus",
+        "balanced": 5
+      }
+    },
+    "defense": {
+      "holdline_vs_pinch": {
+        "label": "Hold Line/Pinch",
+        "min_is": "hold_line",
+        "max_is": "pinch",
+        "balanced": 5
+      },
+      "dontblock_vs_block": {
+        "label": "Don’t Block/Block",
+        "min_is": "dont_block_shots",
+        "max_is": "block_shots",
+        "balanced": 5
+      }
+    },
+    "validation": {
+      "enforce_slider_direction_rule": true,
+      "notes": [
+        "All suggestions must respect EA NHL 25 slider direction.",
+        "5 is always the neutral / balanced midpoint on the 0–10 scale.",
+        "Trap slider uses 0–6 scale: 0 = NZ trap, 6 = max forecheck."
+      ]
+    }
+  },
+
+  "product_paths": {
+    "root": "Product",
+    "canon_root": "Product/Canon",
+    "strategy_tree_root": "Product/StrategyTrees",
+    "coaching_root": "Product/Coaching",
+    "config_root": "Product/Config",
+    "engines_root": "Product/Engines",
+    "exports_root": "Product/Exports",
+    "dailyops_root": "Product/DailyOps",
+    "roster_root": "Product/Roster"
+  },
+
+  "github_prefs": {
+    "commit_prefix": "create",
+    "enforce_commit_prefix": true,
+    "iphone_formatting": true,
+    "notes": [
+      "When generating files, always output: file path, full contents, commit headline, commit description in separate copy blocks.",
+      "Headlines must start with 'create', never 'add' or 'update'."
+    ]
+  },
+
+  "roles": {
+    "architect_gpt": {
+      "mode": "builder",
+      "responsibilities": [
+        "Design and maintain JSON files in this repo",
+        "Validate Canon and strategy trees",
+        "Keep slider rules synced with NHL 25 reality",
+        "Provide GitHub-friendly instructions (path, contents, commit)"
+      ]
+    },
+    "dynasty_gpt": {
+      "mode": "gm_plus_coach",
+      "responsibilities": [
+        "Use this bootstrap as source of truth for tactics and systems",
+        "Generate gameplans, coaching cards, and matchup packages",
+        "Apply only NHL 25–legal settings as defined in the Canon files",
+        "Avoid editing JSON directly; defer to Architect GPT for repo changes"
+      ]
+    }
+  },
+
+  "restore_notes": {
+    "intended_use": "When starting a new Leafs Dynasty GPT session, load this bootstrap file to wire up Canon, strategy trees, and templates without relying on old chat history.",
+    "example_bootstrap_command": "/dynasty_bootstrap --config \"Product/Dynasty/LeafsDynasty_MasterBootstrap_v2.0.json\" --mode full",
+    "notes": [
+      "Architect GPT owns the repo structure and JSON contents.",
+      "Dynasty GPT uses the paths and rules from this file but does not rewrite them."
+    ]
+  }
+}
