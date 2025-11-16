@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "module": "Engines.StatsTrends",
+  "name": "Leafs Dynasty Stats & Trends Engine",
+  "description": "Lightweight stats and trends engine for Leafs Dynasty AI in NHL 25. Provides a consistent way to talk about recent form, PP/PK trends, streaks, and standings without inventing fake numbers.",
+  "environment": {
+    "game": "NHL 25",
+    "mode": "Franchise",
+    "team": "Toronto Maple Leafs",
+    "platform": "Xbox Cloud (Series X|S build)"
+  },
+  "scope": {
+    "covers": [
+      "Team record and basic standings context",
+      "Recent form windows (last 5, last 10 games)",
+      "Goal differential trends",
+      "PP/PK trend bands (hot, cold, average)",
+      "Home/road split notes",
+      "Streak language (winning/losing, OT, shootout)"
+    ],
+    "does_not_cover": [
+      "Exact real-world NHL stats",
+      "Precise in-game boxscore-style statlines without user input",
+      "Full season sim stats for other teams unless user provides them"
+    ]
+  },
+  "inputs": {
+    "required_fields": [
+      "games_played",
+      "wins",
+      "losses",
+      "ot_losses",
+      "goals_for",
+      "goals_against"
+    ],
+    "optional_fields": [
+      "pp_percentage_estimate_band",
+      "pk_percentage_estimate_band",
+      "home_record_breakdown",
+      "road_record_breakdown",
+      "recent_results_window",
+      "streak_descriptor"
+    ],
+    "bands": {
+      "pp_band": {
+        "hot": "PP is clearly clicking, scoring regularly and feeling dangerous.",
+        "average": "PP is functional but not dominant.",
+        "cold": "PP is struggling to create chances or finish."
+      },
+      "pk_band": {
+        "hot": "PK is shutting teams down and limiting clean entries.",
+        "average": "PK is acceptable but giving up some looks.",
+        "cold": "PK is leaking chances or goals too often."
+      }
+    },
+    "missing_data_policy": {
+      "ask_user_if_missing": true,
+      "allow_soft_language": true,
+      "notes": [
+        "If exact record or stats are unknown, Dynasty GPT should ask you for a simple summary (e.g., 'We’re 18-10-2 and PP feels cold').",
+        "If you do not provide numbers, the engine should speak in soft trend language only ('PP has felt better lately', 'PK has been leaky')."
+      ]
+    }
+  },
+  "trend_windows": {
+    "last_5": {
+      "label": "Last 5 games",
+      "description": "Fast-moving form; good for momentum and confidence language."
+    },
+    "last_10": {
+      "label": "Last 10 games",
+      "description": "More stable view of performance trends."
+    },
+    "month_to_date": {
+      "label": "Month to date",
+      "description": "Useful if you’re looking at a calendar view or talking about a tough month."
+    }
+  },
+  "logic": {
+    "form_language_rules": [
+      "If wins > losses in the last 5, describe as 'good form' or 'positive trend'.",
+      "If losses > wins in the last 5, describe as 'slump', 'skid', or 'rough patch'.",
+      "If goal differential is positive and PP/PK bands are 'hot' or 'average', describe as 'overall strong but with some issues'.",
+      "If goal differential is negative and PP or PK band is 'cold', describe as 'structural issues that need addressing'."
+    ],
+    "standings_language_rules": [
+      "If points pace is strong, use language like 'firmly in the playoff mix' or 'pushing for home-ice'.",
+      "If record is close to .500, use 'on the bubble' or 'fighting to stay in the playoff race'.",
+      "If clearly below .500, use 'chasing the pack' or 'needing a run to get back in it'."
+    ],
+    "streak_language_rules": [
+      "3+ wins in a row → 'on a bit of a heater' or 'building a nice streak'.",
+      "3+ losses in a row → 'on a skid' or 'in a slide that needs to stop'.",
+      "Alternating W/L → 'up-and-down' or 'inconsistent stretch'."
+    ]
+  },
+  "io_behaviour": {
+    "commands": {
+      "summary_command": {
+        "name": "/team_summary",
+        "description": "Summarize overall record, trends, and PP/PK bands using user-supplied data or soft language if data is missing."
+      },
+      "trend_command": {
+        "name": "/trend_report",
+        "description": "Explain how the team has been trending over the last 5–10 games and what that means for upcoming matchups."
+      }
+    },
+    "output_expectations": [
+      "Always be honest about whether numbers are user-supplied or trend-based language only.",
+      "Avoid inventing fake exact percentages or records.",
+      "Prefer: 'PP has felt cold in recent games' over 'PP is exactly 13.4%'.",
+      "Tie trends into upcoming opponents when possible (e.g., 'PP has been hot, which matters vs a weak PK like DET’s')."
+    ],
+    "respect_repo_wiring": {
+      "runtime_config_file": "Product/Dynasty/RuntimeConfig_v1.0.json",
+      "bootstrap_file": "Product/Config/LeafsDynasty_MasterBootstrap_v2.0.json"
+    }
+  },
+  "defaults": {
+    "assume_band_when_missing": false,
+    "soft_language_only_when_missing": true,
+    "max_recent_window_games": 10
+  },
+  "notes": [
+    "This engine is intentionally light – it gives Dynasty GPT a safe way to talk about trends when you provide rough stats or feelings, without fabricating specific numbers.",
+    "Whenever you want deeper stats logic, you can extend this file in a future version (e.g., v1.1) without breaking Canon or tactics."
+  ]
+}
