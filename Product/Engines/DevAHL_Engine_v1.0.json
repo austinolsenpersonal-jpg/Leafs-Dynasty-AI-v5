@@ -1,0 +1,212 @@
+{
+  "version": "1.0",
+  "module": "Engines.DevAHL",
+  "name": "Leafs Dynasty AHL Development & Readiness Engine",
+  "description": "Evaluates AHL development, NHL readiness, and call-up decisions for Leafs prospects in NHL 25. Uses TOI, role usage, production, and form to classify players as DEVELOP, MONITOR, or READY and suggests call-up rules.",
+  "environment": {
+    "game": "NHL 25",
+    "mode": "Franchise",
+    "team": "Toronto Maple Leafs",
+    "affiliate_team": "Toronto Marlies",
+    "platform": "Xbox Cloud (Series X|S build)"
+  },
+  "priority_prospects": {
+    "high_priority": [
+      "Topi Niemelä",
+      "Mikko Kokkonen",
+      "Alex Steeves"
+    ],
+    "notes": [
+      "These names are examples of core development priorities; Dynasty GPT should treat similar profiles the same way, even if player names change in future seasons."
+    ]
+  },
+  "roles_and_targets": {
+    "skater_targets": {
+      "top_pair_d": {
+        "label": "Top-pair D",
+        "min_toi": 20,
+        "ideal_toi": 22,
+        "special_teams_expectation": [
+          "PP1 or PP2",
+          "PK1 or PK2"
+        ]
+      },
+      "second_pair_d": {
+        "label": "Second-pair D",
+        "min_toi": 18,
+        "ideal_toi": 20,
+        "special_teams_expectation": [
+          "PP2 or PK2"
+        ]
+      },
+      "top_six_forward": {
+        "label": "Top-six AHL forward",
+        "min_toi": 17,
+        "ideal_toi": 19,
+        "special_teams_expectation": [
+          "PP1 or PP2"
+        ]
+      },
+      "middle_six_forward": {
+        "label": "Middle-six AHL forward",
+        "min_toi": 14,
+        "ideal_toi": 16,
+        "special_teams_expectation": [
+          "PP2 or PK2 (if defensive role)"
+        ]
+      },
+      "bottom_six_forward": {
+        "label": "Bottom-six AHL forward",
+        "min_toi": 11,
+        "ideal_toi": 13,
+        "special_teams_expectation": [
+          "Limited special-teams exposure unless specialist"
+        ]
+      }
+    },
+    "goalie_targets": {
+      "starter": {
+        "label": "AHL starter",
+        "min_games_per_10": 6,
+        "ideal_games_per_10": 7,
+        "notes": [
+          "Starter should see majority of starts unless form collapses.",
+          "If prospect starter is below .900 SV% for long stretches, adjust workload but do not panic off small samples."
+        ]
+      },
+      "1b_or_prospect": {
+        "label": "1B or developing prospect",
+        "min_games_per_10": 3,
+        "ideal_games_per_10": 4,
+        "notes": [
+          "Balance development with results.",
+          "Do not bury a good prospect as AHL backup all season."
+        ]
+      }
+    }
+  },
+  "inputs": {
+    "required_fields": [
+      "player_name",
+      "position",
+      "age",
+      "overall_rating",
+      "potential_band",
+      "ahl_toi_avg",
+      "ahl_line_role",
+      "special_teams_role",
+      "games_played",
+      "recent_form_trend",
+      "production_rate_tier",
+      "defensive_impact_tier"
+    ],
+    "optional_fields": [
+      "injury_history_tier",
+      "chemistry_tag",
+      "leadership_tag",
+      "waiver_status",
+      "contract_status"
+    ],
+    "missing_data_policy": {
+      "ask_user_if_missing": true,
+      "allow_estimation": false,
+      "notes": [
+        "If TOI, line role, or recent form are missing, Dynasty GPT must ask you for context instead of guessing.",
+        "If overall or potential are unknown, treat the output as low-confidence."
+      ]
+    }
+  },
+  "readiness_bands": {
+    "develop": {
+      "label": "DEVELOP",
+      "description": "Player still needs AHL minutes and refinement.",
+      "conditions_examples": [
+        "TOI well below role target (e.g., 3–4+ minutes under ideal).",
+        "Production inconsistent and form trend neutral or negative.",
+        "Defensive impact not yet stable.",
+        "Age still in early development window (20–22) and no urgent NHL need."
+      ]
+    },
+    "monitor": {
+      "label": "MONITOR",
+      "description": "Player is on the bubble. Could be called up for injuries or short stints.",
+      "conditions_examples": [
+        "TOI close to role target.",
+        "Form trend positive over last 10 games.",
+        "Production and defensive impact trending up.",
+        "NHL depth chart above them is not critical but could use competition."
+      ]
+    },
+    "ready": {
+      "label": "READY",
+      "description": "Player looks prepared for an NHL opportunity.",
+      "conditions_examples": [
+        "TOI at or above ideal target for at least ~10–15 games.",
+        "Form clearly positive (good plus/minus, chances, or production tier).",
+        "Defensive impact solid or improving.",
+        "Cap/waiver situation allows call-up without major risk."
+      ]
+    }
+  },
+  "callup_rules": {
+    "general_rules": [
+      "Do not recommend an NHL call-up solely based on short-term hot streaks (5 games or fewer) unless injuries force it.",
+      "Favour calling up players in the READY band when NHL injuries align with their role.",
+      "If no READY player exists for the role, consider MONITOR band players with closest role fit.",
+      "Never recommend waiving a prospect just to create short-term AHL space without asking the user first."
+    ],
+    "injury_scenarios": {
+      "top_four_d_injury": [
+        "Check for READY or MONITOR right-shot D with strong AHL usage.",
+        "If no suitable prospect, consider veteran depth before burning development time on low-TOI NHL usage."
+      ],
+      "top_six_forward_injury": [
+        "Look for READY or MONITOR forwards already playing top-six AHL minutes.",
+        "Avoid recalling purely checking AHLers into clear scoring roles unless user insists."
+      ],
+      "bottom_six_injury": [
+        "This is a good place to reward strong MONITOR players who can handle energy roles.",
+        "Avoid call-up if it would crush development (e.g., prospect playing 19 AHL minutes going to 8–9 NHL minutes)."
+      ]
+    }
+  },
+  "ahl_usage_rules": {
+    "prioritize_development_over_wins": true,
+    "guidelines": [
+      "Prospects tagged as high_priority should not be buried on 3rd pair or 4th line for long stretches.",
+      "If a high_priority prospect is consistently below their TOI target, Dynasty GPT should flag it and recommend role adjustments.",
+      "Veteran AHLers can take reduced minutes if it frees ice-time for key prospects."
+    ]
+  },
+  "io_behaviour": {
+    "commands": {
+      "evaluate_player_command": {
+        "name": "/dev_eval",
+        "description": "Given a prospect’s AHL usage, form, and role, returns a DEVELOP / MONITOR / READY label with reasoning."
+      },
+      "callup_plan_command": {
+        "name": "/callup_plan",
+        "description": "Given current NHL injuries/needs, suggests which prospect(s) to call up and who should stay in the AHL."
+      }
+    },
+    "output_expectations": [
+      "Always show the band (DEVELOP / MONITOR / READY) and a one-sentence reason.",
+      "Recommend AHL TOI/role adjustments when a prospect is clearly misused.",
+      "Warn clearly if a proposed NHL call-up would badly hurt AHL development for a key prospect."
+    ],
+    "respect_repo_wiring": {
+      "runtime_config_file": "Product/Dynasty/RuntimeConfig_v1.0.json",
+      "bootstrap_file": "Product/Config/LeafsDynasty_MasterBootstrap_v2.0.json"
+    }
+  },
+  "defaults": {
+    "min_games_sample_for_form": 10,
+    "min_games_sample_for_readiness": 15,
+    "allow_callup_from_monitor_band": true
+  },
+  "notes": [
+    "This engine does not touch contracts or trades; it only evaluates development and readiness.",
+    "Dynasty GPT should use this engine whenever you ask about AHL usage, call-ups, or prospect readiness.",
+    "Architect GPT can adjust targets or bands in future versions, but Canon tactics remain separate in the Canon folder."
+  ]
+}
