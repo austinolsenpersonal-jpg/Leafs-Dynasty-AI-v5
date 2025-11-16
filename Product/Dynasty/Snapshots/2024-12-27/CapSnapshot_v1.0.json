@@ -1,0 +1,36 @@
+{
+  "snapshot_meta": {
+    "franchise": "Toronto Maple Leafs – Austin Franchise",
+    "snapshot_date": "2024-12-27",
+    "nhl25_version": "Franchise Mode – In-Season",
+    "snapshot_type": "CapSnapshot",
+    "version": "1.0"
+  },
+  "team_cap": {
+    "league_cap_millions": 88.0,
+    "team_cap_hit_millions": 87.315,
+    "team_cap_space_millions": 0.831,
+    "contracts_used": 43,
+    "contracts_max": 50,
+    "roster_counts": {
+      "nhl_skaters": 18,
+      "nhl_goalies": 2,
+      "ahl_skaters_dressed": 18,
+      "ahl_goalies_dressed": 2,
+      "ahl_scratches": 11
+    }
+  },
+  "retained_salary": {
+    "slots_used": 0,
+    "slots_max": 3
+  },
+  "guards": {
+    "min_cap_buffer_millions": 0.5,
+    "max_retained_slots_allowed": 2
+  },
+  "notes": [
+    "Baseline synced with Dynasty GPT as of 2024-12-27.",
+    "Cap figures are in millions as reported by the NHL 25 Franchise hub.",
+    "Use this snapshot as the Season 1 mid-season cap reference for planning trades and extensions."
+  ]
+}
