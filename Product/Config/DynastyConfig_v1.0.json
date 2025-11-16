@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "module": "Config.DynastySettings",
+  "description": "Global configuration file for Leafs Dynasty AI v5. Controls GM mode, gameplay mode, module activation, and bootstrap linking.",
+
+  "bootstrap_file": "Product/Dynasty/LeafsDynasty_MasterBootstrap_v2.0.json",
+
+  "modes": {
+    "gm_mode_enabled": true,
+    "gameplay_mode_enabled": true,
+    "auto_switch_based_on_prompt": true
+  },
+
+  "architect_sync": {
+    "enabled": true,
+    "enforce_canon": true,
+    "validate_strategy_trees": true,
+    "validate_special_teams": true,
+    "auto_link_matchup_engine": true,
+    "auto_link_goalie_engine": true
+  },
+
+  "dynasty_modules": {
+    "lines_engine": true,
+    "contracts_engine": true,
+    "trade_engine": true,
+    "cap_engine": true,
+    "ahl_development_engine": true,
+    "opponent_memory_engine": true,
+    "scouting_engine": true,
+    "gameplan_engine": true,
+    "dailyops_engine": true,
+    "watchdog_engine": true
+  },
+
+  "repo_rules": {
+    "canonical_paths": true,
+    "disallow_strategy_drift": true,
+    "allow_repo_autoload": true,
+    "strategy_tree_folder": "Product/StrategyTrees",
+    "canon_folder": "Product/Canon",
+    "engines_folder": "Product/Engines",
+    "templates_folder": "Product/Templates",
+    "exports_folder": "Product/Exports"
+  }
+}
