@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "module": "Engines.Index",
+  "description": "Index of all core engines used by Leafs Dynasty Architect & Leafs Dynasty AI. Tells both GPTs which engine JSONs exist, what they do, and where they live in the repo.",
+
+  "meta": {
+    "team": "Toronto Maple Leafs",
+    "game": "NHL 25",
+    "repo": "Leafs-Dynasty-AI-v5",
+    "product_root": "Product"
+  },
+
+  "engines": {
+    "matchup_engine": {
+      "id": "MatchupEngine",
+      "file": "Product/Engines/MatchupEngine_v1.0.json",
+      "role": "Builds full pre-game matchup packages (systems, tendencies, counters, in-game adjustments).",
+      "used_by": [
+        "Architect GPT",
+        "Leafs Dynasty AI"
+      ],
+      "status": "active"
+    },
+    "gameplan_builder": {
+      "id": "GameplanBuilder",
+      "file": "Product/Engines/GameplanBuilder_v1.0.json",
+      "role": "Turns matchup analysis into a structured full gameplan: systems, lines, sliders, PP/PK, goalie, adjustment rules.",
+      "used_by": [
+        "Architect GPT",
+        "Leafs Dynasty AI"
+      ],
+      "status": "active"
+    },
+    "goalie_plan_engine": {
+      "id": "GoaliePlanEngine",
+      "file": "Product/Engines/GoaliePlanEngine_v1.0.json",
+      "role": "Handles goalie rotation rules, fatigue, B2B logic, and form bias.",
+      "used_by": [
+        "Architect GPT",
+        "Leafs Dynasty AI"
+      ],
+      "status": "active"
+    },
+    "dailyops_engine": {
+      "id": "DailyOpsEngine",
+      "file": "Product/Engines/DailyOpsEngine_v1.0.json",
+      "role": "Runs recurring QA, watchdog checks, and summary generation (e.g., DailyOps Summary, slider audits).",
+      "used_by": [
+        "Architect GPT"
+      ],
+      "status": "active"
+    },
+    "alerts_engine": {
+      "id": "AlertsEngine",
+      "file": "Product/Engines/AlertsEngine_v1.0.json",
+      "role": "Optional engine used to raise alerts (e.g., missing DailyOps commits, module drift, or broken config).",
+      "used_by": [
+        "Architect GPT",
+        "Leafs Dynasty AI"
+      ],
+      "status": "planned"
+    }
+  },
+
+  "defaults": {
+    "architect": {
+      "matchup_engine": "MatchupEngine",
+      "gameplan_engine": "GameplanBuilder",
+      "goalie_plan_engine": "GoaliePlanEngine",
+      "dailyops_engine": "DailyOpsEngine"
+    },
+    "dynasty": {
+      "matchup_engine": "MatchupEngine",
+      "gameplan_engine": "GameplanBuilder",
+      "goalie_plan_engine": "GoaliePlanEngine",
+      "dailyops_engine": "DailyOpsEngine"
+    }
+  },
+
+  "rules": {
+    "allow_missing_planned_engines": true,
+    "fail_if_core_engine_missing": true,
+    "core_engines": [
+      "MatchupEngine",
+      "GameplanBuilder",
+      "GoaliePlanEngine",
+      "DailyOpsEngine"
+    ],
+    "notes": [
+      "If any core engine file is missing, Architect should raise a clear error instead of guessing.",
+      "Planned engines (like AlertsEngine) may be referenced but not yet implemented."
+    ]
+  }
+}
