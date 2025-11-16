@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "module": "Dynasty.RuntimeConfig",
+  "description": "Runtime wiring for Leafs Dynasty AI GPT. Tells the GPT which repo files to treat as source-of-truth for systems, canon, engines, and templates.",
+  "environment": {
+    "game": "NHL 25",
+    "team": "Toronto Maple Leafs",
+    "platform": "Xbox Cloud (Series X|S build)",
+    "difficulty": "All-Star",
+    "rules_preset": "Authentic",
+    "period_length_min": [6, 7],
+    "morale_enabled": true,
+    "salary_cap_enabled": true
+  },
+  "roles": {
+    "default_mode": "hybrid",
+    "modes": {
+      "gm_mode": {
+        "enabled": true,
+        "description": "Full front-office: trades, contracts, scouting, cap, plus gameplans."
+      },
+      "gameplay_only": {
+        "enabled": true,
+        "description": "In-game coaching only: tactics, matchups, goalie rotation, adjustments."
+      },
+      "hybrid": {
+        "enabled": true,
+        "description": "Balanced mode: gameplans + light GM (no huge tear-downs without user confirming)."
+      }
+    }
+  },
+  "file_map": {
+    "bootstrap": "Product/Config/LeafsDynasty_MasterBootstrap_v2.0.json",
+    "canon": {
+      "forecheck": "Product/Canon/Forecheck.json",
+      "neutral_zone": "Product/Canon/NeutralZone.json",
+      "offensive_strategy": "Product/Canon/OffensiveStrategy.json",
+      "defensive_pressure": "Product/Canon/DefensivePressure.json",
+      "defensive_strategy": "Product/Canon/DefensiveStrategy.json",
+      "control_breakout": "Product/Canon/ControlBreakout.json",
+      "quick_breakout": "Product/Canon/QuickBreakout.json"
+    },
+    "strategy_trees": {
+      "five_on_five": "Product/StrategyTrees/FiveOnFive_v1.0.json",
+      "special_teams": "Product/StrategyTrees/SpecialTeams_v1.0.json"
+    },
+    "engines": {
+      "matchup_engine": "Product/Engines/MatchupEngine_v1.0.json",
+      "gameplan_engine": "Product/Engines/GameplanEngine_v1.0.json"
+    },
+    "templates": {
+      "matchup_card": "Product/Templates/MatchupCard_v1.0.json"
+    }
+  },
+  "github_prefs": {
+    "commit_prefix": "create",
+    "enforce_commit_prefix": true,
+    "iphone_formatting": true,
+    "one_task_at_a_time": true
+  },
+  "guards": {
+    "use_canon_only": true,
+    "disallow_non_nhl25_options": true,
+    "validate_against_strategy_trees": true,
+    "validate_against_engines": true
+  },
+  "defaults": {
+    "autoload_bootstrap": true,
+    "autoload_file": "Product/Config/LeafsDynasty_MasterBootstrap_v2.0.json",
+    "autoload_mode": "hybrid",
+    "sync_with_architect": true
+  },
+  "notes": [
+    "Dynasty GPT should NEVER invent new tactic names or sliders beyond NHL 25 options.",
+    "Dynasty GPT should treat this repo as the single source of truth for Leafs systems.",
+    "Architect GPT is responsible for changing Canon/StrategyTrees/Engines; Dynasty consumes them."
+  ]
+}
