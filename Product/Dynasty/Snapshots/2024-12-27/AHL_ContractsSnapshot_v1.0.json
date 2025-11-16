@@ -1,0 +1,279 @@
+{
+  "snapshot_meta": {
+    "franchise": "Toronto Maple Leafs – Austin Franchise",
+    "team": "Toronto Marlies",
+    "snapshot_date": "2024-12-27",
+    "snapshot_type": "AHL_Contracts",
+    "version": "1.0"
+  },
+
+  "contracts": [
+    {
+      "player": "Topi Niemelä",
+      "position": "RD",
+      "overall": 75,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "RFA"
+    },
+    {
+      "player": "Mikko Kokkonen",
+      "position": "LD",
+      "overall": 75,
+      "cap_hit_millions": 0.845,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "RFA"
+    },
+    {
+      "player": "Marshall Rifai",
+      "position": "RD",
+      "overall": 74,
+      "cap_hit_millions": 0.875,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "RFA"
+    },
+    {
+      "player": "William Villeneuve",
+      "position": "RD",
+      "overall": 75,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "RFA"
+    },
+    {
+      "player": "Jonny Webber",
+      "position": "RD",
+      "overall": 72,
+      "cap_hit_millions": 0.820,
+      "term_remaining_years": 2,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "Signed"
+    },
+    {
+      "player": "Zach Mermis",
+      "position": "LD",
+      "overall": 75,
+      "cap_hit_millions": 0.845,
+      "term_remaining_years": 0,
+      "contract_type": "1-Way",
+      "waivers": "Yes",
+      "status": "UFA"
+    },
+    {
+      "player": "Noah Chadwick",
+      "position": "LD",
+      "overall": 72,
+      "cap_hit_millions": 0.855,
+      "term_remaining_years": 3,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "Signed"
+    },
+    {
+      "player": "Holinka",
+      "position": "C/LW",
+      "overall": 74,
+      "cap_hit_millions": 0.855,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "Signed"
+    },
+    {
+      "player": "Valis",
+      "position": "C",
+      "overall": 64,
+      "cap_hit_millions": 0.875,
+      "term_remaining_years": 0,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "RFA"
+    },
+    {
+      "player": "Kressler",
+      "position": "C",
+      "overall": 66,
+      "cap_hit_millions": 0.800,
+      "term_remaining_years": 2,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "Signed"
+    },
+    {
+      "player": "Abruzzese",
+      "position": "C",
+      "overall": 75,
+      "cap_hit_millions": 0.855,
+      "term_remaining_years": 0,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "RFA"
+    },
+    {
+      "player": "Trevor Quillan",
+      "position": "C",
+      "overall": 76,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 0,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "RFA"
+    },
+    {
+      "player": "Grant Solow",
+      "position": "RW",
+      "overall": 71,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "Signed"
+    },
+    {
+      "player": "Ryan Tverberg",
+      "position": "RW",
+      "overall": 75,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "Signed"
+    },
+    {
+      "player": "Alex Nylander",
+      "position": "RW",
+      "overall": 76,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 0,
+      "contract_type": "1-Way",
+      "waivers": "Yes",
+      "status": "UFA"
+    },
+    {
+      "player": "Mason Shaw",
+      "position": "LW",
+      "overall": 75,
+      "cap_hit_millions": 0.875,
+      "term_remaining_years": 1,
+      "contract_type":
+      "2-Way",
+      "waivers": "No",
+      "status": "Signed"
+    },
+    {
+      "player": "Sam Barbolini",
+      "position": "LW",
+      "overall": 71,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "Signed"
+    },
+    {
+      "player": "Kyle Clifford",
+      "position": "LW",
+      "overall": 72,
+      "cap_hit_millions": 0.855,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "Signed"
+    },
+    {
+      "player": "Joseph Blandisi",
+      "position": "C",
+      "overall": 75,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "Signed"
+    },
+    {
+      "player": "Nick Johnson",
+      "position": "C",
+      "overall": 66,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 0,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "RFA"
+    },
+    {
+      "player": "Hudson Elynuik",
+      "position": "RW",
+      "overall": 75,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "Yes",
+      "status": "Signed"
+    },
+    {
+      "player": "Dylan Gambrell",
+      "position": "C",
+      "overall": 72,
+      "cap_hit_millions": 0.855,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "Signed"
+    },
+    {
+      "player": "Matt Murray",
+      "position": "G",
+      "overall": 80,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 0,
+      "contract_type": "1-Way",
+      "waivers": "Yes",
+      "status": "UFA"
+    },
+    {
+      "player": "Dennis Hildeby",
+      "position": "G",
+      "overall": 77,
+      "cap_hit_millions": 0.855,
+      "term_remaining_years": 2,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "Signed"
+    },
+    {
+      "player": "Artur Akhtyamov",
+      "position": "G",
+      "overall": 70,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "RFA"
+    },
+    {
+      "player": "Vyacheslav Peksa",
+      "position": "G",
+      "overall": 70,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 1,
+      "contract_type": "2-Way",
+      "waivers": "No",
+      "status": "RFA"
+    }
+  ],
+
+  "notes": [
+    "Snapshot includes all AHL and fringe players' contracts as of 2024-12-27.",
+    "This is used by Dynasty GPT for AHL development planning, waiver risk, and call-up strategies.",
+    "All salaries listed in millions. Term reflects full seasons remaining."
+  ]
+}
