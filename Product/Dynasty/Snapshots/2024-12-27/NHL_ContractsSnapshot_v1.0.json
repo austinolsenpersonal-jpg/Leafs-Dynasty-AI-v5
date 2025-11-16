@@ -1,0 +1,217 @@
+{
+  "snapshot_meta": {
+    "franchise": "Toronto Maple Leafs – Austin Franchise",
+    "snapshot_date": "2024-12-27",
+    "snapshot_type": "NHL_Contracts",
+    "version": "1.0"
+  },
+
+  "contracts": [
+    {
+      "player": "Auston Matthews",
+      "position": "C",
+      "overall": 95,
+      "cap_hit_millions": 13.250,
+      "term_remaining_years": 4,
+      "clause": "NMC",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    },
+    {
+      "player": "Mitch Marner",
+      "position": "RW",
+      "overall": 93,
+      "cap_hit_millions": 10.900,
+      "term_remaining_years": 1,
+      "clause": "NMC",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    },
+    {
+      "player": "William Nylander",
+      "position": "RW/C",
+      "overall": 91,
+      "cap_hit_millions": 11.500,
+      "term_remaining_years": 2,
+      "clause": "NMC",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    },
+    {
+      "player": "John Tavares",
+      "position": "C",
+      "overall": 88,
+      "cap_hit_millions": 11.000,
+      "term_remaining_years": 0,
+      "clause": "NMC",
+      "contract_type": "1-Way",
+      "status": "UFA"
+    },
+    {
+      "player": "Morgan Rielly",
+      "position": "LD",
+      "overall": 88,
+      "cap_hit_millions": 7.500,
+      "term_remaining_years": 6,
+      "clause": "NMC",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    },
+    {
+      "player": "Brandon Carlo",
+      "position": "RD",
+      "overall": 86,
+      "cap_hit_millions": 3.485,
+      "term_remaining_years": 3,
+      "clause": "M-NTC",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    },
+    {
+      "player": "Jake McCabe",
+      "position": "LD",
+      "overall": 85,
+      "cap_hit_millions": 4.515,
+      "term_remaining_years": 5,
+      "clause": "None",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    },
+    {
+      "player": "Matthew Knies",
+      "position": "LW",
+      "overall": 85,
+      "cap_hit_millions": 2.900,
+      "term_remaining_years": 2,
+      "clause": "NTC",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    },
+    {
+      "player": "Oliver Ekman-Larsson",
+      "position": "LD",
+      "overall": 84,
+      "cap_hit_millions": 3.500,
+      "term_remaining_years": 1,
+      "clause": "NTC",
+      "contract_type": "1-Way",
+      "status": "UFA"
+    },
+    {
+      "player": "Chris Tanev",
+      "position": "RD",
+      "overall": 84,
+      "cap_hit_millions": 4.500,
+      "term_remaining_years": 1,
+      "clause": "NMC",
+      "contract_type": "1-Way",
+      "status": "UFA"
+    },
+    {
+      "player": "Max Domi",
+      "position": "C/LW",
+      "overall": 82,
+      "cap_hit_millions": 3.750,
+      "term_remaining_years": 1,
+      "clause": "M-NTC",
+      "contract_type": "1-Way",
+      "status": "UFA"
+    },
+    {
+      "player": "Matt Dumba",
+      "position": "RD",
+      "overall": 82,
+      "cap_hit_millions": 0.875,
+      "term_remaining_years": 1,
+      "clause": "None",
+      "contract_type": "1-Way",
+      "status": "UFA"
+    },
+    {
+      "player": "Nick Robertson",
+      "position": "LW",
+      "overall": 81,
+      "cap_hit_millions": 0.875,
+      "term_remaining_years": 0,
+      "clause": "None",
+      "contract_type": "1-Way",
+      "status": "RFA"
+    },
+    {
+      "player": "Max Pacioretty",
+      "position": "LW",
+      "overall": 81,
+      "cap_hit_millions": 0.875,
+      "term_remaining_years": 0,
+      "clause": "None",
+      "contract_type": "1-Way",
+      "status": "UFA"
+    },
+    {
+      "player": "Tyson Foerster",
+      "position": "RW",
+      "overall": 81,
+      "cap_hit_millions": 0.865,
+      "term_remaining_years": 0,
+      "clause": "None",
+      "contract_type": "2-Way",
+      "status": "RFA"
+    },
+    {
+      "player": "Dawson Mercer",
+      "position": "RW/C",
+      "overall": 83,
+      "cap_hit_millions": 2.950,
+      "term_remaining_years": 1,
+      "clause": "None",
+      "contract_type": "1-Way",
+      "status": "RFA"
+    },
+    {
+      "player": "David Kampf",
+      "position": "C",
+      "overall": 83,
+      "cap_hit_millions": 2.400,
+      "term_remaining_years": 2,
+      "clause": "M-NTC",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    },
+    {
+      "player": "Alex Steeves",
+      "position": "C",
+      "overall": 76,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 0,
+      "clause": "None",
+      "contract_type": "2-Way",
+      "status": "RFA"
+    },
+    {
+      "player": "Joseph Woll",
+      "position": "G",
+      "overall": 84,
+      "cap_hit_millions": 0.775,
+      "term_remaining_years": 0,
+      "clause": "None",
+      "contract_type": "1-Way",
+      "status": "Signed (extension starts next season)"
+    },
+    {
+      "player": "Anthony Stolarz",
+      "position": "G",
+      "overall": 84,
+      "cap_hit_millions": 2.500,
+      "term_remaining_years": 1,
+      "clause": "None",
+      "contract_type": "1-Way",
+      "status": "Signed"
+    }
+  ],
+
+  "notes": [
+    "This snapshot records every NHL contract exactly as shown in the in-game roster/contract screens on 2024-12-27.",
+    "Used by Dynasty GPT for cap modeling, extension laddering, and trade proposal legality.",
+    "All salaries listed in millions of dollars."
+  ]
+}
