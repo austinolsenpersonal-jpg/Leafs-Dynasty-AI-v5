@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "module": "Coaching.CoachingCardTemplate",
+  "description": "Hybrid coaching card template used by Architect + Dynasty GPT. Optimized for iPhone readability but detailed enough for full pre-game coaching logic.",
+  "meta": {
+    "game": "NHL 25",
+    "team": "Toronto Maple Leafs",
+    "uses": [
+      "StrategyTrees/FiveOnFive_v1.0.json",
+      "StrategyTrees/SpecialTeams_v1.0.json",
+      "Canon/Forecheck.json",
+      "Canon/NeutralZone.json",
+      "Canon/DefensivePressure.json",
+      "Canon/DefensiveStrategy.json",
+      "Canon/OffensiveStrategy.json"
+    ]
+  },
+
+  "structure": {
+    "sections": [
+      "opponent_identity",
+      "recommended_settings",
+      "preferred_matchups",
+      "avoid_matchups",
+      "primary_tactics",
+      "special_teams",
+      "in_game_adjustments",
+      "goalie_plan_triggers",
+      "win_conditions"
+    ]
+  },
+
+  "template": {
+    "opponent_identity": {
+      "fields": [
+        "team_name",
+        "style_summary",
+        "forecheck_behavior",
+        "neutral_zone_behavior",
+        "cycle_tendencies",
+        "rush_tendencies",
+        "special_notes"
+      ]
+    },
+
+    "recommended_settings": {
+      "forecheck": null,
+      "neutral_zone": null,
+      "trap_forecheck_slider": null,
+      "defensive_pressure": null,
+      "defensive_strategy": null,
+      "offensive_strategy": null,
+      "control_breakout": null,
+      "quick_breakout": null
+    },
+
+    "preferred_matchups": {
+      "lines_to_target": [],
+      "pairs_to_target": [],
+      "forward_advantages": [],
+      "defense_advantages": []
+    },
+
+    "avoid_matchups": {
+      "lines_to_avoid": [],
+      "pairs_to_avoid": [],
+      "speed_mismatches": [],
+      "skill_mismatches": []
+    },
+
+    "primary_tactics": {
+      "offensive_plan": [],
+      "defensive_plan": [],
+      "transition_plan": [],
+      "forecheck_notes": [],
+      "nz_notes": [],
+      "dz_notes": []
+    },
+
+    "special_teams": {
+      "powerplay_plan": [],
+      "penalty_kill_plan": [],
+      "pp_triggers": [],
+      "pk_triggers": []
+    },
+
+    "in_game_adjustments": {
+      "if_cycle_is_losing": [],
+      "if_speed_is_losing": [],
+      "if_goalie_is_hot": [],
+      "if_down_by_1": [],
+      "if_down_by_2": [],
+      "if_leading": []
+    },
+
+    "goalie_plan_triggers": {
+      "starter_logic": [],
+      "fatigue_switch": [],
+      "pull_triggers": [],
+      "overtime_rules": []
+    },
+
+    "win_conditions": {
+      "keys": []
+    }
+  }
+}
