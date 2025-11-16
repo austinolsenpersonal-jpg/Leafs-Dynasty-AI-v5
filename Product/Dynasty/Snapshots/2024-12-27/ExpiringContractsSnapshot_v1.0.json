@@ -1,0 +1,161 @@
+{
+  "snapshot_meta": {
+    "franchise": "Toronto Maple Leafs – Austin Franchise",
+    "snapshot_date": "2024-12-27",
+    "snapshot_type": "Expiring_Contracts",
+    "version": "1.0"
+  },
+
+  "nhl_expiring_contracts": [
+    {
+      "player": "John Tavares",
+      "position": "C",
+      "overall": 88,
+      "contract_type": "UFA",
+      "cap_hit_millions": 11.000,
+      "tavares_policy": "Soft Walk – Playoff Push"
+    },
+    {
+      "player": "Oliver Ekman-Larsson",
+      "position": "LD",
+      "overall": 84,
+      "contract_type": "UFA",
+      "cap_hit_millions": 3.500
+    },
+    {
+      "player": "Chris Tanev",
+      "position": "RD",
+      "overall": 84,
+      "contract_type": "UFA",
+      "cap_hit_millions": 4.500
+    },
+    {
+      "player": "Max Domi",
+      "position": "C/LW",
+      "overall": 82,
+      "contract_type": "UFA",
+      "cap_hit_millions": 3.750
+    },
+    {
+      "player": "Matt Dumba",
+      "position": "RD",
+      "overall": 82,
+      "contract_type": "UFA",
+      "cap_hit_millions": 0.875
+    },
+    {
+      "player": "Max Pacioretty",
+      "position": "LW",
+      "overall": 81,
+      "contract_type": "UFA",
+      "cap_hit_millions": 0.875
+    },
+    {
+      "player": "Nick Robertson",
+      "position": "LW",
+      "overall": 81,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.875
+    },
+    {
+      "player": "Tyson Foerster",
+      "position": "RW",
+      "overall": 81,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.865
+    },
+    {
+      "player": "Dawson Mercer",
+      "position": "RW/C",
+      "overall": 83,
+      "contract_type": "RFA",
+      "cap_hit_millions": 2.950
+    },
+    {
+      "player": "Alex Steeves",
+      "position": "C",
+      "overall": 76,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.775
+    },
+    {
+      "player": "Joseph Woll",
+      "position": "G",
+      "overall": 84,
+      "contract_type": "Signed (New deal kicks in)",
+      "cap_hit_millions": 3.665
+    }
+  ],
+
+  "ahl_expiring_contracts": [
+    {
+      "player": "Alex Nylander",
+      "position": "RW",
+      "overall": 76,
+      "contract_type": "UFA",
+      "cap_hit_millions": 0.775
+    },
+    {
+      "player": "Zach Mermis",
+      "position": "LD",
+      "overall": 75,
+      "contract_type": "UFA",
+      "cap_hit_millions": 0.845
+    },
+    {
+      "player": "Trevor Quillan",
+      "position": "C",
+      "overall": 76,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.775
+    },
+    {
+      "player": "Nick Abruzzese",
+      "position": "C",
+      "overall": 75,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.855
+    },
+    {
+      "player": "Valis",
+      "position": "C",
+      "overall": 64,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.875
+    },
+    {
+      "player": "Nick Johnson",
+      "position": "C",
+      "overall": 66,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.775
+    },
+    {
+      "player": "Artur Akhtyamov",
+      "position": "G",
+      "overall": 70,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.775
+    },
+    {
+      "player": "Vyacheslav Peksa",
+      "position": "G",
+      "overall": 70,
+      "contract_type": "RFA",
+      "cap_hit_millions": 0.775
+    },
+    {
+      "player": "Matt Murray",
+      "position": "G",
+      "overall": 80,
+      "contract_type": "UFA",
+      "cap_hit_millions": 0.775
+    }
+  ],
+
+  "notes": [
+    "This snapshot captures all players whose deals expire after the 2024-25 season.",
+    "Used by Dynasty GPT for extension laddering, offseason planning, and deadline strategy.",
+    "Tavares handled under Soft Walk policy: playoff core now, only re-sign if extremely cheap."
+  ]
+}
