@@ -1,0 +1,149 @@
+{
+  "version": "1.0",
+  "module": "Coaching.MatchupCard",
+  "description": "Standardized matchup card template for all opponents in NHL 25. Fully compatible with Canon v4.1, NHL25-legal tactics, StrategyTrees, and GameplanBuilder.",
+  "meta": {
+    "game": "NHL 25",
+    "team": "Toronto Maple Leafs",
+    "created_for": "Leafs-Dynasty-AI-v5",
+    "compatibility": [
+      "Product/StrategyTrees/FiveOnFive_v1.0.json",
+      "Product/StrategyTrees/SpecialTeams_v1.0.json",
+      "Product/Canon/Forecheck.json",
+      "Product/Canon/NeutralZone.json",
+      "Product/Canon/DefensivePressure.json",
+      "Product/Canon/DefensiveStrategy.json",
+      "Product/Canon/ControlBreakout.json",
+      "Product/Canon/QuickBreakout.json",
+      "Product/Coaching/GameplanBuilder_v1.0.json"
+    ]
+  },
+
+  "sections": {
+    "opponent_profile": {
+      "identity": "High-cycle / rush / hybrid / heavy forecheck (select at runtime)",
+      "strengths": [],
+      "weaknesses": [],
+      "key_players": [],
+      "goaltending_notes": ""
+    },
+
+    "five_on_five_tactics": {
+      "forecheck": {
+        "options": [
+          "1-2-2 Passive",
+          "1-2-2 Aggressive",
+          "2-3",
+          "Weak-Side Lock"
+        ],
+        "default_usage": "",
+        "notes": ""
+      },
+      "neutral_zone": {
+        "options": [
+          "1-2-2 Red",
+          "1-2-2 Blue",
+          "1-3-1",
+          "1-4"
+        ],
+        "default_usage": "",
+        "notes": ""
+      },
+      "defensive_pressure": {
+        "options": [
+          "Protect Net",
+          "Contain Puck",
+          "Normal",
+          "Puck Side Attack",
+          "High Pressure"
+        ],
+        "default_usage": "",
+        "notes": ""
+      },
+      "defensive_strategy": {
+        "options": [
+          "Collapsing",
+          "Staggered",
+          "Tight Point"
+        ],
+        "default_usage": "",
+        "notes": ""
+      },
+      "offensive_strategy": {
+        "options": [
+          "Defend Lead",
+          "Conservative",
+          "Standard",
+          "Aggressive",
+          "Full Attack"
+        ],
+        "default_usage": "",
+        "notes": ""
+      },
+      "breakouts": {
+        "control_breakout": [
+          "Strong Side Slant",
+          "Blue-to-Blue",
+          "3-High"
+        ],
+        "quick_breakout": [
+          "Stay Wide",
+          "Leave Zone Early",
+          "Close Support"
+        ],
+        "notes": ""
+      }
+    },
+
+    "line_matchups": {
+      "preferred": [],
+      "avoid": [],
+      "shadow_assignments": [],
+      "target_pairs": []
+    },
+
+    "target_profiles": {
+      "players_to_attack": [],
+      "players_to_avoid": [],
+      "goalie_weaknesses": [],
+      "system_exploits": []
+    },
+
+    "offensive_plan": {
+      "entry_patterns": [],
+      "cycle_targets": [],
+      "shot_locations": [],
+      "timed_adjustments": []
+    },
+
+    "defensive_plan": {
+      "rush_defense_rules": [],
+      "in_zone_rules": [],
+      "slot_protection": [],
+      "pinch_rules": []
+    },
+
+    "special_teams": {
+      "powerplay": {
+        "pp1": "",
+        "pp2": "",
+        "exploits": []
+      },
+      "penalty_kill": {
+        "pk1": "",
+        "pk2": "",
+        "rules": []
+      }
+    },
+
+    "in_game_adjustments": {
+      "if_opponent_cycle_heavy": [],
+      "if_opponent_rush_based": [],
+      "if_goalie_hot": [],
+      "if_trailing": [],
+      "if_leading": []
+    },
+
+    "win_conditions": []
+  }
+}
