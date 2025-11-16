@@ -1,0 +1,89 @@
+{
+  "snapshot_meta": {
+    "franchise": "Toronto Maple Leafs – Austin Franchise",
+    "team": "Toronto Marlies",
+    "snapshot_date": "2024-12-27",
+    "snapshot_type": "AHL_Lines",
+    "version": "1.0"
+  },
+
+  "even_strength": {
+    "line_1": {
+      "LW": "Alex Nylander",
+      "C": "Trevor Quillan",
+      "RW": "Roni Hirvonen"
+    },
+    "line_2": {
+      "LW": "Mason Shaw",
+      "C": "Boko Imama / Kyle Clifford (rotational if applicable)",
+      "RW": "Bobby McMann / Hudson Elynuik (as per in-game screen)"
+    },
+    "line_3": {
+      "LW": "Kyle Clifford",
+      "C": "Joseph Blandisi",
+      "RW": "Ryan Tverberg"
+    },
+    "line_4": {
+      "LW": "Sam Barbolini",
+      "C": "Nick Abruzzese",
+      "RW": "Grant Solow"
+    }
+  },
+
+  "defense_pairs": {
+    "pair_1": {
+      "LD": "Mikko Kokkonen",
+      "RD": "Topi Niemelä"
+    },
+    "pair_2": {
+      "LD": "William Villeneuve",
+      "RD": "Marshall Rifai"
+    },
+    "pair_3": {
+      "LD": "Noah Chadwick / Zachary Mermis (as dressed)",
+      "RD": "Max Lajoie / Jonny Webber (as dressed)"
+    }
+  },
+
+  "goalies": {
+    "starter": "Matt Murray",
+    "backup": "Dennis Hildeby",
+    "scratches": [
+      "Artur Akhtyamov",
+      "Vyacheslav Peksa"
+    ]
+  },
+
+  "special_teams": {
+    "powerplay": {
+      "notes": [
+        "PP1 and PP2 were configured around Quillan, Nylander, Hirvonen, Kokkonen, and Niemelä as primary skill/core pieces.",
+        "Exact unit layouts are stored in Dynasty GPT memory; this snapshot records structural intent rather than literal in-game chemistry numbers."
+      ]
+    },
+    "penalty_kill": {
+      "notes": [
+        "PK units prioritize defensive forwards and mobile right-shot defensemen such as Villeneuve and Rifai.",
+        "Primary objective is development with realistic roles rather than min-maxed short-term ratings."
+      ]
+    }
+  },
+
+  "strategy_reference": {
+    "even_strength": {
+      "forecheck": "2-3",
+      "neutral_zone": "1-2-2 Red",
+      "defensive_pressure": "Normal",
+      "defensive_strategy": "Staggered"
+    },
+    "offense_breakouts": {
+      "offensive_pressure": "Standard",
+      "control_breakout": "Strong Side Slant",
+      "quick_breakout": "Stay Wide"
+    },
+    "notes": [
+      "AHL strategy is intentionally mirrored to the NHL club to support system familiarity and smoother call-up transitions.",
+      "This snapshot is intended as a structural and philosophical record of Marlies usage at the 2024-12-27 baseline."
+    ]
+  }
+}
