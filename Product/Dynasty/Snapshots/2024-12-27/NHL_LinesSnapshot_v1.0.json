@@ -1,0 +1,109 @@
+{
+  "snapshot_meta": {
+    "franchise": "Toronto Maple Leafs – Austin Franchise",
+    "snapshot_date": "2024-12-27",
+    "snapshot_type": "NHL_Lines",
+    "version": "1.0"
+  },
+
+  "even_strength": {
+    "line_1": {
+      "LW": "Matthew Knies (85)",
+      "C": "Auston Matthews (95)",
+      "RW": "Mitch Marner (93)",
+      "chemistry": "+3"
+    },
+    "line_2": {
+      "LW": "Nick Robertson (81)",
+      "C": "John Tavares (88)",
+      "RW": "William Nylander (91)",
+      "chemistry": "+1"
+    },
+    "line_3": {
+      "LW": "Max Domi (82)",
+      "C": "David Kampf (83)",
+      "RW": "Dawson Mercer (83)",
+      "chemistry": "+1"
+    },
+    "line_4": {
+      "LW": "Max Pacioretty (81)",
+      "C": "Alex Steeves (76)",
+      "RW": "Tyson Foerster (81)",
+      "chemistry": "+1"
+    }
+  },
+
+  "defense_pairs": {
+    "pair_1": {
+      "LD": "Morgan Rielly (88)",
+      "RD": "Brandon Carlo (86)",
+      "chemistry": "+2"
+    },
+    "pair_2": {
+      "LD": "O. Ekman-Larsson (84)",
+      "RD": "Matt Dumba (82)",
+      "chemistry": "0"
+    },
+    "pair_3": {
+      "LD": "Jake McCabe (85)",
+      "RD": "Chris Tanev (84)",
+      "chemistry": "0"
+    }
+  },
+
+  "goalies": {
+    "starter": "Joseph Woll (84)",
+    "backup": "Anthony Stolarz (84)"
+  },
+
+  "special_teams": {
+    "pp1": {
+      "C": "John Tavares (88)",
+      "LW": "Mitch Marner (93)",
+      "RW": "William Nylander (91)",
+      "Point_1": "Morgan Rielly (88)",
+      "Point_2": "Auston Matthews (95)",
+      "chemistry": "+5"
+    },
+    "pp2": {
+      "C": "Max Domi (82)",
+      "LW": "Matthew Knies (85)",
+      "RW": "Nick Robertson (81)",
+      "Point_1": "Dawson Mercer (83)",
+      "Point_2": "O. Ekman-Larsson (84)",
+      "chemistry": "0"
+    },
+    "pk1": {
+      "C": "David Kampf (83)",
+      "W": "Tyson Foerster (81)",
+      "LD": "Chris Tanev (84)",
+      "RD": "Brandon Carlo (86)"
+    },
+    "pk2": {
+      "C": "Alex Steeves (76)",
+      "W": "William Nylander (91)",
+      "LD": "Morgan Rielly (88)",
+      "RD": "Jake McCabe (85)"
+    },
+    "pk3": {
+      "C": "John Tavares (88)",
+      "W": "Mitch Marner (93)",
+      "LD": "O. Ekman-Larsson (84)",
+      "RD": "Matt Dumba (82)"
+    }
+  },
+
+  "strategy_reference": {
+    "forecheck": "2-3",
+    "neutral_zone": "1-2-2 Red",
+    "defensive_pressure": "Normal",
+    "defensive_strategy": "Staggered",
+    "offensive_pressure": "Standard",
+    "control_breakout": "Strong Side Slant",
+    "quick_breakout": "Stay Wide",
+    "notes": [
+      "Strategy settings captured directly from screenshots on 2024-12-27.",
+      "Special teams alignment matches NHL 25 chemistry readings."
+    ]
+  }
+}
