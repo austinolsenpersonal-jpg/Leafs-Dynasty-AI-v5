@@ -1,0 +1,244 @@
+{
+  "version": "1.0",
+  "module": "Engines.Contract",
+  "name": "Leafs Dynasty Contract Engine",
+  "description": "Contract extension and negotiation engine for NHL 25 Leafs Dynasty. Produces realistic min/target/max offers using age, role, production, and cap context. Supports Conservative / Hybrid / Aggressive ladders and respects Leafs cap rules from the Master Bootstrap.",
+  "environment": {
+    "game": "NHL 25",
+    "mode": "Franchise",
+    "team": "Toronto Maple Leafs",
+    "platform": "Xbox Cloud (Series X|S build)"
+  },
+  "modes": {
+    "default_mode": "hybrid",
+    "profiles": {
+      "conservative": {
+        "description": "Team-friendly focus. Shorter terms or lower AAV; avoids risky term on aging players.",
+        "aav_risk_factor": 0.4,
+        "term_risk_factor": 0.4,
+        "signing_window_flex": 0.5
+      },
+      "hybrid": {
+        "description": "Balanced. Tries to align fair AAV with reasonable term, using comps and age curve.",
+        "aav_risk_factor": 0.6,
+        "term_risk_factor": 0.6,
+        "signing_window_flex": 0.7
+      },
+      "aggressive": {
+        "description": "Lock core early. Will go closer to market max AAV/term for true core pieces, especially in their prime.",
+        "aav_risk_factor": 0.85,
+        "term_risk_factor": 0.9,
+        "signing_window_flex": 1.0
+      }
+    }
+  },
+  "constraints": {
+    "respect_salary_cap": true,
+    "respect_contract_limits": true,
+    "min_cap_buffer_millions": 0.5,
+    "min_deadline_cap_buffer_millions": 1.0,
+    "max_total_contracts": 50,
+    "avoid_front_office_insanity": true,
+    "notes": [
+      "Engine must keep at least $0.5M cap space in normal operation.",
+      "Within ~30 days of deadline, target ≥ $1.0M buffer for call-ups and injuries."
+    ]
+  },
+  "inputs": {
+    "required_fields": [
+      "player_name",
+      "position",
+      "handedness",
+      "age",
+      "overall_rating",
+      "potential_band",
+      "current_cap_hit",
+      "current_term_years",
+      "years_remaining",
+      "ufa_or_rfa",
+      "production_tier",
+      "defensive_impact_tier",
+      "special_teams_role",
+      "injury_risk_tier"
+    ],
+    "optional_fields": [
+      "chemistry_tag",
+      "marketability_tier",
+      "locker_room_role",
+      "no_trade_clause",
+      "no_move_clause"
+    ],
+    "missing_data_policy": {
+      "ask_user_if_missing": true,
+      "allow_estimation": false,
+      "notes": [
+        "If key fields like age, overall, or current cap hit are missing, GPT must ask instead of guessing."
+      ]
+    }
+  },
+  "valuation_model": {
+    "description": "Computes internal contract value band based on age, role, production, and potential.",
+    "age_bands": {
+      "young_core": {
+        "min_age": 20,
+        "max_age": 25,
+        "term_bias": "long",
+        "comment": "Prime or entering prime years. Good candidates for 5–8 year deals if core."
+      },
+      "prime": {
+        "min_age": 26,
+        "max_age": 30,
+        "term_bias": "medium_long",
+        "comment": "Prime years. Strong candidates for 4–7 year deals depending on role."
+      },
+      "late_prime": {
+        "min_age": 31,
+        "max_age": 33,
+        "term_bias": "medium",
+        "comment": "Becomes risky to go max term; prefer 3–5 years."
+      },
+      "aging": {
+        "min_age": 34,
+        "max_age": 40,
+        "term_bias": "short",
+        "comment": "1–3 year deals; avoid long-term commitments."
+      }
+    },
+    "role_bands": {
+      "elite_core": {
+        "description": "True 1C, 1W, or #1 D level or close.",
+        "base_term_years": [6, 8],
+        "base_cap_hit_factor": 1.00
+      },
+      "top_six_top_four": {
+        "description": "Top-six F or top-four D.",
+        "base_term_years": [4, 6],
+        "base_cap_hit_factor": 0.85
+      },
+      "middle_six_4_5_d": {
+        "description": "Middle-six F or 4/5 D.",
+        "base_term_years": [3, 5],
+        "base_cap_hit_factor": 0.7
+      },
+      "depth": {
+        "description": "Depth forwards and defense.",
+        "base_term_years": [1, 3],
+        "base_cap_hit_factor": 0.5
+      },
+      "replacement": {
+        "description": "13th forwards, 7th D, fringe players.",
+        "base_term_years": [1, 2],
+        "base_cap_hit_factor": 0.35
+      }
+    },
+    "ufa_rfa_modifiers": {
+      "ufa": {
+        "aav_multiplier": 1.1,
+        "term_flex": 1.0,
+        "comment": "UFA years are more expensive; AAV can be above intrinsic value."
+      },
+      "rfa": {
+        "aav_multiplier": 0.95,
+        "term_flex": 0.8,
+        "comment": "RFA discounts possible; bridge deals are common."
+      }
+    }
+  },
+  "ladder_model": {
+    "description": "Builds min / target / max ladders for AAV and term.",
+    "ladder_structure": {
+      "min": {
+        "label": "Team-friendly",
+        "aav_offset_percent": -8,
+        "term_offset_years": -1
+      },
+      "target": {
+        "label": "Fair middle",
+        "aav_offset_percent": 0,
+        "term_offset_years": 0
+      },
+      "max": {
+        "label": "Player-leaning",
+        "aav_offset_percent": 8,
+        "term_offset_years": 1
+      }
+    },
+    "mode_multipliers": {
+      "conservative": {
+        "min_aav_boost": -2,
+        "max_aav_cut": -2,
+        "max_term_cut": 1
+      },
+      "hybrid": {
+        "min_aav_boost": 0,
+        "max_aav_cut": 0,
+        "max_term_cut": 0
+      },
+      "aggressive": {
+        "min_aav_boost": 2,
+        "max_aav_boost": 3,
+        "max_term_boost": 1
+      }
+    }
+  },
+  "leafs_policies": {
+    "core_protection": {
+      "description": "How to treat true core pieces.",
+      "rules": [
+        "For elite_core players in their prime, favour longer term if cap allows.",
+        "Do not recommend trading core pieces in contract talks unless user explicitly asks.",
+        "If an extension would badly damage cap flexibility, call it out clearly."
+      ]
+    },
+    "bridge_deals": {
+      "description": "Guidance for RFA bridge contracts.",
+      "when_to_use": [
+        "Young player with good upside but not fully proven.",
+        "Cap is tight in current 1–2 year window.",
+        "Team wants to delay paying full UFA-level money."
+      ],
+      "typical_term_years": [2, 3]
+    },
+    "aging_vets": {
+      "description": "How to handle aging players 32+.",
+      "rules": [
+        "Avoid more than 3 years for non-core aging vets.",
+        "Consider 1-year deals if performance is volatile.",
+        "Flag any contract that would end beyond age 37 as high risk."
+      ]
+    }
+  },
+  "io_behaviour": {
+    "commands": {
+      "evaluate_command": {
+        "name": "/contract_eval",
+        "description": "Given a player’s details, returns a reasonable min/target/max extension band and labels it Conservative / Hybrid / Aggressive."
+      },
+      "plan_command": {
+        "name": "/extension_plan",
+        "description": "Builds a prioritized list of who to sign now, later, or let walk, based on cap, age, and role."
+      }
+    },
+    "output_expectations": [
+      "Always show three bands: Min, Target, Max (AAV + term).",
+      "Clearly label which band is Conservative, Hybrid, Aggressive.",
+      "Call out any recommendation that squeezes cap buffer below the configured minimum."
+    ],
+    "respect_repo_wiring": {
+      "runtime_config_file": "Product/Dynasty/RuntimeConfig_v1.0.json",
+      "bootstrap_file": "Product/Config/LeafsDynasty_MasterBootstrap_v2.0.json"
+    }
+  },
+  "defaults": {
+    "active_mode": "hybrid",
+    "max_risky_contracts": 2,
+    "warn_if_cap_hit_over_team_threshold_millions": 10.0,
+    "warn_if_term_over_years": 7
+  },
+  "notes": [
+    "This engine is not allowed to sign or trade players itself; it only recommends ranges and priorities.",
+    "Dynasty GPT must always present contract advice with context: cap, age, role, and window.",
+    "If information is incomplete, it must ask you first instead of guessing.",
+    "Architect GPT should treat this engine as part of the gameplay/GM layer, not Canon strategies."
+  ]
+}
