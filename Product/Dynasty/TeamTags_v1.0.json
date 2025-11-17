@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "description": "Persistent team-style tags for Leafs Dynasty AI v5. Used to remember how opponents play across seasons and feed into archetypes, gameplans, and goalie/slider decisions.",
+  "tag_definitions": {
+    "chaos_forecheck": "High-pressure, turnover-hunting forecheck that thrives on broken plays and mistakes.",
+    "weak_side_lock": "Aggressive forecheck that overloads strong side and locks weak side lanes.",
+    "shooting_pp": "Power play style built around high-volume shots from the point and circles.",
+    "curl_shooters": "Forwards who repeatedly curl off the wall/half-boards and shoot from the circles.",
+    "high_pressure_dz": "Defensive zone behavior that attacks puck carriers aggressively instead of collapsing.",
+    "rebound_danger_team": "Team that generates a high volume of rebounds and chaos near the crease.",
+    "slow_team": "Skates and transitions slower; relies more on structure than pure speed.",
+    "umbrella_pp": "Umbrella power play with a primary flank shooter (e.g., Ovi spot) and high rotation up top.",
+    "ovi_flank_priority": "PP setup heavily biased to left/right circle one-timer threat.",
+    "nz_1_2_2_blue_trap": "Neutral zone 1-2-2 Blue line trap, forcing dumps and slow entries.",
+    "weak_pair3": "Third defense pair is a clear weak point that can be targeted consistently.",
+    "rebound_farm_goalie": "Opponent goalie is prone to leaving dangerous rebounds; prime candidate for low shots and net crashes."
+  },
+  "teams": {
+    "DET": {
+      "name": "Detroit Red Wings",
+      "conference": "Eastern",
+      "division": "Atlantic",
+      "archetype_hint": "chaos_forecheck",
+      "tags": [
+        "chaos_forecheck",
+        "weak_side_lock",
+        "shooting_pp",
+        "curl_shooters",
+        "high_pressure_dz",
+        "rebound_danger_team"
+      ],
+      "notes": "Detroit thrives on chaos, aggressive forecheck pressure, and shooting power play volume. Treat them as a high-event, turnover-hunting team and keep trap slider lower early."
+    },
+    "WSH": {
+      "name": "Washington Capitals",
+      "conference": "Eastern",
+      "division": "Metropolitan",
+      "archetype_hint": "slow_team",
+      "tags": [
+        "slow_team",
+        "umbrella_pp",
+        "ovi_flank_priority",
+        "nz_1_2_2_blue_trap",
+        "weak_pair3",
+        "rebound_farm_goalie"
+      ],
+      "notes": "Washington is slower and more structured. Umbrella PP runs heavily through the Ovi flank. Third D pair is targetable, and vs Thompson they are a rebound farm—shoot low, crash hard."
+    }
+  }
+}
