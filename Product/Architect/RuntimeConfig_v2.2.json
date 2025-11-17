@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "name": "Architect_RuntimeConfig_v2.2",
+    "description": "Runtime update enabling RosterSync Integrity Layer v1.0 and strengthening roster validation gates for Leafs Dynasty AI.",
+    "version": "2.2",
+    "game": "NHL 25",
+    "franchise": "Toronto Maple Leafs – Austin Franchise",
+    "author": "Leafs Architect GPT",
+    "last_updated": "2025-11-17"
+  },
+
+  "paths": {
+    "canon_root": "Product/Canon",
+    "strategy_trees_root": "Product/StrategyTrees",
+    "engines_root": "Product/Engines",
+    "config_root": "Product/Config",
+    "dynasty_root": "Product/Dynasty",
+    "architect_root": "Product/Architect",
+    "snapshots_root": "Product/Dynasty/Snapshots",
+    "matchups_root": "Product/Dynasty/Matchups",
+    "reports_root": "Reports",
+    "reports_gameplans_root": "Reports/Gameplans",
+    "reports_postgames_root": "Reports/Postgames",
+    "formatting_spec": "Docs/Formatting_Spec_v1.0.md",
+    "archetypes": "Product/Dynasty/OpponentArchetypes_v1.0.json",
+    "roster_sync": "Product/Dynasty/RosterSync_Integrity_v1.0.json"
+  },
+
+  "modules": {
+    "strategy_canon": {
+      "manifest": "Product/Canon/Canon_Manifest_v5.0.json",
+      "forecheck": "Product/Canon/Forecheck_v5.0.json",
+      "neutral_zone": "Product/Canon/NeutralZone_v5.0.json",
+      "defensive_strategy": "Product/Canon/DefensiveStrategy_v5.0.json",
+      "defensive_pressure": "Product/Canon/DefensivePressure_v5.0.json",
+      "offensive_strategy": "Product/Canon/OffensiveStrategy_v5.0.json",
+      "control_breakout": "Product/Canon/ControlBreakout_v5.0.json",
+      "quick_breakout": "Product/Canon/QuickBreakout_v5.0.json",
+      "strategy_maps": "Product/Canon/StrategyMaps_v5.0.json"
+    },
+
+    "strategy_trees": {
+      "five_on_five": "Product/StrategyTrees/FiveOnFive_v1.0.json"
+    },
+
+    "engines": {
+      "gameplan": "Product/Engines/GameplanEngine_v1.0.json"
+    },
+
+    "modules_spec": {
+      "v5_2_spec": "Docs/Dynasty_Modules_v5.2_Spec.md"
+    },
+
+    "reliability_patch": {
+      "active": true,
+      "path": "Product/Config/Dynasty_ReliabilityPatch_v5.2.json",
+      "version": "5.2"
+    },
+
+    "sliders": {
+      "default_profile_name": "Sliders_v2.0_AllStar_Austin",
+      "default_profile_path": "Product/Config/Sliders_v2.0_AllStar_Austin.json"
+    },
+
+    "reports_workflow": {
+      "spec_path": "Docs/Reports_Workflow_v1.0.md"
+    },
+
+    "formatting": {
+      "active": true,
+      "spec": "Docs/Formatting_Spec_v1.0.md"
+    },
+
+    "opponent_archetypes": {
+      "active": true,
+      "spec": "Product/Dynasty/OpponentArchetypes_v1.0.json"
+    },
+
+    "roster_sync": {
+      "active": true,
+      "integrity_file": "Product/Dynasty/RosterSync_Integrity_v1.0.json",
+      "strict_mode": true
+    }
+  },
+
+  "runtime": {
+    "use_reliability_patch": true,
+    "default_slider_profile": "Sliders_v2.0_AllStar_Austin",
+    "formatting_rules_enabled": true,
+    "roster_sync_strict_mode": true,
+    "assisted_strategies": {
+      "call_timeout": false,
+      "shorten_bench": false,
+      "strategy_adjustment_slider_value": 0
+    },
+
+    "platform": {
+      "platform_type": "Xbox Cloud",
+      "hardware": "Xbox One S (streamed Series version)",
+      "notes": [
+        "Assume mild input latency.",
+        "Prefer simpler outlet options under heavy pressure.",
+        "Timing guidance in-game should consider slight delay."
+      ]
+    },
+
+    "matchups": {
+      "enabled": true,
+      "matchups_root": "Product/Dynasty/Matchups",
+      "use_matchup_overrides_when_available": true,
+      "pregame_reports_root": "Reports/Gameplans",
+      "postgame_reports_root": "Reports/Postgames"
+    },
+
+    "snapshots": {
+      "enabled": true,
+      "root": "Product/Dynasty/Snapshots",
+      "latest_baseline_date": "2024-12-27"
+    }
+  }
+}
