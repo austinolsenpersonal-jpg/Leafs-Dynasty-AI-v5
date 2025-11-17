@@ -1,0 +1,116 @@
+{
+  "coach_name": "Craig Berube",
+  "version": "1.0",
+  "style": "Balanced",
+  "teaching_specialty": "Veterans",
+
+  "contract": {
+    "salary_millions": 3.0,
+    "years_left": 4
+  },
+
+  "morale": {
+    "status": "Happy",
+    "overall_morale": 0.62,
+    "promises": [
+      {
+        "goal": "Make the Playoffs",
+        "date": "2024-09-14"
+      }
+    ]
+  },
+
+  "attributes": {
+    "offense": "A+",
+    "defense": "A-",
+    "powerplay": "A+",
+    "penalty_kill": "A",
+    "teaching": "A",
+    "influence": "A+"
+  },
+
+  "record": {
+    "wins": 310,
+    "losses": 196,
+    "otl": 73,
+    "points_pct": 0.598,
+    "stanley_cups": 1,
+    "presidents_trophies": 0,
+    "jack_adams": 0,
+    "calder_cups": 0
+  },
+
+  "team_fit": {
+    "team_fit_pct": 0.62,
+    "best_chemistry_players": [
+      "A. Steeves",
+      "J. Tavares",
+      "O. Ekman-Larsson"
+    ],
+    "low_chemistry_players": [
+      "L. Guerra"
+    ]
+  },
+
+  "roster_scheme_fit": {
+    "NHL": {
+      "Auston Matthews": "Medium",
+      "Mitch Marner": "Medium",
+      "William Nylander": "Medium",
+      "John Tavares": "Medium",
+      "Morgan Rielly": "Medium",
+      "Brandon Carlo": "Low",
+      "Jake McCabe": "Medium",
+      "O. Ekman-Larsson": "Medium",
+      "Chris Tanev": "Medium",
+      "Dawson Mercer": "Medium",
+      "David Kampf": "Medium"
+    },
+    "Depth_AHL_Callups": {
+      "Matt Knies": "Medium",
+      "Max Domi": "Low",
+      "Matt Dumba": "Low",
+      "Ty Foerster": "Medium",
+      "Max Pacioretty": "Low",
+      "Nick Robertson": "Low",
+      "Alex Steeves": "High"
+    }
+  },
+
+  "team_strategies": {
+    "offensive_pressure": "Standard",
+    "defensive_pressure": "Normal",
+    "3_on_3_offense": "Aggressive",
+    "forecheck": "2-3",
+    "forecheck_bias": "Balanced",
+    "defensive_strategy": "Staggered",
+    "neutral_zone": "1-2-2 Red",
+    "penalty_kill": "1-1-2",
+    "powerplay": "Umbrella",
+    "pp_carry_dump": "Balanced",
+    "forward_ice_time_allocation": "Roll 4 Lines",
+    "defense_ice_time_allocation": "Roll All Pairings"
+  },
+
+  "line_strategies": {
+    "carry_dump_bias": "Carry",
+    "cycle_shoot_bias": "Cycle",
+    "efficiency_energy_bias": "Balanced",
+    "block_shots_bias": "Balanced",
+    "hold_line_pinch": "Balanced",
+    "defense_cycle_shoot": "Balanced",
+
+    "forward_lines": {
+      "L1": { "line_strategy": "Overload", "carry_dump": "Carry", "cycle_shoot": "Cycle", "efficiency": "Balanced", "block_shots": "Balanced" },
+      "L2": { "line_strategy": "Overload", "carry_dump": "Balanced", "cycle_shoot": "Cycle", "efficiency": "Balanced", "block_shots": "Balanced" },
+      "L3": { "line_strategy": "Crash the Net", "carry_dump": "Dump", "cycle_shoot": "Cycle", "efficiency": "Balanced", "block_shots": "Balanced" },
+      "L4": { "line_strategy": "Overload", "carry_dump": "Balanced", "cycle_shoot": "Balanced", "efficiency": "Balanced", "block_shots": "Balanced" }
+    },
+
+    "defense_pairs": {
+      "P1": { "hold_line_pinch": "Balanced", "cycle_shoot": "Balanced" },
+      "P2": { "hold_line_pinch": "Balanced", "cycle_shoot": "Balanced" },
+      "P3": { "hold_line_pinch": "Balanced", "cycle_shoot": "Balanced" }
+    }
+  }
+}
