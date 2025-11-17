@@ -1,0 +1,99 @@
+{
+  "runtime_version": "2.3",
+  "description": "Runtime config introducing upgraded coaching intelligence: curl-shooter patch, trap-slider logic, PK templates, rebound offense rules, goalie matchup tree, and Live Coaching Safety Rails.",
+  "links": {
+    "canon_manifest": "Product/Canon/Canon_Manifest_v5.0.json",
+    "strategy_trees": "Product/StrategyTrees/FiveOnFive_v1.0.json",
+    "gameplan_engine": "Product/Engines/GameplanEngine_v1.0.json",
+    "formatting_spec": "Docs/Formatting_Spec_v1.0.md",
+    "sliders_profile": "Product/Config/Sliders_v2.0_AllStar_Austin.json",
+    "roster_sync": "Product/Dynasty/RosterSync_Integrity_v1.0.json",
+    "archetypes": "Product/Dynasty/OpponentArchetypes_v1.0.json"
+  },
+
+  "coaching_upgrades": {
+    "trap_slider_rules": {
+      "chaos_teams": {
+        "start": 2,
+        "max": 3,
+        "trailing_third": 5
+      },
+      "slow_teams": {
+        "start": 3,
+        "midgame_if_stuck": 4,
+        "protect_lead": 2
+      }
+    },
+
+    "curl_shooter_patch": {
+      "enabled": true,
+      "trigger_condition": "opponent executes repeated curl-and-shoot attempts from faceoff circles",
+      "temporary_switch": {
+        "defensive_pressure": "High Pressure",
+        "duration_shifts": 2
+      },
+      "reset_to": "Contain Puck"
+    },
+
+    "pk_templates": {
+      "shooting_pp": {
+        "description": "Counter teams like Detroit that rely on high-volume point shots.",
+        "rules": {
+          "box_shape": "Low Box",
+          "prioritize": ["shot blocking", "slot protection"],
+          "pressure_on_bobble": true
+        }
+      },
+      "umbrella_pp": {
+        "description": "Counter teams like Washington that rely on Ovechkin-left/Right Umbrella formations.",
+        "rules": {
+          "right_side_forward_low": true,
+          "seam_priority": "eliminate east-west",
+          "avoid_high_chase": true
+        }
+      }
+    },
+
+    "rebound_offense_rules": {
+      "weak_pad_goalies": {
+        "cycle_shoot_mod_L1": "+1",
+        "cycle_shoot_mod_L2": "+1",
+        "shoot_low": true,
+        "crash_net": true
+      }
+    },
+
+    "goalie_matchup_tree": {
+      "vs_chaos_rush_teams": "Woll",
+      "vs_slow_cycle_teams": "Stolarz",
+      "vs_mixed_skill": "rotate_hot_hand"
+    },
+
+    "live_coaching_safety_rails": {
+      "max_simultaneous_changes": 2,
+      "rules": [
+        "Do not permanently change 5v5 systems due to a single PP goal.",
+        "Do not stack High Pressure + 1-2-2 Aggressive + trap slider > 4 unless in last 3 minutes.",
+        "Label any extreme adjustments as RED MODE and revert after 2–3 shifts."
+      ]
+    }
+  },
+
+  "formatting": {
+    "mobile": {
+      "iphone_14_pro_max": {
+        "headers": "bold_large",
+        "spacing": "1.0x",
+        "dividers": "simple_dash",
+        "bullet_style": "dash"
+      }
+    }
+  },
+
+  "dynasty_settings": {
+    "reliability_patch": "v5.2",
+    "strict_roster_sync": true,
+    "allow_guessing_players": false,
+    "allow_guessing_contracts": false
+  }
+}
