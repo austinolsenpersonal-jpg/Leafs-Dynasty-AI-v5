@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "description": "Template for storing per-opponent matchup data, linked reports, and runtime context for a single game.",
+  "metadata": {
+    "opponent_name": "{{OPPONENT_NAME}}",
+    "opponent_abbr": "{{OPPONENT_ABBR}}",
+    "home_away": "{{HOME_OR_AWAY}}",
+    "season": "{{SEASON_ID}}",
+    "game_date": "{{YYYY-MM-DD}}",
+    "game_number": "{{GAME_NUMBER}}",
+    "runtime_version": "2.3",
+    "canon_version": "5.0",
+    "sliders_profile": "Sliders_v2.0_AllStar_Austin",
+    "reliability_patch": "v5.2"
+  },
+  "archetype": {
+    "primary_tag": "{{ARCHETYPE_PRIMARY}}",
+    "secondary_tags": [
+      "{{ARCHETYPE_TAG_1}}",
+      "{{ARCHETYPE_TAG_2}}"
+    ],
+    "source": "Product/Dynasty/OpponentArchetypes_v1.0.json"
+  },
+  "team_tags": {
+    "tag_profile_key": "{{TEAM_TAGS_KEY}}",
+    "source": "Product/Dynasty/TeamTags_v1.0.json"
+  },
+  "reports": {
+    "gameplan_markdown": "Reports/Gameplans/{{OPPONENT_ABBR}}_{{YYYY-MM-DD}}_Gameplan_v2.0.md",
+    "bench_card_markdown": "Reports/BenchCards/{{OPPONENT_ABBR}}_{{YYYY-MM-DD}}_BenchCard_v2.0.md",
+    "scouting_notes_markdown": "Reports/Scouting/{{OPPONENT_ABBR}}_{{YYYY-MM-DD}}_ScoutingNotes_v1.0.md",
+    "postgame_markdown": "Reports/Postgames/{{OPPONENT_ABBR}}_{{YYYY-MM-DD}}_Postgame_v1.0.md"
+  },
+  "systems_snapshot": {
+    "forecheck_start": "{{FORECHECK_START}}",
+    "neutral_zone_start": "{{NZ_START}}",
+    "defensive_pressure_start": "{{D_PRESSURE_START}}",
+    "defensive_strategy_start": "{{D_STRATEGY_START}}",
+    "offensive_pressure_start": "{{O_PRESSURE_START}}",
+    "control_breakout_start": "{{CONTROL_BO_START}}",
+    "quick_breakout_start": "{{QUICK_BO_START}}",
+    "trap_slider_start": {{TRAP_SLIDER_START}}
+  },
+  "goalie_plan": {
+    "starter": "{{STARTER_GOALIE}}",
+    "backup": "{{BACKUP_GOALIE}}",
+    "reasoning": "{{GOALIE_MATCHUP_REASON}}",
+    "opponent_goalie": "{{OPP_GOALIE_NAME}}",
+    "opponent_goalie_profile": "{{OPP_GOALIE_PROFILE}}"
+  },
+  "result_snapshot": {
+    "final_score": "{{TOR_GOALS}}-{{OPP_GOALS}}",
+    "result": "{{WIN_LOSS_OT}}",
+    "shots_for": {{SHOTS_FOR}},
+    "shots_against": {{SHOTS_AGAINST}},
+    "notes": "{{RESULT_NOTES}}"
+  },
+  "coaching_flags": {
+    "system_loss": false,
+    "execution_loss": false,
+    "coinflip_game": false,
+    "red_mode_used": false,
+    "red_mode_description": "{{RED_MODE_DESC_IF_USED}}"
+  }
+}
