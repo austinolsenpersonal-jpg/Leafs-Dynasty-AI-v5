@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "name": "OpponentArchetypes_v1.0",
+    "description": "Archetype classification for NHL opponents to drive matchup-specific gameplans in Leafs Dynasty AI.",
+    "version": "1.0",
+    "author": "Leafs Architect GPT",
+    "last_updated": "2025-11-17",
+    "game": "NHL 25"
+  },
+  "archetypes": [
+    {
+      "id": "chaos_forecheck",
+      "label": "Chaos Forecheck / Heavy Pressure",
+      "description": "High-pressure forecheck teams that thrive on turnovers, broken plays, and heavy hits. Often use aggressive forecheck, high pressure, and strong-side overloads.",
+      "typical_systems": {
+        "forecheck": ["1-2-2 Aggressive", "2-3", "Weak Side Lock"],
+        "neutral_zone": ["1-2-2 Red"],
+        "defensive_pressure": ["High Pressure"],
+        "defensive_strategy": ["Staggered", "Tight Point"]
+      },
+      "recommended_counters": {
+        "forecheck": ["1-2-2 Passive to start, then 2-3 in 2nd period"],
+        "neutral_zone": ["1-2-2 Red, switch to 1-3-1 when protecting lead"],
+        "defensive_pressure": ["Contain Puck, temporary Protect Net when pinned"],
+        "quick_breakout": ["Stay Wide by default, Close Support when hemmed in"]
+      }
+    },
+    {
+      "id": "rush_offense",
+      "label": "Rush-Heavy Offense",
+      "description": "Teams that rely on speed through the neutral zone, controlled entries, and east–west plays off the rush more than extended cycle.",
+      "typical_systems": {
+        "forecheck": ["1-2-2 Blue", "1-2-2 Red"],
+        "neutral_zone": ["1-2-2 Red"],
+        "defensive_pressure": ["Standard"],
+        "defensive_strategy": ["Collapsing"]
+      },
+      "recommended_counters": {
+        "forecheck": ["1-2-2 Red to slow entries, 2-3 when trailing"],
+        "neutral_zone": ["1-3-1 when leading or under heavy rush pressure"],
+        "defensive_pressure": ["Contain Puck, avoid over-pressing at blue line"],
+        "quick_breakout": ["Close Support versus heavy backpressure, Leave Zone Early when chasing game"]
+      }
+    },
+    {
+      "id": "heavy_cycle",
+      "label": "Heavy Point Cycle / Net-Front Traffic",
+      "description": "Teams that work the puck low-to-high, take point shots through traffic, and lean on net-front screens and rebounds.",
+      "typical_systems": {
+        "forecheck": ["1-2-2 Red", "2-3"],
+        "neutral_zone": ["1-2-2 Red"],
+        "defensive_pressure": ["Standard", "High Pressure situationally"],
+        "defensive_strategy": ["Staggered", "Tight Point"]
+      },
+      "recommended_counters": {
+        "forecheck": ["1-2-2 Passive or 2-3 depending on breakout quality"],
+        "neutral_zone": ["1-2-2 Red as default"],
+        "defensive_pressure": ["Contain Puck with Protect Net bursts when pinned"],
+        "defensive_strategy": ["Staggered to protect slot over point lanes"]
+      }
+    },
+    {
+      "id": "trap_structure",
+      "label": "Trap / Structure-First Teams",
+      "description": "Teams that sit in structured systems, slow the game in the neutral zone, and force dump-and-chase hockey.",
+      "typical_systems": {
+        "forecheck": ["1-2-2 Passive", "1-2-2 Blue"],
+        "neutral_zone": ["1-3-1", "1-2-2 Red"],
+        "defensive_pressure": ["Contain Puck"],
+        "defensive_strategy": ["Collapsing", "Staggered"]
+      },
+      "recommended_counters": {
+        "forecheck": ["2-3 when chasing offense, 1-2-2 Passive to avoid trading mistakes"],
+        "neutral_zone": ["1-2-2 Red as base, switch to 1-3-1 only when defending lead"],
+        "offensive_pressure": ["Aggressive in 2nd period to break trap rhythm"],
+        "quick_breakout": ["Stay Wide to stretch defensive box, Close Support when trapped on walls"]
+      }
+    },
+    {
+      "id": "balanced_hybrid",
+      "label": "Balanced Hybrid Teams",
+      "description": "Teams that mix rush, cycle, and forecheck pressure without extreme bias. They adapt to score/game state.",
+      "typical_systems": {
+        "forecheck": ["1-2-2 Red", "2-3"],
+        "neutral_zone": ["1-2-2 Red"],
+        "defensive_pressure": ["Standard"],
+        "defensive_strategy": ["Staggered", "Collapsing"]
+      },
+      "recommended_counters": {
+        "forecheck": ["Start 1-2-2 Passive, escalate to 2-3 when needing momentum"],
+        "neutral_zone": ["1-2-2 Red as default"],
+        "offensive_pressure": ["Standard early, Aggressive when chasing or in 2nd period"],
+        "quick_breakout": ["Stay Wide as default, Close Support selectively"]
+      }
+    }
+  ],
+  "team_mapping": {
+    "DET": "chaos_forecheck",
+    "FLA": "chaos_forecheck",
+    "CAR": "chaos_forecheck",
+    "BOS": "heavy_cycle",
+    "VGK": "heavy_cycle",
+    "LAK": "heavy_cycle",
+    "NYI": "heavy_cycle",
+    "EDM": "rush_offense",
+    "BUF": "rush_offense",
+    "COL": "rush_offense",
+    "DAL": "rush_offense",
+    "NJD": "rush_offense",
+    "TBL": "balanced_hybrid",
+    "TOR": "balanced_hybrid",
+    "NYR": "balanced_hybrid",
+    "MIN": "balanced_hybrid",
+    "WSH": "balanced_hybrid",
+    "WPG": "balanced_hybrid",
+    "PIT": "balanced_hybrid",
+    "NSH": "trap_structure",
+    "ARI": "trap_structure",
+    "CBJ": "trap_structure",
+    "SJS": "trap_structure",
+    "ANA": "trap_structure",
+    "MTL": "balanced_hybrid",
+    "OTT": "balanced_hybrid",
+    "CHI": "balanced_hybrid",
+    "DET_NOTE": "DET is explicitly treated as chaos_forecheck in ReliabilityPatch_v5.2 as well."
+  },
+  "integration": {
+    "used_by": [
+      "Product/Engines/GameplanEngine_v1.0.json",
+      "Product/Config/Dynasty_ReliabilityPatch_v5.2.json",
+      "Reports/Gameplans/*"
+    ],
+    "usage_notes": [
+      "When generating a gameplan, Dynasty GPT should resolve the opponent’s archetype first, then select systems and adjustments consistent with the recommended_counters.",
+      "If a team is not found in team_mapping, default to 'balanced_hybrid' until explicitly classified in a later version.",
+      "Archetypes are descriptive, not prescriptive; all systems must still remain within Canon and NHL 25 legal options."
+    ]
+  }
+}
