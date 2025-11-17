@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "name": "RosterSync_Integrity_v1.0",
+    "description": "Defines strict roster synchronization rules for Leafs Dynasty AI to prevent guessed lineups, ghost players, or incorrect AHL/NHL assignments.",
+    "version": "1.0",
+    "author": "Leafs Architect GPT",
+    "last_updated": "2025-11-17",
+    "game": "NHL 25"
+  },
+
+  "rules": {
+    "source_of_truth": "USER_UPLOADED_SCREENS",
+
+    "required_screens": {
+      "nhl_lines": [
+        "Offense",
+        "Defense",
+        "Powerplay",
+        "Penalty Kill",
+        "Extras",
+        "Goalies"
+      ],
+      "ahl_lines": [
+        "Offense",
+        "Defense",
+        "Powerplay",
+        "Penalty Kill",
+        "Extras",
+        "Goalies"
+      ],
+      "roster_screens": [
+        "NHL Active Roster",
+        "AHL Active Roster",
+        "NHL Scratched",
+        "AHL Scratched",
+        "Contracts",
+        "Assigned Players"
+      ]
+    },
+
+    "prohibit_guessing": {
+      "invent_players": true,
+      "use_real_world_depth_charts": true,
+      "fill_missing_lines_with_assumed_players": true,
+      "override_user_lines": true,
+      "assume_contracts": true,
+      "use_nhl_default_rosters": true
+    },
+
+    "lineup_validation": {
+      "force_position_match": true,
+      "allow_emergency_c_assignments": false,
+      "disallow_players_not_in_uploaded_roster": true,
+      "match_pp_roles_to_user_data": true,
+      "match_pk_roles_to_user_data": true,
+      "respect_scratched_status": true,
+      "respect_ahl_nhl_assignment": true
+    },
+
+    "chemistry_rules": {
+      "compute_from_user_lines_only": true,
+      "never_project_from_unknown_data": true
+    },
+
+    "depth_chart_logic": {
+      "default": "DISABLED",
+      "notes": "Dynasty GPT must not build depth charts unless user requests one AND lines are fully up-to-date."
+    },
+
+    "fallback_behavior": {
+      "if_missing_screen": "REQUEST_SPECIFIC_SCREEN",
+      "if_incomplete_data": "STOP_AND_NOTIFY",
+      "if_conflict": "AUSTIN_HAS_FINAL_SAY"
+    }
+  },
+
+  "integration": {
+    "used_by": [
+      "Product/Engines/GameplanEngine_v1.0.json",
+      "Product/Config/Dynasty_ReliabilityPatch_v5.2.json",
+      "Product/StrategyTrees/FiveOnFive_v1.0.json"
+    ],
+    "runtime_flags": [
+      "ROSTER_SYNC_STRICT_MODE",
+      "NO_GUESSED_LINES",
+      "NO_REAL_WORLD_DEFAULTS",
+      "SCREEN_UPLOAD_REQUIRED"
+    ],
+    "notes": [
+      "Dynasty GPT may not proceed with any roster-based logic unless all required screens are provided OR Austin explicitly overrides.",
+      "If any system tries to auto-fill players, it must raise an Integrity Warning and stop.",
+      "All roster memory must be cleared on /resync baseline and repopulated ONLY from user screenshots."
+    ]
+  }
+}
