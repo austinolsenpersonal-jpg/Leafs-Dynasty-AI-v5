@@ -1,0 +1,202 @@
+{
+  "module_name": "GameplaySystems_Tuning",
+  "module_version": "2.3",
+  "description": "Centralized gameplay tuning rules for Leafs Dynasty AI v5. Used by RuntimeConfig_v2.3 to adjust systems, sliders, and coaching behaviour vs different opponent archetypes.",
+  "metadata": {
+    "applies_to_runtime": true,
+    "applies_to_dynasty_gpt": true,
+    "linked_runtime_config": "Product/Architect/RuntimeConfig_v2.3.json"
+  },
+
+  "trap_slider_rules": {
+    "scale_description": "0 = full trap, 3 = balanced, 6 = full forecheck",
+    "chaos_teams": {
+      "tags": [
+        "chaos_forecheck",
+        "high_pressure_dz",
+        "rebound_danger_team"
+      ],
+      "start_value": 2,
+      "midgame_adjust": 3,
+      "late_trail_range": [4, 5],
+      "late_lead_value": 1,
+      "notes": "Chaos teams (DET-type) feed on loose, aggressive play. Start slightly trap-leaning, only increase forecheck intensity if you are not getting hemmed in, and only push to 4–5 when chasing late."
+    },
+    "slow_structured_teams": {
+      "tags": [
+        "slow_team",
+        "trap-team",
+        "structure-strong"
+      ],
+      "start_value": 3,
+      "second_period_if_trapped_nz": 4,
+      "late_lead_value": 2,
+      "late_trail_range": [4, 5],
+      "notes": "Slow, structured teams (WSH / BOS / NYI-type) can be attacked more aggressively. Use 3 as balanced default, go to 4 in the 2nd if they are winning the neutral zone, and drop back to 2 when protecting a late lead."
+    }
+  },
+
+  "curl_shooter_patch": {
+    "trigger_condition": "Opponent repeatedly uses curl-and-shoot from faceoff circles or half-wall (at least 2–3 attempts in short span).",
+    "temporary_adjustment": {
+      "defensive_pressure": "High Pressure",
+      "defensive_strategy": "Staggered",
+      "duration_shifts": 2
+    },
+    "revert_state": {
+      "defensive_pressure": "Contain Puck"
+    },
+    "notes": "This is a micro-adjustment, not a full system change. When curl shooters appear (DET wings, Ovi at 5v5, sniper archetypes), briefly raise pressure to disrupt their timing, then return to Contain Puck."
+  },
+
+  "pk_templates": {
+    "shooting_powerplay": {
+      "tags": [
+        "shooting_pp",
+        "net-front-wall"
+      ],
+      "shape": "Box (tighter)",
+      "pressure": "Normal with situational Aggressive on bobbles",
+      "priorities": [
+        "Block point and circle shots first",
+        "Allow harmless perimeter passing",
+        "Clear net-front rebounds immediately"
+      ],
+      "notes": "Used vs DET-type PPs and teams that rely heavily on volume from point and circles. Focus on shot lanes and rebounds more than chasing the puck high."
+    },
+    "umbrella_ovi_flank_powerplay": {
+      "tags": [
+        "umbrella_pp",
+        "ovi_flank_priority",
+        "PP-shooting-lane"
+      ],
+      "shape": "Box+1 / Umbrella-aware",
+      "pressure": "Contain with selective pressure on bobbles",
+      "priorities": [
+        "Deny royal-road seam to Ovi flank",
+        "Keep right-side PK forward lower to block one-timers",
+        "Allow low-danger point shots if screened properly",
+        "Collapse only when puck goes below goal line"
+      ],
+      "notes": "Used vs WSH-type Umbrella PP. The main objective is to cut off flank one-timers and royal-road passes while letting the goalie see as many pucks as possible."
+    }
+  },
+
+  "rebound_offense_rules": {
+    "goalie_profiles": {
+      "rebound_prone": {
+        "tags": [
+          "rebound_farm_goalie",
+          "rebound-prone"
+        ],
+        "line_slider_adjustments": {
+          "L1": { "cycle_shoot_delta": 1 },
+          "L2": { "cycle_shoot_delta": 1 },
+          "L3": { "crash_net_bias": "increase" }
+        },
+        "shot_selection": "Favor low shots through traffic and quick wristers to pads.",
+        "notes": "When facing a rebound-prone goalie (Thompson / some NJD types), L1 and L2 lean slightly more to shooting after short cycles, and L3 increases net-crash bias to farm second and third chances."
+      },
+      "positional_elite": {
+        "tags": [
+          "elite-goaltending",
+          "beat-royal-road",
+          "needs-multiple-shot-sequences"
+        ],
+        "line_slider_adjustments": {
+          "L1": { "cycle_shoot_delta": 1 },
+          "L2": { "cycle_shoot_delta": 1 },
+          "L3": { "screen_bias": "increase" }
+        },
+        "shot_selection": "Prioritize east–west passes, tips, and screens over pure volume.",
+        "notes": "Used vs BOS/NYI-type goalies. The focus is on creating lateral movement and traffic, not just throwing pucks on net."
+      }
+    }
+  },
+
+  "goalie_matchup_rules": {
+    "profiles": {
+      "vs_chaos_high_speed": {
+        "opponent_tags": [
+          "chaos_forecheck",
+          "rush-team",
+          "high-skill",
+          "transition-danger"
+        ],
+        "preferred_starter": "Woll",
+        "reasoning": "Better scramble reads and east–west recovery vs high-speed, broken-play environments.",
+        "notes": "Detroit / NJD-type opponents. Woll is 1A in these matchups."
+      },
+      "vs_heavy_slow_cycle": {
+        "opponent_tags": [
+          "slow_team",
+          "trap-team",
+          "board-battle-heavy",
+          "low-event"
+        ],
+        "preferred_starter": "Stolarz",
+        "reasoning": "Big frame, strong post play, and better handling of net-front battles and low plays.",
+        "notes": "WSH / NYI / BOS-type opponents. Stolarz thrives in heavy-cycle, low-event games."
+      },
+      "vs_unknown_or_hybrid": {
+        "opponent_tags": [],
+        "preferred_starter": "hot_hand_or_rotation",
+        "reasoning": "Use rotation and recent form when opponent archetype is mixed or not well scouted.",
+        "notes": "Default rule when no strong archetype match is found."
+      }
+    }
+  },
+
+  "live_coaching_safety_rails": {
+    "rules": [
+      {
+        "id": "no_pp_goal_system_overreaction",
+        "description": "Do not change 5v5 core systems (forecheck, NZ, DZ) because of a single powerplay goal against.",
+        "reason": "Prevents overreactions to special-teams events that should not drive even-strength structure."
+      },
+      {
+        "id": "no_extreme_stack_outside_all_in",
+        "description": "Do not stack High Pressure + 1-2-2 Aggressive + trap slider above 4 except in true all-in last 3 minutes when trailing.",
+        "reason": "Avoids tilt-induced chaos where AI systems break down and create odd-man rushes against."
+      },
+      {
+        "id": "red_mode_limited_duration",
+        "description": "Any time more than two major knobs are changed at once (systems, pressure, sliders), flag as RED MODE and limit to 2–3 shifts maximum.",
+        "reason": "Ensures temporary, intentional aggression without permanently destabilizing structure."
+      }
+    ]
+  },
+
+  "postgame_classification_rules": {
+    "categories": [
+      {
+        "id": "system_loss",
+        "definition": "Too many chances against, structure repeatedly breaks, high xGA and poor slot protection.",
+        "recommended_actions": [
+          "Review core systems (forecheck, NZ, DZ).",
+          "Lower trap slider vs chaos teams or improve NZ scheme vs trap teams.",
+          "Adjust defensive pressure or strategy at baseline for next game."
+        ]
+      },
+      {
+        "id": "execution_loss",
+        "definition": "Chances for were there, but finishing, special teams, or individual mistakes caused the loss.",
+        "recommended_actions": [
+          "Tweak sliders (cycle/shoot, crash net).",
+          "Adjust PP/PK personnel and tactics.",
+          "Review line matching and usage, not core systems."
+        ]
+      },
+      {
+        "id": "coinflip_game",
+        "definition": "Tight, low-event or balanced game decided by a single bounce, PP, or fluke goal.",
+        "recommended_actions": [
+          "Keep core gameplan intact.",
+          "Apply only micro patches (e.g., curl_shooter_patch, minor slider nudges).",
+          "Do not overreact with wholesale system changes."
+        ]
+      }
+    ],
+    "notes": "Postgame classification ensures the AI only makes large structural changes when truly needed. Coinflip games should not trigger a full teardown."
+  }
+}
