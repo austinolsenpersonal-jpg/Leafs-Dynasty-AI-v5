@@ -1,0 +1,257 @@
+{
+  "metadata": {
+    "team": "Toronto Maple Leafs",
+    "game": "NHL 25",
+    "category": "Scouting Staff",
+    "version": "1.0",
+    "lastUpdated": "2024-12-28",
+    "notes": [
+      "Snapshot of active pro and amateur scouts from the Assign Staff screens.",
+      "Region grades and types are based on visible UI; missing fields can be filled later from new screenshots.",
+      "This file is mainly for Dynasty AI draft and target-coverage awareness."
+    ]
+  },
+  "scouts": [
+    {
+      "id": "scout_tuzzolino_d",
+      "name": "D. Tuzzolino",
+      "overallGrade": "A",
+      "region": "AHL Atlantic",
+      "regionGrade": "A+",
+      "type": "Pro",
+      "currentAssignment": {
+        "description": "Providence Bruins",
+        "scope": "Team",
+        "positionFocus": "Any",
+        "potentialFocus": "Any",
+        "pendingFreeAgents": "Any",
+        "estimatedCompletionDate": "2025-01-01"
+      }
+    },
+    {
+      "id": "scout_dumont_s",
+      "name": "S. Dumont",
+      "overallGrade": "A-",
+      "region": "OHL",
+      "regionGrade": "A+",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "OHL coverage",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_olvestad_f",
+      "name": "F. Olvestad",
+      "overallGrade": "B",
+      "region": "NHL Atlantic",
+      "regionGrade": "A-",
+      "type": "Pro",
+      "currentAssignment": {
+        "description": "NHL Atlantic division",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_lavallee_j",
+      "name": "J. Lavallee",
+      "overallGrade": "B",
+      "region": "NHL Metro",
+      "regionGrade": "A",
+      "type": "Pro",
+      "currentAssignment": {
+        "description": "NHL Metro division",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_kadri_c",
+      "name": "C. Kadri",
+      "overallGrade": "B-",
+      "region": "USA West",
+      "regionGrade": "A",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "USA West amateurs",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_bednarz_r",
+      "name": "R. Bednarz",
+      "overallGrade": "B-",
+      "region": "NHL Pacific",
+      "regionGrade": "A-",
+      "type": "Pro",
+      "currentAssignment": {
+        "description": "NHL Pacific division",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_walz_s",
+      "name": "S. Walz",
+      "overallGrade": "B-",
+      "region": "NHL Central",
+      "regionGrade": "A-",
+      "type": "Pro",
+      "currentAssignment": {
+        "description": "NHL Central division",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_curtis_b",
+      "name": "B. Curtis",
+      "overallGrade": "B-",
+      "region": "AHL Central",
+      "regionGrade": "A+",
+      "type": "Pro",
+      "currentAssignment": {
+        "description": "AHL Central teams",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_tootoo_m",
+      "name": "M. Tootoo",
+      "overallGrade": "B-",
+      "region": "AHL North",
+      "regionGrade": "B",
+      "type": "Pro",
+      "currentAssignment": {
+        "description": "AHL North teams",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_cloutier_p",
+      "name": "P. Cloutier",
+      "overallGrade": "B-",
+      "region": "AHL Pacific",
+      "regionGrade": "A+",
+      "type": "Pro",
+      "currentAssignment": {
+        "description": "AHL Pacific teams",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_chiodo_r",
+      "name": "R. Chiodo",
+      "overallGrade": "B-",
+      "region": "USA Central",
+      "regionGrade": "A+",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "USA Central amateurs",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_stevenson_y",
+      "name": "Y. Stevenson",
+      "overallGrade": "B-",
+      "region": "LIIGA",
+      "regionGrade": "A-",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "LIIGA amateurs",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_bebko_l",
+      "name": "L. Bebko",
+      "overallGrade": "B-",
+      "region": "SHL",
+      "regionGrade": "A-",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "SHL amateurs",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_tanev_l",
+      "name": "L. Tanev",
+      "overallGrade": "C",
+      "region": "QMJHL",
+      "regionGrade": "A+",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "QMJHL amateurs",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_ustorf_g",
+      "name": "G. Ustorf",
+      "overallGrade": "C",
+      "region": "NLA",
+      "regionGrade": "A+",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "NLA amateurs",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_conner_i",
+      "name": "I. Conner",
+      "overallGrade": "C",
+      "region": "WHL",
+      "regionGrade": "A-",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "WHL amateurs",
+        "scope": "Region",
+        "positionFocus": "Any",
+        "potentialFocus": "Any"
+      }
+    },
+    {
+      "id": "scout_vishnevski_d",
+      "name": "D. Vishnevski",
+      "overallGrade": "C-",
+      "region": "Russia",
+      "regionGrade": "A",
+      "type": "Amateur",
+      "currentAssignment": {
+        "description": "Specific Russian players (Lisin, O. Leonov, Afinegenov, Plekhanov, V. Voynov, B. Vorobev, O. Saprykin, K. Kondratiev, S. Popov)",
+        "scope": "Specific Players",
+        "positionFocus": "Mixed",
+        "potentialFocus": "Potential and Comparison",
+        "estimatedCompletionDate": "2025-06-14"
+      }
+    }
+  ]
+}
