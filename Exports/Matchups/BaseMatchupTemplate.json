@@ -1,0 +1,55 @@
+{
+  "template": "Base Matchup",
+  "version": "1.0",
+  "description": "Standard export shell for opponent scouting and matchup notes.",
+  "opponent": {
+    "team_name": "",
+    "date_scouted": "",
+    "record": "",
+    "last10": "",
+    "tags": []
+  },
+  "systems": {
+    "offensive_pressure": "",
+    "defensive_pressure": "",
+    "forecheck": "",
+    "forecheck_bias": "",
+    "neutral_zone": "",
+    "defensive_strategy": "",
+    "powerplay": "",
+    "pp_carry_dump": "",
+    "penalty_kill": ""
+  },
+  "line_strategies": {
+    "forward_lines": {
+      "line1": { "strategy": "", "carry_dump": "", "cycle_shoot": "", "efficiency_energy": "", "block_shots": "" },
+      "line2": { "strategy": "", "carry_dump": "", "cycle_shoot": "", "efficiency_energy": "", "block_shots": "" },
+      "line3": { "strategy": "", "carry_dump": "", "cycle_shoot": "", "efficiency_energy": "", "block_shots": "" },
+      "line4": { "strategy": "", "carry_dump": "", "cycle_shoot": "", "efficiency_energy": "", "block_shots": "" }
+    },
+    "defense_pairs": {
+      "pair1": { "hold_line_pinch": "", "cycle_shoot": "" },
+      "pair2": { "hold_line_pinch": "", "cycle_shoot": "" },
+      "pair3": { "hold_line_pinch": "", "cycle_shoot": "" }
+    }
+  },
+  "roster_view": {
+    "forwards": [],
+    "defense": [],
+    "goalies": [],
+    "scratches": []
+  },
+  "danger_zones": {
+    "primary_threats": [],
+    "pp_threats": [],
+    "rush_threats": [],
+    "cycle_threats": []
+  },
+  "exploits": {
+    "weak_pairs": [],
+    "slow_forwards": [],
+    "goalie_profile": "",
+    "rebound_opportunities": ""
+  },
+  "notes": "Filled by Dynasty matchup reports (e.g., DET, WSH)."
+}
