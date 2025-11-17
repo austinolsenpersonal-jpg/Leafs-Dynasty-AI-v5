@@ -1,0 +1,305 @@
+{
+  "version": "1.0",
+  "notes": "Phase 2 opponent identity tags for Architect/Dynasty AI. Used to shape matchup gameplans, slider tendencies, and live coaching rules. Teams: PIT, BOS, NYI, NJD.",
+  "teams": {
+    "PIT": {
+      "team_name": "Pittsburgh Penguins",
+      "identity": {
+        "pace": "High-skill, medium pace",
+        "style": "East–west, possession leaning",
+        "physicality": "Moderate",
+        "risk_profile": "Moderate-aggressive",
+        "summary": "Veteran core that wants to create offense through east–west puck movement and high-skill plays in the offensive zone."
+      },
+      "systems": {
+        "forecheck": "1-2-2 Aggressive",
+        "neutral_zone": "1-2-2 Blue",
+        "defensive_strategy": "Staggered",
+        "defensive_pressure": "Puck Side Attack",
+        "powerplay": "Umbrella / 1-3-1 hybrid",
+        "penalty_kill": "Diamond",
+        "pp_carry_dump": "Carry first, then set up",
+        "tag_class": [
+          "rush-danger",
+          "east-west",
+          "PP-shooting-lane"
+        ]
+      },
+      "offense_profile": {
+        "primary_threats": [
+          "Cross-ice seam passes to one-timers",
+          "Half-wall playmaking (right and left sides)",
+          "High-slot one-timers off east–west movement"
+        ],
+        "entry_style": "Controlled entries with delayed cuts and drop passes.",
+        "cycle_style": "Short, quick-touch cycle to pull coverage off structure."
+      },
+      "defense_profile": {
+        "strengths": [
+          "Experienced breakout patterns",
+          "Capable PP blue-line quarterback",
+          "Veteran decision making under pressure"
+        ],
+        "weaknesses": [
+          "Transition defense vs speed",
+          "Defending net-front chaos and second chances",
+          "Third-pair footspeed when hemmed in"
+        ]
+      },
+      "goalie_profile": {
+        "type": "Position-first, streaky",
+        "rebound_tendency": "Medium-high on low shots through traffic",
+        "tags": [
+          "beat-lateral",
+          "screen-and-tip",
+          "net-front-rebounds"
+        ]
+      },
+      "leafs_recommended_approach": {
+        "systems": {
+          "forecheck": "2-3 to start; shift to 1-2-2 Aggressive only if down in 3rd",
+          "neutral_zone": "1-2-2 Red (force dumps, limit controlled entries)",
+          "defensive_strategy": "Staggered with curl-shooter watch on circles",
+          "defensive_pressure": "Contain Puck baseline; temporary High Pressure vs repeated curl-and-shoot",
+          "trap_slider_rule": "Start at 3; drop to 2 when protecting a lead, go to 4 only if chasing in 3rd."
+        },
+        "slider_emphasis": {
+          "carry_dump": "Favour Carry with L1/L2 to exploit slower D gaps.",
+          "cycle_shoot": "Cycle 5–6 on top lines; generate lateral seams not pure bombs.",
+          "net_front": "Crash harder with L3 to punish rebounds and depth D."
+        },
+        "matchup_notes": {
+          "target_pairs": "Attack PIT Pair 2/3 off the rush; wide entries into slower side.",
+          "danger_lines": "Respect veteran scoring line; priority on tying up sticks in slot.",
+          "pk_template": "Treat PIT as 'Shooting PP' – tighter box, shot blocking priority."
+        }
+      }
+    },
+
+    "BOS": {
+      "team_name": "Boston Bruins",
+      "identity": {
+        "pace": "Medium-high but very structured",
+        "style": "Defense-first, counter-attack, heavy on details",
+        "physicality": "High",
+        "risk_profile": "Low–medium; disciplined",
+        "summary": "Elite structure, strong goaltending, and heavy play along the boards. They win through discipline, details, and low-event hockey."
+      },
+      "systems": {
+        "forecheck": "1-2-2 Conservative / 2-1-2 situational",
+        "neutral_zone": "1-2-2 Red or 1-3-1 trap",
+        "defensive_strategy": "Collapse / Staggered hybrid",
+        "defensive_pressure": "Contain Puck baseline with bursts of High Pressure",
+        "powerplay": "1-3-1 with bumper threat",
+        "penalty_kill": "Box+1 / aggressive lanes",
+        "pp_carry_dump": "Controlled entries preferred",
+        "tag_class": [
+          "low-event",
+          "elite-goaltending",
+          "board-battle-heavy",
+          "structure-strong"
+        ]
+      },
+      "offense_profile": {
+        "primary_threats": [
+          "High-slot bumper plays on PP",
+          "Point shots with heavy net-front screens",
+          "Board-cycle to middle-lane cuts"
+        ],
+        "entry_style": "Disciplined, controlled entries with support.",
+        "cycle_style": "Heavy cycle, protect-puck along boards, feed points."
+      },
+      "defense_profile": {
+        "strengths": [
+          "Slot protection",
+          "Net-front boxing out",
+          "Very strong PK rotations",
+          "Excellent rebound cleanup in front"
+        ],
+        "weaknesses": [
+          "Can be stretched by fast east–west passes after extended zone time",
+          "Occasional issues with speed off set plays vs third pair",
+          "If hemmed, may ice the puck more often"
+        ]
+      },
+      "goalie_profile": {
+        "type": "Elite positional (Ullmark/Swayman-type)",
+        "rebound_tendency": "Low–medium; rebounds usually controlled",
+        "tags": [
+          "beat-royal-road",
+          "screen-essential",
+          "3rd-or-4th-shot-goals"
+        ]
+      },
+      "leafs_recommended_approach": {
+        "systems": {
+          "forecheck": "1-2-2 Passive or 2-3; avoid reckless aggression early.",
+          "neutral_zone": "1-3-1 when protecting a lead; 1-2-2 Red baseline.",
+          "defensive_strategy": "Staggered; keep middle locked.",
+          "defensive_pressure": "Contain Puck; only go High Pressure after clean possession.",
+          "trap_slider_rule": "Start at 3; if they are clogging NZ hard, bump to 4 mid-game to push pace; drop to 2 late when defending lead."
+        },
+        "slider_emphasis": {
+          "cycle_shoot": "Higher Cycle for L1/L2 (5–7) to pull structure apart before shots.",
+          "screening": "Commit to net-front presence vs elite goaltending; L3 crash bias higher.",
+          "pinch_rules": "D Pair 3 pinch slider lower (3–4) to avoid odd-man rush vs structured team."
+        },
+        "matchup_notes": {
+          "target_pairs": "Work against BOS third pair with speed and width.",
+          "danger_lines": "Top line and PP bumper are high priority; sticks in lane over hits.",
+          "pk_template": "Treat BOS as hybrid 'Shooting + bumper PP' – mix of lane blocks and inner-slot denial."
+        }
+      }
+    },
+
+    "NYI": {
+      "team_name": "New York Islanders",
+      "identity": {
+        "pace": "Low–medium, heavy trap",
+        "style": "Defensive shell, counter-punch, grindy",
+        "physicality": "High",
+        "risk_profile": "Low; very conservative",
+        "summary": "Classic trap-and-grind team with elite goaltending and strong defensive structure. They want 2–1 games, not track meets."
+      },
+      "systems": {
+        "forecheck": "1-1-3 / 1-2-2 Conservative",
+        "neutral_zone": "1-3-1 trap",
+        "defensive_strategy": "Collapsing box, net-front priority",
+        "defensive_pressure": "Contain Puck, selective press",
+        "powerplay": "Net-front screen with point shooting (1-3-1 variant)",
+        "penalty_kill": "Passive box with good sticks",
+        "pp_carry_dump": "Dump-and-retrieve or controlled, depending on line",
+        "tag_class": [
+          "trap-team",
+          "elite-goaltending",
+          "net-front-wall",
+          "low-scoring"
+        ]
+      },
+      "offense_profile": {
+        "primary_threats": [
+          "Net-front tips and rebounds",
+          "Greasy goals after long cycle shifts",
+          "Occasional quick-strike off turnovers"
+        ],
+        "entry_style": "More dump-and-chase, especially lower lines.",
+        "cycle_style": "Boards, low-high, net jam."
+      },
+      "defense_profile": {
+        "strengths": [
+          "Slot and crease protection",
+          "Clearing rebounds from front of net",
+          "Keeping games low event"
+        ],
+        "weaknesses": [
+          "Limited high-end playmaking beyond top line",
+          "Struggles if forced to trade chances up-tempo",
+          "Third pair D can be beaten wide by speed"
+        ]
+      },
+      "goalie_profile": {
+        "type": "Elite all-around (Sorokin-type)",
+        "rebound_tendency": "Low; most shots swallowed or steered safely",
+        "tags": [
+          "beat-traffic-and-tips",
+          "east-west-or-nothing",
+          "needs-multiple-shot-sequences"
+        ]
+      },
+      "leafs_recommended_approach": {
+        "systems": {
+          "forecheck": "2-3 with discipline; don’t overcommit F3.",
+          "neutral_zone": "1-2-2 Red; avoid skating into their trap lanes blind.",
+          "defensive_strategy": "Staggered; protect middle, force outside shots.",
+          "defensive_pressure": "Normal/Contain; do not chase them below goal line unnecessarily.",
+          "trap_slider_rule": "Start at 3; if the game is getting too dead, bump to 4 mid-game to open it up. When leading, happily sit at 2 and let them chase."
+        },
+        "slider_emphasis": {
+          "cycle_shoot": "Higher Cycle early (5–6) to stretch their shell, then shoot through traffic.",
+          "net-front": "Mandatory screeners vs Sorokin-type; raise crash bias especially with L3/L4.",
+          "pinch_rules": "P1/P2 normal; keep P3 pinch conservative (3) to avoid getting burned by rare counterattacks."
+        },
+        "matchup_notes": {
+          "target_pairs": "Exploit Islanders’ 3rd pair with speed, cross-ice plays after controlled entries.",
+          "danger_lines": "Top line and any page built around Barzal-type speed; otherwise, respect volume, not flash.",
+          "pk_template": "Treat NYI PP as 'net-front shooting PP' – focus on box tightness + net-front sticks."
+        }
+      }
+    },
+
+    "NJD": {
+      "team_name": "New Jersey Devils",
+      "identity": {
+        "pace": "Very high",
+        "style": "Rush offense, skill-heavy, transition first",
+        "physicality": "Low–medium",
+        "risk_profile": "High; willing to trade chances",
+        "summary": "Speed and skill engine. They want track meets, off-the-rush chances, and broken-play offense off turnovers."
+      },
+      "systems": {
+        "forecheck": "1-2-2 Aggressive / 2-1-2 vs weaker exits",
+        "neutral_zone": "1-2-2 Blue or 1-1-3 vs some looks",
+        "defensive_strategy": "Staggered but looser structure",
+        "defensive_pressure": "High Pressure / Puck Side Attack",
+        "powerplay": "1-3-1, rush into set-up",
+        "penalty_kill": "Aggressive box / wedge+1",
+        "pp_carry_dump": "Carry entries with speed almost always",
+        "tag_class": [
+          "rush-team",
+          "high-skill",
+          "looser-structure",
+          "transition-danger"
+        ]
+      },
+      "offense_profile": {
+        "primary_threats": [
+          "End-to-end rushes by high-skill forwards",
+          "Cross-slot passes off zone entries",
+          "Quick-strike PP with one-timers from the circles"
+        ],
+        "entry_style": "Fast, controlled, with mid-lane drive and wide support.",
+        "cycle_style": "Short, sharp cycles leading to seam passes."
+      },
+      "defense_profile": {
+        "strengths": [
+          "Creating turnovers with aggressive pressure",
+          "Jumping into rushes from the back end",
+          "Exploiting sloppy breakouts"
+        ],
+        "weaknesses": [
+          "Can get caught with forwards high in OZ",
+          "Defensive-zone coverage breaks down under extended cycle",
+          "Net-front protection not as heavy as BOS/NYI"
+        ]
+      },
+      "goalie_profile": {
+        "type": "Average to streaky",
+        "rebound_tendency": "Medium-high, especially on low shots in traffic",
+        "tags": [
+          "rebound-prone",
+          "beat-with-traffic",
+          "momentum-sensitive"
+        ]
+      },
+      "leafs_recommended_approach": {
+        "systems": {
+          "forecheck": "1-2-2 Passive or 2-3 to start; do NOT feed their transition early.",
+          "neutral_zone": "1-3-1 ideal vs rush; 1-2-2 Red acceptable if you keep good gaps.",
+          "defensive_strategy": "Staggered with strong gap control.",
+          "defensive_pressure": "Contain Puck baseline; only go High Pressure in OZ after they’re tired.",
+          "trap_slider_rule": "Start at 2 (trap leaning) to kill their rush game; raise to 3–4 only if you’re chasing."
+        },
+        "slider_emphasis": {
+          "carry_dump": "More Dump with L3/L4 to keep puck deep and avoid long neutral-zone turnovers.",
+          "cycle_shoot": "Cycle 5–6 to keep them in their zone; shoot low for rebounds vs average goalie.",
+          "efficiency_energy": "Slightly higher Energy bias to survive high-tempo pace across 60 minutes."
+        },
+        "matchup_notes": {
+          "target_pairs": "Hem NJD’s offensive D in their zone; long cycles tire them and reduce jump.",
+          "danger_lines": "Top skill lines must be kept out of track-meet situations; prefer controlled, slow games.",
+          "pk_template": "Treat Devils PP as 'rush + 1-3-1 skill PP' – respect seams, cut off royal road passes first."
+        }
+      }
+    }
+  }
+}
