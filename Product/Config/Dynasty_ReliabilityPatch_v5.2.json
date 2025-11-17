@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "name": "Dynasty_ReliabilityPatch_v5.2",
+    "description": "Timing-aware reliability layer for Leafs Dynasty AI: forecheck, NZ, breakout, trap slider and pressure switching based on score, period, and opponent archetype.",
+    "version": "5.2",
+    "date": "2024-12-27",
+    "game": "NHL 25",
+    "applies_to": [
+      "Toronto Maple Leafs – Austin Franchise"
+    ]
+  },
+
+  "system_switch_core": {
+    "forecheck": {
+      "default": "1-2-2 Passive",
+      "vs_chaos_archetypes": {
+        "teams": ["DET", "FLA", "CAR"],
+        "start": "1-2-2 Passive",
+        "switch_at_game_time_minutes": 10,
+        "switch_to": "2-3",
+        "second_period_default": "2-3",
+        "protecting_lead_third": "1-2-2 Passive"
+      },
+      "vs_rush_archetypes": {
+        "teams": ["EDM", "BUF", "COL", "DAL"],
+        "start": "1-2-2 Red",
+        "when_trailing": "2-3",
+        "late_game_trailing": "1-2-2 Aggressive"
+      }
+    },
+
+    "neutral_zone": {
+      "default": "1-2-2 Red",
+      "vs_rush_heavy": {
+        "teams": ["EDM", "BUF", "COL", "DAL"],
+        "lead_protection": "1-3-1",
+        "use_1_3_1_when": [
+          "protecting_one_goal_lead_third_period",
+          "opponent_stacks_rush_entries"
+        ]
+      },
+      "vs_cycle_heavy": {
+        "teams": ["BOS", "VGK", "LAK"],
+        "primary": "1-2-2 Red",
+        "note": "Keep 1-2-2 Red; defensive zone structure and pressure handle cycle."
+      }
+    },
+
+    "defensive_pressure": {
+      "default": "Contain Puck",
+      "temporary_modes": {
+        "protect_net": {
+          "trigger_events": [
+            "pinned_in_zone_for_3_plus_cycles",
+            "opponent_creates_multiple_slot_chances_in_single_shift"
+          ],
+          "duration_shifts": 2,
+          "description": "Shrink to slot, collapse, block seams. Then return to default."
+        },
+        "press": {
+          "trigger_events": [
+            "opponent_D_walks_blue_line_consistently",
+            "opponent_takes_uncontested_point_shots"
+          ],
+          "duration_shifts": 1,
+          "description": "Short, targeted pressure burst to force turnovers; then revert to Contain."
+        }
+      }
+    },
+
+    "defensive_strategy": {
+      "default": "Staggered",
+      "vs_heavy_point_cycle": {
+        "teams": ["BOS", "VGK", "LAK"],
+        "keep": "Staggered",
+        "note": "Do not flip to Tight Point; let Staggered protect slot first."
+      }
+    }
+  },
+
+  "trap_slider_logic": {
+    "scale_note": "0 = full trap, 3 = balanced, 6 = full forecheck",
+    "default_value": 2,
+    "states": {
+      "normal_play": {
+        "value": 2,
+        "when": [
+          "start_of_game",
+          "even_score_early",
+          "no_strong_momentum_for_either_team"
+        ]
+      },
+      "momentum_push": {
+        "value_range": [4, 5],
+        "trigger_events": [
+          "after_successful_penalty_kill",
+          "after_scoring_goal",
+          "when_opponent_defense_pair_3_on_ice",
+          "early_second_period_vs_tired_team"
+        ],
+        "description": "Short bursts of higher forecheck to create chances, then drop back to 2."
+      },
+      "protecting_lead": {
+        "value_range": [1, 2],
+        "when": [
+          "leading_by_1_or_2_in_third_period",
+          "last_5_minutes_with_lead"
+        ]
+      }
+    }
+  },
+
+  "breakout_switch_logic": {
+    "defaults": {
+      "control_breakout": "Strong Side Slant",
+      "quick_breakout": "Stay Wide"
+    },
+    "quick_breakout_modes": {
+      "stay_wide": {
+        "use_when": [
+          "opponent_plays_standard_forecheck",
+          "no_sustained_heavy_pressure"
+        ]
+      },
+      "close_support": {
+        "use_when": [
+          "team_is_hemmed_in_for_multiple_shifts",
+          "opponent_forecheck_two_man_pressure",
+          "weak_side_lock_causing_turnovers"
+        ],
+        "duration_shifts": 3,
+        "description": "Short-pass, support-heavy mode to break chaos forecheck."
+      },
+      "leave_zone_early": {
+        "use_when": [
+          "team_is_trailing_by_1_or_more_in_third_period",
+          "need_quick_offense_and_transition_chances"
+        ],
+        "risk_note": "Higher risk of stretch turnovers; only use when chasing game."
+      }
+    }
+  },
+
+  "period_based_rules": {
+    "first_period": {
+      "goal": "stabilize_and_read_opponent",
+      "forecheck": "1-2-2 Passive",
+      "neutral_zone": "1-2-2 Red",
+      "offensive_pressure": "Standard",
+      "notes": [
+        "Avoid unnecessary risk early.",
+        "Use this period to identify opponent tendencies."
+      ]
+    },
+    "second_period": {
+      "goal": "take_control",
+      "default_forecheck": "2-3",
+      "default_offensive_pressure": "Aggressive",
+      "trap_slider_recommended": 3,
+      "notes": [
+        "Exploit long change for opponent.",
+        "Push puck possession and cycle time."
+      ]
+    },
+    "third_period": {
+      "if_leading": {
+        "neutral_zone": "1-3-1",
+        "defensive_pressure": "Protect Net",
+        "trap_slider": 1,
+        "forecheck": "1-2-2 Passive",
+        "note": "Protect middle of ice; accept more dump-ins."
+      },
+      "if_tied": {
+        "neutral_zone": "1-2-2 Red",
+        "offensive_pressure": "Standard",
+        "trap_slider": 2,
+        "option_to_push": {
+          "when": [
+            "opponent_takes_penalty",
+            "visible_momentum_in_toronto_favour"
+          ],
+          "change_offensive_pressure_to": "Aggressive"
+        }
+      },
+      "if_trailing": {
+        "forecheck": "1-2-2 Aggressive",
+        "offensive_pressure": "Aggressive",
+        "quick_breakout": "Leave Zone Early",
+        "trap_slider": 4,
+        "note": "Accept higher risk to chase goal."
+      }
+    }
+  },
+
+  "matchup_overrides": {
+    "DET": {
+      "archetype": "chaos_forecheck_weak_side_lock",
+      "priority_rules": [
+        "Start 1-2-2 Passive for first 10 minutes, then switch to 2-3.",
+        "Use Close Support when pinned by weak side lock.",
+        "In second period, lean on 2-3 forecheck and Aggressive offensive pressure.",
+        "Target opponent third pair and Hall’s corner for dump-and-chase pressure."
+      ]
+    }
+  },
+
+  "integration": {
+    "runtime_configs_expected_to_reference": [
+      "Architect/RuntimeConfig_v1.0.json",
+      "Product/Dynasty/RuntimeConfig_v1.0.json"
+    ],
+    "dynasty_default_enabled": true,
+    "notes": [
+      "This patch does not change Canon strategies; it governs WHEN to switch legal systems.",
+      "When a matchup file exists for a specific opponent, its instructions may take precedence for that game, but must remain within these timing and legality rules.",
+      "If future patches change NHL 25 AI behaviour significantly, clone this file as v5.3 or later and adjust thresholds and archetype lists."
+    ]
+  }
+}
