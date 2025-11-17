@@ -1,0 +1,9 @@
+{
+  "template": "Base Gameplan",
+  "version": "1.0",
+  "notes": "Starter gameplan template for opponent-specific builds.",
+  "forecheck": "",
+  "neutral_zone": "",
+  "defense_zone": "",
+  "sliders": {}
+}
