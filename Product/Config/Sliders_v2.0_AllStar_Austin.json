@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "name": "Sliders_v2.0_AllStar_Austin",
+    "game": "NHL 25",
+    "difficulty": "All-Star",
+    "period_length_minutes": 6,
+    "rules_preset": "Authentic",
+    "description": "Balanced simulation slider set tuned for Austin’s Leafs Dynasty: realistic pace, fair CPU behaviour, clean breakouts, and strong cycle play without arcade chaos.",
+    "version": "2.0",
+    "created_date": "2024-12-27"
+  },
+
+  "philosophy": {
+    "target_style": "Balanced Simulation",
+    "goals_per_team_range": "2–4",
+    "shot_totals_range": "25–40 per team",
+    "pace_description": "NHL-like tempo with room for cycle, forecheck pressure, and structured breakouts.",
+    "notes": [
+      "CPU does not get blatant cheat boosts but still punishes bad decisions.",
+      "Passing and pickups are tuned to reduce random bobbles on clean plays.",
+      "Forecheck and aggression are toned down slightly from default to reduce chaos teams overwhelming the player.",
+      "This profile is optimized for Skill Stick controls and cloud-streamed Series version on Xbox One S."
+    ]
+  },
+
+  "general": {
+    "game_speed": 2,
+    "attribute_effects": 5,
+    "fatigue_effect": 5,
+    "fatigue_recovery": 5,
+    "injury_occurrence_human": 3,
+    "injury_occurrence_cpu": 3,
+    "puck_control_human": 48,
+    "puck_control_cpu": 46,
+    "goalie_cover_frequency": 55,
+    "screen_persistence": 50
+  },
+
+  "skating": {
+    "acceleration_human": 50,
+    "acceleration_cpu": 50,
+    "skating_speed_human": 50,
+    "skating_speed_cpu": 50,
+    "agility_human": 52,
+    "agility_cpu": 50,
+    "back_skating_human": 50,
+    "back_skating_cpu": 50
+  },
+
+  "shooting": {
+    "shot_accuracy_slap_human": 48,
+    "shot_accuracy_slap_cpu": 48,
+    "shot_accuracy_wrist_human": 50,
+    "shot_accuracy_wrist_cpu": 50,
+    "shot_power_slap_human": 50,
+    "shot_power_slap_cpu": 50,
+    "shot_power_wrist_human": 50,
+    "shot_power_wrist_cpu": 50,
+    "one_timer_accuracy_human": 48,
+    "one_timer_accuracy_cpu": 48,
+    "rebound_control_goalie": 48
+  },
+
+  "passing": {
+    "pass_assist": 40,
+    "pass_speed": 52,
+    "manual_human_pass_accuracy": 55,
+    "manual_cpu_pass_accuracy": 50,
+    "saucer_pass_accuracy": 50,
+    "pickup_type_bias": "clean_on_clear_possession",
+    "pickup_reaction_human": 52,
+    "pickup_reaction_cpu": 50
+  },
+
+  "checking": {
+    "hitting_power_human": 47,
+    "hitting_power_cpu": 47,
+    "hit_assist": 40,
+    "stick_lift_effectiveness": 50,
+    "poke_check_effectiveness": 50,
+    "boarding_penalty_sensitivity": 60,
+    "interference_sensitivity": 60
+  },
+
+  "defense_ai": {
+    "cpu_aggression": 48,
+    "cpu_forecheck": 48,
+    "cpu_backcheck": 50,
+    "cpu_penalty_discipline": 55,
+    "fight_occurence": 35,
+    "stick_lift_penalties": 55,
+    "tripping_penalties": 55
+  },
+
+  "goalies": {
+    "goalie_reaction_human": 50,
+    "goalie_reaction_cpu": 50,
+    "goalie_screen_effect": 52,
+    "goalie_puck_play_human": 45,
+    "goalie_puck_play_cpu": 45,
+    "rebound_control_human": 50,
+    "rebound_control_cpu": 50
+  },
+
+  "penalties": {
+    "penalties_human": 55,
+    "penalties_cpu": 60,
+    "teammate_penalties": 55,
+    "slashing": 55,
+    "hooking": 55,
+    "tripping": 55,
+    "roughing": 50,
+    "boarding": 60,
+    "charging": 55
+  },
+
+  "integration": {
+    "default_profile_for_dynasty": true,
+    "overrides_legacy_slider_recommendations": true,
+    "matchup_usage_notes": [
+      "Use this as the baseline for all matchup gameplans.",
+      "Matchup-specific advice (e.g., vs DET) may temporarily change systems and strategies, but this slider base should remain active.",
+      "If future patches significantly change AI behaviour, this file can be cloned and versioned as Sliders_v2.1 or later."
+    ]
+  }
+}
