@@ -1,0 +1,175 @@
+{
+  "module_name": "GameplaySystems_Tuning",
+  "module_version": "2.3",
+  "description": "Permanent canon record of gameplay tuning rules for Leafs Dynasty AI v5. Mirrors the runtime module to ensure long-term consistency across versions.",
+  "metadata": {
+    "is_canon_source": true,
+    "linked_runtime_module": "Product/Architect/Modules/Gameplay/GameplaySystems_Tuning_v2.3.json",
+    "intended_for": ["Architect", "DynastyGPT", "LongTermVersioning"]
+  },
+
+  "trap_slider_rules": {
+    "scale_description": "0 = full trap, 3 = balanced, 6 = full forecheck",
+    "chaos_teams": {
+      "tags": [
+        "chaos_forecheck",
+        "high_pressure_dz",
+        "rebound_danger_team"
+      ],
+      "start_value": 2,
+      "midgame_adjust": 3,
+      "late_trail_range": [4, 5],
+      "late_lead_value": 1,
+      "notes": "Chaos teams feed on aggression. Start trap-heavy, adjust to balanced only if exits are too easy. No high forecheck early."
+    },
+    "slow_structured_teams": {
+      "tags": [
+        "slow_team",
+        "trap-team",
+        "structure-strong"
+      ],
+      "start_value": 3,
+      "second_period_if_trapped_nz": 4,
+      "late_lead_value": 2,
+      "late_trail_range": [4, 5],
+      "notes": "Slow-structured teams can be pressured more. Use 4 in the second period if they control the NZ consistently."
+    }
+  },
+
+  "curl_shooter_patch": {
+    "trigger_condition": "Opponent uses curl-and-shoot patterns repeatedly (2–3 attempts in short span).",
+    "temporary_adjustment": {
+      "defensive_pressure": "High Pressure",
+      "defensive_strategy": "Staggered",
+      "duration_shifts": 2
+    },
+    "revert_state": {
+      "defensive_pressure": "Contain Puck"
+    },
+    "notes": "Micro-adjustment patch for DET/Ovi-type curl shooters. Use only temporarily."
+  },
+
+  "pk_templates": {
+    "shooting_powerplay": {
+      "tags": ["shooting_pp", "volume_shooters"],
+      "shape": "Box+Fold",
+      "pressure": "Normal",
+      "priorities": [
+        "Block circle shots",
+        "Block point shots",
+        "Allow harmless low-traffic passing"
+      ],
+      "notes": "Used vs DET-type powerplays focusing on circle one-timers and point bombs."
+    },
+    "umbrella_ovi_flank_powerplay": {
+      "tags": ["umbrella_pp", "ovi_flank_priority"],
+      "shape": "Box+1",
+      "pressure": "Contain",
+      "priorities": [
+        "Deny royal-road pass",
+        "Keep right-side PK low",
+        "Do not over-chase high umbrella"
+      ],
+      "notes": "Used vs WSH/Ovi-type powerplays. Priority is to shut down the seam pass."
+    }
+  },
+
+  "rebound_offense_rules": {
+    "goalie_profiles": {
+      "rebound_prone": {
+        "tags": ["rebound-prone", "weak-pad-goalie"],
+        "line_slider_adjustments": {
+          "L1": { "cycle_shoot_delta": 1 },
+          "L2": { "cycle_shoot_delta": 1 },
+          "L3": { "crash_net_bias": "increase" }
+        },
+        "shot_selection": "Low shots through traffic",
+        "notes": "Used vs Logan Thompson types."
+      },
+      "positional_elite": {
+        "tags": ["positional-elite", "beat-royal-road"],
+        "line_slider_adjustments": {
+          "L1": { "cycle_shoot_delta": 1 },
+          "L2": { "cycle_shoot_delta": 1 },
+          "L3": { "screen_bias": "increase" }
+        },
+        "shot_selection": "Tips, screens, east–west movement",
+        "notes": "Used vs Swayman/Sorokin types."
+      }
+    }
+  },
+
+  "goalie_matchup_rules": {
+    "profiles": {
+      "vs_chaos_high_speed": {
+        "opponent_tags": [
+          "chaos_forecheck",
+          "rush-team",
+          "transition_danger"
+        ],
+        "preferred_starter": "Woll",
+        "reasoning": "Better scramble reads and east–west agility."
+      },
+      "vs_heavy_slow_cycle": {
+        "opponent_tags": [
+          "slow_team",
+          "trap-team",
+          "board_battle_heavy"
+        ],
+        "preferred_starter": "Stolarz",
+        "reasoning": "Big frame, strong post control, good for net-front war."
+      },
+      "vs_unknown_or_hybrid": {
+        "opponent_tags": [],
+        "preferred_starter": "hot_hand_or_rotation",
+        "reasoning": "Default rule for mixed archetypes."
+      }
+    }
+  },
+
+  "live_coaching_safety_rails": {
+    "rules": [
+      {
+        "id": "pp_goal_no_system_change",
+        "description": "Never change even-strength systems because of a PP goal.",
+        "benefit": "Avoids panic adjustments."
+      },
+      {
+        "id": "no_extreme_stack",
+        "description": "High Pressure + 1-2-2 Aggressive + trap > 4 allowed only in last 3 min when trailing.",
+        "benefit": "Avoids AI chaos mode."
+      },
+      {
+        "id": "red_mode_limiter",
+        "description": "If more than 2 major knobs change, limit to 2–3 shifts.",
+        "benefit": "Prevents structural collapse."
+      }
+    ]
+  },
+
+  "postgame_classification_rules": {
+    "system_loss": {
+      "definition": "Structure collapsed repeatedly; poor slot protection.",
+      "actions": [
+        "Review core systems",
+        "Re-evaluate DZ/NZ",
+        "Lower trap early next game"
+      ]
+    },
+    "execution_loss": {
+      "definition": "Chances were there but finishing or special teams failed.",
+      "actions": [
+        "Change sliders",
+        "Review PP/PK",
+        "Adjust matchups"
+      ]
+    },
+    "coinflip_game": {
+      "definition": "One-bounce or fluke-decided game.",
+      "actions": [
+        "Apply only micro patches",
+        "Do NOT overhaul systems"
+      ]
+    }
+  }
+}
