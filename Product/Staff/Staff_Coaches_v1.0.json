@@ -1,0 +1,269 @@
+{
+  "metadata": {
+    "team": "Toronto Maple Leafs",
+    "game": "NHL 25",
+    "category": "Coaching Staff",
+    "version": "1.0",
+    "lastUpdated": "2024-12-28",
+    "notes": [
+      "Snapshot of current NHL/AHL coaching staff.",
+      "Ratings and attributes are taken from in-game coach cards where available.",
+      "This file is meant as a reference for Dynasty AI and Architect runtimes (staff awareness, scheme fit, dev focus)."
+    ]
+  },
+  "coaches": [
+    {
+      "id": "coach_berube_craig",
+      "name": "Craig Berube",
+      "level": "NHL",
+      "role": "Head Coach",
+      "overallGrade": "A",
+      "teachingSpecialty": "Veterans",
+      "coachingStyle": "Balanced",
+      "salaryMillions": 3.0,
+      "contractYearsLeft": 4,
+      "teamFit": 0.62,
+      "morale": "Happy",
+      "attributes": {
+        "offense": "A+",
+        "defense": "A-",
+        "powerPlay": "A+",
+        "penaltyKill": "A",
+        "teaching": "A",
+        "coachInfluence": "A+"
+      },
+      "teamStrategies": {
+        "offensivePressure": "Standard",
+        "threeOnThreeOffense": "Aggressive",
+        "forecheck": "2-3",
+        "forecheckBias": "Balanced",
+        "defensivePressure": "Normal",
+        "defensiveStrategy": "Staggered",
+        "neutralZone": "1-2-2 Red",
+        "penaltyKill": "1-1-2",
+        "powerPlay": "Umbrella",
+        "powerPlayCarryDumpBias": "Balanced",
+        "forwardIceTimeAllocation": "Roll 4 Lines",
+        "defenseIceTimeAllocation": "Roll All Pairings"
+      },
+      "lineStrategies": {
+        "forwardLines": {
+          "line1": {
+            "offensiveStrategy": "Overload",
+            "carryDumpBias": "Carry",
+            "cycleShootBias": "Cycle",
+            "efficiencyEnergyBias": "Balanced",
+            "blockShotsBias": "Balanced"
+          },
+          "line2": {
+            "offensiveStrategy": "Overload",
+            "carryDumpBias": "Balanced",
+            "cycleShootBias": "Cycle",
+            "efficiencyEnergyBias": "Balanced",
+            "blockShotsBias": "Balanced"
+          },
+          "line3": {
+            "offensiveStrategy": "Crash the Net",
+            "carryDumpBias": "Dump",
+            "cycleShootBias": "Cycle",
+            "efficiencyEnergyBias": "Balanced",
+            "blockShotsBias": "Balanced"
+          },
+          "line4": {
+            "offensiveStrategy": "Overload",
+            "carryDumpBias": "Balanced",
+            "cycleShootBias": "Balanced",
+            "efficiencyEnergyBias": "Balanced",
+            "blockShotsBias": "Balanced"
+          }
+        },
+        "defensePairs": {
+          "pair1": {
+            "holdLinePinchBias": "Balanced",
+            "cycleShootBias": "Balanced"
+          },
+          "pair2": {
+            "holdLinePinchBias": "Balanced",
+            "cycleShootBias": "Balanced"
+          },
+          "pair3": {
+            "holdLinePinchBias": "Balanced",
+            "cycleShootBias": "Balanced"
+          }
+        }
+      }
+    },
+    {
+      "id": "coach_guerra_l",
+      "name": "L. Guerra",
+      "level": "NHL",
+      "role": "Associate Coach",
+      "overallGrade": "B-",
+      "teachingSpecialty": "Forwards",
+      "coachingStyle": "Unknown",
+      "salaryMillions": 0.795,
+      "contractYearsLeft": null,
+      "teamFit": null,
+      "attributes": {
+        "offense": null,
+        "defense": null,
+        "powerPlay": null,
+        "penaltyKill": null,
+        "teaching": null,
+        "coachInfluence": null
+      }
+    },
+    {
+      "id": "coach_dykhuis_g",
+      "name": "G. Dykhuis",
+      "level": "NHL",
+      "role": "Assistant Coach",
+      "overallGrade": "B-",
+      "teachingSpecialty": "Generalists",
+      "coachingStyle": "Unknown",
+      "salaryMillions": 0.787,
+      "contractYearsLeft": null,
+      "teamFit": null,
+      "attributes": {
+        "offense": null,
+        "defense": null,
+        "powerPlay": null,
+        "penaltyKill": null,
+        "teaching": null,
+        "coachInfluence": null
+      }
+    },
+    {
+      "id": "coach_goalie_vacant_nhl",
+      "name": "NHL Goalie Coach (Vacant)",
+      "level": "NHL",
+      "role": "Goalie Coach",
+      "overallGrade": null,
+      "teachingSpecialty": "Goalies",
+      "coachingStyle": null,
+      "salaryMillions": null,
+      "contractYearsLeft": null,
+      "teamFit": null,
+      "status": "Vacant_after_firing_Del_Rio",
+      "notes": [
+        "Reece Del Rio (D- overall) was fired to open this slot.",
+        "Target replacement: Travis Smithson (B- overall, Goalie specialty, Physical style)."
+      ]
+    },
+    {
+      "id": "coach_smithson_travis_target",
+      "name": "Travis Smithson",
+      "level": "NHL",
+      "role": "Goalie Coach (Target)",
+      "overallGrade": "B-",
+      "teachingSpecialty": "Goalies",
+      "coachingStyle": "Physical",
+      "salaryMillions": 0.972,
+      "contractYearsLeft": 4,
+      "teamFit": 0.56,
+      "status": "Offer_Pending",
+      "attributes": {
+        "offense": "B-",
+        "defense": "B-",
+        "powerPlay": "B-",
+        "penaltyKill": "B",
+        "teaching": "A-",
+        "coachInfluence": "C-"
+      },
+      "teamStrategies": {
+        "offensivePressure": "Standard",
+        "threeOnThreeOffense": "Aggressive",
+        "forecheck": "Weak Side Lock",
+        "forecheckBias": "Balanced",
+        "defensivePressure": "Normal",
+        "defensiveStrategy": "Staggered",
+        "neutralZone": "1-2-2 Red",
+        "penaltyKill": "Passive Box",
+        "powerPlay": "1-3-1",
+        "powerPlayCarryDumpBias": "Balanced",
+        "forwardIceTimeAllocation": "Roll 4 Lines",
+        "defenseIceTimeAllocation": "Roll All Pairings"
+      }
+    },
+    {
+      "id": "coach_benn_t",
+      "name": "T. Benn",
+      "level": "AHL",
+      "role": "Head Coach",
+      "overallGrade": "C",
+      "teachingSpecialty": "Generalists",
+      "coachingStyle": "Unknown",
+      "salaryMillions": 0.600,
+      "contractYearsLeft": null,
+      "teamFit": null,
+      "attributes": {
+        "offense": null,
+        "defense": null,
+        "powerPlay": null,
+        "penaltyKill": null,
+        "teaching": null,
+        "coachInfluence": null
+      }
+    },
+    {
+      "id": "coach_doan_d",
+      "name": "D. Doan",
+      "level": "AHL",
+      "role": "Associate Coach",
+      "overallGrade": "C",
+      "teachingSpecialty": "Generalists",
+      "coachingStyle": "Unknown",
+      "salaryMillions": 0.450,
+      "contractYearsLeft": null,
+      "teamFit": null,
+      "attributes": {
+        "offense": null,
+        "defense": null,
+        "powerPlay": null,
+        "penaltyKill": null,
+        "teaching": null,
+        "coachInfluence": null
+      }
+    },
+    {
+      "id": "coach_pardy_n",
+      "name": "N. Pardy",
+      "level": "AHL",
+      "role": "Assistant Coach",
+      "overallGrade": "D",
+      "teachingSpecialty": "Generalists",
+      "coachingStyle": "Unknown",
+      "salaryMillions": 0.236,
+      "contractYearsLeft": null,
+      "teamFit": null,
+      "attributes": {
+        "offense": null,
+        "defense": null,
+        "powerPlay": null,
+        "penaltyKill": null,
+        "teaching": null,
+        "coachInfluence": null
+      }
+    },
+    {
+      "id": "coach_seale_c",
+      "name": "C. Seale",
+      "level": "AHL",
+      "role": "Goalie Coach",
+      "overallGrade": "D-",
+      "teachingSpecialty": "Goalies",
+      "coachingStyle": "Unknown",
+      "salaryMillions": 0.236,
+      "contractYearsLeft": null,
+      "teamFit": null,
+      "attributes": {
+        "offense": null,
+        "defense": null,
+        "powerPlay": null,
+        "penaltyKill": null,
+        "teaching": null,
+        "coachInfluence": null
+      }
+    }
+  ]
+}
