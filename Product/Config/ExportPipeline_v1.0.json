@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "name": "Leafs Dynasty AI – Export Pipeline",
+    "version": "1.0",
+    "description": "Central config describing how gameplans, matchups, reports and runtime snapshots are exported into the repo.",
+    "lastUpdated": "2025-11-18"
+  },
+  "paths": {
+    "gameplan_exports_dir": "Exports/Gameplans",
+    "matchup_exports_dir": "Exports/Matchups",
+    "game_report_exports_dir": "Exports/GameReports",
+    "runtime_snapshot_exports_dir": "Exports/Runtimes",
+    "packaging_dir": "Exports/Packaging"
+  },
+  "templates": {
+    "gameplan_template": "Exports/Gameplans/BaseGameplanTemplate.json",
+    "matchup_template": "Exports/Matchups/BaseMatchupTemplate.json",
+    "game_report_template": "Exports/GameReports/GameReportTemplate.json",
+    "runtime_snapshot_template": "Exports/Runtimes/RuntimeSnapshotTemplate.json",
+    "release_notes_template": "Exports/Packaging/ReleaseNotesTemplate.md"
+  },
+  "naming_rules": {
+    "gameplan": {
+      "pattern": "Gameplan_{opponent}_{date}_{runtime}.json",
+      "example": "Gameplan_WSH_2025-12-28_Runtime_v2.2.json",
+      "fields": [
+        "opponent",
+        "date",
+        "runtime"
+      ]
+    },
+    "matchup": {
+      "pattern": "Matchup_{opponent}_{date}.json",
+      "example": "Matchup_DET_2025-12-27.json",
+      "fields": [
+        "opponent",
+        "date"
+      ]
+    },
+    "game_report": {
+      "pattern": "GameReport_{opponent}_{date}.json",
+      "example": "GameReport_DET_2025-12-27.json",
+      "fields": [
+        "opponent",
+        "date"
+      ]
+    },
+    "runtime_snapshot": {
+      "pattern": "RuntimeSnapshot_{date}_{runtime}.json",
+      "example": "RuntimeSnapshot_2025-12-28_Runtime_v2.2.json",
+      "fields": [
+        "date",
+        "runtime"
+      ]
+    },
+    "release_notes": {
+      "pattern": "ReleaseNotes_{version}.md",
+      "example": "ReleaseNotes_v2.2.md",
+      "fields": [
+        "version"
+      ]
+    }
+  },
+  "dynasty_commands": {
+    "export_gameplan": {
+      "command": "/export gameplan",
+      "arguments": [
+        "opponent",
+        "date"
+      ],
+      "output_type": "gameplan",
+      "target_dir": "Exports/Gameplans"
+    },
+    "export_matchup": {
+      "command": "/export matchup",
+      "arguments": [
+        "opponent",
+        "date"
+      ],
+      "output_type": "matchup",
+      "target_dir": "Exports/Matchups"
+    },
+    "export_game_report": {
+      "command": "/export game_report",
+      "arguments": [
+        "opponent",
+        "date"
+      ],
+      "output_type": "game_report",
+      "target_dir": "Exports/GameReports"
+    },
+    "export_runtime_snapshot": {
+      "command": "/export runtime_snapshot",
+      "arguments": [
+        "runtime_version",
+        "date",
+        "related_export"
+      ],
+      "output_type": "runtime_snapshot",
+      "target_dir": "Exports/Runtimes"
+    }
+  },
+  "architect_commands": {
+    "load_export_pipeline": {
+      "command": "/architect_runtime load_export_pipeline",
+      "config_path": "Product/Config/ExportPipeline_v1.0.json",
+      "description": "Tells Architect and Dynasty where export targets live and how to name files."
+    }
+  },
+  "notes": [
+    "This file does NOT create files by itself. It tells Architect/Dynasty how to structure exports.",
+    "When Austin runs /export gameplan or /export matchup in Dynasty, the GPT should fill the correct template and output a file block targeting the correct Exports subfolder.",
+    "All file paths are relative to the repo root."
+  ]
+}
