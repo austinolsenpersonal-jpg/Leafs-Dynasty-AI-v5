@@ -1,0 +1,84 @@
+{
+  "runtime_version": "v2.3",
+  "date": "2025-01-02",
+  "source_file": "NYI_2025-01-02_Gameplan.json",
+  "validated_against_schedule": true,
+  "location": "UBS Arena",
+
+  "active_modules": {
+    "line_module": "LineModule_v2.0",
+    "contract_module": "ContractModule_v2.0",
+    "trade_module": "TradeModule_v2.0",
+    "development_module": "DevelopmentModule_v2.0",
+    "ahl_dev_plan": "AHL_DevelopmentPlan_v1.0",
+    "export_pipeline": "ExportPipeline_v1.0"
+  },
+
+  "active_strategy_profile": {
+    "mode": "Hybrid_Standard",
+    "archetype_tag": "trap_low_event",
+    "team_strategies": {
+      "offensive_pressure": "Standard",
+      "forecheck": "1-2-2 Passive",
+      "trap_slider": 2,
+      "neutral_zone": "1-2-2 Blue",
+      "defensive_pressure": "Protect Net",
+      "defensive_strategy": "Staggered",
+      "control_breakout": "Three High",
+      "quick_breakout": "Close Support"
+    }
+  },
+
+  "deployment_profile": {
+    "starting_goalie": "Woll",
+    "forward_matchups": {
+      "vs_barzal_line": "Kampf – Domi – Steeves",
+      "vs_nelson_line": "Matthews – Knies – Nylander",
+      "vs_cizikas_line": "Domi – Kampf – Steeves"
+    },
+    "defence_matchups": {
+      "vs_barzal_line": "Tanev – Ekman-Larsson",
+      "vs_nelson_line": "Rielly – Carlo"
+    }
+  },
+
+  "line_state": {
+    "chemistry_notes": {
+      "line1": "Matthews–Nylander–Knies at peak chemistry",
+      "line2": "Marner–Tavares cycle stable",
+      "line3": "Mercer–Foerster driver pair trending upward",
+      "line4": "Shutdown integrity line optimal"
+    },
+    "injury_status": "Fully healthy",
+    "internal_risk_flags": []
+  },
+
+  "development_context": {
+    "ahl_usage_locked": true,
+    "call_up_recommendations": [],
+    "notes": "DevelopmentModule_v2.0 indicates no call-ups until Jan 10 review."
+  },
+
+  "trade_context": {
+    "mode": "Buyer",
+    "notes": "TradeModule_v2.0 flags no immediate action; monitor OEL transition efficiency vs forecheck-heavy opponents."
+  },
+
+  "contract_context": {
+    "priority_extensions": [],
+    "notes": "ContractModule_v2.0 reports no January 2nd contract actions required."
+  },
+
+  "schedule_context": {
+    "current_game": "TOR @ NYI (Jan 2)",
+    "next_game_source": "January_2025_Schedule.json",
+    "validated": true
+  },
+
+  "system_flags": {
+    "lockdown_profile_ready": true,
+    "comeback_profile_ready": true,
+    "export_mode": "full",
+    "file_validation": "ExportPipeline_v1.0"
+  }
+}
