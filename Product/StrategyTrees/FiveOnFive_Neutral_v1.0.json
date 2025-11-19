@@ -1,0 +1,30 @@
+{
+  "profile_name": "FiveOnFive_Neutral_v1.0",
+  "situation": "even_gameplay",
+  "description": "Balanced baseline profile for standard 5v5 game flow.",
+
+  "team_strategies": {
+    "offensive_pressure": "Standard",
+    "forecheck": "1-2-2 Passive",
+    "neutral_zone": "1-2-2 Blue",
+    "defensive_pressure": "Standard",
+    "defensive_strategy": "Staggered",
+    "control_breakout": "Three High",
+    "quick_breakout": "Close Support",
+    "trap_slider": 2
+  },
+
+  "deployment": {
+    "preferred_forward_unit": "top_9_rotation",
+    "preferred_defence_unit": "balanced_rotation",
+    "shift_bias": "normal_shifts",
+    "line_usage_notes": "Use lines according to fatigue and chemistry rules (LineModule v2.0)."
+  },
+
+  "slider_overrides": {
+    "carry_dump": 4,
+    "cycle_shoot": 4,
+    "efficiency_energy": 5,
+    "block_bias": 4
+  }
+}
