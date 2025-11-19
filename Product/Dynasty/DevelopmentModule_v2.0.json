@@ -1,0 +1,228 @@
+{
+  "module_name": "DevelopmentModule",
+  "module_version": "2.0",
+  "description": "Global prospect and player development logic for the Toronto Maple Leafs organization, coordinating NHL and AHL usage, promotions, demotions, and growth tracking.",
+  "team": {
+    "nhl_team_name": "Toronto Maple Leafs",
+    "nhl_team_code": "TOR",
+    "ahl_team_name": "Toronto Marlies",
+    "ahl_team_code": "TOR-AHL",
+    "season": "2024-2025"
+  },
+  "integration": {
+    "ahl_plan_file": "Product/Dynasty/AHL_DevelopmentPlan_v1.0.json",
+    "line_module_file": "Product/Dynasty/LineModule_v2.0.json",
+    "contract_module_file": "Product/Dynasty/ContractModule_v2.0.json",
+    "trade_module_file": "Product/Dynasty/TradeModule_v2.0.json"
+  },
+  "philosophy": {
+    "primary_objectives": [
+      "maximize long-term NHL impact of key prospects",
+      "avoid stunting development with misused minutes",
+      "balance winning culture with prospect opportunity",
+      "align promotions with readiness, not just injuries"
+    ],
+    "priority_order": [
+      "S_tier_prospects",
+      "A_tier_prospects",
+      "established_core",
+      "B_tier_prospects",
+      "depth_and_veterans"
+    ]
+  },
+  "development_tiers": {
+    "S_tier": {
+      "description": "Potential top-pair D / top-line F / 1A G. Core future pieces.",
+      "examples": [
+        "Topi Niemelä",
+        "Matthew Knies (early period, now in NHL usage tracking)",
+        "Easton Cowan (when signed/active)"
+      ],
+      "targets": {
+        "ahl_toi_min_minutes": 20,
+        "nhl_toi_min_minutes_if_called": 15,
+        "special_teams_focus": "PP_priority"
+      }
+    },
+    "A_tier": {
+      "description": "Likely NHL regulars (top-4 D, middle-six F, strong depth with upside).",
+      "examples": [
+        "Mikko Kokkonen",
+        "Roni Hirvonen",
+        "Alex Steeves"
+      ],
+      "targets": {
+        "ahl_toi_min_minutes": 17,
+        "nhl_toi_min_minutes_if_called": 12,
+        "special_teams_focus": "role_dependent"
+      }
+    },
+    "B_tier": {
+      "description": "Fringe NHLers / strong AHLers / depth options.",
+      "targets": {
+        "ahl_toi_min_minutes": 14,
+        "nhl_toi_min_minutes_if_called": 10,
+        "special_teams_focus": "PK_or_PP2_where_appropriate"
+      }
+    },
+    "C_tier": {
+      "description": "Organizational depth. Development nice-to-have, not core.",
+      "targets": {
+        "ahl_toi_min_minutes": 10,
+        "special_teams_focus": "limited_or_none"
+      }
+    }
+  },
+  "age_bands": {
+    "18_21": {
+      "label": "early_growth",
+      "rules": [
+        "development > results",
+        "prioritize consistent role and TOI over league level if close call",
+        "avoid healthy scratches unless absolutely necessary"
+      ]
+    },
+    "22_24": {
+      "label": "consolidation",
+      "rules": [
+        "role clarity becomes critical",
+        "if stuck below 13 AHL minutes for >15 games, flag stagnation",
+        "if dominating AHL for >25 games, consider NHL audition"
+      ]
+    },
+    "25_plus": {
+      "label": "finished_or_late_bloomer",
+      "rules": [
+        "treat more like depth assets than pure prospects",
+        "optimize for team need + value, not raw development",
+        "be willing to move if path blocked"
+      ]
+    }
+  },
+  "promotion_demotion_logic": {
+    "promotion_triggers": {
+      "primary_sources": [
+        "AHL_DevelopmentPlan_v1.0 metrics",
+        "injuries_at_NHL_level",
+        "performance_hot_streaks",
+        "role_specific_needs (PK/PP/faceoffs/speed)"
+      ],
+      "thresholds": {
+        "scoring_forward": {
+          "min_points_per_game": 0.75,
+          "min_shots_per_game": 2.5,
+          "min_toi": 17
+        },
+        "two_way_forward": {
+          "min_points_per_game": 0.50,
+          "coach_trust_grade_min": "B",
+          "usage_special_teams": "PK_or_PP2"
+        },
+        "offensive_defenceman": {
+          "min_points_per_game": 0.50,
+          "min_toi": 20,
+          "pp_usage": "PP1_or_PP2"
+        },
+        "defensive_defenceman": {
+          "toi_pk_min": 2.0,
+          "shots_against_per_60_max": 26
+        }
+      },
+      "guard_rails": {
+        "min_games_in_AHL_before_first_callup": 20,
+        "avoid_callup_if_recent_toi_drop_games": 5,
+        "avoid_callup_if_role_in_AHL_is_unclear": true
+      }
+    },
+    "demotion_triggers": {
+      "from_NHL_to_AHL": {
+        "reasons": [
+          "insufficient_icetime_for_development",
+          "role_mismatch",
+          "performance_struggles",
+          "need_confidence_reset"
+        ],
+        "thresholds": {
+          "min_nhl_toi_for_dev_player": 11,
+          "stagnation_window_games": 10,
+          "points_per_game_floor_scoring_forward": 0.20
+        },
+        "non_demote_cases": [
+          "player_is_in_critical_NHL_role_even_with_low_scoring",
+          "AHL_team_cannot_offer_better_development_context"
+        ]
+      }
+    }
+  },
+  "injury_and_rehab": {
+    "rehab_stint_rules": {
+      "allow_ahl_rehab_stints": true,
+      "min_games_rehab": 2,
+      "max_games_rehab": 6,
+      "notes": [
+        "Use AHL to restore timing after medium/long-term injuries.",
+        "Do not leave player in AHL if clearly NHL-calibre and healthy."
+      ]
+    },
+    "workload_limits": {
+      "max_back_to_back_games_for_prospect": 4,
+      "prefer_rest_after_injury": true
+    }
+  },
+  "stagnation_detection": {
+    "window_games": 20,
+    "metrics": {
+      "points_per_game_drop_threshold": 0.20,
+      "toi_drop_threshold_minutes": 3,
+      "negative_trend_flag": true
+    },
+    "actions_on_flag": [
+      "review_line_mates_and_role",
+      "consider_line_promotion_or_new_role",
+      "if unresolved, consider change_of_scenery_trade_or_system_tweak"
+    ]
+  },
+  "chemistry_and_pairing": {
+    "mentorship_pairs_source": "AHL_DevelopmentPlan_v1.0",
+    "rules": [
+      "keep priority prospects with at least one high-IQ veteran or stabilizer",
+      "avoid pairing two chaos players together on same line/pair",
+      "ensure at least one responsible player per unit"
+    ]
+  },
+  "reporting": {
+    "frequency": {
+      "ahl": "monthly",
+      "nhl_young_players": "monthly",
+      "full_system_check": "quarterly"
+    },
+    "report_types": {
+      "monthly_dev_report": "AHL_Monthly_Development_Report",
+      "nhl_young_core_report": "NHL_Young_Core_Usage_Report",
+      "promotion_watchlist": "AHL_Promotion_Watchlist",
+      "stagnation_list": "AHL_Stagnation_Flag_List"
+    },
+    "output_preferences": {
+      "include_recommendations": true,
+      "recommendation_types": [
+        "promote",
+        "demote",
+        "increase_toi",
+        "decrease_toi",
+        "change_role",
+        "change_linmates",
+        "consider_trade"
+      ],
+      "attach_confidence_scores": true
+    }
+  },
+  "guard_rails": {
+    "no_priority_prospect_4th_line_rule": true,
+    "no_priority_prospect_healthy_scratch_rule": true,
+    "max_priority_prospect_pk_only_usage_games": 5,
+    "notes": [
+      "If a priority prospect is consistently <4th line minutes or scratched, flag immediately.",
+      "If NHL role is worse for development than AHL top usage, recommend AHL assignment."
+    ]
+  }
+}
