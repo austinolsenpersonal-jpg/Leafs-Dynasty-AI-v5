@@ -1,0 +1,358 @@
+{
+  "module_name": "LineModule",
+  "module_version": "2.0",
+  "description": "Line optimization logic for Toronto Maple Leafs Franchise – integrates chemistry, roles, hot-hand form, and opponent archetypes.",
+  "scope": {
+    "team_code": "TOR",
+    "level": "NHL",
+    "season": "2024-2025",
+    "applies_to": [
+      "even_strength_5v5",
+      "special_units_context_flags_only"
+    ]
+  },
+  "global_policies": {
+    "respect_canon_strategies": true,
+    "respect_chemistry_overall": true,
+    "avoid_massive_shuffles_in_single_game": true,
+    "max_changes_per_game_recommendation": 3,
+    "max_promotions_per_game": 2,
+    "max_demotions_per_game": 2,
+    "min_games_before_demoting_new_line": 3
+  },
+  "line_slots": {
+    "L1": {
+      "label": "Top Scoring Line",
+      "priority": "S",
+      "primary_goals": [
+        "drive_scoring",
+        "start_in_o_zone",
+        "match_vs_top_pairs"
+      ],
+      "recommended_roles": {
+        "LW": ["power_forward", "scoring_winger"],
+        "C": ["elite_center", "play_driver", "two_way_center"],
+        "RW": ["elite_playmaker", "sniper", "dual_threat"]
+      }
+    },
+    "L2": {
+      "label": "Secondary Scoring / Possession Line",
+      "priority": "A",
+      "primary_goals": [
+        "sustain_offense",
+        "cycle_possession",
+        "secondary_matchup_exploitation"
+      ],
+      "recommended_roles": {
+        "LW": ["scoring_winger", "play_driver", "two_way_winger"],
+        "C": ["two_way_center", "netfront_playmaker"],
+        "RW": ["elite_playmaker", "dual_threat", "support_shooter"]
+      }
+    },
+    "L3": {
+      "label": "Checking / Rebound Line",
+      "priority": "A",
+      "primary_goals": [
+        "neutralize_opponent_top_6",
+        "win_d_zone_shifts",
+        "generate_rebound_offense"
+      ],
+      "recommended_roles": {
+        "LW": ["forechecking_winger", "power_forward", "defensive_winger"],
+        "C": ["defensive_center", "matchup_center"],
+        "RW": ["support_shooter", "two_way_winger"]
+      }
+    },
+    "L4": {
+      "label": "Energy / Speed Line",
+      "priority": "B",
+      "primary_goals": [
+        "tilt_ice_on_forecheck",
+        "bring_energy_after_goals_against",
+        "punish_slow_defence"
+      ],
+      "recommended_roles": {
+        "LW": ["energy_winger", "forechecking_winger"],
+        "C": ["high_compete_center", "two_way_center"],
+        "RW": ["energy_winger", "speed_winger"]
+      }
+    }
+  },
+  "player_archetypes": {
+    "definitions": {
+      "elite_center": {
+        "example_traits": ["high_offense", "high_iq", "top_faceoffs"],
+        "line_preferences": ["L1", "L2"],
+        "notes": ["Drive play at 5v5, heavy usage vs top competition."]
+      },
+      "play_driver": {
+        "example_traits": ["puck_transport", "zone_entry_beast"],
+        "line_preferences": ["L1", "L2"],
+        "notes": ["Ideal on lines that need controlled entries."]
+      },
+      "elite_playmaker": {
+        "example_traits": ["high_pass", "vision", "PP_driver"],
+        "line_preferences": ["L1", "L2"],
+        "notes": ["Best paired with shooters and net-front threats."]
+      },
+      "sniper": {
+        "example_traits": ["shot_power", "shot_accuracy"],
+        "line_preferences": ["L1", "L2"],
+        "notes": ["Needs puck touches and playmakers on line."]
+      },
+      "dual_threat": {
+        "example_traits": ["good_shot", "good_pass"],
+        "line_preferences": ["L1", "L2"],
+        "notes": ["Flexible – works on many line types."]
+      },
+      "power_forward": {
+        "example_traits": ["size", "net_drive", "board_battles"],
+        "line_preferences": ["L1", "L3"],
+        "notes": ["Perfect with a playmaker and shooter."]
+      },
+      "two_way_center": {
+        "example_traits": ["def_awareness", "faceoffs", "positioning"],
+        "line_preferences": ["L2", "L3"],
+        "notes": ["Used in matchups and PK situations."]
+      },
+      "defensive_center": {
+        "example_traits": ["elite_def_awareness", "PK_skill"],
+        "line_preferences": ["L3", "L4"],
+        "notes": ["Primary matchup / shutdown role."]
+      },
+      "two_way_winger": {
+        "example_traits": ["backcheck", "reads_play_well"],
+        "line_preferences": ["L2", "L3"],
+        "notes": ["Pairs well with offensive centers."]
+      },
+      "energy_winger": {
+        "example_traits": ["speed", "forecheck", "hits"],
+        "line_preferences": ["L4"],
+        "notes": ["Deploy after goals against or low energy sequences."]
+      },
+      "scoring_winger": {
+        "example_traits": ["finishing", "offensive_instincts"],
+        "line_preferences": ["L1", "L2"],
+        "notes": ["Needs either playmaker or net-front partner."]
+      },
+      "forechecking_winger": {
+        "example_traits": ["hits", "pressure", "board_play"],
+        "line_preferences": ["L3", "L4"],
+        "notes": ["Key to dump-and-chase strategy lines."]
+      }
+    },
+    "player_overrides": {
+      "Auston Matthews": {
+        "roles": ["elite_center", "play_driver", "dual_threat"],
+        "preferred_lines": ["L1"],
+        "notes": ["Franchise centerpiece; do not remove from L1 unless emergency."]
+      },
+      "William Nylander": {
+        "roles": ["dual_threat", "scoring_winger", "play_driver"],
+        "preferred_lines": ["L1", "L2"],
+        "notes": ["Can drive his own line; ideal as primary skill winger."]
+      },
+      "Mitch Marner": {
+        "roles": ["elite_playmaker", "dual_threat"],
+        "preferred_lines": ["L1", "L2"],
+        "notes": ["Should almost always be with a shooter and a net-front option."]
+      },
+      "John Tavares": {
+        "roles": ["two_way_center", "netfront_playmaker"],
+        "preferred_lines": ["L2"],
+        "notes": ["Ideal as L2 C in current window."]
+      },
+      "Matthew Knies": {
+        "roles": ["power_forward", "forechecking_winger"],
+        "preferred_lines": ["L1", "L3"],
+        "notes": ["Perfect complement to skill lines and for heavy matchups."]
+      },
+      "Alex Steeves": {
+        "roles": ["scoring_winger"],
+        "preferred_lines": ["L2", "L3"],
+        "notes": ["First in line for scoring call-up deployment."]
+      },
+      "Dawson Mercer": {
+        "roles": ["two_way_winger", "support_shooter"],
+        "preferred_lines": ["L2", "L3"],
+        "notes": ["Good in matchup roles with latent offense."]
+      }
+    }
+  },
+  "chemistry_rules": {
+    "line_archetypes": {
+      "ideal_scoring_line": {
+        "description": "Playmaker + Shooter + Power Forward / Net-Front",
+        "min_roles_required": ["elite_playmaker", "sniper_or_scoring_winger", "power_forward_or_netfront"],
+        "line_slots_suitable": ["L1", "L2"]
+      },
+      "ideal_checking_line": {
+        "description": "Defensive C + Two-Way Wingers",
+        "min_roles_required": ["defensive_center", "two_way_winger"],
+        "line_slots_suitable": ["L3"]
+      },
+      "ideal_energy_line": {
+        "description": "High speed and forecheck pressure",
+        "min_roles_required": ["energy_winger", "forechecking_winger"],
+        "line_slots_suitable": ["L4"]
+      }
+    },
+    "pairing_scores": {
+      "elite_playmaker+sniper": "S",
+      "elite_playmaker+scoring_winger": "S",
+      "play_driver+sniper": "A",
+      "two_way_center+scoring_winger": "A",
+      "defensive_center+two_way_winger": "A",
+      "sniper+sniper": "C",
+      "power_forward+power_forward": "B",
+      "energy_winger+sniper": "B",
+      "energy_winger+energy_winger": "B"
+    },
+    "evaluation_thresholds": {
+      "chemistry_grade_S_min": 0.85,
+      "chemistry_grade_A_min": 0.75,
+      "chemistry_grade_B_min": 0.65,
+      "chemistry_grade_C_max": 0.65
+    }
+  },
+  "opponent_archetype_adjustments": {
+    "trap_low_event": {
+      "description": "Opponents like NYI – low-event, heavy structure, trap oriented.",
+      "line_bias": {
+        "L1": {
+          "focus": "patient_possession",
+          "notes": ["Prefer high-IQ lines with strong cycle over run-and-gun."]
+        },
+        "L3": {
+          "focus": "rebound_farming",
+          "notes": ["Crash net, hunt greasy goals; Steeves / checking line boosted."]
+        }
+      },
+      "adjustments": {
+        "promote_heavy_board_players": true,
+        "demote_pure_rush_only_wingers": true
+      }
+    },
+    "rush_high_skill": {
+      "description": "Opponents like EDM – dangerous off rush, elite top line.",
+      "line_bias": {
+        "L1": {
+          "focus": "trade_offense_carefully",
+          "notes": ["Keep Matthews vs best, but use strong two-way support."]
+        },
+        "L3": {
+          "focus": "matchup_shutdown",
+          "notes": ["Deploy defensive C + two-way wingers more often."]
+        },
+        "L4": {
+          "focus": "energy_response",
+          "notes": ["Short shifts after goals against to reset momentum."]
+        }
+      },
+      "adjustments": {
+        "favour_two_way_and_defensive_centers": true,
+        "avoid_overstacking_one_line": true
+      }
+    },
+    "cycle_heavy": {
+      "description": "Opponents like BOS – strong on cycle, net-front pressure.",
+      "line_bias": {
+        "L2": {
+          "focus": "possession_and_down_low_support",
+          "notes": ["Tavares-type lines get extra value here."]
+        },
+        "L3": {
+          "focus": "defensive_zone_reliability",
+          "notes": ["Keep best defensive C engaged; avoid weak defensive wingers."]
+        }
+      },
+      "adjustments": {
+        "boost_heavy_lines": true,
+        "reduce_icetime_for_soft_perimeter_players": true
+      }
+    },
+    "forecheck_pressure": {
+      "description": "Opponents like CAR – relentless forecheck.",
+      "line_bias": {
+        "L1": {
+          "focus": "clean_exits_and_puck_support",
+          "notes": ["Require high-IQ wingers for exits, not just rush plays."]
+        },
+        "L4": {
+          "focus": "match_energy",
+          "notes": ["Use energy line to absorb and push back on tempo."]
+        }
+      },
+      "adjustments": {
+        "favour_good_exit_wingers": true,
+        "demote_poor_puck_management_players": true
+      }
+    }
+  },
+  "form_and_hot_hand_rules": {
+    "window_games": 5,
+    "hot_hand_thresholds": {
+      "points_last_window_min": 4,
+      "goals_last_window_min": 3,
+      "shots_per_game_min": 3.0
+    },
+    "cold_streak_thresholds": {
+      "points_last_window_max": 0,
+      "negative_plus_minus_floor": -4
+    },
+    "actions": {
+      "on_hot_hand": {
+        "allow_promotion_max_one_line": true,
+        "boost_pp_priority": true,
+        "notes": [
+          "If Steeves or similar is hot, consider L3 deployment at minimum.",
+          "Never break S-tier chemistry line for minor hot streak."
+        ]
+      },
+      "on_cold_streak": {
+        "allow_demote_max_one_line": true,
+        "keep_minimum_ice_time": true,
+        "notes": [
+          "Demotions should respect overall chemistry before reacting.",
+          "Do not demote stars after a single bad window if line is winning xG."
+        ]
+      }
+    }
+  },
+  "suggestion_modes": {
+    "conservative": {
+      "description": "Preserve chemistry; small tweaks only.",
+      "max_line_changes": 2,
+      "change_types_allowed": ["swap_wingers_same_line", "swap_adjacent_lines"]
+    },
+    "aggressive": {
+      "description": "Prioritize matchups and hot hands; accept bigger shake-ups.",
+      "max_line_changes": 4,
+      "change_types_allowed": ["promote_hot_hand", "rebuild_L3_L4"]
+    },
+    "hybrid": {
+      "description": "Default – protect elite chemistry while using form and matchups.",
+      "max_line_changes": 3,
+      "change_types_allowed": [
+        "promote_hot_hand",
+        "swap_adjacent_lines",
+        "optimize_checking_line"
+      ]
+    }
+  },
+  "output_preferences": {
+    "present_as_options": true,
+    "options": [
+      "Conservative Plan",
+      "Hybrid Plan",
+      "Aggressive Plan"
+    ],
+    "always_include_explanations": true,
+    "include_confidence_scores": true,
+    "attach_notes": [
+      "Explain why key stars moved or stayed.",
+      "Reference opponent archetype when suggesting line changes.",
+      "Flag any move that breaks high-rated chemistry pairs."
+    ]
+  }
+}
