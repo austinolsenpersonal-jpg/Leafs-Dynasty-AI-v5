@@ -1,0 +1,156 @@
+{
+  "opponent": "NYI",
+  "date": "2025-01-02",
+  "gameplan_version": "1.0",
+  "gameplan_mode": "Hybrid_Standard",
+  "archetype_tag": "trap_low_event",
+  "location": "UBS Arena",
+  "validated_against_schedule": true,
+
+  "team_strategies": {
+    "offensive_pressure": "Standard",
+    "forecheck": "1-2-2 Passive",
+    "trap_slider": 2,
+    "neutral_zone": "1-2-2 Blue",
+    "defensive_pressure": "Protect Net",
+    "defensive_strategy": "Staggered",
+    "control_breakout": "Three High",
+    "quick_breakout": "Close Support"
+  },
+
+  "forward_lines": [
+    {
+      "line": 1,
+      "players": ["Knies", "Matthews", "Nylander"],
+      "oz_strategy": "Behind the Net",
+      "sliders": {
+        "carry_dump": 2,
+        "cycle_shoot": 4,
+        "efficiency_energy": 3,
+        "block_bias": 3
+      }
+    },
+    {
+      "line": 2,
+      "players": ["Pacioretty", "Tavares", "Marner"],
+      "oz_strategy": "Overload",
+      "sliders": {
+        "carry_dump": 4,
+        "cycle_shoot": 3,
+        "efficiency_energy": 4,
+        "block_bias": 4
+      }
+    },
+    {
+      "line": 3,
+      "players": ["Robertson", "Mercor", "Foerster"],
+      "oz_strategy": "Crash the Net",
+      "sliders": {
+        "carry_dump": 5,
+        "cycle_shoot": 5,
+        "efficiency_energy": 5,
+        "block_bias": 6
+      }
+    },
+    {
+      "line": 4,
+      "players": ["Domi", "Kampf", "Steeves"],
+      "oz_strategy": "Behind the Net",
+      "sliders": {
+        "carry_dump": 6,
+        "cycle_shoot": 3,
+        "efficiency_energy": 5,
+        "block_bias": 7
+      }
+    }
+  ],
+
+  "defence_pairs": [
+    {
+      "pair": 1,
+      "players": ["Rielly", "Carlo"],
+      "strategy": "Pinch + Balanced",
+      "sliders": {
+        "pinch_back": 3,
+        "shoot_pass": 5
+      }
+    },
+    {
+      "pair": 2,
+      "players": ["Ekman-Larsson", "Tanev"],
+      "strategy": "Balanced",
+      "sliders": {
+        "pinch_back": 2,
+        "shoot_pass": 4
+      }
+    },
+    {
+      "pair": 3,
+      "players": ["McCabe", "Dumba"],
+      "strategy": "Balanced + Shoot",
+      "sliders": {
+        "pinch_back": 3,
+        "shoot_pass": 6
+      }
+    }
+  ],
+
+  "special_teams": {
+    "powerplay": {
+      "pp1": ["Matthews", "Tavares", "Nylander", "Marner", "Ekman-Larsson"],
+      "pp2": ["Pacioretty", "Mercer", "Robertson", "Rielly", "Foerster"],
+      "notes": "NYI Diamond PK is vulnerable to half-wall puck movement."
+    },
+    "penalty_kill": {
+      "pk1": ["Kampf", "Marner", "Tanev", "Carlo"],
+      "pk2": ["Domi", "Steeves", "McCabe", "Dumba"],
+      "notes": "Primary threat is bumper + point shot traffic."
+    }
+  },
+
+  "matchup_management": {
+    "starting_goalie": "Woll",
+    "forward_matchups": {
+      "Kampf_line_vs": "Barzal line",
+      "Matthews_line_vs": "Nelson line",
+      "Domi_line_vs": "Cizikas line"
+    },
+    "defence_matchups": {
+      "Tanev_OEL_vs": "Barzal line",
+      "Rielly_Carlo_vs": "Nelson/Lee line"
+    }
+  },
+
+  "lockdown_mode": {
+    "trigger_time": "08:00 left in 3rd",
+    "settings": {
+      "offensive_pressure": "Conservative",
+      "forecheck": "1-4",
+      "neutral_zone": "1-2-2 Blue",
+      "defensive_pressure": "Protect Net",
+      "defensive_strategy": "Collapsing",
+      "quick_breakout": "Close Support"
+    },
+    "preferred_unit": {
+      "forwards": ["Domi", "Kampf", "Steeves"],
+      "defence": ["Tanev", "Carlo"]
+    }
+  },
+
+  "comeback_mode": {
+    "settings": {
+      "offensive_pressure": "Aggressive",
+      "forecheck": "1-2-2 Aggressive",
+      "oz_strategy_l1": "Overload",
+      "quick_breakout": "Leave Zone Early",
+      "pairing_with_L1": "McCabe-Dumba"
+    }
+  },
+
+  "module_notes": {
+    "line_module": "L1 chemistry at peak; maintain.",
+    "development_module": "No AHL call-ups recommended; preserve Marlies TOI structure.",
+    "contract_module": "No immediate contract actions flagged for this matchup.",
+    "trade_module": "Monitor OEL transition efficiency if he struggles with NYI forecheck."
+  }
+}
