@@ -1,0 +1,187 @@
+{
+  "tree_name": "FiveOnFive_Profiles",
+  "version": "1.0",
+  "description": "Standardized 5v5 game-state profiles for Neutral, Lockdown (protect lead), and Chase (need a goal), using only legal NHL 25 team strategies and slider semantics.",
+  "profiles": {
+    "Neutral": {
+      "state_label": "even_score_default",
+      "team_strategies": {
+        "forecheck": "1-2-2 Passive",
+        "neutral_zone": "1-2-2 Red",
+        "defensive_pressure": "Contain Puck",
+        "defensive_strategy": "Staggered",
+        "offensive_pressure": "Standard",
+        "control_breakout": "Strong Side Slant",
+        "quick_breakout": "Stay Wide"
+      },
+      "trap_slider": 2,
+      "line_sliders": {
+        "L1": {
+          "strategy": "Overload",
+          "carry_dump": 3,
+          "cycle_shoot": 5,
+          "efficiency_energy": 4,
+          "block": 5
+        },
+        "L2": {
+          "strategy": "Behind the Net",
+          "carry_dump": 4,
+          "cycle_shoot": 6,
+          "efficiency_energy": 5,
+          "block": 5
+        },
+        "L3": {
+          "strategy": "Crash the Net",
+          "carry_dump": 5,
+          "cycle_shoot": 7,
+          "efficiency_energy": 5,
+          "block": 7
+        },
+        "L4": {
+          "strategy": "Behind the Net",
+          "carry_dump": 7,
+          "cycle_shoot": 5,
+          "efficiency_energy": 7,
+          "block": 8
+        }
+      },
+      "defence_pair_sliders": {
+        "D1": {
+          "strategy": "Pinch / Shoot",
+          "pinch": 6,
+          "shoot": 7
+        },
+        "D2": {
+          "strategy": "Pinch / Shoot",
+          "pinch": 5,
+          "shoot": 6
+        },
+        "D3": {
+          "strategy": "Balanced / Shoot",
+          "pinch": 4,
+          "shoot": 6
+        }
+      }
+    },
+    "Lockdown": {
+      "state_label": "protect_lead_third_period",
+      "team_strategies": {
+        "forecheck": "1-2-2 Passive",
+        "neutral_zone": "1-3-1",
+        "defensive_pressure": "Protect Net",
+        "defensive_strategy": "Staggered",
+        "offensive_pressure": "Standard",
+        "control_breakout": "Strong Side Slant",
+        "quick_breakout": "Close Support"
+      },
+      "trap_slider": 1,
+      "line_sliders": {
+        "L1": {
+          "strategy": "Overload",
+          "carry_dump": 4,
+          "cycle_shoot": 4,
+          "efficiency_energy": 7,
+          "block": 7
+        },
+        "L2": {
+          "strategy": "Behind the Net",
+          "carry_dump": 5,
+          "cycle_shoot": 4,
+          "efficiency_energy": 7,
+          "block": 8
+        },
+        "L3": {
+          "strategy": "Crash the Net",
+          "carry_dump": 6,
+          "cycle_shoot": 5,
+          "efficiency_energy": 8,
+          "block": 9
+        },
+        "L4": {
+          "strategy": "Crash the Net",
+          "carry_dump": 7,
+          "cycle_shoot": 4,
+          "efficiency_energy": 8,
+          "block": 10
+        }
+      },
+      "defence_pair_sliders": {
+        "D1": {
+          "strategy": "Balanced / Shoot",
+          "pinch": 3,
+          "shoot": 5
+        },
+        "D2": {
+          "strategy": "Balanced / Shoot",
+          "pinch": 3,
+          "shoot": 5
+        },
+        "D3": {
+          "strategy": "Hold Line / Shoot",
+          "pinch": 2,
+          "shoot": 4
+        }
+      }
+    },
+    "Chase": {
+      "state_label": "trailing_need_offense",
+      "team_strategies": {
+        "forecheck": "1-2-2 Aggressive",
+        "neutral_zone": "1-2-2 Red",
+        "defensive_pressure": "High Pressure",
+        "defensive_strategy": "Staggered",
+        "offensive_pressure": "Aggressive",
+        "control_breakout": "Strong Side Slant",
+        "quick_breakout": "Leave Zone Early"
+      },
+      "trap_slider": 4,
+      "line_sliders": {
+        "L1": {
+          "strategy": "Overload",
+          "carry_dump": 2,
+          "cycle_shoot": 7,
+          "efficiency_energy": 3,
+          "block": 4
+        },
+        "L2": {
+          "strategy": "Behind the Net",
+          "carry_dump": 3,
+          "cycle_shoot": 8,
+          "efficiency_energy": 3,
+          "block": 4
+        },
+        "L3": {
+          "strategy": "Crash the Net",
+          "carry_dump": 4,
+          "cycle_shoot": 8,
+          "efficiency_energy": 4,
+          "block": 5
+        },
+        "L4": {
+          "strategy": "Crash the Net",
+          "carry_dump": 6,
+          "cycle_shoot": 7,
+          "efficiency_energy": 5,
+          "block": 6
+        }
+      },
+      "defence_pair_sliders": {
+        "D1": {
+          "strategy": "Pinch / Shoot",
+          "pinch": 7,
+          "shoot": 8
+        },
+        "D2": {
+          "strategy": "Pinch / Shoot",
+          "pinch": 6,
+          "shoot": 7
+        },
+        "D3": {
+          "strategy": "Balanced / Shoot",
+          "pinch": 5,
+          "shoot": 7
+        }
+      }
+    }
+  }
+}
