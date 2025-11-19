@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "name": "FiveOnFive_Lockdown",
+    "version": "1.0",
+    "mode": "lockdown",
+    "description": "Standard 5v5 lockdown profile for protecting a lead in the 3rd period. Biases toward defensive stability, controlled exits, and low-risk offense.",
+    "author": "Austin Olsen",
+    "created_for": "Leafs Dynasty AI v5",
+    "last_updated": "2025-12-31"
+  },
+
+  "activation_rules": {
+    "score_state": {
+      "min_goal_lead": 1,
+      "max_goal_lead": 3
+    },
+    "period": {
+      "apply_in_periods": [3],
+      "min_time_remaining_minutes": 0,
+      "max_time_remaining_minutes": 20
+    },
+    "situational_tags": [
+      "protecting_lead",
+      "playoff_style",
+      "road_closeout_ok",
+      "home_closeout_ok"
+    ],
+    "manual_triggers": [
+      "mode_lockdown",
+      "protect_lead",
+      "defend_one_goal_lead"
+    ]
+  },
+
+  "team_strategies": {
+    "offensive_pressure": "Conservative",
+    "defensive_pressure": "Protect Net",
+    "defensive_strategy": "Collapsing",
+    "forecheck": "1-2-2 Blue",
+    "forecheck_bias": "Trap",
+    "neutral_zone": "1-3-1",
+    "penalty_kill": "Passive Box",
+    "three_on_three_offense": "Balanced",
+    "pp_carry_dump_bias": "Dump",
+    "forward_ice_time_allocation": "Roll 4 Lines",
+    "defense_ice_time_allocation": "Roll All Pairings"
+  },
+
+  "line_usage": {
+    "forward_lines": {
+      "line1": {
+        "role": "two_way_scoring",
+        "priority": "normal",
+        "notes": [
+          "Match against opposing top line when possible.",
+          "Avoid high-risk east-west plays at both blue lines."
+        ]
+      },
+      "line2": {
+        "role": "shutdown_support",
+        "priority": "high",
+        "notes": [
+          "Primary matchup vs opponent best scoring line when available.",
+          "F1 pressure on puck carrier, F2/F3 collapse to slot."
+        ]
+      },
+      "line3": {
+        "role": "energy_grit",
+        "priority": "high",
+        "notes": [
+          "Short shifts, finish checks without taking penalties.",
+          "Chip pucks deep, cycle low, no cross-ice slot passes."
+        ]
+      },
+      "line4": {
+        "role": "defensive_depth",
+        "priority": "medium",
+        "notes": [
+          "Used after icings / long shifts by opponent.",
+          "Glass-and-out is acceptable; avoid middle turnovers."
+        ]
+      }
+    },
+
+    "defense_pairs": {
+      "pair1": {
+        "role": "shutdown",
+        "priority": "very_high",
+        "notes": [
+          "Hard match vs opponent top line when possible.",
+          "Keep tight gap in NZ, protect inside lane first."
+        ]
+      },
+      "pair2": {
+        "role": "two_way_support",
+        "priority": "high",
+        "notes": [
+          "Join rush selectively only with clear numbers advantage.",
+          "First read is always net-front coverage in DZ."
+        ]
+      },
+      "pair3": {
+        "role": "safe_clear",
+        "priority": "medium",
+        "notes": [
+          "Rely on simple outs: rims, glass-and-out, safe chips.",
+          "Avoid carrying into traffic at own blue line."
+        ]
+      }
+    }
+  },
+
+  "breakout_rules": {
+    "primary_breakout": "Hold",
+    "secondary_breakout": "Low Support",
+    "tertiary_breakout": "Rim-and-Out",
+    "guidelines": [
+      "Use center-low support to shorten exits when under pressure.",
+      "Avoid up-the-middle passes unless lane is completely clean.",
+      "On 50/50 pucks, priority is to avoid odd-man rushes against."
+    ]
+  },
+
+  "risk_management": {
+    "pinch_behavior": {
+      "offensive_pinches": "Rare",
+      "allowed_when": [
+        "clear possession with full forward support",
+        "weak-side D stays home and F3 high"
+      ]
+    },
+    "neutral_zone": {
+      "trap_priority": "high",
+      "force_dump_ins": true,
+      "notes": [
+        "Steer rushes wide, deny middle lane entries.",
+        "F1 angles puck carrier, D hold blue line with good gaps."
+      ]
+    },
+    "offensive_zone": {
+      "cycle_vs_shot_bias": "Cycle",
+      "net_front_priority": "high",
+      "notes": [
+        "Low-to-high, point shots with traffic are preferred.",
+        "Do not force cross-crease passes through sticks."
+      ]
+    }
+  },
+
+  "slider_guidance": {
+    "description": "Guidance only. Values are 0–10 targets for your All-Star Austin slider set when switching into lockdown.",
+    "targets": {
+      "ai_aggressiveness": 3,
+      "forecheck_pressure": 3,
+      "neutral_zone_gap": 8,
+      "line_matching": 8,
+      "cpu_penalties": 3,
+      "human_strategy_adjustment_frequency": 7
+    },
+    "notes": [
+      "These are soft targets; SliderEngine_v5.0 remains the source of truth.",
+      "If conflict arises, treat this profile as a recommendation layer on top of the main slider file."
+    ]
+  },
+
+  "bench_management": {
+    "timeout_rules": {
+      "use_timeout_when": [
+        "lead is 1 goal and team is pinned for > 60 seconds of continuous pressure",
+        "after icing with a tired shutdown pair on the ice in final 3 minutes"
+      ]
+    },
+    "faceoff_matchups": {
+      "dz_defensive_zone": "Use best defensive center + shutdown pair",
+      "nz_neutral_zone": "Use line2 or line1 with best FO rating",
+      "oz_offensive_zone": "Use line1 (scoring) unless exhausted"
+    }
+  },
+
+  "notes_for_dynasty_ai": [
+    "When user issues /mode lockdown or equivalent intent, bias all tactical advice toward this profile.",
+    "Line changes should be small and role-respecting; do not blow up chemistry unless emergency.",
+    "For reports, tag any period where this profile is active with 'lockdown_mode_active: true' in runtime snapshots."
+  ]
+}
