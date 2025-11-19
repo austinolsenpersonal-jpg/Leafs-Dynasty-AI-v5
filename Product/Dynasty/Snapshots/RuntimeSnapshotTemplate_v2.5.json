@@ -1,0 +1,77 @@
+{
+  "runtime_snapshot_version": "2.5",
+  "metadata": {
+    "generated_on": "<AUTO_TIMESTAMP>",
+    "season": "2024-2025"
+  },
+
+  "game_context": {
+    "date": "<GAME_DATE>",
+    "opponent": "<OPP>",
+    "opponent_archetype": "<ARCHETYPE>",
+    "location": "<HOME_OR_AWAY>",
+    "schedule_position": "<FIRST_GAME_AFTER_BREAK | BACK_TO_BACK | MIDDLE_OF_HOME_STAND | ROAD_TRIP>",
+    "danger_rating": "<LOW | MEDIUM | HIGH>"
+  },
+
+  "active_strategy_state": {
+    "strategy_profile": "<HYBRID | LOCKDOWN | CHASE | NEUTRAL>",
+    "forecheck": "<1-2-2 Passive | 1-2-2 Aggressive | 1-1-3 | 1-4>",
+    "neutral_zone": "<1-2-2 Blue | 1-3-1 | 1-1-3>",
+    "defensive_pressure": "<Protect Net | Standard | High Pressure>",
+    "defensive_strategy": "<Staggered | Collapsing | Tight Point>",
+    "control_breakout": "<Three High | Strong Side | Leave Zone Early>",
+    "quick_breakout": "<Close Support | Hinge | Stretch>",
+    "slider_profile": "Sliders_v2.0_AllStar_Austin"
+  },
+
+  "active_lines_state": {
+    "even_strength_lines": {
+      "L1": ["<LW>", "<C>", "<RW>"],
+      "L2": ["<LW>", "<C>", "<RW>"],
+      "L3": ["<LW>", "<C>", "<RW>"],
+      "L4": ["<LW>", "<C>", "<RW>"]
+    },
+    "defence_pairs": {
+      "P1": ["<LD>", "<RD>"],
+      "P2": ["<LD>", "<RD>"],
+      "P3": ["<LD>", "<RD>"]
+    },
+    "special_teams": {
+      "PP1": ["<F1>", "<F2>", "<F3>", "<D1>", "<D2>"],
+      "PP2": ["<F1>", "<F2>", "<F3>", "<D1>", "<D2>"],
+      "PK1": ["<F1>", "<F2>", "<D1>", "<D2>"],
+      "PK2": ["<F1>", "<F2>", "<D1>", "<D2>"]
+    }
+  },
+
+  "goalie_plan": {
+    "starter": "<GOALIE_NAME>",
+    "backup": "<GOALIE_NAME>",
+    "reasoning": "<ROTATION | MATCHUP | FORM | INJURY_FILL>"
+  },
+
+  "modules_active": {
+    "export_pipeline": "v1.0",
+    "schedule_file": "January_2025_Schedule.json",
+    "line_module": "v2.0",
+    "contract_module": "v2.0",
+    "trade_module": "v2.0",
+    "development_module": "v2.0"
+  },
+
+  "confidence_flags": {
+    "roster_sync": "<0.0-1.0>",
+    "injury_data": "<0.0-1.0>",
+    "opponent_systems": "<0.0-1.0>",
+    "schedule_sync": "<0.0-1.0>",
+    "line_validation": "<0.0-1.0>"
+  },
+
+  "related_exports": {
+    "gameplan": "<PATH_TO_GAMEPLAN_EXPORT>",
+    "matchup": "<PATH_TO_MATCHUP_EXPORT>",
+    "game_report": "<PATH_TO_GAME_REPORT>",
+    "previous_snapshot": "<PATH_TO_PREVIOUS>"
+  }
+}
