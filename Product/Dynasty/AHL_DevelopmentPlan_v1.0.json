@@ -7,6 +7,7 @@
     "ahl_team_code": "TOR-AHL",
     "season": "2024-2025"
   },
+
   "philosophy": {
     "primary_goal": "Develop future NHL contributors while maintaining a competitive AHL environment.",
     "priority_order": [
@@ -21,6 +22,7 @@
       "min_games_played_target_for_priority_prospect": 70
     }
   },
+
   "global_defaults": {
     "toi_targets_minutes": {
       "top_pair_defence": { "min": 21, "max": 24 },
@@ -45,6 +47,7 @@
       "min_average_toi_for_trusted_defence": 19
     }
   },
+
   "prospects": [
     {
       "player_name": "Topi Niemelä",
@@ -94,6 +97,7 @@
         "Keep on PP1 in all but extreme slump situations."
       ]
     },
+
     {
       "player_name": "Mikko Kokkonen",
       "position": "LD",
@@ -140,6 +144,7 @@
         "Key to PK structure; do not bury on third pair."
       ]
     },
+
     {
       "player_name": "Roni Hirvonen",
       "position": "C",
@@ -181,56 +186,79 @@
       },
       "trade_flag": "evaluate_only_in_large_package",
       "notes": [
-        "Treat as future 3C / utility center with strong PK value.",
-        "Do not park on 4th line; if not 2C, maintain at least 3C with PP/PK reps."
+        "Future 3C / utility C with strong PK ability.",
+        "Never put him on a 4th line; maintain at least 2C–3C usage."
       ]
     },
+
     {
       "player_name": "Alex Steeves",
-      "position": "LW",
+      "position": "C/LW",
       "shoots": "L",
       "priority_tier": "A",
-      "nhl_eta": "now_to_1_year",
-      "development_role": "middle_six_scoring_winger",
-      "ahl_usage_plan": {
+      "nhl_eta": "now",
+      "current_assignment": "NHL",
+      "development_path": "bottom_six_transition",
+
+      "nhl_usage_rules": {
+        "preferred_role": "4RW_or_3C_depth",
+        "secondary_role": "injury_fill_in_middle_six",
+        "deployment": {
+          "even_strength": "bottom_six",
+          "oz_start_bias": "balanced",
+          "pk_role": "PK2_support_only_if_needed",
+          "pp_role": "none_unless_hot_streak"
+        },
+        "line_fit_notes": [
+          "Best alongside Kampf or Holmberg.",
+          "Strong forechecker, enhances dump-and-chase cycles.",
+          "Limit TOI above 14 minutes unless hot or injury-driven."
+        ]
+      },
+
+      "reassignment_guardrails": {
+        "avoid_ahl_demote_if_nhl_games_played": 5,
+        "only_ahl_if": [
+          "severe_production_drop",
+          "NHL roster fully healthy AND role blocked"
+        ],
+        "allow_paper_move": false
+      },
+
+      "ahl_backup_plan": {
         "line_role": "1LW",
         "toi_target_minutes": { "min": 18, "max": 20 },
         "even_strength_role": "primary_shooter",
         "pp_role": "PP1_flank_or_netfront",
-        "pk_role": "none_or_limited",
+        "pk_role": "none",
         "o_zone_starts_bias": "o_zone_heavy"
       },
-      "mentorship_plan": {
-        "preferred_mentor_type": "playmaking_center",
-        "hard_requirements": {
-          "avoid_linemate_type": "low_iq_high_turnover",
-          "min_iq_rating": 82
-        }
-      },
+
       "callup_rules": {
-        "eligibility": "scoring_callup_first_choice",
+        "eligibility": "NHL_scoring_or_energy_callup",
         "primary_triggers": [
           "NHL_middle_6_scoring_slowdown",
           "NHL_winger_injury",
-          "hot_streak_in_AHL"
+          "hot_streak",
+          "line_chemistry_boost"
         ],
         "metrics_thresholds": {
-          "points_per_game_min": 0.75,
-          "shots_per_game_min": 2.8,
-          "pp_points_per_game_min": 0.25
-        },
-        "development_guard_rails": {
-          "allow_short_term_callups": true,
-          "max_back_and_forth_trips": 4
+          "points_per_game_min": 0.60,
+          "shots_per_game_min": 2.5,
+          "forecheck_events_per_game_min": 5
         }
       },
+
       "trade_flag": "available_in_value_positive_deals_only",
+
       "notes": [
-        "Primary scoring threat for Marlies; do not demote usage to 3rd line.",
-        "Reward hot streaks with looks at NHL middle six before trading."
+        "Transitioning into a reliable NHL bottom-six contributor.",
+        "If hot, can audition at 3RW short-term.",
+        "Keep 4RW consistent unless hot streak forces up-shift."
       ]
     }
   ],
+
   "review_and_reporting": {
     "review_frequency": "monthly",
     "metrics_to_track": [
