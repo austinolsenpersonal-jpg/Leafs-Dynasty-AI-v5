@@ -1,0 +1,84 @@
+{
+  "opponent": "NYI",
+  "date": "2025-01-02",
+  "matchup_version": "1.0",
+  "location": "UBS Arena",
+  "validated_against_schedule": true,
+
+  "starting_goalie": "Woll",
+
+  "forward_matchups": {
+    "Barzal_line": {
+      "TOR_match": "Kampf – Domi – Steeves",
+      "notes": "Shadow Barzal; deny middle lane."
+    },
+    "Nelson_line": {
+      "TOR_match": "Matthews – Knies – Nylander",
+      "notes": "Exploit NYI slow gaps; focus on controlled entries."
+    },
+    "Cizikas_line": {
+      "TOR_match": "Domi – Kampf – Steeves",
+      "notes": "Low-event grinding matchup."
+    }
+  },
+
+  "defence_matchups": {
+    "vs_Barzal": {
+      "TOR_pair": "Tanev – Ekman-Larsson",
+      "notes": "Angle wide; eliminate cutbacks."
+    },
+    "vs_Nelson": {
+      "TOR_pair": "Rielly – Carlo",
+      "notes": "Beat them in transition; safe pinches only."
+    }
+  },
+
+  "danger_players": [
+    {
+      "player": "Mathew Barzal",
+      "threat": "Speed + lateral attacks",
+      "response": "Boxout middle lane; funnel wide."
+    },
+    {
+      "player": "Anders Lee",
+      "threat": "Netfront rebounds + screens",
+      "response": "Protect Net pressure; tie up stick."
+    },
+    {
+      "player": "Brock Nelson",
+      "threat": "Slot wrister + bumper plays",
+      "response": "Staggered DZ coverage; close bumper lane early."
+    }
+  ],
+
+  "situational_deployment": {
+    "after_goal_for": {
+      "first_shift": "Matthews line",
+      "notes": "Attack NYI defensive reset."
+    },
+    "after_goal_against": {
+      "first_shift": "Kampf line",
+      "notes": "Slow tempo; regain structure."
+    },
+    "dz_draws": {
+      "preferred_unit": "Kampf line + Tanev-Carlo"
+    },
+    "final_minutes_leading": {
+      "unit": "Domi – Kampf – Steeves + Tanev – Carlo",
+      "notes": "Lockdown integrity lineup."
+    }
+  },
+
+  "special_teams_usage": {
+    "pp1": "Matthews – Tavares – Nylander – Marner – Ekman-Larsson",
+    "pp2": "Pacioretty – Mercer – Robertson – Rielly – Foerster",
+    "pk1": "Kampf – Marner – Tanev – Carlo",
+    "pk2": "Domi – Steeves – McCabe – Dumba"
+  },
+
+  "module_notes": {
+    "line_module": "Optimized matchups for Barzal and Nelson.",
+    "schedule_module": "Game flagged medium-danger (trap team).",
+    "development_module": "Avoid unnecessary call-ups until Jan 10 review."
+  }
+}
