@@ -1,0 +1,30 @@
+{
+  "profile_name": "FiveOnFive_Lockdown_v1.0",
+  "situation": "protecting_lead",
+  "description": "Ultra-conservative defensive shell for protecting leads in the 3rd period.",
+
+  "team_strategies": {
+    "offensive_pressure": "Conservative",
+    "forecheck": "1-4",
+    "neutral_zone": "1-2-2 Blue",
+    "defensive_pressure": "Protect Net",
+    "defensive_strategy": "Collapsing",
+    "control_breakout": "Close Support",
+    "quick_breakout": "Close Support",
+    "trap_slider": 1
+  },
+
+  "deployment": {
+    "preferred_forward_unit": ["Domi", "Kampf", "Steeves"],
+    "preferred_defence_unit": ["Tanev", "Carlo"],
+    "shift_bias": "short_shifts",
+    "line_usage_notes": "Use high-defensive-value units; avoid risky activation patterns."
+  },
+
+  "slider_overrides": {
+    "carry_dump": 7,
+    "cycle_shoot": 3,
+    "efficiency_energy": 8,
+    "block_bias": 8
+  }
+}
