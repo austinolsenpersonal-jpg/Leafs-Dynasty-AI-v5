@@ -1,0 +1,123 @@
+{
+  "version": "1.0",
+  "team": {
+    "name": "Toronto Maple Leafs",
+    "code": "TOR"
+  },
+  "season": "2024-2025",
+  "month_label": "January 2025",
+  "games": [
+    {
+      "date": "2025-01-02",
+      "opponent_name": "New York Islanders",
+      "opponent_code": "NYI",
+      "home_away": "AWAY",
+      "notes": "Road game at NYI.",
+      "priority": "NORMAL"
+    },
+    {
+      "date": "2025-01-04",
+      "opponent_name": "Boston Bruins",
+      "opponent_code": "BOS",
+      "home_away": "HOME",
+      "notes": "Big Atlantic matchup vs BOS.",
+      "priority": "HIGH"
+    },
+    {
+      "date": "2025-01-05",
+      "opponent_name": "Philadelphia Flyers",
+      "opponent_code": "PHI",
+      "home_away": "HOME",
+      "notes": "Home game vs PHI.",
+      "priority": "NORMAL"
+    },
+    {
+      "date": "2025-01-07",
+      "opponent_name": "Philadelphia Flyers",
+      "opponent_code": "PHI",
+      "home_away": "AWAY",
+      "notes": "Road game @ PHI.",
+      "priority": "NORMAL"
+    },
+    {
+      "date": "2025-01-09",
+      "opponent_name": "Carolina Hurricanes",
+      "opponent_code": "CAR",
+      "home_away": "AWAY",
+      "notes": "Road game @ CAR.",
+      "priority": "HIGH"
+    },
+    {
+      "date": "2025-01-11",
+      "opponent_name": "Vancouver Canucks",
+      "opponent_code": "VAN",
+      "home_away": "HOME",
+      "notes": "Home game vs VAN.",
+      "priority": "NORMAL"
+    },
+    {
+      "date": "2025-01-14",
+      "opponent_name": "Dallas Stars",
+      "opponent_code": "DAL",
+      "home_away": "HOME",
+      "notes": "Home game vs DAL.",
+      "priority": "HIGH"
+    },
+    {
+      "date": "2025-01-16",
+      "opponent_name": "New Jersey Devils",
+      "opponent_code": "NJD",
+      "home_away": "HOME",
+      "notes": "Home game vs NJD.",
+      "priority": "NORMAL"
+    },
+    {
+      "date": "2025-01-18",
+      "opponent_name": "Montreal Canadiens",
+      "opponent_code": "MTL",
+      "home_away": "AWAY",
+      "notes": "Classic rivalry @ MTL.",
+      "priority": "HIGH"
+    },
+    {
+      "date": "2025-01-20",
+      "opponent_name": "Tampa Bay Lightning",
+      "opponent_code": "TBL",
+      "home_away": "HOME",
+      "notes": "Home game vs TBL.",
+      "priority": "HIGH"
+    },
+    {
+      "date": "2025-01-22",
+      "opponent_name": "Columbus Blue Jackets",
+      "opponent_code": "CBJ",
+      "home_away": "HOME",
+      "notes": "Home game vs CBJ.",
+      "priority": "NORMAL"
+    },
+    {
+      "date": "2025-01-25",
+      "opponent_name": "Ottawa Senators",
+      "opponent_code": "OTT",
+      "home_away": "AWAY",
+      "notes": "Battle of Ontario @ OTT.",
+      "priority": "HIGH"
+    },
+    {
+      "date": "2025-01-29",
+      "opponent_name": "Minnesota Wild",
+      "opponent_code": "MIN",
+      "home_away": "HOME",
+      "notes": "Home game vs MIN. (Corrected date from UI.)",
+      "priority": "NORMAL"
+    },
+    {
+      "date": "2025-02-01",
+      "opponent_name": "Edmonton Oilers",
+      "opponent_code": "EDM",
+      "home_away": "AWAY",
+      "notes": "Road game @ EDM on Feb 1 (included for end-of-month road trip context).",
+      "priority": "HIGH"
+    }
+  ]
+}
