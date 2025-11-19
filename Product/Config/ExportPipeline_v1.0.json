@@ -1,34 +1,37 @@
 {
   "version": "1.0",
-  "export_defaults": {
-    "game_report_mode": "full",
-    "include_play_by_play": true,
-    "include_shift_data": true,
-    "include_advanced_stats": true,
-    "include_strategy_triggers": true,
-    "include_goalie_decision_notes": true,
-    "include_chemistry_notes": true
+  "export_modes": {
+    "game_report_mode": "full"
   },
+
   "paths": {
-    "gameplan": {
-      "directory": "Exports/Gameplans/",
-      "template": "Templates/BaseGameplanTemplate.json",
-      "filename": "{OPPONENT}_{DATE}_Gameplan.json"
-    },
-    "matchup": {
-      "directory": "Exports/Matchups/",
-      "template": "Templates/BaseMatchupTemplate.json",
-      "filename": "{OPPONENT}_{DATE}_Matchup.json"
-    },
-    "game_report": {
-      "directory": "Exports/GameReports/",
-      "template": "Templates/GameReportTemplate.json",
-      "filename": "{OPPONENT}_{DATE}_GameReport.json"
-    },
-    "runtime_snapshot": {
-      "directory": "Exports/Runtimes/",
-      "template": "Templates/RuntimeSnapshotTemplate.json",
-      "filename": "{VERSION}_{DATE}_{SOURCE}.json"
+    "gameplans": "Exports/Gameplans/",
+    "matchups": "Exports/Matchups/",
+    "game_reports": "Exports/GameReports/",
+    "runtime_snapshots": "Exports/Runtimes/"
+  },
+
+  "templates": {
+    "gameplan": "Product/Dynasty/Snapshots/BaseGameplanTemplate_v1.0.json",
+    "matchup": "Product/Dynasty/Snapshots/BaseMatchupTemplate_v1.0.json",
+    "game_report": "Product/Dynasty/Snapshots/GameReportTemplate_v1.0.json",
+    "runtime_snapshot": "Product/Dynasty/Snapshots/RuntimeSnapshotTemplate_v2.5.json"
+  },
+
+  "filename_patterns": {
+    "gameplan": "<OPPONENT>_<DATE>_Gameplan.json",
+    "matchup": "<OPPONENT>_<DATE>_Matchup.json",
+    "game_report": "<OPPONENT>_<DATE>_GameReport.json",
+    "runtime_snapshot": "<VERSION>_<DATE>_<SOURCE>.json"
+  },
+
+  "cross_linking": {
+    "include_related_files": true,
+    "related_file_fields": {
+      "gameplan": ["matchup", "game_report", "runtime_snapshot"],
+      "matchup": ["gameplan", "game_report", "runtime_snapshot"],
+      "game_report": ["gameplan", "matchup", "runtime_snapshot"],
+      "runtime_snapshot": ["gameplan", "matchup", "game_report"]
     }
   }
 }
