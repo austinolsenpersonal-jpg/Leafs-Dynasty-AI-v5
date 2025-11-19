@@ -1,0 +1,257 @@
+{
+  "version": "1.0",
+  "team": {
+    "nhl_team_name": "Toronto Maple Leafs",
+    "nhl_team_code": "TOR",
+    "ahl_team_name": "Toronto Marlies",
+    "ahl_team_code": "TOR-AHL",
+    "season": "2024-2025"
+  },
+  "philosophy": {
+    "primary_goal": "Develop future NHL contributors while maintaining a competitive AHL environment.",
+    "priority_order": [
+      "prospect_development",
+      "system_fit",
+      "winning_culture",
+      "AHL_veteran_support"
+    ],
+    "usage_rules": {
+      "prospects_over_vets": true,
+      "max_healthy_scratches_for_priority_prospect": 0,
+      "min_games_played_target_for_priority_prospect": 70
+    }
+  },
+  "global_defaults": {
+    "toi_targets_minutes": {
+      "top_pair_defence": { "min": 21, "max": 24 },
+      "second_pair_defence": { "min": 18, "max": 21 },
+      "third_pair_defence": { "min": 15, "max": 18 },
+      "top_line_forward": { "min": 18, "max": 21 },
+      "second_line_forward": { "min": 16, "max": 19 },
+      "third_line_forward": { "min": 14, "max": 17 },
+      "fourth_line_forward": { "min": 10, "max": 13 }
+    },
+    "special_teams_defaults": {
+      "pp1_toi_share_pct": 65,
+      "pp2_toi_share_pct": 35,
+      "pk1_toi_share_pct": 60,
+      "pk2_toi_share_pct": 40
+    },
+    "promotion_thresholds": {
+      "min_overall_for_callup_depth": 79,
+      "min_overall_for_callup_regular": 81,
+      "min_season_points_per_game_for_scoring_forward": 0.60,
+      "min_season_points_per_game_for_offensive_defence": 0.50,
+      "min_average_toi_for_trusted_defence": 19
+    }
+  },
+  "prospects": [
+    {
+      "player_name": "Topi Niemelä",
+      "position": "RD",
+      "shoots": "R",
+      "priority_tier": "S",
+      "nhl_eta": "1_year",
+      "development_role": "top_pair_offensive_defence",
+      "ahl_usage_plan": {
+        "pair_role": "top_pair",
+        "toi_target_minutes": { "min": 21, "max": 24 },
+        "even_strength_role": "primary_puck_mover",
+        "pp_role": "PP1_QB",
+        "pk_role": "PK2_support",
+        "o_zone_starts_bias": "slight_o_zone",
+        "matchup_tier": "vs_top_6_and_top_PP"
+      },
+      "mentorship_plan": {
+        "preferred_mentor_type": "steady_defensive_RD_or_LD",
+        "hard_requirements": {
+          "avoid_partner_type": "high_risk_offensive_only",
+          "min_def_awareness_rating": 85
+        }
+      },
+      "callup_rules": {
+        "eligibility": "regular_NHL_candidate",
+        "primary_triggers": [
+          "NHL_RHD_injury",
+          "NHL_RHD_underperformance",
+          "AHL_dominance"
+        ],
+        "metrics_thresholds": {
+          "points_per_game_min": 0.50,
+          "plus_minus_min": 0,
+          "ahl_average_toi_min": 21,
+          "coach_grade_min": "B_plus"
+        },
+        "development_guard_rails": {
+          "no_callup_before": "2025-01-01",
+          "max_non_emergency_callups_per_season": 2
+        }
+      },
+      "trade_flag": "do_not_trade",
+      "notes": [
+        "Core future NHL RD.",
+        "Prioritize repetitions over shelter; accept some mistakes at AHL level.",
+        "Keep on PP1 in all but extreme slump situations."
+      ]
+    },
+    {
+      "player_name": "Mikko Kokkonen",
+      "position": "LD",
+      "shoots": "L",
+      "priority_tier": "A",
+      "nhl_eta": "1_to_2_years",
+      "development_role": "two_way_defence",
+      "ahl_usage_plan": {
+        "pair_role": "top_or_second_pair",
+        "toi_target_minutes": { "min": 19, "max": 22 },
+        "even_strength_role": "defensive_anchor",
+        "pp_role": "PP2_left_point",
+        "pk_role": "PK1_main",
+        "o_zone_starts_bias": "balanced",
+        "matchup_tier": "vs_top_6_and_heavy_lines"
+      },
+      "mentorship_plan": {
+        "preferred_mentor_type": "veteran_defensive_LD",
+        "hard_requirements": {
+          "avoid_partner_type": "low_def_awareness",
+          "min_physicality_rating": 80
+        }
+      },
+      "callup_rules": {
+        "eligibility": "injury_replacement_depth",
+        "primary_triggers": [
+          "NHL_LD_injury",
+          "NHL_PK_struggles",
+          "AHL_defensive_dominance"
+        ],
+        "metrics_thresholds": {
+          "toi_pk_min": 2.0,
+          "shots_against_per_60_max": 26,
+          "hits_per_game_min": 1.5
+        },
+        "development_guard_rails": {
+          "preference": "keep_top_pair_AHL_if_torn",
+          "limit_short_term_paper_moves": true
+        }
+      },
+      "trade_flag": "keep_if_possible",
+      "notes": [
+        "Primary defensive stabilizer for AHL blue line.",
+        "Key to PK structure; do not bury on third pair."
+      ]
+    },
+    {
+      "player_name": "Roni Hirvonen",
+      "position": "C",
+      "shoots": "L",
+      "priority_tier": "A",
+      "nhl_eta": "1_to_2_years",
+      "development_role": "two_way_middle_six_center",
+      "ahl_usage_plan": {
+        "line_role": "2C",
+        "toi_target_minutes": { "min": 17, "max": 19 },
+        "even_strength_role": "matchup_center",
+        "pp_role": "PP2_bumper_or_flank",
+        "pk_role": "PK2_center",
+        "faceoff_priority": "strong_side_D_zone",
+        "o_zone_starts_bias": "slight_d_zone"
+      },
+      "mentorship_plan": {
+        "preferred_mentor_type": "defensively_reliable_veteran_center",
+        "hard_requirements": {
+          "avoid_linemate_type": "perimeter_only",
+          "min_faceoff_rating": 80
+        }
+      },
+      "callup_rules": {
+        "eligibility": "bottom_six_center_candidate",
+        "primary_triggers": [
+          "NHL_bottom_6_center_injury",
+          "NHL_PK_center_issues"
+        ],
+        "metrics_thresholds": {
+          "faceoff_pct_min": 51,
+          "points_per_game_min": 0.45,
+          "coach_def_trust_grade_min": "B"
+        },
+        "development_guard_rails": {
+          "min_consecutive_AHL_games_before_first_callup": 25,
+          "avoid_callup_if_AHL_usage_is_below": 15
+        }
+      },
+      "trade_flag": "evaluate_only_in_large_package",
+      "notes": [
+        "Treat as future 3C / utility center with strong PK value.",
+        "Do not park on 4th line; if not 2C, maintain at least 3C with PP/PK reps."
+      ]
+    },
+    {
+      "player_name": "Alex Steeves",
+      "position": "LW",
+      "shoots": "L",
+      "priority_tier": "A",
+      "nhl_eta": "now_to_1_year",
+      "development_role": "middle_six_scoring_winger",
+      "ahl_usage_plan": {
+        "line_role": "1LW",
+        "toi_target_minutes": { "min": 18, "max": 20 },
+        "even_strength_role": "primary_shooter",
+        "pp_role": "PP1_flank_or_netfront",
+        "pk_role": "none_or_limited",
+        "o_zone_starts_bias": "o_zone_heavy"
+      },
+      "mentorship_plan": {
+        "preferred_mentor_type": "playmaking_center",
+        "hard_requirements": {
+          "avoid_linemate_type": "low_iq_high_turnover",
+          "min_iq_rating": 82
+        }
+      },
+      "callup_rules": {
+        "eligibility": "scoring_callup_first_choice",
+        "primary_triggers": [
+          "NHL_middle_6_scoring_slowdown",
+          "NHL_winger_injury",
+          "hot_streak_in_AHL"
+        ],
+        "metrics_thresholds": {
+          "points_per_game_min": 0.75,
+          "shots_per_game_min": 2.8,
+          "pp_points_per_game_min": 0.25
+        },
+        "development_guard_rails": {
+          "allow_short_term_callups": true,
+          "max_back_and_forth_trips": 4
+        }
+      },
+      "trade_flag": "available_in_value_positive_deals_only",
+      "notes": [
+        "Primary scoring threat for Marlies; do not demote usage to 3rd line.",
+        "Reward hot streaks with looks at NHL middle six before trading."
+      ]
+    }
+  ],
+  "review_and_reporting": {
+    "review_frequency": "monthly",
+    "metrics_to_track": [
+      "games_played",
+      "average_toi",
+      "special_teams_toi",
+      "points_per_game",
+      "shots_per_game",
+      "plus_minus",
+      "coach_grades",
+      "injury_history"
+    ],
+    "report_templates": {
+      "monthly_dev_report_name": "AHL_Monthly_Development_Report",
+      "promote_watchlist_name": "AHL_Promotion_Watchlist",
+      "stagnation_flag_name": "AHL_Stagnation_Flag_List"
+    },
+    "flags": {
+      "stagnation_threshold_games": 20,
+      "stagnation_threshold_points_per_game_drop": 0.20,
+      "alert_on_role_mismatch": true
+    }
+  }
+}
