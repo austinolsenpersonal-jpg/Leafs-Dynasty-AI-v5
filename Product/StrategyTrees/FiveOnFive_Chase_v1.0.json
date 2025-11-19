@@ -1,0 +1,173 @@
+{
+  "profile_id": "FiveOnFive_Chase_v1.0",
+  "profile_type": "game_state_profile",
+  "mode": "chase",
+  "description": "High-pressure 5v5 comeback profile for when Toronto is trailing by 1–3 goals in the 2nd half of the game. Prioritizes puck pressure, offensive zone time, and high-danger shot generation at the cost of some defensive risk.",
+
+  "trigger_rules": {
+    "score_state": {
+      "min_goal_diff": -3,
+      "max_goal_diff": -1
+    },
+    "period_window": {
+      "from_period": 2,
+      "to_period": 3
+    },
+    "time_remaining_seconds_min": 600,
+    "allow_manual_override": true
+  },
+
+  "system_flags": {
+    "runtime_version_min": "v2.3",
+    "schedule_gate_required": true,
+    "roster_sync_required": true
+  },
+
+  "team_strategies": {
+    "five_on_five": {
+      "offensive_pressure": "Aggressive",
+      "defensive_pressure": "High Pressure",
+      "defensive_strategy": "Staggered",
+      "forecheck": "2-1-2 Aggressive",
+      "forecheck_bias": "Press",
+      "neutral_zone": "1-2-2 Red",
+      "penalty_kill": "Diamond",
+      "powerplay": "1-3-1",
+      "pp_carry_dump": "Carry",
+      "pp_strategy_bias": "Shoot",
+      "forward_ice_time_allocation": "Shorten Bench",
+      "defense_ice_time_allocation": "Top 4 Heavy"
+    }
+  },
+
+  "breakout_rules": {
+    "five_on_five": {
+      "primary_breakout": "Close Support",
+      "secondary_breakout": "Controlled",
+      "activate_d_on_regroups": true,
+      "allow_d_join_rush": true
+    },
+    "pull_goalie_logic": {
+      "enabled": true,
+      "pull_at_goal_diff": -1,
+      "pull_at_time_remaining_seconds": 120
+    }
+  },
+
+  "line_tactics": {
+    "forwards": {
+      "line1": {
+        "role": "primary_scorers",
+        "carry_dump_bias": "Carry",
+        "cycle_shoot_bias": "Shoot",
+        "efficiency_energy_bias": "Efficiency",
+        "block_shots_bias": "DontBlock",
+        "notes": "Top skill line; first over boards after whistles and on O-zone draws."
+      },
+      "line2": {
+        "role": "secondary_scorers",
+        "carry_dump_bias": "Carry",
+        "cycle_shoot_bias": "Balanced",
+        "efficiency_energy_bias": "Balanced",
+        "block_shots_bias": "DontBlock",
+        "notes": "Use as follow-up attack line; keep TOI close to Line 1 in chase mode."
+      },
+      "line3": {
+        "role": "energy_pressure",
+        "carry_dump_bias": "Dump",
+        "cycle_shoot_bias": "Shoot",
+        "efficiency_energy_bias": "Energy",
+        "block_shots_bias": "Block",
+        "notes": "Use to forecheck hard and create chaos; shorter shifts."
+      },
+      "line4": {
+        "role": "sparingly_used",
+        "carry_dump_bias": "Dump",
+        "cycle_shoot_bias": "Balanced",
+        "efficiency_energy_bias": "Energy",
+        "block_shots_bias": "Block",
+        "notes": "Bench shortened; use mostly for defensive draws and rest windows."
+      }
+    },
+    "defense": {
+      "pair1": {
+        "role": "top_pair_puck_mover",
+        "hold_line_pinch": "Pinch",
+        "cycle_shoot_bias": "Shoot",
+        "notes": "Primary offensive pair; first over boards after goals for and offensive draws."
+      },
+      "pair2": {
+        "role": "two_way_support",
+        "hold_line_pinch": "HoldLine",
+        "cycle_shoot_bias": "Balanced",
+        "notes": "Stabilizing pair; used heavily when top pair is tired."
+      },
+      "pair3": {
+        "role": "sheltered_depth",
+        "hold_line_pinch": "HoldLine",
+        "cycle_shoot_bias": "Balanced",
+        "notes": "Sheltered; avoid vs opponent top lines in chase mode when possible."
+      }
+    }
+  },
+
+  "matchup_rules": {
+    "use_hard_match": true,
+    "hard_match_target": "opponent_top_line",
+    "preferred_matchup_line_vs_top": "defensive_center_line",
+    "avoid_matchup": "depth_d_pair_vs_top_line",
+    "oz_draw_preference": ["line1", "line2"],
+    "dz_draw_preference": ["defensive_center_line", "line3"]
+  },
+
+  "ice_time_rules": {
+    "forward_distribution": {
+      "line1": 0.35,
+      "line2": 0.30,
+      "line3": 0.25,
+      "line4": 0.10
+    },
+    "defense_distribution": {
+      "pair1": 0.40,
+      "pair2": 0.35,
+      "pair3": 0.25
+    },
+    "double_shift_star_forward": true,
+    "double_shift_condition": {
+      "min_offensive_rating": 88,
+      "lines_to_double_shift_on": ["line1", "line2"]
+    }
+  },
+
+  "special_teams_overrides": {
+    "powerplay": {
+      "use_star_unit_heavy": true,
+      "pp1_share": 0.75,
+      "pp2_share": 0.25,
+      "faceoff_priority": "best_offensive_center",
+      "entry_style": "controlled_entry"
+    },
+    "penalty_kill": {
+      "risk_tolerance": "Medium",
+      "aggressiveness": "PressureAtBlueLine"
+    }
+  },
+
+  "analytics_tags": {
+    "profile_family": "FiveOnFive_States",
+    "aggression_level": "High",
+    "risk_profile": "Elevated",
+    "intended_use": "Comeback_2ndHalf",
+    "opponent_archetype_bias": [
+      "trap_low_event",
+      "cycle_heavy",
+      "hot_goalie"
+    ]
+  },
+
+  "notes": [
+    "Activate this profile when trailing by 1–3 in the late 2nd or any time in the 3rd.",
+    "Expect higher chance trading chances; this is designed to tilt ice and accept defensive risk.",
+    "Pairs best with Close Support breakout and aggressive NZ pressure to keep pucks alive in the O-zone."
+  ]
+}
