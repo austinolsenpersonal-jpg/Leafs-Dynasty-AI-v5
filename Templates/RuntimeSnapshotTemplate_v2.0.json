@@ -1,0 +1,214 @@
+{
+  "template_version": "2.0",
+  "description": "Runtime snapshot template capturing active config, systems, modules, and links to related exports for a single game.",
+  "runtime_metadata": {
+    "runtime_version": "v2.3",
+    "created_at_utc": "<AUTO_OR_MANUAL_TIMESTAMP>",
+    "created_by": "Leafs-Dynasty-AI",
+    "environment": "NHL25_Franchise",
+    "platform": "Xbox_Cloud_CurrentGen",
+    "notes": []
+  },
+  "game_context": {
+    "season_label": "2024-2025",
+    "team": {
+      "name": "Toronto Maple Leafs",
+      "code": "TOR"
+    },
+    "opponent": {
+      "name": "<OPPONENT_NAME>",
+      "code": "<OPPONENT_CODE>",
+      "archetype_tag": "<ARCHETYPE_TAG_FROM_OpponentArchetypeMap_v1.0>",
+      "home_away": "<HOME_OR_AWAY>",
+      "arena": "<ARENA_NAME>"
+    },
+    "schedule": {
+      "date": "<YYYY-MM-DD>",
+      "schedule_source_file": "Product/Dynasty/January_2025_Schedule.json",
+      "schedule_entry_validated": true,
+      "importance_tier": "<S_A_B_C>",
+      "danger_tag": "<trap_game | revenge_spot | back_to_back | travel_fatigue | none>",
+      "game_index_in_month": "<INT_OR_NULL>"
+    },
+    "scoreline": {
+      "final_score_known": false,
+      "tor_goals": null,
+      "opp_goals": null,
+      "result": "<W_L_OTL_SO_OR_NULL>"
+    },
+    "goalie_plan": {
+      "planned_starter": "<Woll_Stolarz_Other>",
+      "actual_starter": "<Woll_Stolarz_Other>",
+      "backup_dressed": "<NAME_OR_NULL>",
+      "rotation_note": "<e.g._back_to_back_logic_or_matchup_reason>"
+    }
+  },
+  "systems_snapshot": {
+    "team_strategies": {
+      "forecheck": "<e.g._1-2-2_Passive>",
+      "neutral_zone": "<e.g._1-2-2_Blue>",
+      "defensive_strategy": "<e.g._Staggered_or_Collapsing>",
+      "defensive_pressure": "<e.g._Contain_Puck_or_Protect_Net>",
+      "offensive_pressure": "<e.g._Standard_Aggressive_Conservative>",
+      "trap_forecheck_slider": "<0_to_6>",
+      "control_breakout": "<e.g._Three_High_or_Strong_Side_Slant>",
+      "quick_breakout": "<e.g._Close_Support_or_Leave_Zone_Early>"
+    },
+    "line_profiles": {
+      "slider_profile_id": "<e.g._Hybrid_Standard_v1_or_LowEvent_Trap_v1>",
+      "forwards": [
+        {
+          "line": 1,
+          "players": ["<LW>", "<C>", "<RW>"],
+          "oz_strategy": "<Behind_the_Net_Overload_Crash_the_Net_Spread>",
+          "sliders": {
+            "carry_dump": "<0_to_10>",
+            "cycle_shoot": "<0_to_10>",
+            "efficiency_energy": "<0_to_10>",
+            "block_bias": "<0_to_10>"
+          }
+        },
+        {
+          "line": 2,
+          "players": ["<LW>", "<C>", "<RW>"],
+          "oz_strategy": "<...>",
+          "sliders": {
+            "carry_dump": "<0_to_10>",
+            "cycle_shoot": "<0_to_10>",
+            "efficiency_energy": "<0_to_10>",
+            "block_bias": "<0_to_10>"
+          }
+        },
+        {
+          "line": 3,
+          "players": ["<LW>", "<C>", "<RW>"],
+          "oz_strategy": "<...>",
+          "sliders": {
+            "carry_dump": "<0_to_10>",
+            "cycle_shoot": "<0_to_10>",
+            "efficiency_energy": "<0_to_10>",
+            "block_bias": "<0_to_10>"
+          }
+        },
+        {
+          "line": 4,
+          "players": ["<LW>", "<C>", "<RW>"],
+          "oz_strategy": "<...>",
+          "sliders": {
+            "carry_dump": "<0_to_10>",
+            "cycle_shoot": "<0_to_10>",
+            "efficiency_energy": "<0_to_10>",
+            "block_bias": "<0_to_10>"
+          }
+        }
+      ],
+      "defence": [
+        {
+          "pair": 1,
+          "players": ["<LD>", "<RD>"],
+          "strategy": "<Balanced_PinchorHold>",
+          "sliders": {
+            "pinch_back": "<0_to_10>",
+            "shoot_pass": "<0_to_10>"
+          }
+        },
+        {
+          "pair": 2,
+          "players": ["<LD>", "<RD>"],
+          "strategy": "<...>",
+          "sliders": {
+            "pinch_back": "<0_to_10>",
+            "shoot_pass": "<0_to_10>"
+          }
+        },
+        {
+          "pair": 3,
+          "players": ["<LD>", "<RD>"],
+          "strategy": "<...>",
+          "sliders": {
+            "pinch_back": "<0_to_10>",
+            "shoot_pass": "<0_to_10>"
+          }
+        }
+      ]
+    },
+    "special_teams": {
+      "powerplay": {
+        "pp1_unit": ["<F1>", "<F2>", "<F3>", "<D1>", "<D2_or_F4>"],
+        "pp2_unit": ["<F1>", "<F2>", "<F3>", "<D1>", "<D2_or_F4>"],
+        "pp_strategy": "<Umbrella_Overload_Shoot_First>",
+        "pp_notes": []
+      },
+      "penalty_kill": {
+        "pk1_unit": ["<F1>", "<F2>", "<D1>", "<D2>"],
+        "pk2_unit": ["<F1>", "<F2>", "<D1>", "<D2>"],
+        "pk_strategy": "<Passive_Box_Diamond_Low_Box>",
+        "pk_notes": []
+      }
+    },
+    "mode_flags": {
+      "lockdown_profile_active": false,
+      "lockdown_profile_id": "<e.g._Lockdown_v1>",
+      "comeback_profile_active": false,
+      "comeback_profile_id": "<e.g._Chase_v1>",
+      "neutral_profile_id": "<e.g._Hybrid_Standard_v1>"
+    }
+  },
+  "modules_snapshot": {
+    "line_module": {
+      "version": "v2.0",
+      "status": "active",
+      "notes": []
+    },
+    "contract_module": {
+      "version": "v2.0",
+      "status": "active",
+      "pending_actions": []
+    },
+    "trade_module": {
+      "version": "v2.0",
+      "status": "active",
+      "deadline_mode": "<off_pre_deadline_deadline_window_post_deadline>",
+      "buyer_seller_state": "<buyer_seller_neutral>",
+      "notes": []
+    },
+    "development_module": {
+      "version": "v2.0",
+      "status": "active",
+      "ahl_dev_plan_file": "Product/Dynasty/AHL_DevelopmentPlan_v1.0.json",
+      "prospect_watchlist": []
+    },
+    "export_pipeline": {
+      "version": "v1.0",
+      "config_file": "Product/Config/ExportPipeline_v1.0.json",
+      "game_report_mode": "full"
+    },
+    "opponent_archetypes": {
+      "version": "v1.0",
+      "map_file": "Product/Opponents/OpponentArchetypeMap_v1.0.json"
+    },
+    "schedule": {
+      "active_month_file": "Product/Dynasty/January_2025_Schedule.json",
+      "month_label": "January 2025"
+    }
+  },
+  "confidence_flags": {
+    "roster_sync": 0.98,
+    "schedule_sync": 1.0,
+    "opponent_systems": 0.92,
+    "strategy_consistency": 0.96,
+    "modules_consistency": 0.97
+  },
+  "related_files": {
+    "gameplan_file": "Exports/Gameplans/<OPP_CODE>_<YYYY-MM-DD>_Gameplan.json",
+    "matchup_file": "Exports/Matchups/<OPP_CODE>_<YYYY-MM-DD>_Matchup.json",
+    "game_report_file": "Exports/GameReports/<OPP_CODE>_<YYYY-MM-DD>_GameReport.json",
+    "runtime_snapshot_file": "Exports/Runtimes/<RUNTIME_VERSION>_<YYYY-MM-DD>_<OPP_CODE>_RuntimeSnapshot.json"
+  },
+  "notes": {
+    "coaching_summary": [],
+    "key_adjustments": [],
+    "postgame_findings": [],
+    "todo_next_game": []
+  }
+}
