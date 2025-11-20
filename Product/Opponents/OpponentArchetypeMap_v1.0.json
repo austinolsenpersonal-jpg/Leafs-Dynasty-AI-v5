@@ -1,0 +1,328 @@
+{
+  "version": "1.0",
+  "description": "NHL 25 opponent archetype map for Leafs-Dynasty-AI-v5. Each team is assigned a primary archetype that drives default gameplan behaviour, system choices, and mode selection (Neutral / Lockdown / Chase).",
+  "archetypes": [
+    {
+      "id": "trap_low_event",
+      "label": "Trap / Low-Event",
+      "summary": "Heavy defensive structure, neutral-zone trap, low-shot-volume games. Games tend to be 2–1, 3–2.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "chaos_rush",
+      "label": "Chaos Rush",
+      "summary": "Fast north–south, aggressive forecheck, lots of rush chances and broken plays.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "slow_umbrella",
+      "label": "Slow Umbrella / Shooting PP",
+      "summary": "Slower 5v5 pace but dangerous from point shots and umbrella/OV-style power plays.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "heavy_cycle",
+      "label": "Heavy Cycle",
+      "summary": "Boards, down-low pressure, net-front traffic and point shots. Try to grind you down.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "pressure_forecheck",
+      "label": "Pressure Forecheck",
+      "summary": "Relentless forecheck, pinching D, pressure-first identity at 5v5.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "speed_transition",
+      "label": "Speed / Transition",
+      "summary": "Attack off the rush, quick ups, stretch plays, high-tempo entries.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "elite_rush_offense",
+      "label": "Elite Rush Offense",
+      "summary": "Top-end skill that lives off rush chances, east–west plays and one-timers.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "balanced_superstar",
+      "label": "Balanced Superstar Core",
+      "summary": "High-end talent with a reasonably balanced structure at 5v5.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "structured_skill",
+      "label": "Structured Skill",
+      "summary": "Solid system play with good skill; dangerous if you give them time and space.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "rebuild_loose",
+      "label": "Rebuild / Loose Structure",
+      "summary": "Weaker structure, more mistakes, but still dangerous off broken plays and momentum swings.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "mid_forecheck",
+      "label": "Mid-Pressure Forecheck",
+      "summary": "Middle of the pack: some pressure, some trap, not extreme in either direction.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "balanced_depth",
+      "label": "Balanced Depth Team",
+      "summary": "Four-line depth, not overly star-dependent; pressure through depth and structure.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "counterpunch_trap",
+      "label": "Counterpunch Trap",
+      "summary": "Defend first, then counterattack off turnovers and mistakes.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "rush_cycle_hybrid",
+      "label": "Rush / Cycle Hybrid",
+      "summary": "Comfortable attacking off the rush or with sustained cycle time.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "veteran_skill_cycle",
+      "label": "Veteran Skill + Cycle",
+      "summary": "Older core, relies on IQ, puck movement and cycle more than raw speed.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    },
+    {
+      "id": "hybrid_skill_attack",
+      "label": "Hybrid Skill Attack",
+      "summary": "High-end offensive talent with a mix of rush, cycle and set plays.",
+      "default_gameplan_mode": "Hybrid_Standard"
+    }
+  ],
+  "teams": [
+    {
+      "team_code": "ANA",
+      "team_name": "Anaheim Ducks",
+      "archetype_id": "rebuild_loose",
+      "tags": ["rebuild", "youth", "mistake_prone"],
+      "notes": "Treat as a looser-structure rebuild team: punish turnovers, but respect individual skill spikes."
+    },
+    {
+      "team_code": "ARI",
+      "team_name": "Arizona Coyotes",
+      "archetype_id": "rebuild_loose",
+      "tags": ["rebuild", "streaky", "counter_opportunities"],
+      "notes": "Rebuild group with streaky offense; focus on structure and let their inconsistency beat them."
+    },
+    {
+      "team_code": "BOS",
+      "team_name": "Boston Bruins",
+      "archetype_id": "heavy_cycle",
+      "tags": ["heavy", "cycle", "slot_protection"],
+      "notes": "Heavy cycle, strong slot protection, good goaltending. Battle net-front and protect the middle."
+    },
+    {
+      "team_code": "BUF",
+      "team_name": "Buffalo Sabres",
+      "archetype_id": "speed_transition",
+      "tags": ["youth", "speed", "transition"],
+      "notes": "Young, fast, dangerous off the rush. Prioritize neutral-zone control and gap management."
+    },
+    {
+      "team_code": "CGY",
+      "team_name": "Calgary Flames",
+      "archetype_id": "mid_forecheck",
+      "tags": ["balanced", "forecheck", "physical"],
+      "notes": "Middle-of-the-pack forecheck team; not extreme, but punishes sloppy exits and lazy backchecks."
+    },
+    {
+      "team_code": "CAR",
+      "team_name": "Carolina Hurricanes",
+      "archetype_id": "pressure_forecheck",
+      "tags": ["pressure", "shot_volume", "pinching_D"],
+      "notes": "Relentless forecheck, high shot volume, activate D; must have crisp breakouts and good support."
+    },
+    {
+      "team_code": "CBJ",
+      "team_name": "Columbus Blue Jackets",
+      "archetype_id": "rebuild_loose",
+      "tags": ["rebuild", "inconsistent", "youth"],
+      "notes": "Rebuild team with some skilled pieces; play patient and let structure win."
+    },
+    {
+      "team_code": "CHI",
+      "team_name": "Chicago Blackhawks",
+      "archetype_id": "rebuild_loose",
+      "tags": ["rebuild", "star_focus", "bedard"],
+      "notes": "Rebuild with a superstar focal point. Focus on shutting down the top line and living with the rest."
+    },
+    {
+      "team_code": "COL",
+      "team_name": "Colorado Avalanche",
+      "archetype_id": "balanced_superstar",
+      "tags": ["superstar_core", "speed", "transition"],
+      "notes": "Superstar core with strong transition and cycle options. Need disciplined line matching and backcheck."
+    },
+    {
+      "team_code": "DAL",
+      "team_name": "Dallas Stars",
+      "archetype_id": "heavy_cycle",
+      "tags": ["heavy", "structure", "depth"],
+      "notes": "Heavy, structured team with scoring depth. Win inside the dots and manage rebounds carefully."
+    },
+    {
+      "team_code": "DET",
+      "team_name": "Detroit Red Wings",
+      "archetype_id": "chaos_rush",
+      "tags": ["chaos", "rush", "curl_shooters"],
+      "notes": "Chaos-driven rush team with dangerous curl shooters. Use trap slider rules and curl-shooter patch."
+    },
+    {
+      "team_code": "EDM",
+      "team_name": "Edmonton Oilers",
+      "archetype_id": "elite_rush_offense",
+      "tags": ["elite_offense", "rush", "powerplay"],
+      "notes": "Elite rush and powerplay team. Prioritize neutral-zone schemes and deny middle on entries."
+    },
+    {
+      "team_code": "FLA",
+      "team_name": "Florida Panthers",
+      "archetype_id": "pressure_forecheck",
+      "tags": ["pressure", "cycle", "physical"],
+      "notes": "High-pressure forecheck with heavy cycle game. Quick breakouts and disciplined exits are mandatory."
+    },
+    {
+      "team_code": "LAK",
+      "team_name": "Los Angeles Kings",
+      "archetype_id": "structured_skill",
+      "tags": ["structure", "1_3_1_feel", "possession"],
+      "notes": "Structured, possession team. Respect their system, attack when they change or mismanage pucks."
+    },
+    {
+      "team_code": "MIN",
+      "team_name": "Minnesota Wild",
+      "archetype_id": "heavy_cycle",
+      "tags": ["heavy", "grind", "netfront"],
+      "notes": "Heavy, grinding team that leans on cycle and net-front presence. Battle hard down low."
+    },
+    {
+      "team_code": "MTL",
+      "team_name": "Montreal Canadiens",
+      "archetype_id": "rebuild_loose",
+      "tags": ["rebuild", "speed", "scramble"],
+      "notes": "Rebuild with speed and energy but loose structure. Stick to system and avoid track meets."
+    },
+    {
+      "team_code": "NJD",
+      "team_name": "New Jersey Devils",
+      "archetype_id": "speed_transition",
+      "tags": ["speed", "rush", "skill"],
+      "notes": "Very fast, skill-based rush team. Neutral-zone discipline and good gap control are key."
+    },
+    {
+      "team_code": "NSH",
+      "team_name": "Nashville Predators",
+      "archetype_id": "counterpunch_trap",
+      "tags": ["defense_first", "counterattack", "goaltending"],
+      "notes": "Defend first and counter off mistakes. Avoid low-percentage shots and east–west turnovers."
+    },
+    {
+      "team_code": "NYI",
+      "team_name": "New York Islanders",
+      "archetype_id": "trap_low_event",
+      "tags": ["trap", "low_event", "slot_collapse"],
+      "notes": "Trappy, low-event, slot-collapsing team with strong goaltending. Use 1-2-2 Blue, Protect Net, and grind patiently."
+    },
+    {
+      "team_code": "NYR",
+      "team_name": "New York Rangers",
+      "archetype_id": "structured_skill",
+      "tags": ["skill", "goaltending", "structure"],
+      "notes": "High-skill roster with solid structure and elite goaltending. Force them outside and manage rebounds."
+    },
+    {
+      "team_code": "OTT",
+      "team_name": "Ottawa Senators",
+      "archetype_id": "mid_forecheck",
+      "tags": ["youth", "forecheck", "streaky"],
+      "notes": "Younger team with mid-level forecheck pressure. Can run hot or cold; stay steady and punish mistakes."
+    },
+    {
+      "team_code": "PHI",
+      "team_name": "Philadelphia Flyers",
+      "archetype_id": "pressure_forecheck",
+      "tags": ["forecheck", "physical", "work_rate"],
+      "notes": "High-effort forecheck identity. Exit clean, avoid scrambly games, and use their aggression against them."
+    },
+    {
+      "team_code": "PIT",
+      "team_name": "Pittsburgh Penguins",
+      "archetype_id": "veteran_skill_cycle",
+      "tags": ["veteran_core", "cycle", "IQ"],
+      "notes": "Veteran skill team that leans on IQ and puck movement. Deny middle and force them to the outside."
+    },
+    {
+      "team_code": "SJS",
+      "team_name": "San Jose Sharks",
+      "archetype_id": "rebuild_loose",
+      "tags": ["rebuild", "low_depth", "mistakes"],
+      "notes": "Rebuild with thin depth. Professional structure and patience should control these games."
+    },
+    {
+      "team_code": "SEA",
+      "team_name": "Seattle Kraken",
+      "archetype_id": "balanced_depth",
+      "tags": ["depth", "balanced", "forecheck"],
+      "notes": "Balanced depth team; no single dominant star, but good as a group. Respect depth and manage matchups."
+    },
+    {
+      "team_code": "STL",
+      "team_name": "St. Louis Blues",
+      "archetype_id": "heavy_cycle",
+      "tags": ["heavy", "cycle", "netfront"],
+      "notes": "Heavy cycle and net-front traffic. Clear the crease and manage rebounds aggressively."
+    },
+    {
+      "team_code": "TBL",
+      "team_name": "Tampa Bay Lightning",
+      "archetype_id": "structured_skill",
+      "tags": ["elite_skill", "structure", "goaltending"],
+      "notes": "Elite skill with strong structure. Special teams and discipline are critical in this matchup."
+    },
+    {
+      "team_code": "TOR",
+      "team_name": "Toronto Maple Leafs",
+      "archetype_id": "hybrid_skill_attack",
+      "tags": ["skill", "hybrid_attack", "rush_and_cycle"],
+      "notes": "Your team: high-skill hybrid attack that can score off rush or cycle. Canon and LineModule define exact behaviour."
+    },
+    {
+      "team_code": "VAN",
+      "team_name": "Vancouver Canucks",
+      "archetype_id": "rush_cycle_hybrid",
+      "tags": ["hybrid", "rush", "cycle"],
+      "notes": "Hybrid between rush threat and strong cycle. Must read game flow and adjust NZ/forecheck accordingly."
+    },
+    {
+      "team_code": "VGK",
+      "team_name": "Vegas Golden Knights",
+      "archetype_id": "balanced_depth",
+      "tags": ["depth", "structure", "forecheck"],
+      "notes": "Deep, structured team; attacks through depth and system. Avoid extended DZ time and manage lines carefully."
+    },
+    {
+      "team_code": "WPG",
+      "team_name": "Winnipeg Jets",
+      "archetype_id": "counterpunch_trap",
+      "tags": ["goaltending", "counterattack", "transition"],
+      "notes": "Excellent goaltending and dangerous counterattacks. Don’t force plays through the middle; protect against odd-man rushes."
+    },
+    {
+      "team_code": "WSH",
+      "team_name": "Washington Capitals",
+      "archetype_id": "slow_umbrella",
+      "tags": ["OV_flank", "umbrella_PP", "slower_5v5"],
+      "notes": "Slower 5v5 pace but dangerous PP and OV flank threats. Use umbrella counters and protect the seam."
+    }
+  ]
+}
