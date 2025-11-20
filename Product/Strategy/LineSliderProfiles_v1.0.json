@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "profiles": {
+    "Hybrid_Standard": {
+      "description": "Balanced default profile for most opponents. Used when game is not chaos or pure trap.",
+      "lines": {
+        "line1": {
+          "oz_strategy": "Behind the Net",
+          "carry_dump": 2,
+          "cycle_shoot": 4,
+          "efficiency_energy": 3,
+          "block_bias": 3
+        },
+        "line2": {
+          "oz_strategy": "Overload",
+          "carry_dump": 4,
+          "cycle_shoot": 3,
+          "efficiency_energy": 4,
+          "block_bias": 4
+        },
+        "line3": {
+          "oz_strategy": "Crash the Net",
+          "carry_dump": 5,
+          "cycle_shoot": 5,
+          "efficiency_energy": 5,
+          "block_bias": 6
+        },
+        "line4": {
+          "oz_strategy": "Behind the Net",
+          "carry_dump": 6,
+          "cycle_shoot": 3,
+          "efficiency_energy": 5,
+          "block_bias": 7
+        }
+      }
+    },
+
+    "Lockdown_Defense": {
+      "description": "Used when protecting a lead late. Low event, heavy blocking, net protection.",
+      "lines": {
+        "line1": {
+          "oz_strategy": "Behind the Net",
+          "carry_dump": 6,
+          "cycle_shoot": 3,
+          "efficiency_energy": 4,
+          "block_bias": 8
+        },
+        "line2": {
+          "oz_strategy": "Cycle",
+          "carry_dump": 6,
+          "cycle_shoot": 2,
+          "efficiency_energy": 4,
+          "block_bias": 8
+        },
+        "line3": {
+          "oz_strategy": "Crash the Net",
+          "carry_dump": 7,
+          "cycle_shoot": 4,
+          "efficiency_energy": 5,
+          "block_bias": 8
+        },
+        "line4": {
+          "oz_strategy": "Behind the Net",
+          "carry_dump": 8,
+          "cycle_shoot": 2,
+          "efficiency_energy": 6,
+          "block_bias": 9
+        }
+      }
+    },
+
+    "Aggressive_Comeback": {
+      "description": "Used when trailing. Increases shooting, tempo, and OZ attack.",
+      "lines": {
+        "line1": {
+          "oz_strategy": "Overload",
+          "carry_dump": 1,
+          "cycle_shoot": 7,
+          "efficiency_energy": 2,
+          "block_bias": 3
+        },
+        "line2": {
+          "oz_strategy": "Overload",
+          "carry_dump": 2,
+          "cycle_shoot": 6,
+          "efficiency_energy": 3,
+          "block_bias": 3
+        },
+        "line3": {
+          "oz_strategy": "Crash the Net",
+          "carry_dump": 3,
+          "cycle_shoot": 7,
+          "efficiency_energy": 3,
+          "block_bias": 4
+        },
+        "line4": {
+          "oz_strategy": "Behind the Net",
+          "carry_dump": 4,
+          "cycle_shoot": 6,
+          "efficiency_energy": 4,
+          "block_bias": 5
+        }
+      }
+    },
+
+    "Chaos_Rush_Control": {
+      "description": "Used vs chaos/rush-heavy teams (DET style). Slows pace, reduces rush danger, boosts defensive posture.",
+      "lines": {
+        "line1": {
+          "oz_strategy": "Behind the Net",
+          "carry_dump": 3,
+          "cycle_shoot": 5,
+          "efficiency_energy": 4,
+          "block_bias": 4
+        },
+        "line2": {
+          "oz_strategy": "Cycle",
+          "carry_dump": 4,
+          "cycle_shoot": 4,
+          "efficiency_energy": 4,
+          "block_bias": 5
+        },
+        "line3": {
+          "oz_strategy": "Crash the Net",
+          "carry_dump": 5,
+          "cycle_shoot": 5,
+          "efficiency_energy": 4,
+          "block_bias": 7
+        },
+        "line4": {
+          "oz_strategy": "Behind the Net",
+          "carry_dump": 7,
+          "cycle_shoot": 3,
+          "efficiency_energy": 6,
+          "block_bias": 8
+        }
+      }
+    }
+  }
+}
