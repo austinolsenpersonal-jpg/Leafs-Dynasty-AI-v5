@@ -1,0 +1,165 @@
+{
+  "version": "1.0",
+  "export_type": "matchup",
+  "metadata": {
+    "game_id": "2025-01-02_NYI",
+    "date": "2025-01-02",
+    "season": "2024-2025",
+    "team_code": "TOR",
+    "opponent_team_code": "NYI",
+    "arena": "UBS Arena",
+    "home_away": "Away",
+    "runtime_version": "v2.3",
+    "generated_by": "Leafs Dynasty AI",
+    "generated_from_template": "Templates/BaseMatchupTemplate.json"
+  },
+  "archetype": {
+    "archetype_tag": "trap_low_event",
+    "source": "Product/Opponents/OpponentArchetypeMap_v1.0.json",
+    "danger_rating": "medium_trap_risk",
+    "notes": [
+      "NYI plays a conservative, low-event style with a strong trap.",
+      "They collapse aggressively to the net-front and protect the middle of the ice.",
+      "Offensive generation is modest but opportunistic off turnovers."
+    ]
+  },
+  "team_form": {
+    "toronto": {
+      "record": "31-6-1",
+      "last_10": "8-2-0",
+      "gf_per_game": 5.05,
+      "ga_per_game": 2.50,
+      "pp_rank": 1,
+      "pk_rank": 32,
+      "top_scorer": "W. Nylander"
+    },
+    "ny_islanders": {
+      "record": "14-20-4",
+      "last_10": "1-6-3",
+      "gf_per_game": 2.87,
+      "ga_per_game": 3.76,
+      "pp_rank": 19,
+      "pk_rank": 25,
+      "top_scorer": "A. Lee"
+    }
+  },
+  "goalie_matchup": {
+    "toronto_starter": "J. Woll",
+    "nyi_starter": "I. Sorokin",
+    "toronto_notes": [
+      "Woll benefits from structured, low-event environments.",
+      "Prioritize clean sightlines and early box-outs on Anders Lee."
+    ],
+    "nyi_notes": [
+      "Sorokin is capable of stealing games when Toronto over-passes.",
+      "Traffic and lateral screens are more effective than pure bar-down attempts."
+    ]
+  },
+  "key_matchups": {
+    "forward_lines": [
+      {
+        "tor_line": "Matthews line (Knies–Matthews–Nylander)",
+        "nyi_line": "Barzal line",
+        "objective": "Win OZ possession and avoid high-risk neutral-zone turnovers.",
+        "notes": [
+          "Keep Barzal to the outside on entries.",
+          "Force him to dump rather than carry across blue line with speed."
+        ]
+      },
+      {
+        "tor_line": "Tavares line (Pacioretty–Tavares–Marner)",
+        "nyi_line": "Lee/Nelson unit or secondary scoring line",
+        "objective": "Grind down NYI D with sustained cycle shifts.",
+        "notes": [
+          "Use Marner on the half-wall to exploit passing lanes behind the net.",
+          "Tavares and Pacioretty should live in the slot and crease."
+        ]
+      },
+      {
+        "tor_line": "Mercer line (Robertson–Mercer–Foerster)",
+        "nyi_line": "Depth lines (Cizikas, Gagner, etc.)",
+        "objective": "Energy and momentum line.",
+        "notes": [
+          "Simplify: chip pucks deep and forecheck hard.",
+          "Crash the net for second and third chances."
+        ]
+      },
+      {
+        "tor_line": "Kampf line (Domi–Kampf–Steeves)",
+        "nyi_line": "Whoever has momentum or Barzal on defensive draws",
+        "objective": "Shutdown / tempo control.",
+        "notes": [
+          "Use after goals and late in periods.",
+          "Prioritize clean DZ exits and safe line changes."
+        ]
+      }
+    ],
+    "defence_pairs": [
+      {
+        "tor_pair": "OEL–Tanev",
+        "assignment": "Primary matchup vs Barzal line.",
+        "notes": [
+          "Tight gap at blue line but no over-commits.",
+          "Tanev owns the net-front; OEL handles retrievals and first pass."
+        ]
+      },
+      {
+        "tor_pair": "Rielly–Carlo",
+        "assignment": "Nelson/Lee matchups and PP quarterback usage.",
+        "notes": [
+          "Carlo locks down the slot while Rielly activates selectively on rushes.",
+          "Avoid both D deep below the tops of circles at the same time."
+        ]
+      },
+      {
+        "tor_pair": "McCabe–Dumba",
+        "assignment": "Energy and physical tone-setting vs NYI depth.",
+        "notes": [
+          "Deliver hits in NZ to slow Islanders’ forecheck.",
+          "Step up only when F3 is clearly high."
+        ]
+      }
+    ]
+  },
+  "tactical_edges": {
+    "toronto": [
+      "High-end finishing talent at the top of the lineup.",
+      "Stronger transition game if they avoid NYI’s trap lanes.",
+      "Elite PP capable of breaking the Passive Box with quick puck movement."
+    ],
+    "ny_islanders": [
+      "Sorokin’s game-stealing potential.",
+      "Low-event trap structure that punishes sloppy Toronto neutral-zone play.",
+      "Net-front presence from Lee and heavy cycle ability."
+    ]
+  },
+  "danger_flags": {
+    "trap_risk": "medium_high",
+    "complacency_risk": "medium",
+    "goaltending_swing_risk": "high_if_Sorokin_hot",
+    "notes": [
+      "Toronto is the better team but must avoid playing into the Islanders’ trap.",
+      "Mental focus after a 7-1 win vs the same opponent is critical.",
+      "If Sorokin locks in and Toronto over-passes, game can tighten quickly."
+    ]
+  },
+  "bench_instructions": {
+    "start_of_game": [
+      "First three shifts: simple north–south plays, glass-and-out preferred over cute middle plays.",
+      "Get pucks deep behind NYI D and finish checks."
+    ],
+    "after_goal_for": [
+      "Deploy Kampf line to reset tempo when needed.",
+      "Next shift: manage puck conservatively and avoid odd-man rushes against."
+    ],
+    "after_goal_against": [
+      "Keep same goalie unless threshold reached.",
+      "Shorten bench temporarily with top 6 and OEL–Tanev to stabilize."
+    ],
+    "late_game_lockdown": [
+      "Switch to Lockdown_Defense profile.",
+      "Protect Net + Collapsing, Close Support breakout only.",
+      "Kampf line with Tanev/Carlo for most DZ draws."
+    ]
+  }
+}
