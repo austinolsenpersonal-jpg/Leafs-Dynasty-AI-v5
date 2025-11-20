@@ -1,0 +1,261 @@
+{
+  "version": "1.0",
+  "name": "PreGameChecklist",
+  "description": "Standardized pre-game validation and setup flow for Leafs Dynasty AI.",
+  "philosophy": {
+    "goals": [
+      "Prevent starting a game with wrong sliders, systems, or lineups.",
+      "Ensure opponent archetype, schedule, and exports are aligned.",
+      "Keep goalie decisions, AHL development, and contracts consistent with canon modules."
+    ],
+    "order_of_operations": [
+      "schedule_validation",
+      "opponent_identification",
+      "lineup_validation",
+      "systems_setup",
+      "goalie_decision",
+      "special_teams_check",
+      "export_precheck"
+    ]
+  },
+  "sections": [
+    {
+      "id": "schedule_validation",
+      "label": "Schedule Validation",
+      "description": "Confirm that the requested game exists on the schedule and is correctly identified.",
+      "steps": [
+        {
+          "id": "check_month_source",
+          "description": "Determine if the game date is in January 2025 or another month.",
+          "rules": {
+            "january_hard_gate_file": "Product/Dynasty/January_2025_Schedule.json",
+            "season_schedule_file": "Product/Dynasty/SeasonSchedule_2024-2025_v1.0.json"
+          }
+        },
+        {
+          "id": "validate_opponent_and_date",
+          "description": "Cross-check opponent code and date against the appropriate schedule source.",
+          "rules": {
+            "if_month_is_2025-01": "use_january_hard_gate_only",
+            "else": "use_season_schedule_if_populated",
+            "on_mismatch": "reject_request_and_return_closest_valid_game"
+          }
+        },
+        {
+          "id": "tag_game_context",
+          "description": "Attach context tags for this game (back_to_back, road_trip, rivalry, etc.) from schedule data if available.",
+          "rules": {
+            "allow_missing_tags": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "opponent_identification",
+      "label": "Opponent Identification",
+      "description": "Resolve opponent archetype and baseline plan before touching any sliders.",
+      "steps": [
+        {
+          "id": "lookup_archetype",
+          "description": "Look up opponent in Product/Opponents/OpponentArchetypeMap_v1.0.json.",
+          "rules": {
+            "map_file": "Product/Opponents/OpponentArchetypeMap_v1.0.json",
+            "fallback_archetype": "balanced_depth",
+            "set_flag_if_fallback": "archetype_fallback_used"
+          }
+        },
+        {
+          "id": "set_gameplan_mode",
+          "description": "Determine base gameplan mode from archetype (Hybrid_Standard, Lockdown, Chase, etc.).",
+          "rules": {
+            "trap_low_event": "Hybrid_Standard",
+            "chaos_rush": "Hybrid_Standard",
+            "slow_umbrella": "Hybrid_Standard",
+            "heavy_cycle": "Hybrid_Standard",
+            "pressure_forecheck": "Hybrid_Standard",
+            "speed_transition": "Hybrid_Standard",
+            "elite_rush_offense": "Hybrid_Standard",
+            "balanced_depth": "Hybrid_Standard"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lineup_validation",
+      "label": "Lineup & Roster Validation",
+      "description": "Ensure current lines and scratches are legal and consistent with LineModule and DevelopmentModule.",
+      "steps": [
+        {
+          "id": "require_current_lines",
+          "description": "Confirm current NHL lines (forward, defence, goalies, PP, PK) have been synced recently.",
+          "rules": {
+            "max_allowed_age_days": 14,
+            "on_stale": "request_new_lines_upload",
+            "source_modules": [
+              "Product/Dynasty/LineModule_v2.0.json"
+            ]
+          }
+        },
+        {
+          "id": "validate_positions",
+          "description": "Check that players are in valid positions based on roster data and LineModule roles.",
+          "rules": {
+            "forbid_non_centers_at_C_without_explicit_override": true,
+            "respect_primary_position_first": true
+          }
+        },
+        {
+          "id": "development_conflict_check",
+          "description": "Check NHL lineup against AHL_DevelopmentPlan_v1.0 for conflicts with key prospect development plans.",
+          "rules": {
+            "ahl_plan_file": "Product/Dynasty/AHL_DevelopmentPlan_v1.0.json",
+            "flag_if_priority_prospect_scratched": true,
+            "flag_if_prospect_role_is_worse_than_plan": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "systems_setup",
+      "label": "Systems & Sliders Setup",
+      "description": "Apply canon systems and slider profiles consistent with archetype and runtime config.",
+      "steps": [
+        {
+          "id": "load_runtime_config",
+          "description": "Load current Architect runtime config file as source of system defaults.",
+          "rules": {
+            "runtime_config_pattern": "Product/Architect/RuntimeConfig_v*.json",
+            "use_highest_version": true
+          }
+        },
+        {
+          "id": "apply_archetype_defaults",
+          "description": "Derive forecheck, NZ, DZ, and pressure defaults from archetype via StrategyTrees.",
+          "rules": {
+            "strategy_trees_dir": "Product/StrategyTrees/",
+            "require_valid_nhl_25_strategies_only": true
+          }
+        },
+        {
+          "id": "slider_profile_selection",
+          "description": "Select the correct slider profile for this matchup (Hybrid, Lockdown, Chase) before manual tuning.",
+          "rules": {
+            "default_profile": "Hybrid_Standard_v1",
+            "lockdown_trigger": "late_lead_only",
+            "chase_trigger": "trailing_3rd_period_only"
+          }
+        },
+        {
+          "id": "slider_legality_gate",
+          "description": "Ensure all suggested sliders are legal and interpretable (0–10).",
+          "rules": {
+            "integer_only": true,
+            "min_value": 0,
+            "max_value": 10,
+            "on_invalid": "correct_and_flag"
+          }
+        }
+      ]
+    },
+    {
+      "id": "goalie_decision",
+      "label": "Goalie Decision",
+      "description": "Select the starting goalie according to Goalie Matchup logic and schedule context.",
+      "steps": [
+        {
+          "id": "evaluate_schedule_context",
+          "description": "Determine if game is part of a back-to-back, road trip, or heavy cluster.",
+          "rules": {
+            "prefer_fresher_goalie_in_back_to_back": true,
+            "consider_upcoming_priority_games": true
+          }
+        },
+        {
+          "id": "apply_goalie_matchup_rules",
+          "description": "Use Goalie Matchup logic (chaos vs cycle vs elite skill) to prefer Woll vs Stolarz or other goalies.",
+          "rules": {
+            "vs_chaos_rush": "prefer_Woll",
+            "vs_heavy_cycle_or_slow_umbrella": "prefer_Stolarz",
+            "fallback_mode": "rotation_or_hot_hand"
+          }
+        },
+        {
+          "id": "record_goalie_decision",
+          "description": "Record chosen starter for runtime snapshot and analytics.",
+          "rules": {
+            "write_to_runtime_snapshot": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "special_teams_check",
+      "label": "Special Teams Check",
+      "description": "Ensure PP/PK units are valid, optimized, and consistent with opponent archetype.",
+      "steps": [
+        {
+          "id": "pp_template_selection",
+          "description": "Select PP template based on opponent PK style (e.g., Diamond, Box, Wedge+1).",
+          "rules": {
+            "default_template": "PP_Scoring_Balance_v1",
+            "override_for_slow_umbrella": "PP_Umbrella_Counter_v1",
+            "override_for_trap_low_event": "PP_Patient_Entry_v1"
+          }
+        },
+        {
+          "id": "pk_template_selection",
+          "description": "Select PK template based on opponent PP classification (Shooting PP vs Umbrella PP).",
+          "rules": {
+            "vs_shooting_pp": "PK_Tight_Box_Block_Shots_v1",
+            "vs_umbrella_pp": "PK_Ovi_Flank_Deny_v1"
+          }
+        },
+        {
+          "id": "unit_legality_check",
+          "description": "Confirm no illegal units (duplicate players, missing D, etc.).",
+          "rules": {
+            "require_two_defenders_on_pk": true,
+            "allow_four_forwards_on_pp": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "export_precheck",
+      "label": "Export Pre-Check",
+      "description": "Make sure all pre-game exports are allowed and correctly configured before the puck drops.",
+      "steps": [
+        {
+          "id": "export_paths_validation",
+          "description": "Confirm ExportPipeline_v1.0.json paths and modes are available.",
+          "rules": {
+            "pipeline_file": "Product/Config/ExportPipeline_v1.0.json",
+            "require_game_report_mode_full": true
+          }
+        },
+        {
+          "id": "allow_gameplan_export",
+          "description": "Only allow /export gameplan or /export matchup if schedule_validation and opponent_identification sections passed.",
+          "rules": {
+            "require_schedule_validation_pass": true,
+            "require_archetype_resolved": true
+          }
+        },
+        {
+          "id": "pre_game_runtime_snapshot",
+          "description": "Optionally create a pre-game runtime snapshot stub for later comparison.",
+          "rules": {
+            "enabled_by_default": false,
+            "runtime_snapshot_template": "Product/Config/RuntimeSnapshotTemplate_v2.1.json"
+          }
+        }
+      ]
+    }
+  ],
+  "flags": {
+    "block_gameplan_on_schedule_failure": true,
+    "block_gameplan_on_missing_lines": true,
+    "warn_on_development_conflict": true,
+    "warn_on_archetype_fallback": true
+  }
+}
