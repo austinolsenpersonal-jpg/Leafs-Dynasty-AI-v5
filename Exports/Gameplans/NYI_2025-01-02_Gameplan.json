@@ -1,0 +1,221 @@
+{
+  "version": "1.0",
+  "export_type": "gameplan",
+  "metadata": {
+    "game_id": "2025-01-02_NYI",
+    "date": "2025-01-02",
+    "season": "2024-2025",
+    "team_code": "TOR",
+    "opponent_team_code": "NYI",
+    "arena": "UBS Arena",
+    "home_away": "Away",
+    "runtime_version": "v2.3",
+    "generated_by": "Leafs Dynasty AI",
+    "generated_from_template": "Templates/BaseGameplanTemplate.json"
+  },
+  "archetype": {
+    "archetype_tag": "trap_low_event",
+    "source": "Product/Opponents/OpponentArchetypeMap_v1.0.json",
+    "notes": [
+      "Conservative offensive pressure",
+      "2-3 forecheck with trap bias",
+      "1-3-1 neutral zone",
+      "Collapsing DZ coverage",
+      "Passive box PK, overload PP, dump-heavy entries"
+    ]
+  },
+  "slider_profile": {
+    "active_profile": "Hybrid_Standard",
+    "profile_source": "Product/Strategy/LineSliderProfiles_v1.0.json",
+    "fallback_profiles": [
+      "Lockdown_Defense",
+      "Aggressive_Comeback",
+      "Chaos_Rush_Control"
+    ],
+    "switch_rules": {
+      "lockdown_defense_trigger": "Leading by 2+ in 3rd period OR high-danger chances against spike",
+      "aggressive_comeback_trigger": "Trailing by 1–3 goals in 3rd period OR shots deficit of 8+",
+      "chaos_rush_control_trigger": "Opponent breaks structure and game pace turns into rush-trade environment"
+    }
+  },
+  "team_strategies": {
+    "toronto": {
+      "offensive_pressure": "Standard",
+      "forecheck": "1-2-2 Passive",
+      "forecheck_bias_slider": 2,
+      "neutral_zone": "1-2-2 Blue",
+      "trap_forecheck_slider": 2,
+      "defensive_pressure": "Contain Puck",
+      "defensive_strategy": "Staggered",
+      "control_breakout": "Strong Side Slant",
+      "quick_breakout": "Close Support",
+      "power_play": "Shooting",
+      "power_play_entry": "Carry",
+      "penalty_kill": "Diamond",
+      "three_on_three_offense": "Possession",
+      "notes": [
+        "Keep events low vs trap team; do not feed counterattack chances.",
+        "Use structure and width to beat NYI 1-3-1 and collapsing DZ.",
+        "Generate rebounds and net-front chaos on Sorokin rather than pure east–west seam plays."
+      ]
+    },
+    "opponent_snapshot": {
+      "offensive_pressure": "Conservative",
+      "three_on_three_offense": "Passive",
+      "forecheck": "2-3",
+      "forecheck_bias": "Trap",
+      "neutral_zone": "1-3-1",
+      "defensive_pressure": "Protect Net",
+      "defensive_strategy": "Collapsing",
+      "penalty_kill": "Passive Box",
+      "power_play": "Overload",
+      "power_play_carry_dump": "Dump"
+    }
+  },
+  "lines": {
+    "forwards": {
+      "line_1": {
+        "players": ["M. Knies (LW)", "A. Matthews (C)", "W. Nylander (RW)"],
+        "offensive_strategy": "Behind the Net",
+        "slider_profile": {
+          "carry_dump": 3,
+          "cycle_shoot": 4,
+          "efficiency_energy": 3,
+          "dont_block_block": 2
+        },
+        "role_notes": [
+          "Primary scoring line.",
+          "Attack off controlled entries, use low plays and cutbacks behind the net.",
+          "Matthews–Nylander to attack weak-side seams when NYI collapses."
+        ]
+      },
+      "line_2": {
+        "players": ["M. Pacioretty (LW)", "J. Tavares (C)", "M. Marner (RW)"],
+        "offensive_strategy": "Overload",
+        "slider_profile": {
+          "carry_dump": 4,
+          "cycle_shoot": 3,
+          "efficiency_energy": 3,
+          "dont_block_block": 3
+        },
+        "role_notes": [
+          "Heavy cycle line focused on OZ possession.",
+          "Marner as primary distributor, Tavares net-front, Pacioretty as shooter.",
+          "Exploit NYI tiring D with long cycles and net-front traffic."
+        ]
+      },
+      "line_3": {
+        "players": ["N. Robertson (LW)", "D. Mercer (C)", "T. Foerster (RW)"],
+        "offensive_strategy": "Crash the Net",
+        "slider_profile": {
+          "carry_dump": 6,
+          "cycle_shoot": 6,
+          "efficiency_energy": 5,
+          "dont_block_block": 5
+        },
+        "role_notes": [
+          "Energy line.",
+          "Use simpler dump-ins and hard forecheck.",
+          "Crash crease vs Sorokin and hunt second chances."
+        ]
+      },
+      "line_4": {
+        "players": ["M. Domi (LW)", "D. Kampf (C)", "A. Steeves (RW)"],
+        "offensive_strategy": "Behind the Net",
+        "slider_profile": {
+          "carry_dump": 7,
+          "cycle_shoot": 7,
+          "efficiency_energy": 6,
+          "dont_block_block": 7
+        },
+        "role_notes": [
+          "Shutdown / tempo control line.",
+          "Used after goals for and against to re-stabilize game.",
+          "Defensive zone starts, heavy forecheck, strong back-pressure."
+        ]
+      }
+    },
+    "defence": {
+      "pair_1": {
+        "players": ["M. Rielly (LD)", "B. Carlo (RD)"],
+        "hold_line_pinch": 4,
+        "cycle_shoot": 4,
+        "role_notes": [
+          "Primary puck-moving pair.",
+          "Rielly joins rush selectively; Carlo protects slot and box-outs net-front.",
+          "Match vs Nelson line when possible."
+        ]
+      },
+      "pair_2": {
+        "players": ["O. Ekman-Larsson (LD)", "C. Tanev (RD)"],
+        "hold_line_pinch": 2,
+        "cycle_shoot": 3,
+        "role_notes": [
+          "Primary shutdown pair vs Barzal line.",
+          "Conservative blue line gaps, heavy net-front defense.",
+          "Minimal pinching early in game; prioritize clean exits."
+        ]
+      },
+      "pair_3": {
+        "players": ["J. McCabe (LD)", "M. Dumba (RD)"],
+        "hold_line_pinch": 5,
+        "cycle_shoot": 5,
+        "role_notes": [
+          "Energy/depth pair.",
+          "Allowed to step up in OZ when game state is favourable.",
+          "Used heavily when momentum is on Toronto’s side."
+        ]
+      }
+    },
+    "goalies": {
+      "starter": "J. Woll",
+      "backup": "A. Stolarz",
+      "goalie_plan": {
+        "start_goalie": "Woll",
+        "pull_threshold": {
+          "goals_against": 4,
+          "save_percentage_floor": 0.820
+        },
+        "puck_handling_instructions": [
+          "Freeze pucks when NYI has established cycle.",
+          "Avoid risky rims through the middle vs 2-3 forecheck."
+        ]
+      }
+    }
+  },
+  "situational_rules": {
+    "lockdown_defense": {
+      "active_profile": "Lockdown_Defense",
+      "conditions": [
+        "Toronto leading by 2+ goals in 3rd period",
+        "High-danger chances against spike or Sorokin pulled for extra attacker"
+      ],
+      "changes": {
+        "offensive_pressure": "Conservative",
+        "defensive_strategy": "Collapsing",
+        "defensive_pressure": "Protect Net",
+        "trap_forecheck_slider": 1,
+        "breakout": "Close Support"
+      }
+    },
+    "aggressive_comeback": {
+      "active_profile": "Aggressive_Comeback",
+      "conditions": [
+        "Toronto trailing by 1–3 goals after 2nd period",
+        "Shots deficit of 8+ or xG significantly behind"
+      ],
+      "changes": {
+        "offensive_pressure": "Aggressive",
+        "forecheck": "1-2-2 Aggressive",
+        "quick_breakout": "Leave Zone Early",
+        "neutral_zone": "1-2-2 Red"
+      }
+    }
+  },
+  "coaching_notes": [
+    "Do not feed NYI trap with blind east–west passes through the middle.",
+    "Use width and controlled exits to beat the 1-3-1 neutral zone.",
+    "Crash net vs Sorokin and stay disciplined around Lee’s net-front presence.",
+    "Deploy Kampf–Domi–Steeves after goals for/against to reset momentum."
+  ]
+}
