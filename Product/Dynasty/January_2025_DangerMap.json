@@ -1,0 +1,119 @@
+{
+  "version": "1.0",
+  "month": "January 2025",
+  "team": "Toronto Maple Leafs",
+  "danger_map": [
+    {
+      "date": "2025-01-02",
+      "opponent": "NYI",
+      "archetype": "trap_low_event",
+      "danger_level": "MEDIUM",
+      "tags": ["low_event", "trap", "counterrush"],
+      "notes": "NYI suffocates neutral zone; avoid over-aggression early."
+    },
+    {
+      "date": "2025-01-04",
+      "opponent": "BOS",
+      "archetype": "heavy_cycle",
+      "danger_level": "HIGH",
+      "tags": ["rivalry", "heavy_cycle", "netfront"],
+      "notes": "High-danger rivalry; requires physical containment and rebound control."
+    },
+    {
+      "date": "2025-01-05",
+      "opponent": "PHI",
+      "archetype": "pressure_forecheck",
+      "danger_level": "MEDIUM",
+      "tags": ["heavy_forecheck", "north_south"],
+      "notes": "Watch DZ turnovers; Close Support mandatory."
+    },
+    {
+      "date": "2025-01-07",
+      "opponent": "PHI",
+      "archetype": "pressure_forecheck",
+      "danger_level": "MEDIUM",
+      "tags": ["heavy_forecheck"],
+      "notes": "Second meeting in 48 hours; fatigue risk."
+    },
+    {
+      "date": "2025-01-09",
+      "opponent": "CAR",
+      "archetype": "pressure_forecheck",
+      "danger_level": "VERY_HIGH",
+      "tags": ["elite_pressure", "cycle_reload", "volume_shooting"],
+      "notes": "CAR is the #1 forecheck engine; structure must be perfect."
+    },
+    {
+      "date": "2025-01-11",
+      "opponent": "VAN",
+      "archetype": "balanced_superstar",
+      "danger_level": "MEDIUM",
+      "tags": ["speed", "skill"],
+      "notes": "Protect seams and weakside cross-slot feeds."
+    },
+    {
+      "date": "2025-01-14",
+      "opponent": "DAL",
+      "archetype": "elite_rush_offense",
+      "danger_level": "VERY_HIGH",
+      "tags": ["elite_rush", "neutral_zone_danger"],
+      "notes": "Dallas punishes bad gaps; strict 1-2-2 Blue required."
+    },
+    {
+      "date": "2025-01-16",
+      "opponent": "NJD",
+      "archetype": "speed_transition",
+      "danger_level": "HIGH",
+      "tags": ["fast", "cross_seam", "rush"],
+      "notes": "NJD loves early stretch plays; do not pinch recklessly."
+    },
+    {
+      "date": "2025-01-18",
+      "opponent": "MTL",
+      "archetype": "chaos_rush",
+      "danger_level": "MEDIUM",
+      "tags": ["chaos", "off_counter"],
+      "notes": "Monitor odd-man rushes; trap slider=2 early."
+    },
+    {
+      "date": "2025-01-20",
+      "opponent": "TBL",
+      "archetype": "balanced_superstar",
+      "danger_level": "HIGH",
+      "tags": ["elite_pp", "skill_heavy"],
+      "notes": "Vasilevskiy rebound control varies; test pads early."
+    },
+    {
+      "date": "2025-01-22",
+      "opponent": "CBJ",
+      "archetype": "balanced_depth",
+      "danger_level": "LOW",
+      "tags": ["rebuilding", "low_pressure"],
+      "notes": "Safest game of the month. Don’t play down to competition."
+    },
+    {
+      "date": "2025-01-25",
+      "opponent": "OTT",
+      "archetype": "chaos_rush",
+      "danger_level": "HIGH",
+      "tags": ["high_event", "rivalry"],
+      "notes": "Ottawa plays reckless; punish neutral zone mistakes."
+    },
+    {
+      "date": "2025-01-29",
+      "opponent": "MIN",
+      "archetype": "heavy_cycle",
+      "danger_level": "MEDIUM",
+      "tags": ["heavy", "grind"],
+      "notes": "Netfront and low-slot scrums are key battle areas."
+    },
+    {
+      "date": "2025-02-01",
+      "opponent": "EDM",
+      "archetype": "elite_rush_offense",
+      "danger_level": "VERY_HIGH",
+      "tags": ["McDavid", "Draisaitl", "mega_speed"],
+      "notes": "Gap control + neutral zone discipline is everything."
+    }
+  ]
+}
