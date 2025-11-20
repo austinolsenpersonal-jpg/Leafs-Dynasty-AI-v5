@@ -1,0 +1,234 @@
+{
+  "version": "1.0",
+  "team": {
+    "nhl_team_name": "Toronto Maple Leafs",
+    "nhl_team_code": "TOR",
+    "ahl_team_name": "Toronto Marlies",
+    "ahl_team_code": "TOR-AHL",
+    "season_label": "2024-2025"
+  },
+
+  "modes": {
+    "cup_window_mode": true,
+    "aggression_profile": "Hybrid", 
+    "default_buyer_seller_state": "buyer", 
+    "max_all_in_years": 2
+  },
+
+  "data_sources": {
+    "schedule_files": [
+      "Product/Dynasty/January_2025_Schedule.json"
+    ],
+    "archetype_map_file": "Product/Opponents/OpponentArchetypeMap_v1.0.json",
+    "export_pipeline_file": "Product/Config/ExportPipeline_v1.0.json",
+    "ahl_dev_plan_file": "Product/Dynasty/AHL_DevelopmentPlan_v1.0.json",
+    "modules": {
+      "line_module": "Product/Dynasty/LineModule_v2.0.json",
+      "contract_module": "Product/Dynasty/ContractModule_v2.0.json",
+      "trade_module": "Product/Dynasty/TradeModule_v2.0.json",
+      "development_module": "Product/Dynasty/DevelopmentModule_v2.0.json"
+    }
+  },
+
+  "streak_logic": {
+    "min_games_for_streak": 3,
+    "hot_team_threshold": {
+      "wins": 7,
+      "games_window": 10
+    },
+    "cold_team_threshold": {
+      "losses_or_otl": 7,
+      "games_window": 10
+    },
+    "extreme_streak_threshold": {
+      "games": 10,
+      "min_win_pct_hot": 0.800,
+      "max_win_pct_cold": 0.200
+    },
+    "streak_actions": {
+      "on_hot_streak": [
+        "reduce_trade_panic",
+        "avoid_major_line_shakeups",
+        "consider_exploring_extension_opportunities"
+      ],
+      "on_cold_streak": [
+        "tighten_defensive_systems",
+        "evaluate_goalie_rotation_adjustment",
+        "consider_minor_line_tweaks_before_major_trades"
+      ]
+    }
+  },
+
+  "goalie_rotation_rules": {
+    "default_rotation_mode": "1A_1B",
+    "priority_starter_when_rest_is_equal": "hot_hand", 
+    "rest_requirements": {
+      "min_days_rest_between_starts": 1,
+      "max_consecutive_starts_normal": 5,
+      "max_consecutive_starts_playoffs": 7
+    },
+    "back_to_back_rules": {
+      "always_split_if_both_healthy": true,
+      "exception_if_elimination_or_must_win": true,
+      "game_1_preference": "designated_1A",
+      "game_2_preference": "designated_1B"
+    },
+    "archetype_overrides": {
+      "trap_low_event": {
+        "preferred_goalie_profile": "positional_controlled"
+      },
+      "chaos_rush": {
+        "preferred_goalie_profile": "athletic_high_reaction"
+      },
+      "heavy_cycle": {
+        "preferred_goalie_profile": "rebound_control_netfront_strength"
+      }
+    },
+    "fatigue_flags": {
+      "shot_volume_high_threshold": 38,
+      "back_to_back_overtime_drainer": true,
+      "trigger_rest_if": [
+        "3_high_shot_games_in_last_4",
+        "injury_risk_flag_from_runtime_snapshot"
+      ]
+    }
+  },
+
+  "danger_game_logic": {
+    "tags": [
+      "trap_game",
+      "rivalry_game",
+      "back_to_back",
+      "elite_opponent",
+      "travel_fatigue",
+      "hot_goalie",
+      "playoff_implication"
+    ],
+    "rules": {
+      "mark_trap_game_if": [
+        "opponent_archetype == trap_low_event",
+        "or opponent_record_is_significantly_worse_than_team",
+        "and game_is_between_two_high_profile_opponents"
+      ],
+      "mark_elite_opponent_if": [
+        "opponent_win_pct >= 0.650",
+        "or opponent_is_core_cup_contender_flag"
+      ],
+      "mark_back_to_back_if": [
+        "game_is_second_of_back_to_back"
+      ],
+      "mark_travel_fatigue_if": [
+        "3_or_more_road_games_in_last_4",
+        "and_distance_travelled_large_flag_from_schedule"
+      ]
+    },
+    "default_importance_tiers": {
+      "S": "critical_must_manage",
+      "A": "high_importance",
+      "B": "standard",
+      "C": "low_leverage_or_rest_opportunity"
+    }
+  },
+
+  "deadline_and_window_rules": {
+    "trade_deadline_focus": {
+      "weeks_before_deadline_to_prepare": 4,
+      "weeks_before_deadline_to_lock_strategy": 1,
+      "min_points_percentage_to_stay_buyer": 0.550,
+      "max_points_percentage_to_be_seller": 0.450
+    },
+    "contract_windows": {
+      "early_window_months": [
+        "October",
+        "November"
+      ],
+      "mid_window_months": [
+        "December",
+        "January"
+      ],
+      "late_window_months": [
+        "February",
+        "March"
+      ],
+      "rules": {
+        "early_window": [
+          "focus_on_core_extensions_only",
+          "do_not_overreact_to_small_sample_sizes"
+        ],
+        "mid_window": [
+          "address_key_RFAs_and_bridge_candidates",
+          "reassess_long_term_core"
+        ],
+        "late_window": [
+          "avoid_large_new_commitments_unless_cup_window_override",
+          "prioritize_flexibility_for_offseason"
+        ]
+      }
+    }
+  },
+
+  "development_integration": {
+    "ahl_dev_sync_enabled": true,
+    "use_ahl_dev_plan_for_callups": true,
+    "callup_scenarios": {
+      "injury_replacement": {
+        "priority_source": "AHL_DevelopmentPlan_v1.0",
+        "respect_do_not_callup_until_rules": true
+      },
+      "performance_promotion": {
+        "min_hot_streak_games": 10,
+        "points_per_game_threshold_forward": 0.75,
+        "points_per_game_threshold_defence": 0.50
+      }
+    },
+    "stagnation_watch": {
+      "max_games_in_wrong_role_before_flag": 10,
+      "trigger_review_if": [
+        "priority_prospect_average_toi_below_plan",
+        "priority_prospect_special_teams_role_missing"
+      ]
+    }
+  },
+
+  "monthly_planning": {
+    "review_frequency": "monthly",
+    "preferred_review_days": [
+      "last_day_of_month"
+    ],
+    "standard_monthly_outputs": [
+      "runtime_snapshot",
+      "AHL_Monthly_Development_Report",
+      "AHL_Promotion_Watchlist",
+      "AHL_Stagnation_Flag_List"
+    ],
+    "questions_to_answer_each_month": [
+      "Are we still in cup_window_mode based_on_record_and_form?",
+      "Do we need to adjust buyer/seller posture?",
+      "Are any core players due for extension_ladder_review?",
+      "Are any prospects stagnating vs AHL_DevelopmentPlan?",
+      "Do we need to alter goalie_rotation_rules based_on_workload?"
+    ]
+  },
+
+  "runtime_integration": {
+    "snapshot_fields_expected": [
+      "current_date",
+      "team_record",
+      "last_10_record",
+      "recent_goalie_workload",
+      "key_injuries",
+      "form_tag",
+      "current_streak",
+      "active_goalie_rotation_mode",
+      "buyer_seller_state"
+    ],
+    "snapshot_actions": {
+      "on_snapshot_load": [
+        "re-evaluate_streak_status",
+        "re-evaluate_goalie_rotation",
+        "re-evaluate_danger_games_next_7_days",
+        "update_trade_and_contract_recommendation_state"
+      ]
+    }
+  }
+}
