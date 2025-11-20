@@ -1,0 +1,241 @@
+{
+  "version": "1.0",
+  "module": "TradePlaybook",
+  "description": "High-level trade scenarios and guardrails for the Leafs Dynasty AI TradeModule_v2.0.",
+  "team_context": {
+    "nhl_team_name": "Toronto Maple Leafs",
+    "nhl_team_code": "TOR",
+    "season": "2024-2025"
+  },
+
+  "philosophy": {
+    "primary_objective": "Compete for the Cup while protecting long-term core and premium futures.",
+    "secondary_objectives": [
+      "Maintain cap flexibility for key extensions.",
+      "Avoid overpaying for rentals.",
+      "Use depth prospects and mid-round picks as trade fuel before 1sts/elite prospects."
+    ],
+    "global_rules": {
+      "protect_first_round_picks": true,
+      "protect_second_round_picks": true,
+      "allow_first_round_exceptions_only_if": [
+        "true_cup_window_override",
+        "impact_player_with_term_top4D_or_top6F"
+      ],
+      "max_salary_retentions_active": 2,
+      "min_in_season_cap_buffer_millions": 0.5
+    }
+  },
+
+  "mode_profiles": {
+    "cup_window": {
+      "label": "Cup Window",
+      "description": "Actively improving NHL roster for current playoffs.",
+      "willingness_to_trade_picks": {
+        "round_1": "rare_exception",
+        "round_2": "limited",
+        "round_3": "medium",
+        "round_4_to_7": "high"
+      },
+      "willingness_to_trade_prospects": {
+        "tier_S": "do_not_trade",
+        "tier_A": "only_in_elite_deals",
+        "tier_B": "available_in_hockey_trades",
+        "tier_C": "trade_fuel"
+      },
+      "preferred_targets": [
+        "top4_defenceman",
+        "top6_two_way_forward",
+        "middle_six_scoring_winger",
+        "defensive_center",
+        "shutdown_defenceman"
+      ],
+      "avoid_targets": [
+        "aging_one_dimensional_f_for_big_term",
+        "injury_prone_high_cap_hit"
+      ]
+    },
+
+    "standard_contender": {
+      "label": "Standard Contender",
+      "description": "Playoff team, but not desperate. Focus on smart upgrades.",
+      "willingness_to_trade_picks": {
+        "round_1": "protected",
+        "round_2": "limited",
+        "round_3": "medium",
+        "round_4_to_7": "high"
+      },
+      "willingness_to_trade_prospects": {
+        "tier_S": "do_not_trade",
+        "tier_A": "strong_preference_keep",
+        "tier_B": "situational",
+        "tier_C": "trade_fuel"
+      },
+      "preferred_targets": [
+        "middle_six_forward",
+        "third_pair_upgrade",
+        "depth_center",
+        "PK_specialist",
+        "value_contracts_with_term"
+      ],
+      "avoid_targets": [
+        "pure_rental_overpay",
+        "big_cap_hit_sideways_moves"
+      ]
+    },
+
+    "soft_retool": {
+      "label": "Soft Retool",
+      "description": "Still trying to win, but shifting some value to futures.",
+      "willingness_to_trade_picks": {
+        "round_1": "do_not_trade",
+        "round_2": "rare_exception",
+        "round_3": "medium",
+        "round_4_to_7": "high"
+      },
+      "willingness_to_trade_prospects": {
+        "tier_S": "do_not_trade",
+        "tier_A": "keep_if_possible",
+        "tier_B": "flexible",
+        "tier_C": "trade_fuel"
+      },
+      "preferred_targets": [
+        "younger_roster_players_with_term",
+        "RFA_controlled_assets",
+        "prospects_ready_for_NHL"
+      ],
+      "avoid_targets": [
+        "older_rentals",
+        "large_UFA_cap_hits"
+      ]
+    }
+  },
+
+  "scenario_types": {
+    "rental": {
+      "description": "Player on expiring contract with no extension planned.",
+      "max_price_rules": {
+        "top_end_rental": {
+          "allowed_assets": [
+            "round_2_pick",
+            "round_3_pick",
+            "tier_B_prospect"
+          ],
+          "forbidden_assets": [
+            "round_1_pick",
+            "tier_S_prospect",
+            "tier_A_prospect"
+          ]
+        },
+        "middle_six_or_3rd_pair_rental": {
+          "allowed_assets": [
+            "round_3_pick",
+            "round_4_pick",
+            "tier_C_prospect"
+          ],
+          "forbidden_assets": [
+            "round_1_pick",
+            "round_2_pick"
+          ]
+        }
+      }
+    },
+
+    "hockey_trade": {
+      "description": "Roster player for roster player, addressing positional needs on both sides.",
+      "guidelines": {
+        "allowable_premium_assets": [
+          "established_roster_player_with_term",
+          "tier_A_prospect_in_big_deal"
+        ],
+        "forbidden_patterns": [
+          "2_premium_assets_for_1_short_term_piece",
+          "taking_on_large_cap_dump_without_compensation"
+        ]
+      }
+    },
+
+    "cap_dump_incoming": {
+      "description": "Taking on another team’s bad money.",
+      "requirements": {
+        "must_receive": [
+          "high_pick_or_tier_A_prospect",
+          "or_multiple_good_assets"
+        ],
+        "never_accept_if": [
+          "team_cap_space_below_min_buffer",
+          "player_blocks_future_key_extension"
+        ]
+      }
+    },
+
+    "cap_dump_outgoing": {
+      "description": "Sending out a Leafs cap problem.",
+      "guidelines": {
+        "acceptable_cost": [
+          "round_3_pick",
+          "round_4_pick",
+          "tier_C_prospect"
+        ],
+        "avoid": [
+          "round_1_pick",
+          "tier_S_prospect",
+          "tier_A_prospect"
+        ]
+      }
+    }
+  },
+
+  "position_priority": {
+    "rank_order": [
+      "top4_defenceman",
+      "defensive_center",
+      "top6_scoring_winger",
+      "backup_goalie",
+      "bottom6_depth"
+    ],
+    "notes": [
+      "If defensive depth is weak, top4D priority rises to absolute #1.",
+      "Only trade for goaltending if starter performance collapses or both goalies struggle."
+    ]
+  },
+
+  "timing_rules": {
+    "early_season": {
+      "description": "First 25 games.",
+      "rules": [
+        "avoid_big_trades_before_20_games",
+        "focus_on_waiver_claims_and_small_depth_moves"
+      ]
+    },
+    "mid_season": {
+      "description": "Game 26–55.",
+      "rules": [
+        "allowed_to_make_positional_hockey_trades",
+        "begin_rental_scanning_if_securely_in_playoffs"
+      ]
+    },
+    "trade_deadline_window": {
+      "description": "Last 10 days before deadline.",
+      "rules": [
+        "activate_cup_window_or_standard_contender_profile",
+        "enforce_max_price_rules_for_rentals",
+        "validate_cap_space_before_every_proposed_trade"
+      ]
+    }
+  },
+
+  "evaluation_flags": {
+    "asset_flags": {
+      "tier_S": "core_piece",
+      "tier_A": "should_keep",
+      "tier_B": "flexible",
+      "tier_C": "trade_fuel"
+    },
+    "deal_risk_levels": {
+      "low": "spare_parts_and_late_picks",
+      "medium": "one_good_asset_out_for_immediate_help",
+      "high": "premium_asset_out_or_large_cap_commitment"
+    }
+  }
+}
