@@ -1,265 +1,161 @@
 {
   "version": "1.0",
-  "description": "Standardized scouting schema and rules for NHL opponent analysis, integrated with OpponentArchetypeMap and gameplan generation.",
-
-  "team_context": {
-    "nhl_team_name": "Toronto Maple Leafs",
-    "nhl_team_code": "TOR",
-    "season_label": "2024-2025"
-  },
-
-  "default_scouting_checklist": [
-    "Confirm forecheck type from in-game strategy screen.",
-    "Confirm neutral zone system from in-game strategy screen.",
-    "Confirm defensive strategy and defensive pressure.",
-    "Confirm power play formation and primary threats.",
-    "Confirm penalty kill formation and aggression level.",
-    "Observe rush entry tendencies (carry vs dump, wide vs middle).",
-    "Observe cycle behaviour and slot usage in offensive zone.",
-    "Observe net-front presence and rebound habits.",
-    "Evaluate physicality level (hits, board battles, crease battles).",
-    "Evaluate discipline and penalty tendency.",
-    "Identify starting goalie profile (positional, athletic, rebound-prone).",
-    "Note any elite shooters or playmakers that warp defensive coverage.",
-    "Capture any unusual behaviours (aggressive pinches, trap variations, etc.)."
-  ],
-
+  "schema_name": "OpponentScoutPack",
+  "description": "Standardized opponent scouting schema feeding archetype map, gameplans, matchups, and runtime snapshots.",
   "rating_scales": {
-    "pressure_scale": {
+    "overall_scale": {
       "min": 1,
       "max": 5,
       "labels": {
-        "1": "very_passive",
-        "2": "slightly_passive",
-        "3": "balanced",
-        "4": "aggressive",
-        "5": "very_aggressive"
+        "1": "Very Weak",
+        "2": "Below Average",
+        "3": "Average",
+        "4": "Strong",
+        "5": "Elite"
       }
     },
-    "physicality_scale": {
-      "min": 1,
-      "max": 5,
-      "labels": {
-        "1": "low_contact",
-        "2": "moderate_contact",
-        "3": "standard_physical",
-        "4": "heavy_physical",
-        "5": "extreme_physical"
-      }
+    "confidence_scale": {
+      "min": 0,
+      "max": 1,
+      "step": 0.05
     },
-    "discipline_scale": {
-      "min": 1,
+    "frequency_scale": {
+      "min": 0,
       "max": 5,
       "labels": {
-        "1": "very_undisciplined",
-        "2": "slightly_undisciplined",
-        "3": "average",
-        "4": "disciplined",
-        "5": "very_disciplined"
-      }
-    },
-    "danger_scale": {
-      "min": 1,
-      "max": 5,
-      "labels": {
-        "1": "low_danger",
-        "2": "mild_danger",
-        "3": "moderate_danger",
-        "4": "high_danger",
-        "5": "elite_danger"
+        "0": "Never",
+        "1": "Rare",
+        "2": "Occasional",
+        "3": "Regular",
+        "4": "Often",
+        "5": "Constant"
       }
     }
   },
-
-  "observation_schema": {
+  "structure_template": {
+    "team_code": "",
+    "team_name": "",
+    "league": "NHL",
+    "archetype_link": {
+      "linked_archetype_id": "",
+      "archetype_source": "OpponentArchetypeMap_v1.0.json",
+      "archetype_confidence": 0.0
+    },
     "metadata": {
-      "opponent_name": "",
-      "opponent_code": "",
-      "date_scouted": "",
-      "game_context": "regular_season_or_playoffs",
-      "home_away": "HOME_or_AWAY",
-      "league_record_at_time": {
-        "wins": 0,
-        "losses": 0,
-        "otl": 0
-      },
-      "notes": []
+      "last_scouted_game": "",
+      "last_updated_utc": "",
+      "games_sampled": 0,
+      "primary_scout_notes": "",
+      "video_sample_count": 0
     },
     "systems": {
-      "offensive_pressure": "",
-      "forecheck": "",
-      "forecheck_bias": "trap_or_forecheck_or_balanced",
-      "neutral_zone": "",
-      "defensive_pressure": "",
-      "defensive_strategy": "",
-      "breakout": "",
-      "regroup": "",
-      "pp_formation": "",
-      "pk_formation": ""
+      "forecheck": {
+        "primary_system": "",
+        "secondary_system": "",
+        "aggressiveness_rating": 0,
+        "notes": ""
+      },
+      "neutral_zone": {
+        "primary_system": "",
+        "secondary_system": "",
+        "trap_intensity_rating": 0,
+        "notes": ""
+      },
+      "defensive_zone": {
+        "primary_system": "",
+        "secondary_system": "",
+        "slot_protection_rating": 0,
+        "rebound_control_defence_rating": 0,
+        "notes": ""
+      }
     },
     "tendencies": {
-      "rush_entries": {
-        "carry_vs_dump_bias": "carry_or_dump_or_mixed",
-        "preferred_entry_lane": "wide_or_middle_or_varied",
-        "cross_ice_pass_frequency": "low_or_medium_or_high",
-        "rush_danger_rating": 0
-      },
-      "cycle_play": {
-        "cycle_depth": "low_or_medium_or_high",
-        "slot_usage": "low_or_medium_or_high",
-        "point_shot_usage": "low_or_medium_or_high",
-        "netfront_screens": "low_or_medium_or_high",
-        "cycle_danger_rating": 0
-      },
-      "transition_play": {
-        "counterattack_frequency": "low_or_medium_or_high",
-        "stretch_pass_usage": "low_or_medium_or_high",
-        "neutral_zone_trap_effectiveness": "low_or_medium_or_high"
-      }
-    },
-    "special_teams": {
-      "power_play": {
-        "primary_threats": [],
-        "one_timer_locations": [],
-        "bumper_usage": "low_or_medium_or_high",
-        "netfront_threat": "low_or_medium_or_high",
-        "pp_danger_rating": 0
-      },
-      "penalty_kill": {
-        "shape": "",
-        "aggression_rating": 0,
-        "lane_denial_effectiveness": "low_or_medium_or_high",
-        "counterattack_threat": "low_or_medium_or_high"
-      }
+      "transition_speed_rating": 0,
+      "rush_offence_rating": 0,
+      "cycle_offence_rating": 0,
+      "net_front_presence_rating": 0,
+      "rebound_hunting_rating": 0,
+      "point_shot_frequency": 0,
+      "east_west_play_frequency": 0,
+      "dump_and_chase_frequency": 0,
+      "controlled_entry_frequency": 0,
+      "controlled_exit_frequency": 0,
+      "risk_tolerance_rating": 0,
+      "discipline_rating": 0,
+      "notes": ""
     },
     "goalie_profile": {
       "primary_goalie_name": "",
-      "style": "positional_or_athletic_or_hybrid",
+      "style": "",
       "rebound_control_rating": 0,
-      "high_glove_weakness_flag": false,
-      "low_blocker_weakness_flag": false,
-      "screens_susceptibility_flag": false,
-      "puck_playing_aggression": "low_or_medium_or_high"
+      "high_glove_rating": 0,
+      "high_blocker_rating": 0,
+      "low_shot_handling_rating": 0,
+      "lateral_movement_rating": 0,
+      "puck_playing_aggressiveness_rating": 0,
+      "screens_vulnerability_rating": 0,
+      "tips_deflection_vulnerability_rating": 0,
+      "rebound_vulnerability_rating": 0,
+      "preferred_shot_target_notes": "",
+      "confidence": 0.0
     },
-    "physical_discipline_profile": {
-      "physicality_rating": 0,
-      "crease_battle_intensity": 0,
-      "board_battle_intensity": 0,
-      "discipline_rating": 0
+    "physicality": {
+      "hit_frequency_rating": 0,
+      "board_battle_rating": 0,
+      "net_front_battle_rating": 0,
+      "open_ice_hit_threat_rating": 0,
+      "fight_tendency_rating": 0,
+      "injury_risk_rating": 0,
+      "discipline_risk_rating": 0,
+      "notes": ""
     },
-    "key_players": {
-      "elite_shooters": [],
-      "elite_playmakers": [],
-      "netfront_specialists": [],
-      "shutdown_defenders": [],
-      "rush_threats": []
+    "special_teams": {
+      "powerplay": {
+        "primary_shape": "",
+        "secondary_shape": "",
+        "shot_location_focus": "",
+        "bumpers_and_flanks": [],
+        "one_timer_threats": [],
+        "drop_pass_frequency": 0,
+        "entry_control_frequency": 0,
+        "notes": ""
+      },
+      "penalty_kill": {
+        "primary_shape": "",
+        "secondary_shape": "",
+        "aggressiveness_rating": 0,
+        "lane_blocking_rating": 0,
+        "seam_pass_vulnerability_rating": 0,
+        "net_front_clear_rating": 0,
+        "notes": ""
+      }
     },
-    "flags": {
-      "rush_danger_flag": false,
-      "trap_low_event_flag": false,
-      "heavy_cycle_flag": false,
-      "rebound_farm_flag": false,
-      "elite_pp_flag": false,
-      "hot_goalie_flag": false
+    "danger_zones": {
+      "offensive_danger_areas": [],
+      "defensive_weak_areas": [],
+      "key_matchup_problems": [],
+      "recommended_exploitation_patterns": [],
+      "recommended_avoid_patterns": []
     },
-    "confidence": {
-      "overall_confidence": 0.0,
-      "systems_confidence": 0.0,
-      "tendencies_confidence": 0.0,
-      "goalie_profile_confidence": 0.0,
-      "special_teams_confidence": 0.0
+    "integration": {
+      "preferred_gameplan_profile": "",
+      "recommended_lockdown_profile": "",
+      "recommended_comeback_profile": "",
+      "matchup_focus_for_leafs": [],
+      "key_counters_summary": "",
+      "export_flags": {
+        "include_in_gameplan_exports": true,
+        "include_in_matchup_exports": true,
+        "include_in_runtime_snapshots": true
+      }
+    },
+    "scout_summary": {
+      "one_line_summary": "",
+      "strengths": [],
+      "weaknesses": [],
+      "risk_alerts": [],
+      "confidence_overall": 0.0
     }
   },
-
-  "archetype_inference_rules": {
-    "trap_low_event": {
-      "required_flags": [
-        "trap_low_event_flag"
-      ],
-      "suggestive_patterns": [
-        "defensive_strategy == 'Collapsing'",
-        "defensive_pressure == 'Protect Net'",
-        "neutral_zone in ['1-3-1', '1-1-3']",
-        "forecheck_bias == 'trap_or_balanced'"
-      ]
-    },
-    "chaos_rush": {
-      "required_flags": [],
-      "suggestive_patterns": [
-        "rush_danger_flag == true",
-        "rush_entries.rush_danger_rating >= 4",
-        "transition_play.counterattack_frequency == 'high'",
-        "stretch_pass_usage == 'high'"
-      ]
-    },
-    "heavy_cycle": {
-      "required_flags": [
-        "heavy_cycle_flag"
-      ],
-      "suggestive_patterns": [
-        "cycle_play.cycle_depth == 'high'",
-        "cycle_play.slot_usage == 'high'",
-        "cycle_play.point_shot_usage == 'high'",
-        "netfront_screens == 'high'"
-      ]
-    },
-    "slow_umbrella": {
-      "required_flags": [],
-      "suggestive_patterns": [
-        "pp_formation in ['Umbrella', 'Overload']",
-        "pp_danger_rating >= 4",
-        "rush_danger_rating <= 2"
-      ]
-    }
-  },
-
-  "integration_rules": {
-    "gameplan_export": {
-      "include_fields": [
-        "systems",
-        "tendencies",
-        "special_teams",
-        "goalie_profile",
-        "flags",
-        "key_players"
-      ],
-      "attach_to": [
-        "gameplan_files",
-        "matchup_files",
-        "runtime_snapshots"
-      ],
-      "field_prefix": "scout_"
-    },
-    "runtime_snapshot_expectations": {
-      "expected_reference_fields": [
-        "opponent_code",
-        "archetype_tag",
-        "scout_overall_confidence",
-        "scout_rush_danger_rating",
-        "scout_pp_danger_rating",
-        "scout_trap_low_event_flag"
-      ]
-    },
-    "priority_usage": {
-      "high_priority_fields_for_strategy": [
-        "systems.offensive_pressure",
-        "systems.forecheck",
-        "systems.neutral_zone",
-        "systems.defensive_strategy",
-        "special_teams.power_play.pp_danger_rating",
-        "special_teams.penalty_kill.aggression_rating",
-        "goalie_profile.rebound_control_rating",
-        "goalie_profile.screens_susceptibility_flag",
-        "flags.trap_low_event_flag",
-        "flags.rush_danger_flag",
-        "flags.heavy_cycle_flag"
-      ],
-      "high_priority_fields_for_matchup_notes": [
-        "key_players.elite_shooters",
-        "key_players.elite_playmakers",
-        "key_players.netfront_specialists",
-        "key_players.rush_threats"
-      ]
-    }
-  }
+  "teams": {}
 }
