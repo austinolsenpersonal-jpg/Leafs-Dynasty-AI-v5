@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "month": "January 2025",
+  "team": "TOR",
+  "global_rules": {
+    "default_forecheck": "1-2-2 Passive",
+    "default_neutral_zone": "1-2-2 Blue",
+    "default_def_pressure": "Protect Net",
+    "default_dz_strategy": "Staggered",
+    "trap_slider_default": 2
+  },
+  "matchup_overrides": {
+    "chaos_rush": {
+      "forecheck": "1-2-2 Passive",
+      "trap_slider": 2,
+      "notes": "Limit rush chances, keep structure tight."
+    },
+    "trap_low_event": {
+      "breakout": "Three High",
+      "notes": "Patience wins these games."
+    },
+    "heavy_cycle": {
+      "def_pressure": "Protect Net",
+      "dz_strategy": "Collapsing",
+      "notes": "Box out and own the slot."
+    },
+    "pressure_forecheck": {
+      "quick_breakout": "Close Support",
+      "notes": "Support puck carrier at all times."
+    },
+    "elite_rush_offense": {
+      "neutral_zone": "1-2-2 Blue",
+      "forecheck": "1-4",
+      "notes": "Hard stop neutral zone attacks."
+    },
+    "speed_transition": {
+      "pinch_rules": "no_pinches_L2",
+      "notes": "New Jersey punishes pinches."
+    },
+    "balanced_superstar": {
+      "notes": "Use standard Hybrid template with star awareness."
+    }
+  },
+  "goalie_rotation_rules": {
+    "very_high_danger": "Start Woll",
+    "high_danger": "Start Woll (unless fatigue)",
+    "medium_danger": "Alternate Woll/Stolarz",
+    "low_danger": "Start Stolarz"
+  },
+  "special_teams_rules": {
+    "default_pp": "Half-wall distribution via Marner/Nylander",
+    "vs_diamond_pk": "Attack flanks",
+    "vs_umbrella_pk": "Low-play rebound cycle",
+    "default_pk": "Tight box, kill seams first"
+  },
+  "period_rules": {
+    "first_period": "Structure-first, avoid penalties.",
+    "second_period": "Adjust pressure based on opponents’ speed.",
+    "third_period_lead": "Enter lockdown mode.",
+    "third_period_trailing": "Activate comeback mode."
+  },
+  "emergency_rules": {
+    "if_allowing_rushes": "Switch to 1-2-2 Blue + reduce pinch",
+    "if_stuck_in_d_zone": "Close Support + Protect Net",
+    "if_pp_struggling": "Switch PP1 to Overload",
+    "if_being_outshot": "Increase forecheck to Standard"
+  }
+}
