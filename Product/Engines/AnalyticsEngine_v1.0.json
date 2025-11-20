@@ -1,0 +1,187 @@
+{
+  "version": "1.0",
+  "name": "AnalyticsEngine",
+  "description": "Defines how Leafs Dynasty AI reads game reports, evaluates performance, and feeds insights back into Line, Contract, Trade, and Development modules.",
+  "inputs": {
+    "game_reports_dir": "Exports/GameReports/",
+    "gameplans_dir": "Exports/Gameplans/",
+    "matchups_dir": "Exports/Matchups/",
+    "runtime_snapshots_dir": "Exports/Runtimes/",
+    "season_schedule_file": "Product/Dynasty/SeasonSchedule_2024-2025_v1.0.json",
+    "january_schedule_file": "Product/Dynasty/January_2025_Schedule.json",
+    "opponent_archetype_map": "Product/Opponents/OpponentArchetypeMap_v1.0.json"
+  },
+  "supported_scopes": [
+    "single_game",
+    "last_n_games",
+    "month_to_date",
+    "season_to_date"
+  ],
+  "metrics": {
+    "team_offense": {
+      "goals_for_per_game": true,
+      "shots_for_per_game": true,
+      "pp_percentage": true,
+      "pp_goals_per_game": true,
+      "shooting_percentage": true,
+      "rush_vs_cycle_split_if_available": false
+    },
+    "team_defense": {
+      "goals_against_per_game": true,
+      "shots_against_per_game": true,
+      "pk_percentage": true,
+      "high_level_slot_chance_proxy": true,
+      "ga_while_leading_vs_tied_vs_trailing_if_available": false
+    },
+    "special_teams": {
+      "pp_attempts_per_game": true,
+      "pp_conversion_rate": true,
+      "pk_attempts_faced_per_game": true,
+      "pk_goals_against_per_game": true,
+      "short_handed_goals_for": true
+    },
+    "goalies": {
+      "save_percentage": true,
+      "goals_against_average": true,
+      "shots_faced_per_game": true,
+      "quality_start_rate": true,
+      "pull_events_if_tracked": false
+    },
+    "lines": {
+      "track_by_line_combo": true,
+      "goals_for_per_60": true,
+      "goals_against_per_60": true,
+      "shots_for_per_60": true,
+      "shots_against_per_60": true,
+      "on_ice_pp_contribution_if_available": false
+    },
+    "players": {
+      "points_per_game": true,
+      "goals_per_game": true,
+      "primary_assists_per_game": true,
+      "shots_per_game": true,
+      "plus_minus": true,
+      "average_toi": true,
+      "pp_toi": true,
+      "pk_toi": true
+    }
+  },
+  "thresholds": {
+    "team_flags": {
+      "offense_slump": {
+        "games_window": 5,
+        "goals_for_per_game_max": 2.0
+      },
+      "defense_issue": {
+        "games_window": 5,
+        "goals_against_per_game_min": 3.2
+      },
+      "pp_struggle": {
+        "games_window": 10,
+        "pp_percentage_max": 17.0
+      },
+      "pk_struggle": {
+        "games_window": 10,
+        "pk_percentage_min": 78.0
+      }
+    },
+    "line_flags": {
+      "line_cold": {
+        "games_window": 8,
+        "goals_for_per_60_max": 1.5
+      },
+      "line_liability": {
+        "games_window": 8,
+        "goals_against_per_60_min": 3.0
+      }
+    },
+    "player_flags": {
+      "scorer_cold_streak": {
+        "games_window": 10,
+        "goals_scored_max": 1
+      },
+      "underused_player": {
+        "average_toi_min_expected": 14.0
+      },
+      "overworked_player": {
+        "average_toi_max_recommended": 23.5
+      }
+    }
+  },
+  "integration": {
+    "line_module": {
+      "file": "Product/Dynasty/LineModule_v2.0.json",
+      "behaviour": {
+        "if_line_cold_flag": "recommend_micro_shuffles_only",
+        "if_line_liability_flag": "recommend_defensive_shelter_or_matchup_change",
+        "respect_existing_chemistry_rules": true
+      }
+    },
+    "contract_module": {
+      "file": "Product/Dynasty/ContractModule_v2.0.json",
+      "behaviour": {
+        "use_points_per_game_trends": true,
+        "use_average_toi_trends": true,
+        "flag_extension_priority_if_above_team_average": true,
+        "flag_caution_if_recent_slump_and_large_ask": true
+      }
+    },
+    "trade_module": {
+      "file": "Product/Dynasty/TradeModule_v2.0.json",
+      "behaviour": {
+        "mark_players_as_trade_chips_if": {
+          "low_toi_and_low_production": true,
+          "line_liability_flag": true
+        },
+        "protect_players_if": {
+          "ahead_of_expectations": true,
+          "key_prospect_status_from_dev_module": true
+        }
+      }
+    },
+    "development_module": {
+      "file": "Product/Dynasty/DevelopmentModule_v2.0.json",
+      "behaviour": {
+        "compare_ahl_usage_to_plan": true,
+        "flag_prospects_behind_plan": true,
+        "flag_prospects_ahead_of_plan": true,
+        "suggest_callups_for_hot_prospects": true
+      }
+    }
+  },
+  "reports": {
+    "supported_commands": [
+      "/analytics_report last_5_games",
+      "/analytics_report month_to_date",
+      "/analytics_report season_to_date",
+      "/analytics_report opponent <TEAM_CODE>"
+    ],
+    "templates": {
+      "single_game_summary": {
+        "include_team_metrics": true,
+        "include_line_performance": true,
+        "include_goalie_summary": true,
+        "include_flags": true
+      },
+      "window_report": {
+        "include_trends": true,
+        "include_slump_or_hot_streak_flags": true,
+        "include_recommendations_for": [
+          "lines",
+          "special_teams",
+          "goalies"
+        ]
+      },
+      "development_report": {
+        "include_ahl_prospect_status": true,
+        "include_callup_candidates": true,
+        "include_role_mismatch_warnings": true
+      }
+    }
+  },
+  "flags": {
+    "auto_tag_games_by_archetype": true,
+    "allow_partial_data": true,
+    "warn_if_game_reports_missing": true
+  }
+}
