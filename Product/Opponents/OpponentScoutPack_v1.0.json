@@ -1,161 +1,222 @@
 {
   "version": "1.0",
-  "schema_name": "OpponentScoutPack",
-  "description": "Standardized opponent scouting schema feeding archetype map, gameplans, matchups, and runtime snapshots.",
+  "description": "Canonical opponent scouting pack for Leafs Dynasty AI. Stores system/tendency ratings, goalie profiles, and physicality for each NHL opponent, aligned with OpponentArchetypeMap_v1.0.",
   "rating_scales": {
-    "overall_scale": {
-      "min": 1,
-      "max": 5,
-      "labels": {
-        "1": "Very Weak",
-        "2": "Below Average",
-        "3": "Average",
-        "4": "Strong",
-        "5": "Elite"
-      }
-    },
-    "confidence_scale": {
-      "min": 0,
-      "max": 1,
-      "step": 0.05
-    },
-    "frequency_scale": {
-      "min": 0,
-      "max": 5,
-      "labels": {
-        "0": "Never",
-        "1": "Rare",
-        "2": "Occasional",
-        "3": "Regular",
-        "4": "Often",
-        "5": "Constant"
-      }
+    "scale_type": "1_to_5",
+    "legend": {
+      "1": "Very low / almost never",
+      "2": "Below average / occasional",
+      "3": "Average / situational",
+      "4": "High / frequent",
+      "5": "Elite / defining trait"
     }
   },
-  "structure_template": {
-    "team_code": "",
-    "team_name": "",
-    "league": "NHL",
-    "archetype_link": {
-      "linked_archetype_id": "",
-      "archetype_source": "OpponentArchetypeMap_v1.0.json",
-      "archetype_confidence": 0.0
+  "fields": {
+    "systems_profile": {
+      "forecheck_pressure": "1-5 rating of how aggressive the forecheck is.",
+      "neutral_zone_trap_strength": "1-5 rating of trap strength (1 = no trap, 5 = heavy 1-3-1/1-1-3).",
+      "defensive_collapse": "1-5 rating of how hard they collapse to slot/net-front.",
+      "cycle_usage": "1-5 rating of OZ cycle reliance.",
+      "rush_offence": "1-5 rating of rush/transition offence threat."
     },
-    "metadata": {
-      "last_scouted_game": "",
-      "last_updated_utc": "",
-      "games_sampled": 0,
-      "primary_scout_notes": "",
-      "video_sample_count": 0
-    },
-    "systems": {
-      "forecheck": {
-        "primary_system": "",
-        "secondary_system": "",
-        "aggressiveness_rating": 0,
-        "notes": ""
-      },
-      "neutral_zone": {
-        "primary_system": "",
-        "secondary_system": "",
-        "trap_intensity_rating": 0,
-        "notes": ""
-      },
-      "defensive_zone": {
-        "primary_system": "",
-        "secondary_system": "",
-        "slot_protection_rating": 0,
-        "rebound_control_defence_rating": 0,
-        "notes": ""
-      }
-    },
-    "tendencies": {
-      "transition_speed_rating": 0,
-      "rush_offence_rating": 0,
-      "cycle_offence_rating": 0,
-      "net_front_presence_rating": 0,
-      "rebound_hunting_rating": 0,
-      "point_shot_frequency": 0,
-      "east_west_play_frequency": 0,
-      "dump_and_chase_frequency": 0,
-      "controlled_entry_frequency": 0,
-      "controlled_exit_frequency": 0,
-      "risk_tolerance_rating": 0,
-      "discipline_rating": 0,
-      "notes": ""
+    "special_teams_profile": {
+      "pp_shooting_bias": "1-5 rating of shot-first PP tendency.",
+      "pp_seam_hunting": "1-5 rating of cross-seam pass focus.",
+      "pk_aggression": "1-5 rating of how aggressive PK is.",
+      "pk_box_collapse": "1-5 rating of how hard PK collapses to slot."
     },
     "goalie_profile": {
-      "primary_goalie_name": "",
-      "style": "",
-      "rebound_control_rating": 0,
-      "high_glove_rating": 0,
-      "high_blocker_rating": 0,
-      "low_shot_handling_rating": 0,
-      "lateral_movement_rating": 0,
-      "puck_playing_aggressiveness_rating": 0,
-      "screens_vulnerability_rating": 0,
-      "tips_deflection_vulnerability_rating": 0,
-      "rebound_vulnerability_rating": 0,
-      "preferred_shot_target_notes": "",
-      "confidence": 0.0
+      "style": "positional | athletic | rebound_prone | hybrid",
+      "rebound_control": "1-5 rating (lower = leaves more juicy rebounds).",
+      "high_glove_threat": "1-5 rating of glove-side danger.",
+      "high_blocker_threat": "1-5 rating of blocker-side danger.",
+      "low_shot_rebound_threat": "1-5 rating of low shots creating rebounds.",
+      "puck_handling": "1-5 rating of goalie puck-playing impact."
     },
-    "physicality": {
-      "hit_frequency_rating": 0,
-      "board_battle_rating": 0,
-      "net_front_battle_rating": 0,
-      "open_ice_hit_threat_rating": 0,
-      "fight_tendency_rating": 0,
-      "injury_risk_rating": 0,
-      "discipline_risk_rating": 0,
-      "notes": ""
+    "physicality_profile": {
+      "overall_physicality": "1-5 rating of hit volume and intensity.",
+      "net_front_battle_level": "1-5 rating of crease/front battles.",
+      "board_battle_level": "1-5 rating of board battle focus.",
+      "dirty_area_commitment": "1-5 rating of willingness to go to hard areas."
     },
-    "special_teams": {
-      "powerplay": {
-        "primary_shape": "",
-        "secondary_shape": "",
-        "shot_location_focus": "",
-        "bumpers_and_flanks": [],
-        "one_timer_threats": [],
-        "drop_pass_frequency": 0,
-        "entry_control_frequency": 0,
-        "notes": ""
-      },
-      "penalty_kill": {
-        "primary_shape": "",
-        "secondary_shape": "",
-        "aggressiveness_rating": 0,
-        "lane_blocking_rating": 0,
-        "seam_pass_vulnerability_rating": 0,
-        "net_front_clear_rating": 0,
-        "notes": ""
-      }
+    "event_profile": {
+      "event_rate": "1-5 rating of game pace (1 = very low-event, 5 = track meet).",
+      "penalty_rate": "1-5 rating of how often they draw/take penalties.",
+      "comeback_push_level": "1-5 rating of late-game aggression when trailing.",
+      "turtle_level_with_lead": "1-5 rating of how much they sit back when leading."
     },
-    "danger_zones": {
-      "offensive_danger_areas": [],
-      "defensive_weak_areas": [],
-      "key_matchup_problems": [],
-      "recommended_exploitation_patterns": [],
-      "recommended_avoid_patterns": []
+    "tendency_flags": {
+      "curl_shooter_present": "true if they have a known curl-and-shoot threat.",
+      "net_front_tip_specialist": "true if they rely on tips/screens a lot.",
+      "stretch_pass_usage": "1-5 rating for stretch/long-bomb usage.",
+      "dump_and_chase_bias": "1-5 rating for dump-chase preference.",
+      "east_west_pp_playmaker": "true if they have a strong east–west PP playmaker (Ovi-side threat, etc.)."
     },
     "integration": {
-      "preferred_gameplan_profile": "",
-      "recommended_lockdown_profile": "",
-      "recommended_comeback_profile": "",
-      "matchup_focus_for_leafs": [],
-      "key_counters_summary": "",
-      "export_flags": {
-        "include_in_gameplan_exports": true,
-        "include_in_matchup_exports": true,
-        "include_in_runtime_snapshots": true
-      }
-    },
-    "scout_summary": {
-      "one_line_summary": "",
-      "strengths": [],
-      "weaknesses": [],
-      "risk_alerts": [],
-      "confidence_overall": 0.0
+      "archetype_hint": "Suggested archetype_id that should match or influence OpponentArchetypeMap_v1.0.",
+      "confidence_score": "0.0–1.0 float representing how confident the scout data is.",
+      "last_updated": "ISO date string of last manual update."
     }
   },
-  "teams": {}
+  "teams": {
+    "NYI": {
+      "team_name": "New York Islanders",
+      "systems_profile": {
+        "forecheck_pressure": 2,
+        "neutral_zone_trap_strength": 5,
+        "defensive_collapse": 5,
+        "cycle_usage": 3,
+        "rush_offence": 2
+      },
+      "special_teams_profile": {
+        "pp_shooting_bias": 3,
+        "pp_seam_hunting": 2,
+        "pk_aggression": 2,
+        "pk_box_collapse": 4
+      },
+      "goalie_profile": {
+        "style": "positional",
+        "rebound_control": 4,
+        "high_glove_threat": 3,
+        "high_blocker_threat": 3,
+        "low_shot_rebound_threat": 3,
+        "puck_handling": 3
+      },
+      "physicality_profile": {
+        "overall_physicality": 4,
+        "net_front_battle_level": 5,
+        "board_battle_level": 4,
+        "dirty_area_commitment": 4
+      },
+      "event_profile": {
+        "event_rate": 2,
+        "penalty_rate": 3,
+        "comeback_push_level": 3,
+        "turtle_level_with_lead": 4
+      },
+      "tendency_flags": {
+        "curl_shooter_present": true,
+        "net_front_tip_specialist": true,
+        "stretch_pass_usage": 2,
+        "dump_and_chase_bias": 3,
+        "east_west_pp_playmaker": false
+      },
+      "integration": {
+        "archetype_hint": "trap_low_event",
+        "confidence_score": 0.95,
+        "last_updated": "2025-01-02"
+      },
+      "notes": [
+        "Classic trap/low-event structure with hard slot collapse.",
+        "Sorokin/Varlamov can steal games but generally position-first.",
+        "Winning formula is patience, point shots through traffic, and rebounds."
+      ]
+    },
+    "DET": {
+      "team_name": "Detroit Red Wings",
+      "systems_profile": {
+        "forecheck_pressure": 4,
+        "neutral_zone_trap_strength": 2,
+        "defensive_collapse": 3,
+        "cycle_usage": 3,
+        "rush_offence": 4
+      },
+      "special_teams_profile": {
+        "pp_shooting_bias": 5,
+        "pp_seam_hunting": 4,
+        "pk_aggression": 3,
+        "pk_box_collapse": 3
+      },
+      "goalie_profile": {
+        "style": "athletic",
+        "rebound_control": 2,
+        "high_glove_threat": 3,
+        "high_blocker_threat": 3,
+        "low_shot_rebound_threat": 4,
+        "puck_handling": 2
+      },
+      "physicality_profile": {
+        "overall_physicality": 3,
+        "net_front_battle_level": 3,
+        "board_battle_level": 3,
+        "dirty_area_commitment": 3
+      },
+      "event_profile": {
+        "event_rate": 4,
+        "penalty_rate": 3,
+        "comeback_push_level": 4,
+        "turtle_level_with_lead": 2
+      },
+      "tendency_flags": {
+        "curl_shooter_present": true,
+        "net_front_tip_specialist": false,
+        "stretch_pass_usage": 3,
+        "dump_and_chase_bias": 2,
+        "east_west_pp_playmaker": true
+      },
+      "integration": {
+        "archetype_hint": "chaos_rush",
+        "confidence_score": 0.9,
+        "last_updated": "2025-01-02"
+      },
+      "notes": [
+        "Dangerous on PP with shooting-first mentality and curl shooters.",
+        "Can create chaos on forecheck; punish over-aggression with controlled exits.",
+        "Low-shot rebounds are a major risk factor if defensive box-out fails."
+      ]
+    },
+    "WSH": {
+      "team_name": "Washington Capitals",
+      "systems_profile": {
+        "forecheck_pressure": 3,
+        "neutral_zone_trap_strength": 3,
+        "defensive_collapse": 4,
+        "cycle_usage": 4,
+        "rush_offence": 3
+      },
+      "special_teams_profile": {
+        "pp_shooting_bias": 4,
+        "pp_seam_hunting": 5,
+        "pk_aggression": 3,
+        "pk_box_collapse": 4
+      },
+      "goalie_profile": {
+        "style": "rebound_prone",
+        "rebound_control": 2,
+        "high_glove_threat": 3,
+        "high_blocker_threat": 3,
+        "low_shot_rebound_threat": 5,
+        "puck_handling": 2
+      },
+      "physicality_profile": {
+        "overall_physicality": 4,
+        "net_front_battle_level": 4,
+        "board_battle_level": 3,
+        "dirty_area_commitment": 4
+      },
+      "event_profile": {
+        "event_rate": 3,
+        "penalty_rate": 3,
+        "comeback_push_level": 4,
+        "turtle_level_with_lead": 3
+      },
+      "tendency_flags": {
+        "curl_shooter_present": true,
+        "net_front_tip_specialist": true,
+        "stretch_pass_usage": 3,
+        "dump_and_chase_bias": 3,
+        "east_west_pp_playmaker": true
+      },
+      "integration": {
+        "archetype_hint": "slow_umbrella",
+        "confidence_score": 0.92,
+        "last_updated": "2025-01-02"
+      },
+      "notes": [
+        "Umbrella PP with Ovi-side threat; seam denial is priority one.",
+        "Goalie leaves dangerous low rebounds; farm 2nd-chance chances.",
+        "Heavy but not insanely fast; cycle and physicality are their identity."
+      ]
+    }
+  }
 }
