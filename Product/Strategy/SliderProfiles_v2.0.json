@@ -1,0 +1,357 @@
+{
+  "version": "2.0",
+  "description": "Centralized slider profile definitions for NHL 25 Franchise (Leafs Dynasty AI). All values are 0–10 integers.",
+  "scale_legend": {
+    "global_min": 0,
+    "global_max": 10,
+    "axes": {
+      "carry_dump": {
+        "0": "Full carry-in bias",
+        "5": "Balanced carry/dump",
+        "10": "Full dump-and-chase bias"
+      },
+      "cycle_shoot": {
+        "0": "Full cycle / puck protection",
+        "5": "Balanced cycle/shoot",
+        "10": "Full shoot-first mentality"
+      },
+      "efficiency_energy": {
+        "0": "Max efficiency (low risk, conserve energy)",
+        "5": "Balanced efficiency/energy",
+        "10": "Max energy usage (aggressive, shorter shifts, more presses)"
+      },
+      "block_bias": {
+        "0": "Rarely attempt blocks",
+        "5": "Balanced shot-blocking",
+        "10": "Always attempt to block shots"
+      },
+      "pinch_frequency": {
+        "0": "Never pinch",
+        "5": "Balanced pinch/hold",
+        "10": "Pinch very aggressively"
+      },
+      "shoot_pass": {
+        "0": "Very pass-first",
+        "5": "Balanced shoot/pass",
+        "10": "Very shoot-first"
+      },
+      "team_trap_forecheck": {
+        "0": "Full trap (very passive forecheck)",
+        "5": "Balanced trap/forecheck",
+        "10": "Full forecheck (very aggressive)"
+      },
+      "team_pressure": {
+        "0": "Very conservative team pressure",
+        "5": "Standard pressure",
+        "10": "Maximum aggression / pressure everywhere"
+      },
+      "team_energy_usage": {
+        "0": "Slow, conservative tempo, preserve stamina",
+        "5": "Balanced tempo",
+        "10": "High tempo, constant pressure"
+      },
+      "pp_shoot_bias": {
+        "0": "Very patient PP, mostly passing",
+        "5": "Balanced PP",
+        "10": "Shot-heavy PP, funnel to net"
+      },
+      "pp_low_play_bias": {
+        "0": "PP mostly up high, few low plays",
+        "5": "Balanced high/low",
+        "10": "PP strongly prioritizes low plays / below goal line"
+      },
+      "pk_aggression": {
+        "0": "Passive PK box",
+        "5": "Balanced PK pressure",
+        "10": "Very aggressive PK pressure"
+      },
+      "pk_shot_block_bias": {
+        "0": "Rarely block on PK",
+        "5": "Balanced blocking",
+        "10": "Max block-first behaviour"
+      }
+    }
+  },
+
+  "profiles": {
+    "team": {
+      "Hybrid_Standard": {
+        "team_trap_forecheck": 3,
+        "team_pressure": 5,
+        "team_energy_usage": 5
+      },
+      "Lockdown": {
+        "team_trap_forecheck": 2,
+        "team_pressure": 3,
+        "team_energy_usage": 3
+      },
+      "Chase": {
+        "team_trap_forecheck": 6,
+        "team_pressure": 8,
+        "team_energy_usage": 8
+      }
+    },
+
+    "forward_lines": {
+      "L1_HybridStandard": {
+        "carry_dump": 3,
+        "cycle_shoot": 4,
+        "efficiency_energy": 4,
+        "block_bias": 3
+      },
+      "L2_HybridStandard": {
+        "carry_dump": 4,
+        "cycle_shoot": 4,
+        "efficiency_energy": 5,
+        "block_bias": 4
+      },
+      "L3_HybridStandard": {
+        "carry_dump": 5,
+        "cycle_shoot": 6,
+        "efficiency_energy": 6,
+        "block_bias": 5
+      },
+      "L4_HybridStandard": {
+        "carry_dump": 7,
+        "cycle_shoot": 4,
+        "efficiency_energy": 7,
+        "block_bias": 7
+      },
+
+      "L1_Lockdown": {
+        "carry_dump": 4,
+        "cycle_shoot": 3,
+        "efficiency_energy": 3,
+        "block_bias": 6
+      },
+      "L2_Lockdown": {
+        "carry_dump": 5,
+        "cycle_shoot": 3,
+        "efficiency_energy": 4,
+        "block_bias": 7
+      },
+      "L3_Lockdown": {
+        "carry_dump": 6,
+        "cycle_shoot": 3,
+        "efficiency_energy": 4,
+        "block_bias": 8
+      },
+      "L4_Lockdown": {
+        "carry_dump": 7,
+        "cycle_shoot": 2,
+        "efficiency_energy": 4,
+        "block_bias": 9
+      },
+
+      "L1_Chase": {
+        "carry_dump": 2,
+        "cycle_shoot": 6,
+        "efficiency_energy": 7,
+        "block_bias": 3
+      },
+      "L2_Chase": {
+        "carry_dump": 3,
+        "cycle_shoot": 7,
+        "efficiency_energy": 7,
+        "block_bias": 4
+      },
+      "L3_Chase": {
+        "carry_dump": 5,
+        "cycle_shoot": 7,
+        "efficiency_energy": 8,
+        "block_bias": 5
+      },
+      "L4_Chase": {
+        "carry_dump": 6,
+        "cycle_shoot": 5,
+        "efficiency_energy": 8,
+        "block_bias": 6
+      }
+    },
+
+    "defence_pairs": {
+      "D1_HybridStandard": {
+        "pinch_frequency": 4,
+        "shoot_pass": 5
+      },
+      "D2_HybridStandard": {
+        "pinch_frequency": 3,
+        "shoot_pass": 4
+      },
+      "D3_HybridStandard": {
+        "pinch_frequency": 3,
+        "shoot_pass": 6
+      },
+
+      "D1_Lockdown": {
+        "pinch_frequency": 2,
+        "shoot_pass": 4
+      },
+      "D2_Lockdown": {
+        "pinch_frequency": 2,
+        "shoot_pass": 4
+      },
+      "D3_Lockdown": {
+        "pinch_frequency": 1,
+        "shoot_pass": 5
+      },
+
+      "D1_Chase": {
+        "pinch_frequency": 5,
+        "shoot_pass": 6
+      },
+      "D2_Chase": {
+        "pinch_frequency": 5,
+        "shoot_pass": 6
+      },
+      "D3_Chase": {
+        "pinch_frequency": 4,
+        "shoot_pass": 7
+      }
+    },
+
+    "special_teams": {
+      "PP_Default": {
+        "pp_shoot_bias": 7,
+        "pp_low_play_bias": 6
+      },
+      "PP_ReboundFarm": {
+        "pp_shoot_bias": 8,
+        "pp_low_play_bias": 7
+      },
+      "PP_Patient": {
+        "pp_shoot_bias": 4,
+        "pp_low_play_bias": 5
+      },
+
+      "PK_Passive": {
+        "pk_aggression": 3,
+        "pk_shot_block_bias": 7
+      },
+      "PK_Standard": {
+        "pk_aggression": 5,
+        "pk_shot_block_bias": 7
+      },
+      "PK_Aggressive": {
+        "pk_aggression": 7,
+        "pk_shot_block_bias": 8
+      }
+    },
+
+    "archetype_modifiers": {
+      "trap_low_event": {
+        "description": "Low-event trap teams (NYI-type). Bias toward safer NZ and trap-leaning forecheck.",
+        "team": {
+          "team_trap_forecheck_delta": -1,
+          "team_pressure_delta": -1,
+          "team_energy_usage_delta": 0
+        },
+        "forward_lines": {
+          "carry_dump_delta": +1,
+          "cycle_shoot_delta": 0,
+          "efficiency_energy_delta": -1,
+          "block_bias_delta": +1
+        },
+        "defence_pairs": {
+          "pinch_frequency_delta": -1,
+          "shoot_pass_delta": 0
+        }
+      },
+
+      "chaos_rush": {
+        "description": "High-speed, chaos forecheck teams (DET/EDM-type). Bias toward safer pinches and slightly more trap.",
+        "team": {
+          "team_trap_forecheck_delta": -1,
+          "team_pressure_delta": 0,
+          "team_energy_usage_delta": 0
+        },
+        "forward_lines": {
+          "carry_dump_delta": 0,
+          "cycle_shoot_delta": -1,
+          "efficiency_energy_delta": -1,
+          "block_bias_delta": +1
+        },
+        "defence_pairs": {
+          "pinch_frequency_delta": -2,
+          "shoot_pass_delta": 0
+        }
+      },
+
+      "slow_umbrella": {
+        "description": "Slow, umbrella PP / cycle teams (WSH-type). Bias toward shot blocking and smart counter-attacking.",
+        "team": {
+          "team_trap_forecheck_delta": 0,
+          "team_pressure_delta": 0,
+          "team_energy_usage_delta": 0
+        },
+        "forward_lines": {
+          "carry_dump_delta": 0,
+          "cycle_shoot_delta": 0,
+          "efficiency_energy_delta": 0,
+          "block_bias_delta": +1
+        },
+        "defence_pairs": {
+          "pinch_frequency_delta": -1,
+          "shoot_pass_delta": +1
+        }
+      },
+
+      "heavy_cycle": {
+        "description": "Heavy cycle teams with strong net-front (BOS-type). Increase block and tighten pinches slightly.",
+        "team": {
+          "team_trap_forecheck_delta": 0,
+          "team_pressure_delta": 0,
+          "team_energy_usage_delta": 0
+        },
+        "forward_lines": {
+          "carry_dump_delta": 0,
+          "cycle_shoot_delta": -1,
+          "efficiency_energy_delta": 0,
+          "block_bias_delta": +2
+        },
+        "defence_pairs": {
+          "pinch_frequency_delta": -1,
+          "shoot_pass_delta": 0
+        }
+      },
+
+      "pressure_forecheck": {
+        "description": "High-pressure forecheck teams (CAR-type). Bias toward Close Support breakout and safer pinches.",
+        "team": {
+          "team_trap_forecheck_delta": 0,
+          "team_pressure_delta": 0,
+          "team_energy_usage_delta": +1
+        },
+        "forward_lines": {
+          "carry_dump_delta": 0,
+          "cycle_shoot_delta": 0,
+          "efficiency_energy_delta": +1,
+          "block_bias_delta": 0
+        },
+        "defence_pairs": {
+          "pinch_frequency_delta": -1,
+          "shoot_pass_delta": 0
+        }
+      },
+
+      "balanced_depth": {
+        "description": "Well-rounded depth teams. Minimal modifier; rely on base Hybrid profiles.",
+        "team": {
+          "team_trap_forecheck_delta": 0,
+          "team_pressure_delta": 0,
+          "team_energy_usage_delta": 0
+        },
+        "forward_lines": {
+          "carry_dump_delta": 0,
+          "cycle_shoot_delta": 0,
+          "efficiency_energy_delta": 0,
+          "block_bias_delta": 0
+        },
+        "defence_pairs": {
+          "pinch_frequency_delta": 0,
+          "shoot_pass_delta": 0
+        }
+      }
+    }
+  }
+}
