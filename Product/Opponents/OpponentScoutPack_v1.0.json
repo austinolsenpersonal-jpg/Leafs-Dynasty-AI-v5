@@ -1,222 +1,291 @@
 {
   "version": "1.0",
-  "description": "Canonical opponent scouting pack for Leafs Dynasty AI. Stores system/tendency ratings, goalie profiles, and physicality for each NHL opponent, aligned with OpponentArchetypeMap_v1.0.",
+  "description": "Central opponent scouting pack: systems, tendencies, goalie profile, and archetype links for NHL opponents.",
+  "last_updated": "2025-01-02",
   "rating_scales": {
-    "scale_type": "1_to_5",
-    "legend": {
-      "1": "Very low / almost never",
-      "2": "Below average / occasional",
-      "3": "Average / situational",
-      "4": "High / frequent",
-      "5": "Elite / defining trait"
-    }
-  },
-  "fields": {
-    "systems_profile": {
-      "forecheck_pressure": "1-5 rating of how aggressive the forecheck is.",
-      "neutral_zone_trap_strength": "1-5 rating of trap strength (1 = no trap, 5 = heavy 1-3-1/1-1-3).",
-      "defensive_collapse": "1-5 rating of how hard they collapse to slot/net-front.",
-      "cycle_usage": "1-5 rating of OZ cycle reliance.",
-      "rush_offence": "1-5 rating of rush/transition offence threat."
-    },
-    "special_teams_profile": {
-      "pp_shooting_bias": "1-5 rating of shot-first PP tendency.",
-      "pp_seam_hunting": "1-5 rating of cross-seam pass focus.",
-      "pk_aggression": "1-5 rating of how aggressive PK is.",
-      "pk_box_collapse": "1-5 rating of how hard PK collapses to slot."
-    },
-    "goalie_profile": {
-      "style": "positional | athletic | rebound_prone | hybrid",
-      "rebound_control": "1-5 rating (lower = leaves more juicy rebounds).",
-      "high_glove_threat": "1-5 rating of glove-side danger.",
-      "high_blocker_threat": "1-5 rating of blocker-side danger.",
-      "low_shot_rebound_threat": "1-5 rating of low shots creating rebounds.",
-      "puck_handling": "1-5 rating of goalie puck-playing impact."
-    },
-    "physicality_profile": {
-      "overall_physicality": "1-5 rating of hit volume and intensity.",
-      "net_front_battle_level": "1-5 rating of crease/front battles.",
-      "board_battle_level": "1-5 rating of board battle focus.",
-      "dirty_area_commitment": "1-5 rating of willingness to go to hard areas."
-    },
-    "event_profile": {
-      "event_rate": "1-5 rating of game pace (1 = very low-event, 5 = track meet).",
-      "penalty_rate": "1-5 rating of how often they draw/take penalties.",
-      "comeback_push_level": "1-5 rating of late-game aggression when trailing.",
-      "turtle_level_with_lead": "1-5 rating of how much they sit back when leading."
-    },
-    "tendency_flags": {
-      "curl_shooter_present": "true if they have a known curl-and-shoot threat.",
-      "net_front_tip_specialist": "true if they rely on tips/screens a lot.",
-      "stretch_pass_usage": "1-5 rating for stretch/long-bomb usage.",
-      "dump_and_chase_bias": "1-5 rating for dump-chase preference.",
-      "east_west_pp_playmaker": "true if they have a strong east–west PP playmaker (Ovi-side threat, etc.)."
-    },
-    "integration": {
-      "archetype_hint": "Suggested archetype_id that should match or influence OpponentArchetypeMap_v1.0.",
-      "confidence_score": "0.0–1.0 float representing how confident the scout data is.",
-      "last_updated": "ISO date string of last manual update."
+    "scale_1_to_10": {
+      "description": "1 = very low, 10 = elite / extremely high"
     }
   },
   "teams": {
     "NYI": {
+      "team_code": "NYI",
       "team_name": "New York Islanders",
-      "systems_profile": {
-        "forecheck_pressure": 2,
-        "neutral_zone_trap_strength": 5,
-        "defensive_collapse": 5,
-        "cycle_usage": 3,
-        "rush_offence": 2
+      "conference": "Eastern",
+      "division": "Metropolitan",
+      "archetype": {
+        "archetype_tag": "trap_low_event",
+        "source": "OpponentArchetypeMap_v1.0",
+        "confidence": 0.98
       },
-      "special_teams_profile": {
-        "pp_shooting_bias": 3,
-        "pp_seam_hunting": 2,
-        "pk_aggression": 2,
-        "pk_box_collapse": 4
+      "coach_profile": {
+        "name": "Patrick Roy",
+        "style_tags": [
+          "conservative",
+          "trap_system",
+          "slot_collapse",
+          "rebound_hunting"
+        ],
+        "bench_tendencies_notes": [
+          "Prefers low-event, structure-first games.",
+          "Leans on collapsing DZ coverage and strong net-front.",
+          "Allows perimeter, protects slot at all costs."
+        ]
       },
-      "goalie_profile": {
-        "style": "positional",
-        "rebound_control": 4,
-        "high_glove_threat": 3,
-        "high_blocker_threat": 3,
-        "low_shot_rebound_threat": 3,
-        "puck_handling": 3
+      "systems": {
+        "even_strength": {
+          "offensive_pressure": "Conservative",
+          "forecheck": "2-3",
+          "neutral_zone": "1-3-1",
+          "defensive_pressure": "Protect Net",
+          "defensive_strategy": "Collapsing"
+        },
+        "special_teams": {
+          "power_play": {
+            "primary_formation": "Overload",
+            "secondary_formation": null,
+            "notes": [
+              "Heavy use of point shots and net-front tips.",
+              "Bumper and low-slot screens are main threats."
+            ]
+          },
+          "penalty_kill": {
+            "primary_formation": "Passive Box",
+            "secondary_formation": null,
+            "notes": [
+              "Very passive; collapses low inside the dots.",
+              "Will allow perimeter puck movement to protect the house."
+            ]
+          }
+        }
       },
-      "physicality_profile": {
-        "overall_physicality": 4,
-        "net_front_battle_level": 5,
-        "board_battle_level": 4,
-        "dirty_area_commitment": 4
+      "tendencies": {
+        "offense": {
+          "rush_vs_cycle_rating": 3,
+          "east_west_play_rating": 5,
+          "rebound_hunting_rating": 8,
+          "slot_focus_rating": 9,
+          "point_shots_rating": 7,
+          "notes": [
+            "Offense is driven more by cycle and retrieval than pure rush.",
+            "Consistently throws pucks to the net with traffic and looks for second chances."
+          ]
+        },
+        "defense": {
+          "slot_collapse_rating": 9,
+          "shot_blocking_rating": 8,
+          "gap_control_rating": 7,
+          "physicality_rating": 8,
+          "stick_detail_rating": 7,
+          "notes": [
+            "Defense folds into the slot quickly on any danger.",
+            "Willing to block a lot of shots and play heavy below the dots."
+          ]
+        },
+        "goaltending": {
+          "likely_starter": "Ilya Sorokin",
+          "goalie_archetype": "positional_with_rebound_risk",
+          "rebound_control_rating": 6,
+          "high_glove_rating": 7,
+          "high_blocker_rating": 7,
+          "low_shot_rating": 7,
+          "puck_handling_rating": 5,
+          "traffic_susceptibility_rating": 8,
+          "notes": [
+            "Strong first-shot stopper when he sees it.",
+            "Can be beaten with layered screens and cross-ice seams.",
+            "Rebounds become dangerous if net-front is not cleared."
+          ]
+        },
+        "discipline": {
+          "penalties_taken_rating": 6,
+          "penalties_drawn_rating": 5,
+          "notes": [
+            "Not an overly undisciplined team but can take penalties under sustained pressure.",
+            "Games tend to stay 5v5 if Toronto stays composed."
+          ]
+        }
       },
-      "event_profile": {
-        "event_rate": 2,
-        "penalty_rate": 3,
-        "comeback_push_level": 3,
-        "turtle_level_with_lead": 4
+      "lineup_snapshot": {
+        "top_forwards_example": [
+          "Mathew Barzal",
+          "Anders Lee",
+          "Kyle Palmieri"
+        ],
+        "top_defence_example": [
+          "Noah Dobson",
+          "Ryan Pulock"
+        ],
+        "injury_notes": [
+          "Use live game UI for current injuries and exact lines; this snapshot is structural, not a depth chart."
+        ]
       },
-      "tendency_flags": {
-        "curl_shooter_present": true,
-        "net_front_tip_specialist": true,
-        "stretch_pass_usage": 2,
-        "dump_and_chase_bias": 3,
-        "east_west_pp_playmaker": false
+      "scouting_flags": {
+        "danger_tags": [
+          "trap_game",
+          "hot_goalie_risk",
+          "low_event_variance"
+        ],
+        "recommended_counter_archetype": "Hybrid_Standard",
+        "priority_points_for_toronto": [
+          "Avoid lazy neutral-zone passes into the 1-3-1.",
+          "Be patient offensively — accept low-event stretches.",
+          "Create traffic on Sorokin and shoot for pads when net-front is established.",
+          "Work the puck below the goal line to pull the collapsing D out of the slot."
+        ]
       },
-      "integration": {
-        "archetype_hint": "trap_low_event",
-        "confidence_score": 0.95,
-        "last_updated": "2025-01-02"
-      },
-      "notes": [
-        "Classic trap/low-event structure with hard slot collapse.",
-        "Sorokin/Varlamov can steal games but generally position-first.",
-        "Winning formula is patience, point shots through traffic, and rebounds."
-      ]
+      "observation_log": [
+        {
+          "date": "2024-12-31",
+          "context": "REG_SEASON",
+          "result_summary": "TOR 7 – NYI 1",
+          "notes": [
+            "NYI collapsed extremely hard to the middle; perimeter was open all game.",
+            "Toronto generated high danger by cycling low and feeding the slot with traffic.",
+            "Sorokin struggled once screens and lateral plays started to layer."
+          ],
+          "archetype_check": {
+            "confirmed_archetype_tag": "trap_low_event",
+            "confidence_after_game": 0.99
+          }
+        }
+      ],
+      "data_quality": {
+        "systems_source": "direct_in-game tactics screen (NYI)",
+        "updated_from": "Toronto vs NYI scouting session",
+        "completeness_rating": 0.9,
+        "notes": [
+          "Systems and tendencies aligned directly to in-game tactics UI for NYI.",
+          "Line combinations are representative, not exact depth chart; always verify live before each game."
+        ]
+      }
     },
-    "DET": {
-      "team_name": "Detroit Red Wings",
-      "systems_profile": {
-        "forecheck_pressure": 4,
-        "neutral_zone_trap_strength": 2,
-        "defensive_collapse": 3,
-        "cycle_usage": 3,
-        "rush_offence": 4
+
+    "BOS": {
+      "team_code": "BOS",
+      "team_name": "Boston Bruins",
+      "conference": "Eastern",
+      "division": "Atlantic",
+      "archetype": {
+        "archetype_tag": "heavy_cycle",
+        "source": "OpponentArchetypeMap_v1.0",
+        "confidence": 0.85
       },
-      "special_teams_profile": {
-        "pp_shooting_bias": 5,
-        "pp_seam_hunting": 4,
-        "pk_aggression": 3,
-        "pk_box_collapse": 3
+      "coach_profile": {
+        "name": null,
+        "style_tags": [
+          "heavy_cycle",
+          "structure_first",
+          "physical",
+          "defense_to_offense"
+        ],
+        "bench_tendencies_notes": [
+          "Treat as a structured, heavy team until a dedicated BOS tactics screen is imported.",
+          "Expect strong defensive details, good sticks, and heavy battles below the dots."
+        ]
       },
-      "goalie_profile": {
-        "style": "athletic",
-        "rebound_control": 2,
-        "high_glove_threat": 3,
-        "high_blocker_threat": 3,
-        "low_shot_rebound_threat": 4,
-        "puck_handling": 2
+      "systems": {
+        "even_strength": {
+          "offensive_pressure": null,
+          "forecheck": null,
+          "neutral_zone": null,
+          "defensive_pressure": null,
+          "defensive_strategy": null
+        },
+        "special_teams": {
+          "power_play": {
+            "primary_formation": null,
+            "secondary_formation": null,
+            "notes": [
+              "PP details pending full BOS tactics upload."
+            ]
+          },
+          "penalty_kill": {
+            "primary_formation": null,
+            "secondary_formation": null,
+            "notes": [
+              "PK details pending full BOS tactics upload."
+            ]
+          }
+        }
       },
-      "physicality_profile": {
-        "overall_physicality": 3,
-        "net_front_battle_level": 3,
-        "board_battle_level": 3,
-        "dirty_area_commitment": 3
+      "tendencies": {
+        "offense": {
+          "rush_vs_cycle_rating": 6,
+          "east_west_play_rating": 6,
+          "rebound_hunting_rating": 7,
+          "slot_focus_rating": 8,
+          "point_shots_rating": 7,
+          "notes": [
+            "Provisional profile: treat BOS as a team that can play both rush and cycle, with strong slot presence.",
+            "Upgrade these ratings once BOS-specific game film and tactics screens are captured."
+          ]
+        },
+        "defense": {
+          "slot_collapse_rating": 8,
+          "shot_blocking_rating": 7,
+          "gap_control_rating": 8,
+          "physicality_rating": 8,
+          "stick_detail_rating": 8,
+          "notes": [
+            "Assume strong defensive posture and good 1v1 details.",
+            "Danger comes from allowing them extended O-zone cycles and net-front traffic."
+          ]
+        },
+        "goaltending": {
+          "likely_starter": null,
+          "goalie_archetype": "positional_estimate",
+          "rebound_control_rating": 7,
+          "high_glove_rating": 7,
+          "high_blocker_rating": 7,
+          "low_shot_rating": 7,
+          "puck_handling_rating": 6,
+          "traffic_susceptibility_rating": 7,
+          "notes": [
+            "Goalie details need to be corrected from live BOS goalie screens.",
+            "Treat as steady, NHL-calibre starter until specific weaknesses are confirmed."
+          ]
+        },
+        "discipline": {
+          "penalties_taken_rating": 6,
+          "penalties_drawn_rating": 6,
+          "notes": [
+            "Baseline discipline — not assumed to be a parade to the box either way.",
+            "Update once multi-game BOS series is tracked."
+          ]
+        }
       },
-      "event_profile": {
-        "event_rate": 4,
-        "penalty_rate": 3,
-        "comeback_push_level": 4,
-        "turtle_level_with_lead": 2
+      "lineup_snapshot": {
+        "top_forwards_example": [],
+        "top_defence_example": [],
+        "injury_notes": [
+          "Awaiting BOS roster / lines upload for accurate snapshot.",
+          "Use this entry as a shell until live BOS scouting is added."
+        ]
       },
-      "tendency_flags": {
-        "curl_shooter_present": true,
-        "net_front_tip_specialist": false,
-        "stretch_pass_usage": 3,
-        "dump_and_chase_bias": 2,
-        "east_west_pp_playmaker": true
+      "scouting_flags": {
+        "danger_tags": [
+          "heavy_cycle",
+          "net_front_battle",
+          "momentum_team"
+        ],
+        "recommended_counter_archetype": "Hybrid_Standard",
+        "priority_points_for_toronto": [
+          "Win net-front battles and clear rebounds.",
+          "Do not let BOS stack long O-zone shifts.",
+          "Counter-attack when BOS D over-commit in the cycle once real systems are known."
+        ]
       },
-      "integration": {
-        "archetype_hint": "chaos_rush",
-        "confidence_score": 0.9,
-        "last_updated": "2025-01-02"
-      },
-      "notes": [
-        "Dangerous on PP with shooting-first mentality and curl shooters.",
-        "Can create chaos on forecheck; punish over-aggression with controlled exits.",
-        "Low-shot rebounds are a major risk factor if defensive box-out fails."
-      ]
-    },
-    "WSH": {
-      "team_name": "Washington Capitals",
-      "systems_profile": {
-        "forecheck_pressure": 3,
-        "neutral_zone_trap_strength": 3,
-        "defensive_collapse": 4,
-        "cycle_usage": 4,
-        "rush_offence": 3
-      },
-      "special_teams_profile": {
-        "pp_shooting_bias": 4,
-        "pp_seam_hunting": 5,
-        "pk_aggression": 3,
-        "pk_box_collapse": 4
-      },
-      "goalie_profile": {
-        "style": "rebound_prone",
-        "rebound_control": 2,
-        "high_glove_threat": 3,
-        "high_blocker_threat": 3,
-        "low_shot_rebound_threat": 5,
-        "puck_handling": 2
-      },
-      "physicality_profile": {
-        "overall_physicality": 4,
-        "net_front_battle_level": 4,
-        "board_battle_level": 3,
-        "dirty_area_commitment": 4
-      },
-      "event_profile": {
-        "event_rate": 3,
-        "penalty_rate": 3,
-        "comeback_push_level": 4,
-        "turtle_level_with_lead": 3
-      },
-      "tendency_flags": {
-        "curl_shooter_present": true,
-        "net_front_tip_specialist": true,
-        "stretch_pass_usage": 3,
-        "dump_and_chase_bias": 3,
-        "east_west_pp_playmaker": true
-      },
-      "integration": {
-        "archetype_hint": "slow_umbrella",
-        "confidence_score": 0.92,
-        "last_updated": "2025-01-02"
-      },
-      "notes": [
-        "Umbrella PP with Ovi-side threat; seam denial is priority one.",
-        "Goalie leaves dangerous low rebounds; farm 2nd-chance chances.",
-        "Heavy but not insanely fast; cycle and physicality are their identity."
-      ]
+      "observation_log": [],
+      "data_quality": {
+        "systems_source": "provisional_profile_only",
+        "updated_from": "architect-level assumptions; awaiting real BOS tactics/screens",
+        "completeness_rating": 0.4,
+        "notes": [
+          "BOS entry is a scaffold — you should upload BOS tactics, PP/PK, and lines to promote this to a fully trusted profile.",
+          "Safe to use for high-level archetype planning; do not overfit gameplans to these provisional ratings."
+        ]
+      }
     }
   }
 }
