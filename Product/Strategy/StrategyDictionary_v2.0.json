@@ -1,0 +1,120 @@
+{
+  "version": "2.0",
+  "game": "NHL 25 (Old Gen / Xbox One S)",
+  "platform_note": "This dictionary is STRICTLY limited to strategies that actually exist in NHL 25 on Xbox One / PS4. No Wedge +1, Spread, or 2-1-2 forechecks are allowed.",
+  "strategy_categories": {
+    "offensive_pressure": {
+      "description": "Team-wide offensive pressure level.",
+      "allowed_values": [
+        "Conservative",
+        "Standard",
+        "Aggressive"
+      ],
+      "default": "Standard"
+    },
+    "forecheck": {
+      "description": "Team forecheck system in 5v5 play.",
+      "allowed_values": [
+        "1-2-2 Passive",
+        "1-2-2 Conservative",
+        "1-2-2 Aggressive",
+        "2-3"
+      ],
+      "default": "1-2-2 Passive"
+    },
+    "defensive_pressure": {
+      "description": "How aggressively the team pressures the puck in the defensive zone.",
+      "allowed_values": [
+        "Protect Net",
+        "Contain Puck",
+        "Pressure"
+      ],
+      "default": "Contain Puck"
+    },
+    "defensive_strategy": {
+      "description": "Defensive zone shape / coverage pattern.",
+      "allowed_values": [
+        "Tight Point",
+        "Collapsing",
+        "Staggered",
+        "Strong Side Lock"
+      ],
+      "default": "Staggered"
+    },
+    "neutral_zone": {
+      "description": "Neutral zone forecheck / trap alignment.",
+      "allowed_values": [
+        "1-2-2 Blue",
+        "1-2-2 Red",
+        "1-3-1"
+      ],
+      "default": "1-2-2 Blue"
+    },
+    "breakout": {
+      "description": "Primary breakout pattern from the defensive zone.",
+      "allowed_values": [
+        "Close Support",
+        "Stay Wide",
+        "Leave Zone Early"
+      ],
+      "default": "Close Support"
+    },
+    "regroup": {
+      "description": "Neutral zone regroup pattern after a controlled retreat.",
+      "allowed_values": [
+        "Three High",
+        "Strong Side Slant",
+        "Blue-to-Blue"
+      ],
+      "default": "Strong Side Slant"
+    },
+    "offensive_zone": {
+      "description": "Offensive zone puck distribution pattern.",
+      "allowed_values": [
+        "Overload",
+        "Behind the Net",
+        "Crash the Net"
+      ],
+      "default": "Overload"
+    },
+    "power_play": {
+      "description": "5-on-4 power play formation.",
+      "allowed_values": [
+        "Overload",
+        "Umbrella"
+      ],
+      "default": "Umbrella"
+    },
+    "penalty_kill": {
+      "description": "4-man penalty kill shape.",
+      "allowed_values": [
+        "Passive Box",
+        "Diamond"
+      ],
+      "default": "Passive Box"
+    }
+  },
+  "validation_rules": {
+    "strict_mode": true,
+    "on_invalid_strategy": "error",
+    "on_missing_strategy": "fallback_to_default",
+    "fallback_behavior": {
+      "explanation": "If a strategy is requested that is not in allowed_values, treat it as a hard error. Do NOT invent or approximate using old EA games. If a strategy field is missing, automatically use the default value defined for that category.",
+      "log_field_name": "strategy_validation_log"
+    }
+  },
+  "integration_notes": {
+    "architect_runtime": {
+      "must_use_dictionary": true,
+      "description": "Architect must look up every strategy string in this dictionary before including it in a gameplan, matchup, or runtime snapshot. If not present, Architect should refuse the value."
+    },
+    "dynasty_runtime": {
+      "must_use_dictionary": true,
+      "description": "Dynasty GPT must never output a strategy that is not in allowed_values. If older EA terms (Wedge +1, Spread, 2-1-2, etc.) are requested or inferred, it must respond with an error / correction instead of using them."
+    },
+    "archetype_engine": {
+      "description": "OpponentArchetypeMap_v1.0 must only assign strategies that appear here. If an archetype references anything else, treat it as a configuration error.",
+      "enforce_on_load": true
+    }
+  }
+}
